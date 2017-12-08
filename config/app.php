@@ -27,6 +27,7 @@ return [
     */
 
     'env' => env('APP_ENV', 'production'),
+    'bko_subdomain' => env('BKO_SUBDOMAIN', 'bko'),
 
     /*
     |--------------------------------------------------------------------------
@@ -53,6 +54,7 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
+    'domain' => env('APP_DOMAIN', 'localhost'),
 
     /*
     |--------------------------------------------------------------------------

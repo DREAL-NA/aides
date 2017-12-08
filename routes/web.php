@@ -11,10 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group([ 'domain' => config('app.bko_subdomain').'.'.config('app.domain') ], function() {
+	Auth::routes();
 });
 
-Auth::routes();
+Route::group([ 'namespace' => 'Bko', 'domain' => config('app.bko_subdomain').'.'.config('app.domain'), 'middleware' => [ 'auth' ] ], function() {
+	Route::get('/', [ 'as' => 'bko.home', 'uses' => 'IndexController@index' ]);
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', [ 'as' => 'front.home', 'uses' => 'FrontController@index' ]);
