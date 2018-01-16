@@ -6,15 +6,16 @@
 @import "bko/variables";
 
 // Font Awesome
+@import "../../../node_modules/font-awesome/scss/font-awesome";
 //@import "../../../bower_components/components-font-awesome/scss/font-awesome";
 
 // Bootstrap
 @import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
 // Select2
-//@import "../../../node_modules/select2/src/scss/core";
-//@import "../../../node_modules/select2/src/scss/theme/default/layout";
-//@import "../../../node_modules/select2-bootstrap-theme/src/select2-bootstrap";
+@import "../../../node_modules/select2/src/scss/core";
+@import "../../../node_modules/select2/src/scss/theme/default/layout";
+@import "../../../node_modules/select2-bootstrap-theme/src/select2-bootstrap";
 
 @import "bko/base";
-
+@import "bko/menu";

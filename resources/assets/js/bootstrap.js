@@ -10,6 +10,11 @@ try {
 	window.$ = window.jQuery = require('jquery');
 
 	require('bootstrap-sass');
+	require('select2');
+	window.$.fn.select2.defaults.set( "theme", "bootstrap" );
+	window.$.fn.select2.defaults.set( "language", "fr" );
+	window.$.fn.select2.defaults.set( "placeholder", "Choisissez une option" );
+
 } catch (e) {
 }
 
@@ -19,10 +24,10 @@ try {
  * a simple convenience so we don't have to attach every token manually.
  */
 
-let token = document.head.querySelector('meta[name="csrf-token"]');
-
-if (token) {
-	window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-} else {
-	console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-}
+// let token = document.head.querySelector('meta[name="csrf-token"]');
+//
+// if (token) {
+// 	window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+// } else {
+// 	console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+// }

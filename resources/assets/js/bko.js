@@ -6,3 +6,5 @@
  */
 
 require('./bootstrap');
+
+$('.select2-input').select2();
