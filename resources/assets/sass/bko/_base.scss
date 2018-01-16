@@ -2,4 +2,19 @@ textarea {
 	min-width: 100%;
 	max-width: 100%;
 	width: 100%;
+	min-height: 70px;
+}
+
+.input-group.date {
+	input {
+		cursor: pointer;
+	}
+}
+
+.filters-table {
+	margin-bottom: 30px;
+
+	.form-group {
+		@include make-lg-column(4);
+	}
 }

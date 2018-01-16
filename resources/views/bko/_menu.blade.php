@@ -5,7 +5,8 @@
 		<div class="menu-category">
 			<h5 class="category-title">Appels à projets</h5>
 			<ul class="menu">
-				<li class="menu-item"><a href="{{ route('bko.call.index') }}">Liste des appels à projets</a></li>
+				<li class="menu-item"><a href="{{ route('bko.call.index') }}">Liste des appels à projets ouverts</a></li>
+				<li class="menu-item"><a href="{{ route('bko.call.indexClosed') }}">Liste des appels à projets clôturés</a></li>
 				<li class="menu-item"><a href="{{ route('bko.call.create') }}">Ajouter un appel à projet</a></li>
 				@yield('menu-item-call')
 			</ul>

@@ -102,6 +102,8 @@
 			</div>
 		</div>
 
+		@yield('after-content')
+
 		<!-- Scripts -->
 		<script src="{{ asset('js/bko.js') }}"></script>
 

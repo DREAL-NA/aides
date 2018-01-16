@@ -6,16 +6,22 @@
 @import "bko/variables";
 
 // Font Awesome
-@import "../../../node_modules/font-awesome/scss/font-awesome";
-//@import "../../../bower_components/components-font-awesome/scss/font-awesome";
+@import "~font-awesome/scss/font-awesome";
 
 // Bootstrap
-@import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "~eonasdan-bootstrap-datetimepicker/src/sass/bootstrap-datetimepicker";
+
+// Datatables
+@import "~datatables.net-dt/css/jquery.dataTables.css";
+@import "~datatables.net-bs/css/dataTables.bootstrap.css";
+@import "~datatables.net-responsive-bs/css/responsive.bootstrap.css";
 
 // Select2
-@import "../../../node_modules/select2/src/scss/core";
-@import "../../../node_modules/select2/src/scss/theme/default/layout";
-@import "../../../node_modules/select2-bootstrap-theme/src/select2-bootstrap";
+@import "~select2/src/scss/core";
+@import "~select2/src/scss/theme/default/layout";
+@import "~select2-bootstrap-theme/src/select2-bootstrap";
 
+@import 'bko/datatables-custom';
 @import "bko/base";
 @import "bko/menu";

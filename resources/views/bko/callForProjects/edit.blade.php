@@ -2,7 +2,7 @@
 
 @section('heading', "Edition de l'appel à projets : ".$callForProjects->name)
 @section('menu-item-call')
-	<li class="menu-item active"><a href="{{ route('bko.call.edit', $thematic) }}">Edition de {{ $callForProjects->name }}</a></li>
+	<li class="menu-item active"><a href="{{ route('bko.call.edit', $callForProjects) }}">Edition de {{ $callForProjects->name }}</a></li>
 @endsection
 
 @section('content')

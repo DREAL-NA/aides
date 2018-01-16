@@ -24,7 +24,9 @@ class CreateCallForProjectsTable extends Migration
 	        $table->text('objectives')->nullable();
 	        $table->integer('beneficiary_id')->unsigned();
 	        $table->text('beneficiary_comments')->nullable();
-	        $table->text('allocation')->nullable();
+	        $table->tinyInteger('allocation_global')->default(0);
+	        $table->tinyInteger('allocation_per_project')->default(0);
+	        $table->text('allocation_comments')->nullable();
 	        $table->text('technical_relay')->nullable();
 	        $table->text('website_url')->nullable();
 	        $table->integer('editor_id')->unsigned();
@@ -48,7 +50,11 @@ class CreateCallForProjectsTable extends Migration
     public function down()
     {
 	    Schema::table('calls_for_projects', function(Blueprint $table) {
-		    $table->dropIndex([ 'subthematic_id', 'project_holder_id', 'perimeter_id', 'beneficiary_id', 'editor_id' ]);
+		    $table->dropIndex([ 'subthematic_id' ]);
+		    $table->dropIndex([ 'project_holder_id' ]);
+		    $table->dropIndex([ 'perimeter_id' ]);
+		    $table->dropIndex([ 'beneficiary_id' ]);
+		    $table->dropIndex([ 'editor_id' ]);
 	    });
         Schema::dropIfExists('calls_for_projects');
     }

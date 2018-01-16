@@ -3,6 +3,16 @@
 	{{ csrf_field() }}
 	
 	<div class="form-group">
+		<label for="name">Type</label>
+		<div class="radios">
+			@foreach(\App\Beneficiary::types() as $key => $label)
+				<label class="radio-inline">
+					<input type="radio" name="type" id="type_{{ $key }}" value="{{ $key }}"> {{ $label }}
+				</label>
+			@endforeach
+		</div>
+	</div>
+	<div class="form-group">
 		<label for="name">Nom</label>
 		<input type="text" class="form-control" name="name" id="name{{ empty($modal) ? '' : '__'.$modal }}" value="{{ old('name', $model->name) }}">
 	</div>

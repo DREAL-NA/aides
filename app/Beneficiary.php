@@ -15,6 +15,7 @@ class Beneficiary extends Model {
 	const TYPE_OTHER = 4;
 
 	protected $guarded = [];
+	protected $dates   = [ 'deleted_at' ];
 
 	public static function types() {
 		return collect([
@@ -29,7 +30,7 @@ class Beneficiary extends Model {
 		return [
 			'type'        => [
 				'required',
-				Rule::in(self::types()->keys()),
+				Rule::in(self::types()->keys()->toArray()),
 			],
 			'name'        => 'required|min:2',
 			'description' => 'present',

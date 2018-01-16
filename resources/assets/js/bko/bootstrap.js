@@ -1,4 +1,4 @@
-window._ = require('lodash');
+// window._ = require('lodash');
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -10,6 +10,19 @@ try {
 	window.$ = window.jQuery = require('jquery');
 
 	require('bootstrap-sass');
+	require('eonasdan-bootstrap-datetimepicker');
+	require('select2');
+
+	// Datatables plugin
+	require('datatables.net');
+	require('datatables.net-bs');
+	require('datatables.net-responsive');
+	require('datatables.net-responsive-bs');
+
+	// Select2 defaults
+	require('./select2-default');
+	require('./datatables-default');
+
 } catch (e) {
 }
 
