@@ -18,6 +18,8 @@ try {
 	require('datatables.net-bs');
 	require('datatables.net-responsive');
 	require('datatables.net-responsive-bs');
+	require('mark.js')
+	require('datatables.mark.js')
 
 	// Select2 defaults
 	require('./select2-default');

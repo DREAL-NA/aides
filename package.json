@@ -12,6 +12,7 @@
     "devDependencies": {
         "bootstrap-sass": "^3.3.7",
         "cross-env": "^5.1",
+        "datatables.mark.js": "github:julmot/datatables.mark.js",
         "datatables.net": "^1.10.16",
         "datatables.net-bs": "^1.10.16",
         "datatables.net-dt": "^1.10.16",
@@ -20,7 +21,8 @@
         "eonasdan-bootstrap-datetimepicker": "^4.17.47",
         "jquery": "^3.2",
         "laravel-mix": "^1.0",
-        "lodash": "^4.17.4"
+        "lodash": "^4.17.4",
+        "mark.js": "github:julmot/mark.js"
     },
     "dependencies": {
         "font-awesome": "^4.7.0",

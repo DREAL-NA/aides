@@ -10,6 +10,13 @@ let mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
+mix.webpackConfig({
+	resolve: {
+		alias: {
+			"markjs": "mark.js/dist/jquery.mark.js"
+		}
+	}
+});
 
 mix.js('resources/assets/js/bko.js', 'public/js')
 	// .js('resources/assets/js/app.js', 'public/js')
