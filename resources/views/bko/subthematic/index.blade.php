@@ -34,7 +34,7 @@
 						<tr>
 							<td>{{ is_null($thematic->parent) ? '' : $thematic->parent->name }}</td>
 							<td>{{ $thematic->name }}</td>
-							<td>{{ $thematic->description }}</td>
+							<td>{!! $thematic->description_html !!}</td>
 							<td class="text-right">
 								<a href="{{ route('bko.subthematic.edit', $thematic) }}" title="Modifier"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 							</td>

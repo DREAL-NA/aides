@@ -2,12 +2,13 @@
 
 namespace App;
 
+use App\Traits\Description;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Validation\Rule;
 
 class Beneficiary extends Model {
-	use SoftDeletes;
+	use SoftDeletes, Description;
 
 	const TYPE_STATE = 1;
 	const TYPE_COLLECTIVITY = 2;

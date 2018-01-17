@@ -29,8 +29,8 @@
 	<div class="form-group">
 		<label for="subthematic_id">Sous-thématique*</label>
 		<select name="subthematic_id" id="subthematic_id" class="form-control select2-input">
-			@if(!empty($subthematic_id))
-				<option value="{{ $subthematic_id }}">{{ $callForProjects->subthematic->name }}</option>
+			@if(!empty($callForProjects->subthematic_id))
+				<option value="{{ $callForProjects->subthematic_id }}">{{ $callForProjects->subthematic->name }}</option>
 			@endif
 		</select>
 	</div>

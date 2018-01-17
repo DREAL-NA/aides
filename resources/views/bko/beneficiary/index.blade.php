@@ -34,7 +34,7 @@
 						<tr>
 							<td>{{ $types[$beneficiary->type] }}</td>
 							<td>{{ $beneficiary->name }}</td>
-							<td>{{ $beneficiary->description }}</td>
+							<td>{!! $beneficiary->description_html !!}</td>
 							<td class="text-right">
 								<a href="{{ route('bko.beneficiaire.edit', $beneficiary) }}" title="Modifier"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 							</td>

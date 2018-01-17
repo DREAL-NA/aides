@@ -2,11 +2,12 @@
 
 namespace App;
 
+use App\Traits\Description;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ProjectHolder extends Model {
-	use SoftDeletes;
+	use SoftDeletes, Description;
 
 	protected $guarded = [];
 	protected $dates   = [ 'deleted_at' ];

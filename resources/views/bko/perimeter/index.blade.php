@@ -15,7 +15,7 @@
 			@foreach($perimeters as $perimeter)
 				<tr>
 					<td>{{ $perimeter->name }}</td>
-					<td>{{ $perimeter->description }}</td>
+					<td>{!! $perimeter->description_html !!}</td>
 					<td class="text-right">
 						<a href="{{ route('bko.perimetre.edit', $perimeter) }}" title="Modifier"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 					</td>

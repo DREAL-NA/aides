@@ -15,7 +15,7 @@
 			@foreach($projectHolders as $projectHolder)
 				<tr>
 					<td>{{ $projectHolder->name }}</td>
-					<td>{{ $projectHolder->description }}</td>
+					<td>{!! $projectHolder->description_html !!}</td>
 					<td class="text-right">
 						<a href="{{ route('bko.porteur-dispositif.edit', $projectHolder) }}" title="Modifier"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 					</td>

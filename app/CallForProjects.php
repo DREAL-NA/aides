@@ -61,4 +61,45 @@ class CallForProjects extends Model {
 	public function scopeOpened($query) {
 		return $query->whereDate('closing_date', '>=', date('Y-m-d 23:59:59'));
 	}
+
+	// Attributes casting
+	public function setObjectivesAttribute($value) {
+		$this->attributes['objectives'] = nl2br($value);
+	}
+
+	public function getObjectivesAttribute($value) {
+		return preg_replace('#<br\s*/?>#i', "", $value);
+	}
+
+	public function setProjectHolderContactAttribute($value) {
+		$this->attributes['project_holder_contact'] = nl2br($value);
+	}
+
+	public function getProjectHolderContactAttribute($value) {
+		return preg_replace('#<br\s*/?>#i', "", $value);
+	}
+
+	public function setBeneficiaryCommentsAttribute($value) {
+		$this->attributes['beneficiary_comments'] = nl2br($value);
+	}
+
+	public function getBeneficiaryCommentsAttribute($value) {
+		return preg_replace('#<br\s*/?>#i', "", $value);
+	}
+
+	public function setAllocationCommentsAttribute($value) {
+		$this->attributes['allocation_comments'] = nl2br($value);
+	}
+
+	public function getAllocationCommentsAttribute($value) {
+		return preg_replace('#<br\s*/?>#i', "", $value);
+	}
+
+	public function setTechnicalRelayAttribute($value) {
+		$this->attributes['technical_relay'] = nl2br($value);
+	}
+
+	public function getTechnicalRelayAttribute($value) {
+		return preg_replace('#<br\s*/?>#i', "", $value);
+	}
 }
