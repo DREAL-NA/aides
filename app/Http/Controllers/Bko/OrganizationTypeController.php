@@ -93,12 +93,24 @@ class OrganizationTypeController extends Controller {
 	/**
 	 * Remove the specified resource from storage.
 	 *
+	 * @param Request $request
 	 * @param  \App\OrganizationType $organizationType
 	 *
 	 * @return \Illuminate\Http\Response
+	 * @throws \Exception
 	 */
-	public function destroy(OrganizationType $organizationType) {
-		//
+	public function destroy(Request $request, OrganizationType $organizationType) {
+		if(!$request->ajax()) {
+			exit;
+		}
+
+		$success = $organizationType->delete();
+
+		if($success == 1) {
+			return response()->json('deleted');
+		}
+
+		return response()->json('error', 422);
 	}
 
 	public function select2(Request $request) {

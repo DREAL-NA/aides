@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-	@include('bko.forms._default', [
+	@include('bko.components.forms._default', [
 		'model' => $thematic,
 		'options' => [ 'method' => 'PUT', 'url' => action('Bko\ThematicController@update', $thematic) ]
 	])

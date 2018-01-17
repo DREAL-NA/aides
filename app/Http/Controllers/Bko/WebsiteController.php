@@ -106,11 +106,23 @@ class WebsiteController extends Controller {
 	/**
 	 * Remove the specified resource from storage.
 	 *
+	 * @param Request $request
 	 * @param  \App\Website $website
 	 *
 	 * @return \Illuminate\Http\Response
+	 * @throws \Exception
 	 */
-	public function destroy(Website $website) {
-		//
+	public function destroy(Request $request, Website $website) {
+		if(!$request->ajax()) {
+			exit;
+		}
+
+		$success = $website->delete();
+
+		if($success == 1) {
+			return response()->json('deleted');
+		}
+
+		return response()->json('error', 422);
 	}
 }

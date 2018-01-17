@@ -18,3 +18,11 @@ textarea {
 		@include make-lg-column(4);
 	}
 }
+
+table {
+	.col-actions {
+		a {
+			margin-left: 5px;
+		}
+	}
+}

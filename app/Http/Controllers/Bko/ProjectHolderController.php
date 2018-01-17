@@ -96,12 +96,24 @@ class ProjectHolderController extends Controller {
 	/**
 	 * Remove the specified resource from storage.
 	 *
+	 * @param Request $request
 	 * @param  \App\ProjectHolder $projectHolder
 	 *
 	 * @return \Illuminate\Http\Response
+	 * @throws \Exception
 	 */
-	public function destroy(ProjectHolder $projectHolder) {
-		//
+	public function destroy(Request $request, ProjectHolder $projectHolder) {
+		if(!$request->ajax()) {
+			exit;
+		}
+
+		$success = $projectHolder->delete();
+
+		if($success == 1) {
+			return response()->json('deleted');
+		}
+
+		return response()->json('error', 422);
 	}
 
 	public function select2(Request $request) {

@@ -69,50 +69,15 @@
 
 @push('inline-script')
 	<script>
-		function saveNewItem(modalId, ajaxUrl, selector) {
-			var modal = $('#'+modalId);
-
-			modal.find('.alert').addClass('hidden');
-			$.ajax({
-				url: ajaxUrl,
-				method: 'post',
-				data: $('#form__'+modalId).serialize(),
-				success: function(data){
-					var option = new Option(data.name, data.id, true, true);
-					$('#'+selector).append(option).trigger('change');
-					modal.modal('hide');
-				},
-				error: function(data, json) {
-					var alert_block = modal.find('.alert');
-					alert_block.removeClass('hidden').empty();
-					$.each(data.responseJSON.errors, function(k, item) {
-						$.each(item, function(k2, item2) {
-							alert_block.append($('<p>').html(item2));
-						});
-					});
-				}
-			});
-		}
-
-		function select2__ajaxOptions(url) {
-			return {
-				delay: 250,
-				cache: true,
-				url: url,
-				dataType: 'json',
-				method: 'post',
-			};
-		}
-
 		(function($) {
 			"use strict";
 
 			$('#organization_type_id').select2({
-				ajax: select2__ajaxOptions('{{ route('bko.structure.select2') }}')
+				ajax: window.utils.select2__ajaxOptions('{{ route('bko.structure.select2') }}')
 			});
 
 			$('#save__modalNewOrganizationType').on('click', function() {
-				saveNewItem('modalNewOrganizationType', '{{ action('Bko\OrganizationTypeController@store') }}', 'organization_type_id');
+				window.utils.saveNewItem('modalNewOrganizationType', '{{ action('Bko\OrganizationTypeController@store') }}', 'organization_type_id');
 			});
 
 			$('#modalNewOrganizationType').on('hidden.bs.modal', function (e) {
@@ -125,11 +90,11 @@
 @endpush
 
 @section('after-content')
-	@component('bko.components.modal')
+	@component('bko.components.modals._default')
 		@slot('id', 'modalNewOrganizationType')
 		@slot('title', "Ajout d'une structure")
 		@slot('slot')
-			@include('bko.forms._default', [
+			@include('bko.components.forms._default', [
 				'model' => new \App\OrganizationType(),
 				'options' => [ 'method' => 'POST', 'url' => '#' ],
 				'modal' => 'modalNewOrganizationType',

@@ -86,8 +86,11 @@
 							<td>{{ $callForProject->projectHolder->name }}</td>
 							<td>{{ $callForProject->perimeter->name }}</td>
 							<td>{{ $callForProject->beneficiary->name }}</td>
-							<td class="text-right">
-								<a href="{{ route('bko.call.edit', $callForProject) }}" title="Modifier"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+							<td class="text-right col-actions">
+								<a href="{{ route('bko.call.edit', $callForProject) }}" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+								<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-id="{{ $callForProject->id }}">
+									<i class="fa fa-trash-o" aria-hidden="true"></i>
+								</a>
 							</td>
 						</tr>
 					@endforeach
@@ -102,11 +105,11 @@
 		var table;
 
 		function filterResults() {
-			var filter__thematic = $.fn.dataTable.util.escapeRegex($('#filter__thematic').val());
-			var filter__subthematic = $.fn.dataTable.util.escapeRegex($('#filter__subthematic').val());
-			var filter__projectHolder = $.fn.dataTable.util.escapeRegex($('#filter__projectHolder').val());
-			var filter__perimeter = $.fn.dataTable.util.escapeRegex($('#filter__perimeter').val());
-			var filter__beneficiary = $.fn.dataTable.util.escapeRegex($('#filter__beneficiary').val());
+			var filter__thematic = $.fn.DataTable.ext.type.search.string($.fn.dataTable.util.escapeRegex($('#filter__thematic').val()));
+			var filter__subthematic = $.fn.DataTable.ext.type.search.string($.fn.dataTable.util.escapeRegex($('#filter__subthematic').val()));
+			var filter__projectHolder = $.fn.DataTable.ext.type.search.string($.fn.dataTable.util.escapeRegex($('#filter__projectHolder').val()));
+			var filter__perimeter = $.fn.DataTable.ext.type.search.string($.fn.dataTable.util.escapeRegex($('#filter__perimeter').val()));
+			var filter__beneficiary = $.fn.DataTable.ext.type.search.string($.fn.dataTable.util.escapeRegex($('#filter__beneficiary').val()));
 
 			table.columns(0).search(filter__thematic ? '^'+filter__thematic+'$' : '', true, false);
 			table.columns(1).search(filter__subthematic ? '^'+filter__subthematic+'$' : '', true, false);
@@ -151,3 +154,11 @@
 		})(jQuery);
 	</script>
 @endpush
+
+@section('after-content')
+	@include('bko.components.modals.delete', [
+		'title' => "Suppression d'un appel à projets",
+		'question' => "Êtes-vous sûr de vouloir supprimer cet appel à projets ?",
+		'action' => 'Bko\CallForProjectsController@destroy',
+	])
+@endsection

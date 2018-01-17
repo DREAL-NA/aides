@@ -96,12 +96,24 @@ class PerimeterController extends Controller {
 	/**
 	 * Remove the specified resource from storage.
 	 *
+	 * @param Request $request
 	 * @param  \App\Perimeter $perimeter
 	 *
 	 * @return \Illuminate\Http\Response
+	 * @throws \Exception
 	 */
-	public function destroy(Perimeter $perimeter) {
-		//
+	public function destroy(Request $request, Perimeter $perimeter) {
+		if(!$request->ajax()) {
+			exit;
+		}
+
+		$success = $perimeter->delete();
+
+		if($success == 1) {
+			return response()->json('deleted');
+		}
+
+		return response()->json('error', 422);
 	}
 
 	public function select2(Request $request) {

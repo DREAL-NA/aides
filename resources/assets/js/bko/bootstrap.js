@@ -25,6 +25,8 @@ try {
 	require('./select2-default');
 	require('./datatables-default');
 
+	require('./utils');
+
 } catch (e) {
 }
 

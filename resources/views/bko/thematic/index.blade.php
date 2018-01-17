@@ -17,7 +17,10 @@
 					<td>{{ $thematic->name }}</td>
 					<td>{!! $thematic->description_html !!}</td>
 					<td class="text-right">
-						<a href="{{ route('bko.thematic.edit', $thematic) }}" title="Modifier"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+						<a href="{{ route('bko.thematic.edit', $thematic) }}" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+						<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-id="{{ $thematic->id }}">
+							<i class="fa fa-trash-o" aria-hidden="true"></i>
+						</a>
 					</td>
 				</tr>
 			@endforeach
@@ -27,10 +30,12 @@
 
 @push('inline-script')
 	<script>
+		var table;
+
 		(function($) {
 			"use strict";
 
-			$('#table__thematics').DataTable({
+			table = $('#table__thematics').DataTable({
 				"columns": [
 					null,
 					null,
@@ -40,3 +45,11 @@
 		})(jQuery);
 	</script>
 @endpush
+
+@section('after-content')
+	@include('bko.components.modals.delete', [
+		'title' => "Suppression d'une thématique",
+		'question' => "Êtes-vous sûr de vouloir supprimer cette thématique ?",
+		'action' => 'Bko\ThematicController@destroy',
+	])
+@endsection

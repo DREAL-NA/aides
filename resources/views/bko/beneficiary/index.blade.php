@@ -35,8 +35,11 @@
 							<td>{{ $types[$beneficiary->type] }}</td>
 							<td>{{ $beneficiary->name }}</td>
 							<td>{!! $beneficiary->description_html !!}</td>
-							<td class="text-right">
-								<a href="{{ route('bko.beneficiaire.edit', $beneficiary) }}" title="Modifier"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+							<td class="text-right col-actions">
+								<a href="{{ route('bko.beneficiaire.edit', $beneficiary) }}" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+								<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-id="{{ $beneficiary->id }}">
+									<i class="fa fa-trash-o" aria-hidden="true"></i>
+								</a>
 							</td>
 						</tr>
 					@endforeach
@@ -51,12 +54,12 @@
 		var table;
 
 		function filterResults() {
-			var filter__type = $.fn.dataTable.util.escapeRegex($('#filter__type').val());
+			var filter__type = $.fn.DataTable.ext.type.search.string($.fn.dataTable.util.escapeRegex($('#filter__type').val()));
 
-			table.columns(0).search(filter__type ? '^'+filter__type+'$' : '', true, false).draw();
+			table.columns(0).search(filter__type ? '^' + filter__type + '$' : '', true, false).draw();
 		}
 
-		(function($) {
+		(function ($) {
 			"use strict";
 
 			table = $('#table__beneficiaries').DataTable({
@@ -64,22 +67,30 @@
 					null,
 					null,
 					null,
-					{ "orderable": false }
+					{"orderable": false}
 				],
 			});
 
 			$('.select2-filter').select2({
 				allowClear: true,
-			}).on('select2:unselecting', function() {
+			}).on('select2:unselecting', function () {
 				$(this).data('unselecting', true);
-			}).on('select2:opening', function(e) {
+			}).on('select2:opening', function (e) {
 				if ($(this).data('unselecting')) {
 					$(this).removeData('unselecting');
 					e.preventDefault();
 				}
-			}).on('change', function() {
+			}).on('change', function () {
 				filterResults();
 			});
 		})(jQuery);
 	</script>
 @endpush
+
+@section('after-content')
+	@include('bko.components.modals.delete', [
+		'title' => "Suppression d'un bénéficiaire",
+		'question' => "Êtes-vous sûr de vouloir supprimer ce bénéficiaire ?",
+		'action' => 'Bko\BeneficiaryController@destroy',
+	])
+@endsection

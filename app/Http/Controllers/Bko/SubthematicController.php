@@ -94,11 +94,23 @@ class SubthematicController extends Controller {
 	/**
 	 * Remove the specified resource from storage.
 	 *
+	 * @param Request $request
 	 * @param Thematic $thematic
 	 *
 	 * @return void
+	 * @throws \Exception
 	 */
-	public function destroy(Thematic $thematic) {
-		//
+	public function destroy(Request $request, Thematic $thematic) {
+		if(!$request->ajax()) {
+			exit;
+		}
+
+		$success = $thematic->delete();
+
+		if($success == 1) {
+			return response()->json('deleted');
+		}
+
+		return response()->json('error', 422);
 	}
 }

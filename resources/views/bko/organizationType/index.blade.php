@@ -16,8 +16,11 @@
 				<tr>
 					<td>{{ $organizationType->name }}</td>
 					<td>{!! $organizationType->description_html !!}</td>
-					<td class="text-right">
-						<a href="{{ route('bko.structure.edit', $organizationType) }}" title="Modifier"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+					<td class="text-right col-actions">
+						<a href="{{ route('bko.structure.edit', $organizationType) }}" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+						<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-id="{{ $organizationType->id }}">
+							<i class="fa fa-trash-o" aria-hidden="true"></i>
+						</a>
 					</td>
 				</tr>
 			@endforeach
@@ -27,10 +30,12 @@
 
 @push('inline-script')
 	<script>
+		var table;
+
 		(function($) {
 			"use strict";
 
-			$('#table__orgaTypes').DataTable({
+			table = $('#table__orgaTypes').DataTable({
 				"columns": [
 					null,
 					null,
@@ -40,3 +45,11 @@
 		})(jQuery);
 	</script>
 @endpush
+
+@section('after-content')
+	@include('bko.components.modals.delete', [
+		'title' => "Suppression d'une structure",
+		'question' => "Êtes-vous sûr de vouloir supprimer cette structure ?",
+		'action' => 'Bko\OrganizationTypeController@destroy',
+	])
+@endsection

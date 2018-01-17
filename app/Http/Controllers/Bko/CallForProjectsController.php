@@ -144,11 +144,23 @@ class CallForProjectsController extends Controller {
 	/**
 	 * Remove the specified resource from storage.
 	 *
+	 * @param Request $request
 	 * @param  \App\CallForProjects $callForProjects
 	 *
 	 * @return \Illuminate\Http\Response
+	 * @throws \Exception
 	 */
-	public function destroy(CallForProjects $callForProjects) {
-		//
+	public function destroy(Request $request, CallForProjects $callForProjects) {
+		if(!$request->ajax()) {
+			exit;
+		}
+
+		$success = $callForProjects->delete();
+
+		if($success == 1) {
+			return response()->json('deleted');
+		}
+
+		return response()->json('error', 422);
 	}
 }

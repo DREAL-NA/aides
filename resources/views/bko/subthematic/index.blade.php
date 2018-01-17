@@ -36,7 +36,10 @@
 							<td>{{ $thematic->name }}</td>
 							<td>{!! $thematic->description_html !!}</td>
 							<td class="text-right">
-								<a href="{{ route('bko.subthematic.edit', $thematic) }}" title="Modifier"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+								<a href="{{ route('bko.subthematic.edit', $thematic) }}" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+								<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-id="{{ $thematic->id }}">
+									<i class="fa fa-trash-o" aria-hidden="true"></i>
+								</a>
 							</td>
 						</tr>
 					@endforeach
@@ -51,8 +54,7 @@
 		var table;
 
 		function filterResults() {
-			var filter__thematic = $.fn.dataTable.util.escapeRegex($('#filter__thematic').val());
-
+			var filter__thematic = $.fn.DataTable.ext.type.search.string($.fn.dataTable.util.escapeRegex($('#filter__thematic').val()));
 			table.columns(0).search(filter__thematic ? '^'+filter__thematic+'$' : '', true, false).draw();
 		}
 
@@ -83,3 +85,11 @@
 		})(jQuery);
 	</script>
 @endpush
+
+@section('after-content')
+	@include('bko.components.modals.delete', [
+		'title' => "Suppression d'une sous-thématique",
+		'question' => "Êtes-vous sûr de vouloir supprimer cette sous-thématique ?",
+		'action' => 'Bko\SubthematicController@destroy',
+	])
+@endsection

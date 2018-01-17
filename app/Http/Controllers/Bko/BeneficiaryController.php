@@ -97,12 +97,24 @@ class BeneficiaryController extends Controller {
 	/**
 	 * Remove the specified resource from storage.
 	 *
+	 * @param Request $request
 	 * @param  \App\Beneficiary $beneficiary
 	 *
 	 * @return \Illuminate\Http\Response
+	 * @throws \Exception
 	 */
-	public function destroy(Beneficiary $beneficiary) {
-		//
+	public function destroy(Request $request, Beneficiary $beneficiary) {
+		if(!$request->ajax()) {
+			exit;
+		}
+
+		$success = $beneficiary->delete();
+
+		if($success == 1) {
+			return response()->json('deleted');
+		}
+
+		return response()->json('error', 422);
 	}
 
 	public function select2(Request $request) {

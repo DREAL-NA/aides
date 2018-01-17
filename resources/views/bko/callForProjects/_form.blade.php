@@ -166,41 +166,6 @@
 			$('#subthematic_id').empty().select2({ data: custom_data });
 		}
 
-		function saveNewItem(modalId, ajaxUrl, selector) {
-			var modal = $('#'+modalId);
-
-			modal.find('.alert').addClass('hidden');
-			$.ajax({
-				url: ajaxUrl,
-				method: 'post',
-				data: $('#form__'+modalId).serialize(),
-				success: function(data){
-					var option = new Option(data.name, data.id, true, true);
-					$('#'+selector).append(option).trigger('change');
-					modal.modal('hide');
-				},
-				error: function(data, json) {
-					var alert_block = modal.find('.alert');
-					alert_block.removeClass('hidden').empty();
-					$.each(data.responseJSON.errors, function(k, item) {
-						$.each(item, function(k2, item2) {
-							alert_block.append($('<p>').html(item2));
-						});
-					});
-				}
-			});
-		}
-
-		function select2__ajaxOptions(url) {
-			return {
-				delay: 250,
-				cache: true,
-				url: url,
-				dataType: 'json',
-				method: 'post',
-			};
-		}
-
 		(function($) {
 			"use strict";
 
@@ -216,27 +181,27 @@
 			});
 
 			$('#project_holder_id').select2({
-				ajax: select2__ajaxOptions('{{ route('bko.porteur-dispositif.select2') }}')
+				ajax: window.utils.select2__ajaxOptions('{{ route('bko.porteur-dispositif.select2') }}')
 			});
 
 			$('#perimeter_id').select2({
-				ajax: select2__ajaxOptions('{{ route('bko.perimetre.select2') }}')
+				ajax: window.utils.select2__ajaxOptions('{{ route('bko.perimetre.select2') }}')
 			});
 
 			$('#beneficiary_id').select2({
-				ajax: select2__ajaxOptions('{{ route('bko.beneficiaire.select2') }}')
+				ajax: window.utils.select2__ajaxOptions('{{ route('bko.beneficiaire.select2') }}')
 			});
 
 			$('#save__modalNewProjectHolder').on('click', function() {
-				saveNewItem('modalNewProjectHolder', '{{ action('Bko\ProjectHolderController@store') }}', 'project_holder_id');
+				window.utils.saveNewItem('modalNewProjectHolder', '{{ action('Bko\ProjectHolderController@store') }}', 'project_holder_id');
 			});
 
 			$('#save__modalNewPerimeter').on('click', function() {
-				saveNewItem('modalNewPerimeter', '{{ action('Bko\PerimeterController@store') }}', 'perimeter_id');
+				window.utils.saveNewItem('modalNewPerimeter', '{{ action('Bko\PerimeterController@store') }}', 'perimeter_id');
 			});
 
 			$('#save__modalNewBeneficiary').on('click', function() {
-				saveNewItem('modalNewBeneficiary', '{{ action('Bko\BeneficiaryController@store') }}', 'beneficiary_id');
+				window.utils.saveNewItem('modalNewBeneficiary', '{{ action('Bko\BeneficiaryController@store') }}', 'beneficiary_id');
 			});
 
 			$('#modalNewProjectHolder, #modalNewPerimeter, #modalNewBeneficiary').on('hidden.bs.modal', function (e) {
@@ -249,11 +214,11 @@
 @endpush
 
 @section('after-content')
-	@component('bko.components.modal')
+	@component('bko.components.modals._default')
 		@slot('id', 'modalNewProjectHolder')
 		@slot('title', "Ajout d'un porteur du dispositif")
 		@slot('slot')
-			@include('bko.forms._default', [
+			@include('bko.components.forms._default', [
 				'model' => new \App\ProjectHolder(),
 				'options' => [ 'method' => 'POST', 'url' => '#' ],
 				'modal' => 'modalNewProjectHolder',
@@ -265,11 +230,11 @@
 		@endslot
 	@endcomponent
 
-	@component('bko.components.modal')
+	@component('bko.components.modals._default')
 		@slot('id', 'modalNewPerimeter')
 		@slot('title', "Ajout d'un périmètre")
 		@slot('slot')
-			@include('bko.forms._default', [
+			@include('bko.components.forms._default', [
 				'model' => new \App\Perimeter(),
 				'options' => [ 'method' => 'POST', 'url' => '#' ],
 				'modal' => 'modalNewPerimeter',
@@ -281,7 +246,7 @@
 		@endslot
 	@endcomponent
 
-	@component('bko.components.modal')
+	@component('bko.components.modals._default')
 		@slot('id', 'modalNewBeneficiary')
 		@slot('title', "Ajout d'un bénéficiaire")
 		@slot('slot')

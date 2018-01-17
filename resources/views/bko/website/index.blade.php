@@ -40,7 +40,10 @@
 							<td>{!! $website->perimeter_html !!}</td>
 							<td>{{ $website->website_url }}</td>
 							<td class="text-right">
-								<a href="{{ route('bko.site.edit', $website) }}" title="Modifier"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+								<a href="{{ route('bko.site.edit', $website) }}" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+								<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-id="{{ $website->id }}">
+									<i class="fa fa-trash-o" aria-hidden="true"></i>
+								</a>
 							</td>
 						</tr>
 					@endforeach
@@ -55,7 +58,7 @@
 		var table;
 
 		function filterResults() {
-			var filter__organizationType = $.fn.dataTable.util.escapeRegex($('#filter__organizationType').val());
+			var filter__organizationType = $.fn.DataTable.ext.type.search.string($.fn.dataTable.util.escapeRegex($('#filter__organizationType').val()));
 
 			table.columns(0).search(filter__organizationType ? '^'+filter__organizationType+'$' : '', true, false).draw();
 		}
@@ -89,3 +92,11 @@
 		})(jQuery);
 	</script>
 @endpush
+
+@section('after-content')
+	@include('bko.components.modals.delete', [
+		'title' => "Suppression d'un site",
+		'question' => "Êtes-vous sûr de vouloir supprimer ce site ?",
+		'action' => 'Bko\WebsiteController@destroy',
+	])
+@endsection
