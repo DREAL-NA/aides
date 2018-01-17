@@ -3,7 +3,7 @@
 	{{ csrf_field() }}
 	
 	<div class="form-group">
-		<label for="name">Type</label>
+		<label for="name">Type*</label>
 		<div class="radios">
 			@foreach(\App\Beneficiary::types() as $key => $label)
 				<label class="radio-inline">
@@ -13,7 +13,7 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="name">Nom</label>
+		<label for="name">Nom*</label>
 		<input type="text" class="form-control" name="name" id="name{{ empty($modal) ? '' : '__'.$modal }}" value="{{ old('name', $model->name) }}">
 	</div>
 	<div class="form-group">
