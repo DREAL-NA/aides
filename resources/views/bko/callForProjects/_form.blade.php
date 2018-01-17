@@ -127,7 +127,7 @@
 		<textarea class="form-control" rows="3" name="project_holder_contact" id="project_holder_contact">{{ old('project_holder_contact', $callForProjects->project_holder_contact) }}</textarea>
 	</div>
 	<div class="form-group">
-		<label for="website_url">Site internet*</label>
+		<label for="website_url">Adresse internet*</label>
 		<textarea class="form-control" rows="3" name="website_url" id="website_url">{{ old('website_url', $callForProjects->website_url) }}</textarea>
 	</div>
 

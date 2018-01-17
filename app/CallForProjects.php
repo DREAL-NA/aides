@@ -55,11 +55,11 @@ class CallForProjects extends Model {
 	}
 
 	public function scopeClosed($query) {
-		return $query->whereDate('closing_date', '<', date('Y-m-d 23:59:59'));
+		return $query->whereDate('closing_date', '<', date('Y-m-d 00:00:00'));
 	}
 
 	public function scopeOpened($query) {
-		return $query->whereDate('closing_date', '>=', date('Y-m-d 23:59:59'));
+		return $query->whereDate('closing_date', '>=', date('Y-m-d 00:00:00'));
 	}
 
 	// Attributes casting

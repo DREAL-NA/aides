@@ -51,5 +51,21 @@
 				@yield('menu-item-beneficiary')
 			</ul>
 		</div>
+		<div class="menu-category">
+			<h5 class="category-title">Sites de recensement</h5>
+			<ul class="menu">
+				<li class="menu-item"><a href="{{ route('bko.site.index') }}">Liste des sites</a></li>
+				<li class="menu-item"><a href="{{ route('bko.site.create') }}">Ajouter un site</a></li>
+				@yield('menu-item-website')
+			</ul>
+		</div>
+		<div class="menu-category">
+			<h5 class="category-title">Structures</h5>
+			<ul class="menu">
+				<li class="menu-item"><a href="{{ route('bko.structure.index') }}">Liste des structures</a></li>
+				<li class="menu-item"><a href="{{ route('bko.structure.create') }}">Ajouter une structure</a></li>
+				@yield('menu-item-organizationType')
+			</ul>
+		</div>
 	</div>
 </div>

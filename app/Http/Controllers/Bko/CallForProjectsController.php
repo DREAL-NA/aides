@@ -20,9 +20,19 @@ class CallForProjectsController extends Controller {
 		$callsForProjects = CallForProjects::with(['subthematic.parent', 'projectHolder', 'perimeter', 'beneficiary'])->opened()->get();
 		$primary_thematics = Thematic::primary()->orderBy('name', 'asc')->get();
 		$subthematics = Thematic::sub()->orderBy('name', 'asc')->get()->groupBy('parent_id');
-		$project_holders = ProjectHolder::orderBy('name', 'asc')->get();
-		$perimeters = Perimeter::orderBy('name', 'asc')->get();
-		$beneficiaries = Beneficiary::orderBy('name', 'asc')->get();
+//		$project_holders = ProjectHolder::orderBy('name', 'asc')->get();
+//		$perimeters = Perimeter::orderBy('name', 'asc')->get();
+//		$beneficiaries = Beneficiary::orderBy('name', 'asc')->get();
+
+		$project_holders = $callsForProjects->map(function($item) {
+			return $item->projectHolder;
+		})->unique()->sortBy('name')->values();
+		$perimeters = $callsForProjects->map(function($item) {
+			return $item->perimeter;
+		})->unique()->sortBy('name')->values();
+		$beneficiaries = $callsForProjects->map(function($item) {
+			return $item->beneficiary;
+		})->unique()->sortBy('name')->values();
 
 		$title = "Liste des appels à projets ouverts";
 
@@ -38,9 +48,19 @@ class CallForProjectsController extends Controller {
 		$callsForProjects = CallForProjects::with(['subthematic.parent', 'projectHolder', 'perimeter', 'beneficiary'])->closed()->get();
 		$primary_thematics = Thematic::primary()->orderBy('name', 'asc')->get();
 		$subthematics = Thematic::sub()->orderBy('name', 'asc')->get()->groupBy('parent_id');
-		$project_holders = ProjectHolder::orderBy('name', 'asc')->get();
-		$perimeters = Perimeter::orderBy('name', 'asc')->get();
-		$beneficiaries = Beneficiary::orderBy('name', 'asc')->get();
+//		$project_holders = ProjectHolder::orderBy('name', 'asc')->get();
+//		$perimeters = Perimeter::orderBy('name', 'asc')->get();
+//		$beneficiaries = Beneficiary::orderBy('name', 'asc')->get();
+
+		$project_holders = $callsForProjects->map(function($item) {
+			return $item->projectHolder;
+		})->unique()->sortBy('name')->values();
+		$perimeters = $callsForProjects->map(function($item) {
+			return $item->perimeter;
+		})->unique()->sortBy('name')->values();
+		$beneficiaries = $callsForProjects->map(function($item) {
+			return $item->beneficiary;
+		})->unique()->sortBy('name')->values();
 
 		$title = "Liste des appels à projets fermés";
 
