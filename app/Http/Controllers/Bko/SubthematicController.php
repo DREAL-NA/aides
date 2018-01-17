@@ -13,9 +13,10 @@ class SubthematicController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		$thematics = Thematic::sub()->with('parent')->orderBy('name', 'asc')->get();
+		$thematics = Thematic::sub()->with('parent')->get();
+		$primary_thematics = Thematic::primary()->orderBy('name', 'asc')->get();
 
-		return view('bko.subthematic.index', compact('thematics'));
+		return view('bko.subthematic.index', compact('thematics', 'primary_thematics'));
 	}
 
 	/**

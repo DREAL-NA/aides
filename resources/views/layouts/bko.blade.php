@@ -107,6 +107,6 @@
 		<!-- Scripts -->
 		<script src="{{ asset('js/bko.js') }}"></script>
 
-		@yield('inline-script')
+		@stack('inline-script')
 	</body>
 </html>

@@ -13,7 +13,9 @@ class PerimeterController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		//
+		$perimeters = Perimeter::all();
+
+		return view('bko.perimeter.index', compact('perimeters'));
 	}
 
 	/**
@@ -22,7 +24,9 @@ class PerimeterController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function create() {
-		//
+		$perimeter = new Perimeter();
+
+		return view('bko.perimeter.create', compact('perimeter'));
 	}
 
 	/**
@@ -65,7 +69,7 @@ class PerimeterController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit(Perimeter $perimeter) {
-		//
+		return view('bko.perimeter.edit', compact('perimeter'));
 	}
 
 	/**
@@ -77,7 +81,16 @@ class PerimeterController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function update(Request $request, Perimeter $perimeter) {
-		//
+		$validatedData = $request->validate($perimeter->rules());
+
+		$perimeter->fill($validatedData);
+		$perimeter->save();
+
+		if($request->ajax()) {
+			return response()->json($perimeter);
+		} else {
+			return redirect(route('bko.perimetre.edit', $perimeter))->with('success', "Le périmètre a bien été modifié.");
+		}
 	}
 
 	/**

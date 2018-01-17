@@ -13,7 +13,10 @@ class BeneficiaryController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		//
+		$beneficiaries = Beneficiary::all();
+		$types = Beneficiary::types();
+
+		return view('bko.beneficiary.index', compact('beneficiaries', 'types'));
 	}
 
 	/**
@@ -22,7 +25,9 @@ class BeneficiaryController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function create() {
-		//
+		$beneficiary = new Beneficiary();
+
+		return view('bko.beneficiary.create', compact('beneficiary'));
 	}
 
 	/**
@@ -42,7 +47,7 @@ class BeneficiaryController extends Controller {
 		if($request->ajax()) {
 			return response()->json($beneficiary);
 		} else {
-			return redirect(route('bko.perimetre.edit', $beneficiary))->with('success', "Le bénéficiaire a bien été ajouté.");
+			return redirect(route('bko.beneficiaire.edit', $beneficiary))->with('success', "Le bénéficiaire a bien été ajouté.");
 		}
 	}
 
@@ -65,7 +70,7 @@ class BeneficiaryController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit(Beneficiary $beneficiary) {
-		//
+		return view('bko.beneficiary.edit', compact('beneficiary'));
 	}
 
 	/**
@@ -77,7 +82,16 @@ class BeneficiaryController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function update(Request $request, Beneficiary $beneficiary) {
-		//
+		$validatedData = $request->validate($beneficiary->rules());
+
+		$beneficiary->fill($validatedData);
+		$beneficiary->save();
+
+		if($request->ajax()) {
+			return response()->json($beneficiary);
+		} else {
+			return redirect(route('bko.beneficiaire.edit', $beneficiary))->with('success', "Le bénéficiaire a bien été modifié.");
+		}
 	}
 
 	/**

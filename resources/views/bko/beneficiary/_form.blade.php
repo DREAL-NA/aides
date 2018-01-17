@@ -7,7 +7,7 @@
 		<div class="radios">
 			@foreach(\App\Beneficiary::types() as $key => $label)
 				<label class="radio-inline">
-					<input type="radio" name="type" id="type_{{ $key }}" value="{{ $key }}"> {{ $label }}
+					<input type="radio" name="type" id="type_{{ $key }}" value="{{ $key }}" {{ !empty(old('type', $model->type)) && old('type', $model->type) == $key ? 'checked="checked"' : '' }}> {{ $label }}
 				</label>
 			@endforeach
 		</div>

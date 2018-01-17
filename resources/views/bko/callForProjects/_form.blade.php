@@ -134,7 +134,7 @@
 	<button type="submit" class="btn btn-primary">Enregistrer</button>
 </form>
 
-@section('inline-script')
+@push('inline-script')
 	<script>
 		var $_subthematics_data = {!! $subthematics->toJson() !!};
 
@@ -246,7 +246,7 @@
 			});
 		})(jQuery);
 	</script>
-@endsection
+@endpush
 
 @section('after-content')
 	@component('bko.components.modal')

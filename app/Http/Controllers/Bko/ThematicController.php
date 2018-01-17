@@ -13,7 +13,7 @@ class ThematicController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		$thematics = Thematic::primary()->orderBy('name', 'asc')->get();
+		$thematics = Thematic::primary()->get();
 
 		return view('bko.thematic.index', compact('thematics'));
 	}

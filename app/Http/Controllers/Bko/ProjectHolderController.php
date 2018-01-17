@@ -13,7 +13,9 @@ class ProjectHolderController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		//
+		$projectHolders = ProjectHolder::all();
+
+		return view('bko.projectHolder.index', compact('projectHolders'));
 	}
 
 	/**
@@ -22,7 +24,9 @@ class ProjectHolderController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function create() {
-		//
+		$projectHolder = new ProjectHolder();
+
+		return view('bko.projectHolder.create', compact('projectHolder'));
 	}
 
 	/**
@@ -33,16 +37,16 @@ class ProjectHolderController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(Request $request) {
-		$project_holder = new ProjectHolder();
-		$validatedData = $request->validate($project_holder->rules());
+		$projectHolder = new ProjectHolder();
+		$validatedData = $request->validate($projectHolder->rules());
 
-		$project_holder->fill($validatedData);
-		$project_holder->save();
+		$projectHolder->fill($validatedData);
+		$projectHolder->save();
 
 		if($request->ajax()) {
-			return response()->json($project_holder);
+			return response()->json($projectHolder);
 		} else {
-			return redirect(route('bko.porteur-dispositif.edit', $thematic))->with('success', "Le porteur du dispositif a bien été ajouté.");
+			return redirect(route('bko.porteur-dispositif.edit', $projectHolder))->with('success', "Le porteur du dispositif a bien été ajouté.");
 		}
 	}
 
@@ -65,7 +69,7 @@ class ProjectHolderController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit(ProjectHolder $projectHolder) {
-		//
+		return view('bko.projectHolder.edit', compact('projectHolder'));
 	}
 
 	/**
@@ -77,7 +81,16 @@ class ProjectHolderController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function update(Request $request, ProjectHolder $projectHolder) {
-		//
+		$validatedData = $request->validate($projectHolder->rules());
+
+		$projectHolder->fill($validatedData);
+		$projectHolder->save();
+
+		if($request->ajax()) {
+			return response()->json($projectHolder);
+		} else {
+			return redirect(route('bko.porteur-dispositif.edit', $projectHolder))->with('success', "Le porteur du dispositif a bien été modifié.");
+		}
 	}
 
 	/**

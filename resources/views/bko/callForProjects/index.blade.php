@@ -97,7 +97,7 @@
 	</div>
 @endsection
 
-@section('inline-script')
+@push('inline-script')
 	<script>
 		var table;
 
@@ -114,10 +114,6 @@
 			table.columns(5).search(filter__perimeter ? '^'+filter__perimeter+'$' : '', true, false);
 			table.columns(6).search(filter__beneficiary ? '^'+filter__beneficiary+'$' : '', true, false);
 			table.draw();
-
-			table.columns(3).data().unique().each( function ( d, i ) {
-				console.log(table.rows(i));
-			});
 		}
 
 		(function($) {
@@ -154,4 +150,4 @@
 			});
 		})(jQuery);
 	</script>
-@endsection
+@endpush

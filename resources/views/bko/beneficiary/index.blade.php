@@ -1,17 +1,17 @@
 @extends('layouts.bko')
 
-@section('heading', "Liste des sous-thématiques")
+@section('heading', "Liste des périmètres")
 
 @section('content')
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="row filters-table">
 				<div class="form-group">
-					<label for="filter__thematic">Thématique</label>
-					<select id="filter__thematic" class="form-control select2-filter">
+					<label for="filter__type">Type</label>
+					<select id="filter__type" class="form-control select2-filter">
 						<option></option>
-						@foreach($primary_thematics as $thematic)
-							<option value="{{ $thematic->name }}">{{ $thematic->name }}</option>
+						@foreach($types as $key => $type)
+							<option value="{{ $type }}">{{ $type }}</option>
 						@endforeach
 					</select>
 				</div>
@@ -20,23 +20,23 @@
 	</div>
 	<div class="row">
 		<div class="col-lg-12">
-			<table class="table table-striped table-hover" id="table__subthematics">
+			<table class="table table-striped table-hover" id="table__beneficiaries">
 				<thead>
 					<tr>
-						<th>Thématique</th>
+						<th>Type</th>
 						<th>Nom</th>
 						<th>Description</th>
 						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					@foreach($thematics as $thematic)
+					@foreach($beneficiaries as $beneficiary)
 						<tr>
-							<td>{{ is_null($thematic->parent) ? '' : $thematic->parent->name }}</td>
-							<td>{{ $thematic->name }}</td>
-							<td>{{ $thematic->description }}</td>
+							<td>{{ $types[$beneficiary->type] }}</td>
+							<td>{{ $beneficiary->name }}</td>
+							<td>{{ $beneficiary->description }}</td>
 							<td class="text-right">
-								<a href="{{ route('bko.subthematic.edit', $thematic) }}" title="Modifier"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+								<a href="{{ route('bko.beneficiaire.edit', $beneficiary) }}" title="Modifier"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 							</td>
 						</tr>
 					@endforeach
@@ -51,15 +51,15 @@
 		var table;
 
 		function filterResults() {
-			var filter__thematic = $.fn.dataTable.util.escapeRegex($('#filter__thematic').val());
+			var filter__type = $.fn.dataTable.util.escapeRegex($('#filter__type').val());
 
-			table.columns(0).search(filter__thematic ? '^'+filter__thematic+'$' : '', true, false).draw();
+			table.columns(0).search(filter__type ? '^'+filter__type+'$' : '', true, false).draw();
 		}
 
 		(function($) {
 			"use strict";
 
-			table = $('#table__subthematics').DataTable({
+			table = $('#table__beneficiaries').DataTable({
 				"columns": [
 					null,
 					null,
