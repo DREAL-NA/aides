@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Validation\Rule;
@@ -91,6 +92,15 @@ class CallForProjects extends Model {
 		}
 
 		return $class::whereIn('id', $ids)->get();
+	}
+
+	public static function filterCallsOfTheWeek($items) {
+		$start_date = Carbon::now()->startOfWeek();
+		$end_date = Carbon::now()->endOfWeek();
+
+		return $items->filter(function($item) use ($start_date, $end_date) {
+			return $item->updated_at >= $start_date && $item->updated_at <= $end_date;
+		});
 	}
 
 	// Attributes casting

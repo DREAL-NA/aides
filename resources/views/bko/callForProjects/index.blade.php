@@ -8,7 +8,7 @@
 			<div class="row filters-table">
 				<div class="form-group">
 					<label for="filter__thematic">Thématique</label>
-					<select id="filter__thematic" class="form-control select2-filter">
+					<select id="filter__thematic" class="form-control select2-filter" multiple="multiple">
 						<option></option>
 						@foreach($primary_thematics as $thematic)
 							<option value="{{ $thematic->name }}">{{ $thematic->name }}</option>
@@ -17,7 +17,7 @@
 				</div>
 				<div class="form-group">
 					<label for="filter__subthematic">Sous-thématique</label>
-					<select id="filter__subthematic" class="form-control select2-filter">
+					<select id="filter__subthematic" class="form-control select2-filter" multiple="multiple">
 						<option></option>
 						@foreach($primary_thematics as $primary)
 							@if(empty($subthematics[$primary->id]))
@@ -33,7 +33,7 @@
 				</div>
 				<div class="form-group">
 					<label for="filter__projectHolder">Porteur du dispositif</label>
-					<select id="filter__projectHolder" class="form-control select2-filter">
+					<select id="filter__projectHolder" class="form-control select2-filter" multiple="multiple">
 						<option></option>
 						@foreach($project_holders as $project_holder)
 							<option value="{{ $project_holder->name }}">{{ $project_holder->name }}</option>
@@ -42,7 +42,7 @@
 				</div>
 				<div class="form-group">
 					<label for="filter__perimeter">Périmètre</label>
-					<select id="filter__perimeter" class="form-control select2-filter">
+					<select id="filter__perimeter" class="form-control select2-filter" multiple="multiple">
 						<option></option>
 						@foreach($perimeters as $perimeter)
 							<option value="{{ $perimeter->name }}">{{ $perimeter->name }}</option>
@@ -51,7 +51,7 @@
 				</div>
 				<div class="form-group">
 					<label for="filter__beneficiary">Bénéficiaire</label>
-					<select id="filter__beneficiary" class="form-control select2-filter">
+					<select id="filter__beneficiary" class="form-control select2-filter" multiple="multiple">
 						<option></option>
 						@foreach($beneficiaries as $beneficiary)
 							<option value="{{ $beneficiary->name }}">{{ $beneficiary->name }}</option>
@@ -85,7 +85,7 @@
 						$project_holder = $project_holders->firstWhere('id', $callForProject->project_holder_id);
 						$subthematic = $subthematics[$callForProject->thematic->id]->firstWhere('id', $callForProject->subthematic_id);
 						@endphp
-						<tr>
+						<tr class="{{ in_array($callForProject->id, $callsOfTheWeek->toArray()) ? 'item-of-the-week' : '' }}">
 							<td>{{ $callForProject->thematic->name }}</td>
 							<td>{{ empty($subthematic) ? '' : $subthematic->name }}</td>
 							<td>{{ $callForProject->name }}</td>
@@ -111,19 +111,21 @@
 @push('inline-script')
 	<script>
 		var table;
+		function searchFilterArrayValues(values, column) {
+			var search_values = [];
+			for(var i=0; i<values.length; i++) {
+				search_values.push($.fn.DataTable.ext.type.search.string($.fn.dataTable.util.escapeRegex(values[i])));
+			}
+			table.columns(column).search(search_values.length > 0 ? '^('+search_values.join('|')+')$' : '', true, false);
+		}
 
 		function filterResults() {
-			var filter__thematic = $.fn.DataTable.ext.type.search.string($.fn.dataTable.util.escapeRegex($('#filter__thematic').val()));
-			var filter__subthematic = $.fn.DataTable.ext.type.search.string($.fn.dataTable.util.escapeRegex($('#filter__subthematic').val()));
-			var filter__projectHolder = $.fn.DataTable.ext.type.search.string($.fn.dataTable.util.escapeRegex($('#filter__projectHolder').val()));
-			var filter__perimeter = $.fn.DataTable.ext.type.search.string($.fn.dataTable.util.escapeRegex($('#filter__perimeter').val()));
-			var filter__beneficiary = $.fn.DataTable.ext.type.search.string($.fn.dataTable.util.escapeRegex($('#filter__beneficiary').val()));
+			searchFilterArrayValues($('#filter__thematic').val(), 0);
+			searchFilterArrayValues($('#filter__subthematic').val(), 1);
+			searchFilterArrayValues($('#filter__projectHolder').val(), 4);
+			searchFilterArrayValues($('#filter__perimeter').val(), 5);
+			searchFilterArrayValues($('#filter__beneficiary').val(), 7);
 
-			table.columns(0).search(filter__thematic ? '^'+filter__thematic+'$' : '', true, false);
-			table.columns(1).search(filter__subthematic ? '^'+filter__subthematic+'$' : '', true, false);
-			table.columns(4).search(filter__projectHolder ? '^'+filter__projectHolder+'$' : '', true, false);
-			table.columns(5).search(filter__perimeter ? '^'+filter__perimeter+'$' : '', true, false);
-			table.columns(7).search(filter__beneficiary ? '^'+filter__beneficiary+'$' : '', true, false);
 			table.draw();
 		}
 
@@ -144,22 +146,11 @@
 				],
 			});
 
-			$('.select2-filter').select2({
-				allowClear: true,
-			}).on('select2:unselecting', function() {
-				$(this).data('unselecting', true);
-			}).on('select2:opening', function(e) {
-				if ($(this).data('unselecting')) {
-					$(this).removeData('unselecting');
-					e.preventDefault();
-				}
-			}).on('change', function() {
-				filterResults();
-			});
-
-			$('#filter__closingDate').on('change', function() {
-				filterResults();
-			});
+			$('.select2-filter')
+				.select2()
+				.on('change', function() {
+					filterResults();
+				});
 		})(jQuery);
 	</script>
 @endpush

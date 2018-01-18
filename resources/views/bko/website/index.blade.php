@@ -8,10 +8,19 @@
 			<div class="row filters-table">
 				<div class="form-group">
 					<label for="filter__organizationType">Structure</label>
-					<select id="filter__organizationType" class="form-control select2-filter">
+					<select id="filter__organizationType" class="form-control select2-filter" multiple="multiple">
 						<option></option>
 						@foreach($organizationTypes as $organizationType)
 							<option value="{{ $organizationType->name }}">{{ $organizationType->name }}</option>
+						@endforeach
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="filter__perimeter">Périmètre</label>
+					<select id="filter__perimeter" class="form-control select2-filter" multiple="multiple">
+						<option></option>
+						@foreach($perimeters as $perimeter)
+							<option value="{{ $perimeter->name }}">{{ $perimeter->name }}</option>
 						@endforeach
 					</select>
 				</div>
@@ -37,7 +46,7 @@
 							<td>{{ $website->organizationType->name }}</td>
 							<td>{!! $website->themes_html !!}</td>
 							<td>{{ $website->name }}</td>
-							<td>{!! $website->perimeter_html !!}</td>
+							<td>{!! $website->perimeters->implode('name', ', ') !!}</td>
 							<td>{{ $website->website_url }}</td>
 							<td class="text-right col-actions">
 								<a href="{{ route('bko.site.edit', $website) }}" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
@@ -57,10 +66,18 @@
 	<script>
 		var table;
 
-		function filterResults() {
-			var filter__organizationType = $.fn.DataTable.ext.type.search.string($.fn.dataTable.util.escapeRegex($('#filter__organizationType').val()));
+		function searchFilterArrayValues(values, column) {
+			var search_values = [];
+			for(var i=0; i<values.length; i++) {
+				search_values.push($.fn.DataTable.ext.type.search.string($.fn.dataTable.util.escapeRegex(values[i])));
+			}
+			table.columns(column).search(search_values.length > 0 ? '('+search_values.join('|')+')' : '', true, false);
+		}
 
-			table.columns(0).search(filter__organizationType ? '^'+filter__organizationType+'$' : '', true, false).draw();
+		function filterResults() {
+			searchFilterArrayValues($('#filter__organizationType').val(), 0);
+			searchFilterArrayValues($('#filter__perimeter').val(), 3);
+			table.draw();
 		}
 
 		(function($) {
@@ -77,18 +94,11 @@
 				],
 			});
 
-			$('.select2-filter').select2({
-				allowClear: true,
-			}).on('select2:unselecting', function() {
-				$(this).data('unselecting', true);
-			}).on('select2:opening', function(e) {
-				if ($(this).data('unselecting')) {
-					$(this).removeData('unselecting');
-					e.preventDefault();
-				}
-			}).on('change', function() {
-				filterResults();
-			});
+			$('.select2-filter')
+				.select2()
+				.on('change', function() {
+					filterResults();
+				});
 		})(jQuery);
 	</script>
 @endpush

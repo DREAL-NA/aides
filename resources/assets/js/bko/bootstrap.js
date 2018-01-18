@@ -12,6 +12,7 @@ try {
 	require('bootstrap-sass');
 	require('eonasdan-bootstrap-datetimepicker');
 	require('select2');
+	require('select2/dist/js/i18n/fr')
 
 	// Datatables plugin
 	require('datatables.net');

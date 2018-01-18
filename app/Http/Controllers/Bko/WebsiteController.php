@@ -14,12 +14,15 @@ class WebsiteController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		$websites = Website::with('organizationType')->get();
+		$websites = Website::with(['organizationType', 'perimeters'])->get();
 		$organizationTypes = $websites->map(function($item) {
 			return $item->organizationType;
 		})->unique()->sortBy('name')->values();
+		$perimeters = $websites->map(function($item) {
+			return $item->perimeters;
+		})->flatten()->unique('id')->sortBy('name')->values();
 
-		return view('bko.website.index', compact('websites', 'organizationTypes'));
+		return view('bko.website.index', compact('websites', 'organizationTypes', 'perimeters'));
 	}
 
 	/**

@@ -18,6 +18,8 @@ class CallForProjectsController extends Controller {
 	 */
 	public function index() {
 		$callsForProjects = CallForProjects::with('thematic')->opened()->get();
+		$callsOfTheWeek = CallForProjects::filterCallsOfTheWeek($callsForProjects)->pluck('id');
+
 //		$primary_thematics = Thematic::primary()->orderBy('name', 'asc')->get();
 //		$subthematics = Thematic::sub()->orderBy('name', 'asc')->get()->groupBy('parent_id');
 
@@ -35,7 +37,7 @@ class CallForProjectsController extends Controller {
 
 		$title = "Liste des dispositifs financiers ouverts";
 
-		return view('bko.callForProjects.index', compact('callsForProjects', 'primary_thematics', 'subthematics', 'project_holders', 'perimeters', 'beneficiaries', 'title'));
+		return view('bko.callForProjects.index', compact('callsForProjects', 'primary_thematics', 'subthematics', 'project_holders', 'perimeters', 'beneficiaries', 'title', 'callsOfTheWeek'));
 	}
 
 	/**
@@ -45,6 +47,7 @@ class CallForProjectsController extends Controller {
 	 */
 	public function indexClosed() {
 		$callsForProjects = CallForProjects::with('thematic')->closed()->get();
+		$callsOfTheWeek = CallForProjects::filterCallsOfTheWeek($callsForProjects)->pluck('id');
 //		$primary_thematics = Thematic::primary()->orderBy('name', 'asc')->get();
 //		$subthematics = Thematic::sub()->orderBy('name', 'asc')->get()->groupBy('parent_id');
 
@@ -62,7 +65,7 @@ class CallForProjectsController extends Controller {
 
 		$title = "Liste des dispositifs financiers fermés";
 
-		return view('bko.callForProjects.index', compact('callsForProjects', 'primary_thematics', 'subthematics', 'project_holders', 'perimeters', 'beneficiaries', 'title'));
+		return view('bko.callForProjects.index', compact('callsForProjects', 'primary_thematics', 'subthematics', 'project_holders', 'perimeters', 'beneficiaries', 'title', 'callsOfTheWeek'));
 	}
 
 	/**

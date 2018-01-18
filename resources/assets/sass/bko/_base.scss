@@ -25,4 +25,19 @@ table {
 			margin-left: 5px;
 		}
 	}
+
+	.item-of-the-week {
+		td {
+			background-color: $color-green-pastel;
+
+			a {
+				color: $text-color;
+			}
+		}
+	}
+}
+
+mark,
+.mark {
+	background-color: $color-highlighting;
 }
