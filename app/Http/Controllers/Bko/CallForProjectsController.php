@@ -17,22 +17,21 @@ class CallForProjectsController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		$callsForProjects = CallForProjects::with(['subthematic.parent', 'projectHolder', 'perimeter', 'beneficiary'])->opened()->get();
-		$primary_thematics = Thematic::primary()->orderBy('name', 'asc')->get();
-		$subthematics = Thematic::sub()->orderBy('name', 'asc')->get()->groupBy('parent_id');
-//		$project_holders = ProjectHolder::orderBy('name', 'asc')->get();
-//		$perimeters = Perimeter::orderBy('name', 'asc')->get();
-//		$beneficiaries = Beneficiary::orderBy('name', 'asc')->get();
+		$callsForProjects = CallForProjects::with('thematic')->opened()->get();
+//		$primary_thematics = Thematic::primary()->orderBy('name', 'asc')->get();
+//		$subthematics = Thematic::sub()->orderBy('name', 'asc')->get()->groupBy('parent_id');
 
-		$project_holders = $callsForProjects->map(function($item) {
-			return $item->projectHolder;
-		})->unique()->sortBy('name')->values();
-		$perimeters = $callsForProjects->map(function($item) {
-			return $item->perimeter;
-		})->unique()->sortBy('name')->values();
-		$beneficiaries = $callsForProjects->map(function($item) {
-			return $item->beneficiary;
-		})->unique()->sortBy('name')->values();
+		$primary_thematics = $callsForProjects->map(function($item) {
+			return $item->thematic;
+		})->unique()->values();
+
+		$perimeters = CallForProjects::getRelationshipData(Perimeter::class, $callsForProjects, 'perimeter_id');
+		$beneficiaries = CallForProjects::getRelationshipData(Beneficiary::class, $callsForProjects, 'beneficiary_id');
+		$project_holders = CallForProjects::getRelationshipData(ProjectHolder::class, $callsForProjects, 'project_holder_id');
+		$subthematics = CallForProjects::getRelationshipData(Thematic::class, $callsForProjects, 'subthematic_id');
+		if(!empty($subthematics)) {
+			$subthematics = $subthematics->groupBy('parent_id');
+		}
 
 		$title = "Liste des appels à projets ouverts";
 
@@ -45,22 +44,21 @@ class CallForProjectsController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function indexClosed() {
-		$callsForProjects = CallForProjects::with(['subthematic.parent', 'projectHolder', 'perimeter', 'beneficiary'])->closed()->get();
-		$primary_thematics = Thematic::primary()->orderBy('name', 'asc')->get();
-		$subthematics = Thematic::sub()->orderBy('name', 'asc')->get()->groupBy('parent_id');
-//		$project_holders = ProjectHolder::orderBy('name', 'asc')->get();
-//		$perimeters = Perimeter::orderBy('name', 'asc')->get();
-//		$beneficiaries = Beneficiary::orderBy('name', 'asc')->get();
+		$callsForProjects = CallForProjects::with('thematic')->closed()->get();
+//		$primary_thematics = Thematic::primary()->orderBy('name', 'asc')->get();
+//		$subthematics = Thematic::sub()->orderBy('name', 'asc')->get()->groupBy('parent_id');
 
-		$project_holders = $callsForProjects->map(function($item) {
-			return $item->projectHolder;
-		})->unique()->sortBy('name')->values();
-		$perimeters = $callsForProjects->map(function($item) {
-			return $item->perimeter;
-		})->unique()->sortBy('name')->values();
-		$beneficiaries = $callsForProjects->map(function($item) {
-			return $item->beneficiary;
-		})->unique()->sortBy('name')->values();
+		$primary_thematics = $callsForProjects->map(function($item) {
+			return $item->thematic;
+		})->unique()->values();
+
+		$perimeters = CallForProjects::getRelationshipData(Perimeter::class, $callsForProjects, 'perimeter_id');
+		$beneficiaries = CallForProjects::getRelationshipData(Beneficiary::class, $callsForProjects, 'beneficiary_id');
+		$project_holders = CallForProjects::getRelationshipData(ProjectHolder::class, $callsForProjects, 'project_holder_id');
+		$subthematics = CallForProjects::getRelationshipData(Thematic::class, $callsForProjects, 'subthematic_id');
+		if(!empty($subthematics)) {
+			$subthematics = $subthematics->groupBy('parent_id');
+		}
 
 		$title = "Liste des appels à projets fermés";
 

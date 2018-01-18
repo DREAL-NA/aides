@@ -72,6 +72,7 @@
 						<th>Date de clotûre</th>
 						<th>Porteur du dispositif</th>
 						<th>Périmètre</th>
+						<th>Objectifs</th>
 						<th>Bénéficiaires</th>
 						<th></th>
 					</tr>
@@ -79,13 +80,14 @@
 				<tbody>
 					@foreach($callsForProjects as $callForProject)
 						<tr>
-							<td>{{ $callForProject->subthematic->parent->name }}</td>
-							<td>{{ $callForProject->subthematic->name }}</td>
+							<td>{{ $callForProject->thematic->name }}</td>
+							<td>{{ empty($callForProject->subthematic_id) ? '' : $subthematics[$callForProject->thematic->id]->firstWhere('id', $callForProject->subthematic_id)->name }}</td>
 							<td>{{ $callForProject->name }}</td>
-							<td>{{ $callForProject->closing_date->format('d/m/Y') }}</td>
-							<td>{{ $callForProject->projectHolder->name }}</td>
-							<td>{{ $callForProject->perimeter->name }}</td>
-							<td>{{ $callForProject->beneficiary->name }}</td>
+							<td>{{ empty($callForProject->closing_date) ? '' : $callForProject->closing_date->format('d/m/Y') }}</td>
+							<td>{{ empty($callForProject->project_holder_id) ? '' : $project_holders->firstWhere('id', $callForProject->project_holder_id)->name }}</td>
+							<td>{{ empty($callForProject->perimeter_id) ? '' : $perimeters->firstWhere('id', $callForProject->perimeter_id)->name }}</td>
+							<td>{{ \Illuminate\Support\Str::words($callForProject->objectives, 50) }}</td>
+							<td>{{ empty($callForProject->beneficiary_id) ? '' : $beneficiaries->firstWhere('id', $callForProject->beneficiary_id)->name }}</td>
 							<td class="text-right col-actions">
 								<a href="{{ route('bko.call.edit', $callForProject) }}" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 								<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-id="{{ $callForProject->id }}">
@@ -115,7 +117,7 @@
 			table.columns(1).search(filter__subthematic ? '^'+filter__subthematic+'$' : '', true, false);
 			table.columns(4).search(filter__projectHolder ? '^'+filter__projectHolder+'$' : '', true, false);
 			table.columns(5).search(filter__perimeter ? '^'+filter__perimeter+'$' : '', true, false);
-			table.columns(6).search(filter__beneficiary ? '^'+filter__beneficiary+'$' : '', true, false);
+			table.columns(7).search(filter__beneficiary ? '^'+filter__beneficiary+'$' : '', true, false);
 			table.draw();
 		}
 
@@ -124,6 +126,7 @@
 
 			table = $('#table__callsForProjects').DataTable({
 				"columns": [
+					null,
 					null,
 					null,
 					null,

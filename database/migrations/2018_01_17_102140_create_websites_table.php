@@ -14,14 +14,14 @@ class CreateWebsitesTable extends Migration {
 		Schema::create('websites', function(Blueprint $table) {
 			$table->increments('id');
 			$table->integer('organization_type_id')->unsigned();
-			$table->text('themes');
+			$table->text('themes')->nullable();
 			$table->string('name');
-			$table->text('perimeter');
+			$table->integer('perimeter_id')->unsigned()->nullable();
 			$table->text('perimeter_comments')->nullable();
 			$table->text('delay')->nullable();
 			$table->text('allocated_budget')->nullable();
 			$table->text('beneficiaries')->nullable();
-			$table->text('website_url');
+			$table->text('website_url')->nullable();
 			$table->text('description')->nullable();
 			$table->timestamps();
 			$table->softDeletes();

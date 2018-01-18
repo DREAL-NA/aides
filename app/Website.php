@@ -19,15 +19,15 @@ class Website extends Model implements HasMedia {
 	public function rules() {
 		return [
 			'organization_type_id' => 'required|exists:organization_types,id',
-			'themes'               => 'required|min:2',
+			'themes'               => 'nullable',
 			'name'                 => 'required|min:2',
-			'perimeter'            => 'required|min:2',
-			'perimeter_comments'   => 'present',
-			'delay'                => 'present',
-			'allocated_budget'     => 'present',
-			'beneficiaries'        => 'present',
-			'website_url'          => 'required|url',
-			'description'          => 'present',
+			'perimeter_id'         => 'nullable',
+			'perimeter_comments'   => 'nullable',
+			'delay'                => 'nullable',
+			'allocated_budget'     => 'nullable',
+			'beneficiaries'        => 'nullable',
+			'website_url'          => 'nullable|url',
+			'description'          => 'nullable',
 			'logo'                 => 'image',
 		];
 	}
@@ -52,18 +52,6 @@ class Website extends Model implements HasMedia {
 
 	public function getThemesHtmlAttribute() {
 		return nl2br($this->themes);
-	}
-
-	public function setPerimeterAttribute($value) {
-		$this->attributes['perimeter'] = nl2br($value);
-	}
-
-	public function getPerimeterAttribute($value) {
-		return preg_replace('#<br\s*/?>#i', "", $value);
-	}
-
-	public function getPerimeterHtmlAttribute() {
-		return nl2br($this->perimeter);
 	}
 
 	public function setPerimeterCommentsAttribute($value) {

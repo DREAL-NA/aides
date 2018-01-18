@@ -148,6 +148,7 @@ return [
 		'size'                  => 'taille',
 
 		// Custom fields used in project
+		'thematic_id' => 'thématique',
 		'subthematic_id' => 'sous-thématique',
 		'closing_date' => 'dâte de clotûre',
 		'project_holder_id' => 'porteur du dispositif',
@@ -159,7 +160,6 @@ return [
 		'website_url' => 'adresse internet',
 		'organization_type_id' => 'structure',
 		'themes' => 'thèmes',
-		'perimeter' => 'périmètre',
 	],
 
 ];

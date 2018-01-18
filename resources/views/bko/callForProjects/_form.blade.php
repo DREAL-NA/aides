@@ -3,13 +3,8 @@
 	{{ csrf_field() }}
 
 	@php
-	$thematic_id = old('thematic_id');
+	$thematic_id = old('thematic_id', $callForProjects->thematic_id);
 	$subthematic_id = old('subthematic_id', $callForProjects->subthematic_id);
-
-	if(empty($thematic_id) && !empty($callForProjects->subthematic_id)) {
-		$thematic_id = $callForProjects->subthematic->parent->id;
-	}
-
 	$project_holder_id = old('project_holder_id', $callForProjects->project_holder_id);
 	$perimeter_id = old('perimeter_id', $callForProjects->perimeter_id);
 	$beneficiary_id = old('beneficiary_id', $callForProjects->beneficiary_id);
@@ -27,8 +22,9 @@
 		</select>
 	</div>
 	<div class="form-group">
-		<label for="subthematic_id">Sous-thématique*</label>
+		<label for="subthematic_id">Sous-thématique</label>
 		<select name="subthematic_id" id="subthematic_id" class="form-control select2-input">
+			<option></option>
 			@if(!empty($callForProjects->subthematic_id))
 				<option value="{{ $callForProjects->subthematic_id }}">{{ $callForProjects->subthematic->name }}</option>
 			@endif
@@ -39,7 +35,7 @@
 		<input type="text" class="form-control" name="name" id="name" value="{{ old('name', $callForProjects->name) }}">
 	</div>
 	<div class="form-group">
-		<label for="closing_date">Date de clotûre*</label>
+		<label for="closing_date">Date de clotûre</label>
 		<div class="input-group date">
 			<input type="text" class="form-control" name="closing_date" id="closing_date" value="{{ old('closing_date', $callForProjects->closing_date) }}">
 			<span class="input-group-addon">
@@ -48,7 +44,7 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="project_holder_id">Porteur du dispositif*</label>
+		<label for="project_holder_id">Porteur du dispositif</label>
 		<div class="input-group">
 			<select name="project_holder_id" id="project_holder_id" class="form-control">
 				@if(!empty($project_holder_id))
@@ -64,7 +60,7 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="perimeter_id">Périmètre*</label>
+		<label for="perimeter_id">Périmètre</label>
 		<div class="input-group">
 			<select name="perimeter_id" id="perimeter_id" class="form-control">
 				@if(!empty($perimeter_id))
@@ -80,11 +76,11 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="objectives">Objectifs*</label>
+		<label for="objectives">Objectifs</label>
 		<textarea class="form-control" rows="3" name="objectives" id="objectives">{{ old('objectives', $callForProjects->objectives) }}</textarea>
 	</div>
 	<div class="form-group">
-		<label for="beneficiary_id">Bénéficiaire*</label>
+		<label for="beneficiary_id">Bénéficiaire</label>
 		<div class="input-group">
 			<select name="beneficiary_id" id="beneficiary_id" class="form-control">
 				@if(!empty($beneficiary_id))
@@ -115,6 +111,10 @@
 		</div>
 	</div>
 	<div class="form-group">
+		<label for="allocation_amount">Dotation - Montant</label>
+		<input type="text" class="form-control" name="allocation_amount" id="allocation_amount" value="{{ old('allocation_amount', $callForProjects->allocation_amount) }}">
+	</div>
+	<div class="form-group">
 		<label for="allocation_comments">Dotation - Commentaires</label>
 		<textarea class="form-control" rows="3" name="allocation_comments" id="allocation_comments">{{ old('allocation_comments', $callForProjects->allocation_comments) }}</textarea>
 	</div>
@@ -127,7 +127,7 @@
 		<textarea class="form-control" rows="3" name="project_holder_contact" id="project_holder_contact">{{ old('project_holder_contact', $callForProjects->project_holder_contact) }}</textarea>
 	</div>
 	<div class="form-group">
-		<label for="website_url">Adresse internet*</label>
+		<label for="website_url">Adresse internet</label>
 		<textarea class="form-control" rows="3" name="website_url" id="website_url">{{ old('website_url', $callForProjects->website_url) }}</textarea>
 	</div>
 
@@ -163,7 +163,7 @@
 				});
 			}
 
-			$('#subthematic_id').empty().select2({ data: custom_data });
+			$('#subthematic_id').empty().append($('<option>')).select2({ data: custom_data });
 		}
 
 		(function($) {

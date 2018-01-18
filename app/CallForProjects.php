@@ -16,26 +16,37 @@ class CallForProjects extends Model {
 
 	public function rules() {
 		return [
-			'subthematic_id'         => [
+			'thematic_id'            => [
 				'required',
+				Rule::exists('thematics', 'id')->where(function($query) {
+					$query->whereNull('parent_id');
+				}),
+			],
+			'subthematic_id'         => [
+				'nullable',
 				Rule::exists('thematics', 'id')->where(function($query) {
 					$query->whereNotNull('parent_id');
 				}),
 			],
 			'name'                   => 'required|min:2',
-			'closing_date'           => 'required|date_format:Y-m-d',
-			'project_holder_id'      => 'required|exists:project_holders,id',
-			'project_holder_contact' => 'present',
-			'perimeter_id'           => 'required|exists:perimeters,id',
-			'objectives'             => 'required|min:2',
-			'beneficiary_id'         => 'required|exists:beneficiaries,id',
-			'beneficiary_comments'   => 'present',
+			'closing_date'           => 'nullable|date_format:Y-m-d',
+			'project_holder_id'      => 'nullable|exists:project_holders,id',
+			'project_holder_contact' => 'nullable',
+			'perimeter_id'           => 'nullable|exists:perimeters,id',
+			'objectives'             => 'nullable|min:2',
+			'beneficiary_id'         => 'nullable|exists:beneficiaries,id',
+			'beneficiary_comments'   => 'nullable',
 			'allocation_global'      => 'required_without:allocation_per_project|in:1',
 			'allocation_per_project' => 'required_without:allocation_global|in:1',
-			'allocation_comments'    => 'present',
-			'technical_relay'        => 'present',
-			'website_url'            => 'required|url',
+			'allocation_amount'      => 'nullable',
+			'allocation_comments'    => 'nullable',
+			'technical_relay'        => 'nullable',
+			'website_url'            => 'nullable|url',
 		];
+	}
+
+	public function thematic() {
+		return $this->belongsTo(Thematic::class);
 	}
 
 	public function subthematic() {
@@ -59,7 +70,27 @@ class CallForProjects extends Model {
 	}
 
 	public function scopeOpened($query) {
-		return $query->whereDate('closing_date', '>=', date('Y-m-d 00:00:00'));
+//		return $query->whereDate('closing_date', '>=', date('Y-m-d 00:00:00'))->orWhereRaw('closing_date is null', []);
+		return $query->whereDate('closing_date', '>=', date('Y-m-d 00:00:00'))->orWhereNull('closing_date');
+	}
+
+	// retrieve relationships data with call for projects
+	public static function filterDataById($items, $data_id_name) {
+		return $items->reject(function ($item) use ($data_id_name) {
+			return is_null($item->{$data_id_name});
+		})->map(function($item) use ($data_id_name) {
+			return $item->{$data_id_name};
+		})->unique()->values();
+	}
+
+	public static function getRelationshipData($class, $items, $data_id_name) {
+		$ids = self::filterDataById($items, $data_id_name);
+
+		if(empty($ids)) {
+			return null;
+		}
+
+		return $class::whereIn('id', $ids)->get();
 	}
 
 	// Attributes casting
