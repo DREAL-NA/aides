@@ -6,5 +6,3 @@
  */
 
 require('./bko/bootstrap');
-
-$('.select2-input').select2();

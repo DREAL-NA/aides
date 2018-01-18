@@ -21,11 +21,11 @@ try {
 	require('mark.js')
 	require('datatables.mark.js')
 
-	// Select2 defaults
+	require('./utils');
+
+	// Defaults for plugins
 	require('./select2-default');
 	require('./datatables-default');
-
-	require('./utils');
 
 } catch (e) {
 }

@@ -23,10 +23,10 @@
 	</div>
 	<div class="form-group">
 		<label for="subthematic_id">Sous-thématique</label>
-		<select name="subthematic_id" id="subthematic_id" class="form-control select2-input">
+		<select name="subthematic_id" id="subthematic_id" class="form-control select2-allow-clear">
 			<option></option>
 			@if(!empty($callForProjects->subthematic_id))
-				<option value="{{ $callForProjects->subthematic_id }}">{{ $callForProjects->subthematic->name }}</option>
+				<option value="{{ $callForProjects->subthematic_id }}" selected>{{ $callForProjects->subthematic->name }}</option>
 			@endif
 		</select>
 	</div>
@@ -46,11 +46,11 @@
 	<div class="form-group">
 		<label for="project_holder_id">Porteur du dispositif</label>
 		<div class="input-group">
-			<select name="project_holder_id" id="project_holder_id" class="form-control">
+			<select name="project_holder_id" id="project_holder_id" class="form-control select2-allow-clear">
 				@if(!empty($project_holder_id))
 					@php($project_holder = \App\ProjectHolder::where('id', $project_holder_id)->first())
 					@if(!empty($project_holder->id))
-						<option value="{{ $project_holder->id }}">{{ $project_holder->name }}</option>
+						<option value="{{ $project_holder->id }}" selected>{{ $project_holder->name }}</option>
 					@endif
 				@endif
 			</select>
@@ -62,11 +62,11 @@
 	<div class="form-group">
 		<label for="perimeter_id">Périmètre</label>
 		<div class="input-group">
-			<select name="perimeter_id" id="perimeter_id" class="form-control">
+			<select name="perimeter_id" id="perimeter_id" class="form-control select2-allow-clear">
 				@if(!empty($perimeter_id))
 					@php($perimeter = \App\Perimeter::where('id', $perimeter_id)->first())
 					@if(!empty($perimeter->id))
-						<option value="{{ $perimeter->id }}">{{ $perimeter->name }}</option>
+						<option value="{{ $perimeter->id }}" selected>{{ $perimeter->name }}</option>
 					@endif
 				@endif
 			</select>
@@ -82,11 +82,11 @@
 	<div class="form-group">
 		<label for="beneficiary_id">Bénéficiaire</label>
 		<div class="input-group">
-			<select name="beneficiary_id" id="beneficiary_id" class="form-control">
+			<select name="beneficiary_id" id="beneficiary_id" class="form-control select2-allow-clear">
 				@if(!empty($beneficiary_id))
 					@php($beneficiary = \App\Beneficiary::where('id', $beneficiary_id)->first())
 					@if(!empty($beneficiary->id))
-						<option value="{{ $beneficiary->id }}">{{ $beneficiary->name }}</option>
+						<option value="{{ $beneficiary->id }}" selected>{{ $beneficiary->name }}</option>
 					@endif
 				@endif
 			</select>
@@ -163,7 +163,7 @@
 				});
 			}
 
-			$('#subthematic_id').empty().append($('<option>')).select2({ data: custom_data });
+			$('#subthematic_id').empty().append($('<option>')).select2({ data: custom_data, allowClear: true });
 		}
 
 		(function($) {
@@ -173,7 +173,8 @@
 
 			$('#closing_date').datetimepicker({
 				format: 'YYYY-MM-DD',
-				locale: 'fr'
+				locale: 'fr',
+				showClear: true
 			});
 
 			$('#thematic_id').on('change', function() {
@@ -181,15 +182,18 @@
 			});
 
 			$('#project_holder_id').select2({
-				ajax: window.utils.select2__ajaxOptions('{{ route('bko.porteur-dispositif.select2') }}')
+				ajax: window.utils.select2__ajaxOptions('{{ route('bko.porteur-dispositif.select2') }}'),
+				allowClear: true
 			});
 
 			$('#perimeter_id').select2({
-				ajax: window.utils.select2__ajaxOptions('{{ route('bko.perimetre.select2') }}')
+				ajax: window.utils.select2__ajaxOptions('{{ route('bko.perimetre.select2') }}'),
+				allowClear: true
 			});
 
 			$('#beneficiary_id').select2({
-				ajax: window.utils.select2__ajaxOptions('{{ route('bko.beneficiaire.select2') }}')
+				ajax: window.utils.select2__ajaxOptions('{{ route('bko.beneficiaire.select2') }}'),
+				allowClear: true
 			});
 
 			$('#save__modalNewProjectHolder').on('click', function() {

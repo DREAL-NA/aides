@@ -21,7 +21,7 @@ class Website extends Model implements HasMedia {
 			'organization_type_id' => 'required|exists:organization_types,id',
 			'themes'               => 'nullable',
 			'name'                 => 'required|min:2',
-			'perimeter_id'         => 'nullable',
+			'perimeters'           => 'nullable|array',
 			'perimeter_comments'   => 'nullable',
 			'delay'                => 'nullable',
 			'allocated_budget'     => 'nullable',
@@ -34,6 +34,10 @@ class Website extends Model implements HasMedia {
 
 	public function organizationType() {
 		return $this->belongsTo(OrganizationType::class);
+	}
+
+	public function perimeters() {
+		return $this->belongsToMany(Perimeter::class, 'perimeters_websites', 'website_id', 'perimeter_id');
 	}
 
 	public function addLogo() {

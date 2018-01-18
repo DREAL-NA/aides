@@ -44,11 +44,20 @@ class WebsiteController extends Controller {
 		$website = new Website();
 		$validatedData = $request->validate($website->rules());
 
+		$perimeters = [];
 		if(!empty($validatedData['logo'])) {
 			unset($validatedData['logo']);
 		}
+		if(!empty($validatedData['perimeters'])) {
+			$perimeters = $validatedData['perimeters'];
+			unset($validatedData['perimeters']);
+		}
 		$website->fill($validatedData);
 		$website->save();
+
+		if(!empty($perimeters)) {
+			$website->perimeters()->sync($perimeters);
+		}
 
 		if(!empty($request->file('logo'))) {
 			$website->addLogo();
@@ -76,6 +85,8 @@ class WebsiteController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit(Website $website) {
+		$website->load('perimeters');
+
 		return view('bko.website.edit', compact('website'));
 	}
 
@@ -90,11 +101,18 @@ class WebsiteController extends Controller {
 	public function update(Request $request, Website $website) {
 		$validatedData = $request->validate($website->rules());
 
+		$perimeters = [];
 		if(!empty($validatedData['logo'])) {
 			unset($validatedData['logo']);
 		}
+		if(!empty($validatedData['perimeters'])) {
+			$perimeters = $validatedData['perimeters'];
+			unset($validatedData['perimeters']);
+		}
 		$website->fill($validatedData);
 		$website->save();
+
+		$website->perimeters()->sync($perimeters);
 
 		if(!empty($request->file('logo'))) {
 			$website->addLogo();

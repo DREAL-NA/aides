@@ -1,6 +1,6 @@
 @extends('layouts.bko')
 
-@section('heading', "Ajout d'un porteur de dispositifs")
+@section('heading', "Ajout d'un porteur du dispositif")
 
 @section('content')
 	@include('bko.components.forms._default', [

@@ -39,7 +39,7 @@
 							<td>{{ $website->name }}</td>
 							<td>{!! $website->perimeter_html !!}</td>
 							<td>{{ $website->website_url }}</td>
-							<td class="text-right">
+							<td class="text-right col-actions">
 								<a href="{{ route('bko.site.edit', $website) }}" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 								<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-id="{{ $website->id }}">
 									<i class="fa fa-trash-o" aria-hidden="true"></i>

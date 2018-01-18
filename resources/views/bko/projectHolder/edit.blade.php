@@ -1,6 +1,6 @@
 @extends('layouts.bko')
 
-@section('heading', "Edition du porteur de dispositifs : ".$projectHolder->name)
+@section('heading', "Edition du porteur du dispositif : ".$projectHolder->name)
 @section('menu-item-projectHolder')
 	<li class="menu-item active"><a href="{{ route('bko.porteur-dispositif.edit', $projectHolder) }}">Edition de {{ $projectHolder->name }}</a></li>
 @endsection

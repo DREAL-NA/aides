@@ -8,6 +8,16 @@ window.utils = {
 			method: 'post',
 		};
 	},
+	select2__allowClearStayClosed(obj) {
+		$(obj).on('select2:unselecting', function() {
+			$(this).data('unselecting', true);
+		}).on('select2:opening', function(e) {
+			if ($(this).data('unselecting')) {
+				$(this).removeData('unselecting');
+				e.preventDefault();
+			}
+		});
+	},
 	saveNewItem(modalId, ajaxUrl, selector) {
 		var modal = $('#'+modalId);
 

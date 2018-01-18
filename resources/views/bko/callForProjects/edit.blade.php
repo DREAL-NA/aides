@@ -1,6 +1,6 @@
 @extends('layouts.bko')
 
-@section('heading', "Edition de l'appel à projets : ".$callForProjects->name)
+@section('heading', "Edition du dispositif financier : ".$callForProjects->name)
 @section('menu-item-call')
 	<li class="menu-item active"><a href="{{ route('bko.call.edit', $callForProjects) }}">Edition de {{ $callForProjects->name }}</a></li>
 @endsection

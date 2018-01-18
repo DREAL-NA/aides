@@ -2,7 +2,14 @@
 	{{ method_field($options['method']) }}
 	{{ csrf_field() }}
 
-	@php($organization_type_id = old('organization_type_id', $website->organization_type_id))
+	@php
+	$organization_type_id = old('organization_type_id', $website->organization_type_id);
+
+	$perimeters = $website->perimeters;
+	if(!empty(old('perimeters'))) {
+		$perimeters = \App\Perimeter::whereIn('id', old('perimeters'))->get();
+	}
+	@endphp
 
 	<div class="form-group">
 		<label for="project_holder_id">Structure*</label>
@@ -11,7 +18,7 @@
 				@if(!empty($organization_type_id))
 					@php($organization_type = \App\OrganizationType::where('id', $organization_type_id)->first())
 					@if(!empty($organization_type->id))
-						<option value="{{ $organization_type->id }}">{{ $organization_type->name }}</option>
+						<option value="{{ $organization_type->id }}" selected>{{ $organization_type->name }}</option>
 					@endif
 				@endif
 			</select>
@@ -29,14 +36,13 @@
 		<textarea class="form-control" rows="3" name="themes" id="themes">{{ old('themes', $website->themes) }}</textarea>
 	</div>
 	<div class="form-group">
-		<label for="perimeter_id">Périmètre</label>
+		<label for="perimeter_id">Périmètres</label>
 		<div class="input-group">
-			<select name="perimeter_id" id="perimeter_id" class="form-control">
-				@if(!empty($perimeter_id))
-					@php($perimeter = \App\Perimeter::where('id', $perimeter_id)->first())
-					@if(!empty($perimeter->id))
-						<option value="{{ $perimeter->id }}">{{ $perimeter->name }}</option>
-					@endif
+			<select name="perimeters[]" id="perimeter_id" class="form-control" multiple="multiple">
+				@if(!empty($perimeters))
+					@foreach($perimeters as $perimeter)
+						<option value="{{ $perimeter->id }}" selected>{{ $perimeter->name }}</option>
+					@endforeach
 				@endif
 			</select>
 			<span class="input-group-btn">

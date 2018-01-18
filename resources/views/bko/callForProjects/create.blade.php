@@ -1,6 +1,6 @@
 @extends('layouts.bko')
 
-@section('heading', "Ajout d'un appel à projet")
+@section('heading', "Ajout d'un dispositif financier")
 
 @section('content')
 	@include('bko.callForProjects._form', [

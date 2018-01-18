@@ -1,6 +1,6 @@
 @extends('layouts.bko')
 
-@section('heading', "Liste des porteurs de dispositifs")
+@section('heading', "Liste des porteurs des dispositifs")
 
 @section('content')
 	<table class="table table-striped table-hover" id="table__projectHolders">
@@ -16,7 +16,7 @@
 				<tr>
 					<td>{{ $projectHolder->name }}</td>
 					<td>{!! $projectHolder->description_html !!}</td>
-					<td class="text-right">
+					<td class="text-right col-actions">
 						<a href="{{ route('bko.porteur-dispositif.edit', $projectHolder) }}" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 						<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-id="{{ $projectHolder->id }}">
 							<i class="fa fa-trash-o" aria-hidden="true"></i>
@@ -48,8 +48,8 @@
 
 @section('after-content')
 	@include('bko.components.modals.delete', [
-		'title' => "Suppression d'un porteur de dispositifs",
-		'question' => "Êtes-vous sûr de vouloir supprimer ce porteur de dispositifs ?",
+		'title' => "Suppression d'un porteur du dispositif",
+		'question' => "Êtes-vous sûr de vouloir supprimer ce porteur du dispositif ?",
 		'action' => 'Bko\ProjectHolderController@destroy',
 	])
 @endsection

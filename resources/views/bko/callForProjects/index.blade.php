@@ -79,15 +79,21 @@
 				</thead>
 				<tbody>
 					@foreach($callsForProjects as $callForProject)
+						@php
+						$beneficiary = $beneficiaries->firstWhere('id', $callForProject->beneficiary_id);
+						$perimeter = $perimeters->firstWhere('id', $callForProject->perimeter_id);
+						$project_holder = $project_holders->firstWhere('id', $callForProject->project_holder_id);
+						$subthematic = $subthematics[$callForProject->thematic->id]->firstWhere('id', $callForProject->subthematic_id);
+						@endphp
 						<tr>
 							<td>{{ $callForProject->thematic->name }}</td>
-							<td>{{ empty($callForProject->subthematic_id) ? '' : $subthematics[$callForProject->thematic->id]->firstWhere('id', $callForProject->subthematic_id)->name }}</td>
+							<td>{{ empty($subthematic) ? '' : $subthematic->name }}</td>
 							<td>{{ $callForProject->name }}</td>
 							<td>{{ empty($callForProject->closing_date) ? '' : $callForProject->closing_date->format('d/m/Y') }}</td>
-							<td>{{ empty($callForProject->project_holder_id) ? '' : $project_holders->firstWhere('id', $callForProject->project_holder_id)->name }}</td>
-							<td>{{ empty($callForProject->perimeter_id) ? '' : $perimeters->firstWhere('id', $callForProject->perimeter_id)->name }}</td>
+							<td>{{ empty($project_holder) ? '' : $project_holder->name }}</td>
+							<td>{{ empty($perimeter) ? '' : $perimeter->name }}</td>
 							<td>{{ \Illuminate\Support\Str::words($callForProject->objectives, 50) }}</td>
-							<td>{{ empty($callForProject->beneficiary_id) ? '' : $beneficiaries->firstWhere('id', $callForProject->beneficiary_id)->name }}</td>
+							<td>{{ empty($beneficiary) ? '' : $beneficiary->name }}</td>
 							<td class="text-right col-actions">
 								<a href="{{ route('bko.call.edit', $callForProject) }}" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 								<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-id="{{ $callForProject->id }}">
@@ -160,8 +166,8 @@
 
 @section('after-content')
 	@include('bko.components.modals.delete', [
-		'title' => "Suppression d'un appel à projets",
-		'question' => "Êtes-vous sûr de vouloir supprimer cet appel à projets ?",
+		'title' => "Suppression d'un dispositif financier",
+		'question' => "Êtes-vous sûr de vouloir supprimer ce dispositif financier ?",
 		'action' => 'Bko\CallForProjectsController@destroy',
 	])
 @endsection
