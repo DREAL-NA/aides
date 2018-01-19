@@ -36,8 +36,8 @@
 							<td>{{ $beneficiary->name }}</td>
 							<td>{!! $beneficiary->description_html !!}</td>
 							<td class="text-right col-actions">
-								<a href="{{ route('bko.beneficiaire.edit', $beneficiary) }}" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-								<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-id="{{ $beneficiary->id }}">
+								<a href="{{ route('bko.beneficiaire.edit', $beneficiary) }}" data-tooltip="tooltip" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+								<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-tooltip="tooltip" data-id="{{ $beneficiary->id }}">
 									<i class="fa fa-trash-o" aria-hidden="true"></i>
 								</a>
 							</td>

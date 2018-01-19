@@ -95,8 +95,9 @@
 							<td>{{ \Illuminate\Support\Str::words($callForProject->objectives, 50) }}</td>
 							<td>{{ empty($beneficiary) ? '' : $beneficiary->name }}</td>
 							<td class="text-right col-actions">
-								<a href="{{ route('bko.call.edit', $callForProject) }}" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-								<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-id="{{ $callForProject->id }}">
+								<a href="{{ route('bko.call.show', $callForProject) }}" data-tooltip="tooltip" title="Voir la fiche"><i class="fa fa-eye" aria-hidden="true"></i></a>
+								<a href="{{ route('bko.call.edit', $callForProject) }}" data-tooltip="tooltip" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+								<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-tooltip="tooltip" data-id="{{ $callForProject->id }}">
 									<i class="fa fa-trash-o" aria-hidden="true"></i>
 								</a>
 							</td>

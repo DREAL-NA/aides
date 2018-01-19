@@ -107,7 +107,7 @@ class CallForProjectsController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show(CallForProjects $callForProjects) {
-		//
+		return view('bko.callForProjects.show', compact('callForProjects'));
 	}
 
 	/**

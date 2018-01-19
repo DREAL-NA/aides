@@ -17,8 +17,8 @@
 					<td>{{ $projectHolder->name }}</td>
 					<td>{!! $projectHolder->description_html !!}</td>
 					<td class="text-right col-actions">
-						<a href="{{ route('bko.porteur-dispositif.edit', $projectHolder) }}" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-						<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-id="{{ $projectHolder->id }}">
+						<a href="{{ route('bko.porteur-dispositif.edit', $projectHolder) }}" data-tooltip="tooltip" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+						<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-tooltip="tooltip" data-id="{{ $projectHolder->id }}">
 							<i class="fa fa-trash-o" aria-hidden="true"></i>
 						</a>
 					</td>

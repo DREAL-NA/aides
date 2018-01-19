@@ -49,8 +49,9 @@
 							<td>{!! $website->perimeters->implode('name', ', ') !!}</td>
 							<td>{{ $website->website_url }}</td>
 							<td class="text-right col-actions">
-								<a href="{{ route('bko.site.edit', $website) }}" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-								<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-id="{{ $website->id }}">
+								<a href="{{ route('bko.site.show', $website) }}" data-tooltip="tooltip" title="Voir la fiche"><i class="fa fa-eye" aria-hidden="true"></i></a>
+								<a href="{{ route('bko.site.edit', $website) }}" data-tooltip="tooltip" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+								<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-tooltip="tooltip" data-id="{{ $website->id }}">
 									<i class="fa fa-trash-o" aria-hidden="true"></i>
 								</a>
 							</td>

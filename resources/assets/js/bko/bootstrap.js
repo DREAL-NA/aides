@@ -25,6 +25,7 @@ try {
 	require('./utils');
 
 	// Defaults for plugins
+	require('./bootstrap-default');
 	require('./select2-default');
 	require('./datatables-default');
 

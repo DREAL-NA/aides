@@ -3,6 +3,7 @@
 @section('heading', "Edition du site de recensement : ".$website->name)
 @section('menu-item-website')
 	<li class="menu-item active"><a href="{{ route('bko.site.edit', $website) }}">Edition de {{ $website->name }}</a></li>
+	<li class="menu-item"><a href="{{ route('bko.site.show', $website) }}">{{ $website->name }}</a></li>
 @endsection
 
 @section('content')

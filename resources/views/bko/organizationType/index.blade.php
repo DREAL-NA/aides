@@ -17,7 +17,7 @@
 					<td>{{ $organizationType->name }}</td>
 					<td>{!! $organizationType->description_html !!}</td>
 					<td class="text-right col-actions">
-						<a href="{{ route('bko.structure.edit', $organizationType) }}" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+						<a href="{{ route('bko.structure.edit', $organizationType) }}" data-tooltip="tooltip" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 						{{--<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-id="{{ $organizationType->id }}">--}}
 							{{--<i class="fa fa-trash-o" aria-hidden="true"></i>--}}
 						{{--</a>--}}

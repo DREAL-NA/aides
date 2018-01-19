@@ -17,8 +17,8 @@
 					<td>{{ $perimeter->name }}</td>
 					<td>{!! $perimeter->description_html !!}</td>
 					<td class="text-right col-actions">
-						<a href="{{ route('bko.perimetre.edit', $perimeter) }}" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-						<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-id="{{ $perimeter->id }}">
+						<a href="{{ route('bko.perimetre.edit', $perimeter) }}" data-tooltip="tooltip" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+						<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-tooltip="tooltip" data-id="{{ $perimeter->id }}">
 							<i class="fa fa-trash-o" aria-hidden="true"></i>
 						</a>
 					</td>

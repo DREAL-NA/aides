@@ -17,8 +17,8 @@
 					<td>{{ $thematic->name }}</td>
 					<td>{!! $thematic->description_html !!}</td>
 					<td class="text-right col-actions">
-						<a href="{{ route('bko.thematic.edit', $thematic) }}" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-						<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-id="{{ $thematic->id }}">
+						<a href="{{ route('bko.thematic.edit', $thematic) }}" data-tooltip="tooltip" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+						<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-tooltip="tooltip" data-id="{{ $thematic->id }}">
 							<i class="fa fa-trash-o" aria-hidden="true"></i>
 						</a>
 					</td>
