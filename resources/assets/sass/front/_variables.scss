@@ -1,0 +1,57 @@
+// Brands
+//$brand-primary: #0c3b65;
+//$brand-info: #8eb4cb;
+//$brand-success: #2ab27b;
+//$brand-warning: #cbb956;
+//$brand-danger: #bf5329;
+
+// Colors
+//$color-1: #49D5AB;
+//$color-2: #636651;
+//$color-3: #B0B49E;
+//$color-4: #5A4766;
+//$color-5: #AB9DB3;
+
+$color-1: #5CDB95;
+$color-2: #05386B;
+$color-3: #379683;
+$color-4: #8EE4AF;
+$color-5: #EDF5E1;
+
+$color-white: #FFFFFF;
+$text-color: #333;
+
+// Body
+//$body-bg: #efefef;
+$body-bg: $color-5;
+
+// Borders
+$front-border-color: darken($body-bg, 10%);
+$list-group-border: $front-border-color;
+$navbar-default-border: $front-border-color;
+$panel-default-border: $front-border-color;
+$panel-inner-border: $front-border-color;
+
+// Headings
+$headings-font-family: "Raleway", "Roboto", sans-serif;
+$headings-font-weight: 600;
+
+// Typography
+//$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+$font-family-sans-serif: "Roboto", sans-serif;
+$font-size-base: 14px;
+$line-height-base: 1.6;
+
+// Navbar
+$navbar-default-bg: #fff;
+
+// Buttons
+$btn-default-color: $text-color;
+
+// Inputs
+$input-border: lighten($text-color, 40%);
+$input-border-focus: lighten($color-1, 25%);
+$input-color-placeholder: lighten($text-color, 30%);
+
+// Panels
+$panel-default-heading-bg: #fff;

@@ -1,0 +1,33 @@
+header {
+	background-color: $color-1;
+	color: $color-white;
+	text-align: center;
+	padding: 30px 15px;
+	border-bottom: thin solid $body-bg;
+
+	a {
+		@include linkInherit;
+
+		&:before {
+			content: '';
+			display: block;
+			width: 100px;
+			height: 3px;
+			background: url('/images/drapeau-liseret.png') no-repeat left center;
+			background-size: 100px 3px;
+			margin: auto auto 15px;
+		}
+	}
+
+	h1 {
+		margin: 0;
+		font-size: 4.4em;
+		padding-bottom: 15px;
+	}
+
+	.description {
+		margin-bottom: 0;
+		font-style: italic;
+		font-size: 1.5em;
+	}
+}

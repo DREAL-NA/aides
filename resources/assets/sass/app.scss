@@ -1,9 +1,18 @@
 
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+//@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,600|Roboto:300,400,700');
 
 // Variables
-@import "variables";
+@import "front/variables";
+
+@import "front/bootstrap";
+@import "front/mixins";
 
 // Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+//@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+@import "front/base";
+@import "front/components/header";
+@import "front/components/menu";
+@import "front/components/footer";

@@ -1,0 +1,50 @@
+.menu-nav {
+	background-color: $color-1;
+
+	.menu-list {
+		margin: -1px -15px 0 -15px;
+		padding: 0;
+		list-style: none;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		color: $color-white;
+	}
+
+	.menu-item {
+		a {
+			padding: 20px 15px;
+			font-weight: 400;
+			display: block;
+			transition: all 250ms;
+			position: relative;
+
+			@include linkInherit;
+
+			&:before {
+				content: "";
+				width: 0;
+				height: 2px;
+				background-color: $text-color;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+
+			&:hover {
+				color: $text-color;
+
+				&:before {
+					animation-duration: 500ms;
+					animation-name: menuBorderWidth;
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+@keyframes menuBorderWidth {
+	0% { width: 0; }
+	100% { width: 100%; }
+}

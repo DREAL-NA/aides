@@ -50,4 +50,4 @@ Route::group([ 'namespace' => 'Bko', 'domain' => config('app.bko_subdomain').'.'
 	]);
 });
 
-//Route::get('/', [ 'as' => 'front.home', 'uses' => 'FrontController@index' ]);
+Route::get('/', [ 'as' => 'front.home', 'uses' => 'FrontController@home' ]);
