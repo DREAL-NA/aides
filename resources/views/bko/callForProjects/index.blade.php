@@ -80,10 +80,10 @@
 				<tbody>
 					@foreach($callsForProjects as $callForProject)
 						@php
-						$beneficiary = $beneficiaries->firstWhere('id', $callForProject->beneficiary_id);
-						$perimeter = $perimeters->firstWhere('id', $callForProject->perimeter_id);
-						$project_holder = $project_holders->firstWhere('id', $callForProject->project_holder_id);
-						$subthematic = $subthematics[$callForProject->thematic->id]->firstWhere('id', $callForProject->subthematic_id);
+						$beneficiary = empty($callForProject->beneficiary_id) ? null : $beneficiaries->firstWhere('id', $callForProject->beneficiary_id);
+						$perimeter = empty($callForProject->perimeter_id) ? null : $perimeters->firstWhere('id', $callForProject->perimeter_id);
+						$project_holder = empty($callForProject->project_holder_id) ? null : $project_holders->firstWhere('id', $callForProject->project_holder_id);
+						$subthematic = empty($subthematics[$callForProject->thematic->id]) ? null : $subthematics[$callForProject->thematic->id]->firstWhere('id', $callForProject->subthematic_id);
 						@endphp
 						<tr class="{{ in_array($callForProject->id, $callsOfTheWeek->toArray()) ? 'item-of-the-week' : '' }}">
 							<td>{{ $callForProject->thematic->name }}</td>
@@ -97,7 +97,7 @@
 							<td class="text-right col-actions">
 								<a href="{{ route('bko.call.show', $callForProject) }}" data-tooltip="tooltip" title="Voir la fiche"><i class="fa fa-eye" aria-hidden="true"></i></a>
 								<a href="{{ route('bko.call.edit', $callForProject) }}" data-tooltip="tooltip" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-								<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-tooltip="tooltip" data-id="{{ $callForProject->id }}">
+								<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-tooltip="tooltip"data-id="{{ $callForProject->id }}">
 									<i class="fa fa-trash-o" aria-hidden="true"></i>
 								</a>
 							</td>
