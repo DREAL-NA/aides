@@ -5,6 +5,7 @@ namespace App;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 class CallForProjects extends Model {
@@ -14,6 +15,14 @@ class CallForProjects extends Model {
 	protected $dates   = [ 'deleted_at', 'closing_date' ];
 
 	protected $table = 'calls_for_projects';
+
+	protected static function boot() {
+		parent::boot();
+
+		static::saving(function($reply) {
+			$reply->editor_id = Auth::user()->id;
+		});
+	}
 
 	public function rules() {
 		return [
