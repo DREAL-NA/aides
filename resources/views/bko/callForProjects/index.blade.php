@@ -3,10 +3,12 @@
 @section('heading')
 	<div class="heading-with-actions">
 		<div class="title">{{ $title }}</div>
-		<div class="actions">
-			<a href="{{ route('export.xlsx') }}" data-tooltip="tooltip" title="Exporter en Excel"><i class="fa fa-file-excel-o" aria-hidden="true"></i></a>
-			<a href="{{ route('export.pdf') }}" data-tooltip="tooltip" title="Exporter en PDF"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
-		</div>
+		@if(!$callsForProjects->isEmpty())
+			<div class="actions">
+				<a href="{{ route('export.xlsx') }}" data-tooltip="tooltip" title="Exporter en Excel"><i class="fa fa-file-excel-o" aria-hidden="true"></i></a>
+				<a href="{{ route('export.pdf') }}" data-tooltip="tooltip" title="Exporter en PDF"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+			</div>
+		@endif
 	</div>
 @endsection
 

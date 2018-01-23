@@ -29,9 +29,10 @@ table {
 	.item-of-the-week {
 		td {
 			background-color: $color-green-pastel;
+			color: $color-white;
 
 			a {
-				color: $text-color;
+				color: inherit;
 			}
 		}
 	}

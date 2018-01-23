@@ -14,6 +14,11 @@
 			border-collapse: collapse;
 		}
 
+		table tr.selected td {
+			background-color: #5CDB95;
+			color: #ffffff;
+		}
+
 		th, td {
 			border: thin solid #333;
 			width: auto !important;

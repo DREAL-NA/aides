@@ -14,7 +14,7 @@ class ExportController extends Controller {
 
 	public function __construct() {
 		$date = date('YmdHis');
-		$this->callsForProjects = CallForProjects::with([ 'thematic', 'subthematic', 'perimeter', 'beneficiary', 'projectHolder' ])->get()->groupBy('thematic_id');
+		$this->callsForProjects = CallForProjects::with([ 'thematic', 'subthematic', 'perimeter', 'beneficiary', 'projectHolder' ])->opened()->get()->groupBy('thematic_id');
 		$this->filename         = 'dispositifs_financiers_'.$date;
 	}
 

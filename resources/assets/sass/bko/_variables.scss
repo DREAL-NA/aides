@@ -16,7 +16,8 @@ $brand-success: #2ab27b;
 $brand-warning: #cbb956;
 $brand-danger: #bf5329;
 
-$color-green-pastel: rgba(#ADD488, .75);
+//$color-green-pastel: rgba(#ADD488, .75);
+$color-green-pastel: #8EE4AF;
 $color-highlighting: #D4F29C;
 
 // Typography
@@ -28,7 +29,8 @@ $line-height-base: 1.6;
 $text-color: #636b6f;
 
 // Navbar
-$navbar-default-bg: #fff;
+$color-white: #fff;
+$navbar-default-bg: $color-white;
 
 // Buttons
 $btn-default-color: $text-color;

@@ -29,7 +29,7 @@
 					$allocations[] = 'Dotation par projet';
 				}
 			@endphp
-			<tr class="{{ in_array($callForProjects->id, $callsOfTheWeek->toArray()) ? 'item-of-the-week' : '' }}">
+			<tr class="{{ in_array($callForProjects->id, $callsOfTheWeek->toArray()) ? 'selected' : '' }}">
 				<td width="25" valign="top" svalign="top" tyle="wrap-text: true;">{{ empty($subthematic) ? '' : $subthematic->name }}</td>
 				<td width="50" valign="top" style="wrap-text: true;">{{ $callForProjects->name }}</td>
 				<td width="25" valign="top" style="wrap-text: true;">{{ empty($callForProjects->closing_date) ? '' : $callForProjects->closing_date->format('d/m/Y') }}</td>
