@@ -8,10 +8,10 @@
 		<!-- CSRF Token -->
 		<meta name="csrf-token" content="{{ csrf_token() }}">
 
-		<title>{{ (app()->environment() == 'production' ? '' : 'DEV - ').config('app.name', 'DREAL') }}</title>
+		<title>{{ (app()->environment() == 'production' ? '' : 'DEV - ').'BKO - '.config('app.name', 'DREAL') }}</title>
 
 		<!-- Styles -->
-		<link href="{{ asset('css/bko.css') }}" rel="stylesheet">
+		<link href="{{ mix('css/bko.css') }}" rel="stylesheet">
 	</head>
 	<body>
 		<div id="app">
@@ -104,7 +104,7 @@
 
 		@yield('after-content')
 
-		<script src="{{ asset('js/bko.js') }}"></script>
+		<script src="{{ mix('js/bko.js') }}"></script>
 		@stack('inline-script')
 	</body>
 </html>

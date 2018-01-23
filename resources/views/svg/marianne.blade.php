@@ -1,4 +1,4 @@
-<svg version="1.1" id="svg-marianne" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="325.8 237.7 173.5 110.3" enable-background="new 325.8 237.7 173.5 110.3" xml:space="preserve">
+<svg version="1.1" class="svg-marianne" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="325.8 237.7 173.5 110.3" enable-background="new 325.8 237.7 173.5 110.3" xml:space="preserve">
 <rect x="328.6" y="240.6" fill="#FFFFFF" stroke="#000000" stroke-width="0.3734" stroke-miterlimit="10" width="168.4" height="104.5"></rect>
 	<path fill="none" stroke="#1A171B" d="M757.9,1272.6"></path>
 	<path fill="none" stroke="#1A171B" d="M115.3,1272.6"></path>

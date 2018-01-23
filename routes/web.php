@@ -51,5 +51,40 @@ Route::group([ 'namespace' => 'Bko', 'domain' => config('app.bko_subdomain').'.'
 });
 
 Route::get('/', [ 'as' => 'front.home', 'uses' => 'FrontController@home' ]);
+
+Route::post('/contact', [ 'as' => 'front.contact.post', 'uses' => 'FrontController@contactPost' ]);
+Route::get('/contact', function() {
+	return view('front.contact');
+})->name('front.contact');
+
+Route::get('/mentions-legales', function() {
+	return view('front.legal-notice');
+})->name('front.legal-notice');
+
+Route::get('/accessibilite', function() {
+	return view('front.accessibility');
+})->name('front.accessibility');
+
+Route::get('/qui-sommes-nous/projet', function() {
+	return view('front.about-us.project');
+})->name('front.about-us.project');
+
+Route::get('/qui-sommes-nous/base-de-donnees', function() {
+	return view('front.about-us.database');
+})->name('front.about-us.database');
+
+Route::get('/qui-sommes-nous/equipe', function() {
+	return view('front.about-us.team');
+})->name('front.about-us.team');
+
+Route::get('/outils/mise-a-disposition-des-donnees', function() {
+	return view('front.tools.data');
+})->name('front.tools.data');
+
+Route::get('/outils/sitotheque', function() {
+	return view('front.tools.website-library');
+})->name('front.tools.website-library');
+
+// Exports
 Route::get('export/excel', [ 'as' => 'export.xlsx', 'uses' => 'ExportController@xlsx' ]);
 Route::get('export/pdf', [ 'as' => 'export.pdf', 'uses' => 'ExportController@pdf' ]);

@@ -5,7 +5,7 @@ header {
 	padding: 30px 15px;
 	border-bottom: thin solid $body-bg;
 
-	a {
+	.link-title {
 		@include linkInherit;
 
 		&:before {
@@ -29,5 +29,12 @@ header {
 		margin-bottom: 0;
 		font-style: italic;
 		font-size: 1.5em;
+	}
+
+	.link-marianne {
+		width: 100px;
+		top: 0;
+		left: 0;
+		position: absolute;
 	}
 }

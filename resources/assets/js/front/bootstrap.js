@@ -10,6 +10,9 @@ try {
 	window.$ = window.jQuery = require('jquery');
 
 	require('bootstrap-sass');
+	require('./menu');
+
+	$('.menu-list').menu();
 } catch (e) {
 }
 

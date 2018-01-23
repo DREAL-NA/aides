@@ -22,14 +22,18 @@ mix.js('resources/assets/js/bko.js', 'public/js')
 	.sass('resources/assets/sass/bko.scss', 'public/css')
 	.options({
 		processCssUrls: false,
-	});;
+	});
 
-// mix.sass('resources/assets/sass/app.scss', 'public/css')
-// 	.options({
-// 		processCssUrls: false,
-// 	});
-// mix.js('resources/assets/js/app.js', 'public/js');
-//
+mix.js('resources/assets/js/app.js', 'public/js')
+	.sass('resources/assets/sass/app.scss', 'public/css')
+	.options({
+		processCssUrls: false,
+	});
+
+if (mix.inProduction()) {
+	mix.version();
+}
+
 // mix.browserSync({
 // 	proxy: 'http://dreal.local'
 // });

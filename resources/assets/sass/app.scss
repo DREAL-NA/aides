@@ -12,7 +12,13 @@
 // Bootstrap
 //@import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
+// Font Awesome
+//@import "~font-awesome/scss/font-awesome";
+
 @import "front/base";
 @import "front/components/header";
 @import "front/components/menu";
 @import "front/components/footer";
+@import "front/components/breadcrumb";
+
+@import "front/page/home";

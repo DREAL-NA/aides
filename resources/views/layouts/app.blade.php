@@ -8,10 +8,10 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ (app()->environment() == 'production' ? '' : 'DEV - ') }}@yield('meta_title'){{ ' | '.config('app.name', 'DREAL') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
 	<noscript>Javascript est désactivé dans votre navigateur. Vous risquez de ne pas avoir accès à toutes les fonctionnalités du site internet.</noscript>
@@ -20,15 +20,16 @@
     @include('front._menu')
 
 	<div class="container main-wrapper">
-		@yield('breadcrumb')
+		@if(Route::currentRouteName() != 'front.home')
+			@include('front._breadcrumb')
+		@endif
+
 		@yield('content')
 	</div>
 
 	@include('front._footer')
 
-	@yield('after-content')
-
-	<script src="{{ asset('js/bko.js') }}"></script>
+	<script src="{{ mix('js/app.js') }}"></script>
 	@stack('inline-script')
 </body>
 </html>
