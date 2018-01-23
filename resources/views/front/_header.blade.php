@@ -1,6 +1,7 @@
 <header>
 	<a href="{{ route('front.home') }}" class="link-marianne">
 		@include('svg.marianne')
+		<span class="title">DREAL <br>Nouvelle-Aquitaine</span>
 	</a>
 	<div class="container">
 		<a href="{{ route('front.home') }}" class="link-title">

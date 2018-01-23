@@ -28,7 +28,7 @@
 					<li><a href="{{ route('front.accessibility') }}">Accessibilité</a></li>
 					<li><a href="{{ route('front.contact') }}">Contact</a></li>
 					<li><a href="{{ route('front.legal-notice') }}">Mentions légales</a></li>
-					<li><a rel="nofollow noopener" href="http://data.gouv.fr" target="_blank" title="france.fr - Ouvrir dans une nouvelle fenêtre">data.gouv.fr</a></li>
+					<li><a rel="nofollow noopener" href="http://data.gouv.fr" target="_blank" title="data.gouv.fr - Ouvrir dans une nouvelle fenêtre">data.gouv.fr</a></li>
 				</ul>
 			</nav>
 		</div>
