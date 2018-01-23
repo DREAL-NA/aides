@@ -20,7 +20,8 @@ $color-green-pastel: rgba(#ADD488, .75);
 $color-highlighting: #D4F29C;
 
 // Typography
-$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+$icon-font-path: "../fonts/vendor/bootstrap-sass/bootstrap/";
+$fa-font-path: "../fonts/vendor/font-awesome/";
 $font-family-sans-serif: "Raleway", sans-serif;
 $font-size-base: 14px;
 $line-height-base: 1.6;
