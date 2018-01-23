@@ -12,17 +12,17 @@
 					<li>
 						<a href="#">Qui sommes-nous ?</a>
 						<ul class="submenu">
-							<li><a href="#">Le projet</a></li>
-							<li><a href="#">La base de données</a></li>
-							<li><a href="#">L'équipe</a></li>
+							<li><a href="{{ route('front.about-us.project') }}">Le projet</a></li>
+							<li><a href="{{ route('front.about-us.database') }}">La base de données</a></li>
+							<li><a href="{{ route('front.about-us.team') }}">L'équipe</a></li>
 						</ul>
 					</li>
 					<li><a href="#">Dispositifs financiers</a></li>
 					<li>
 						<a href="#">Outils</a>
 						<ul class="submenu">
-							<li><a href="#">Mise à disposition des données</a></li>
-							<li><a href="#">Sitothèque</a></li>
+							<li><a href="{{ route('front.tools.data') }}">Mise à disposition des données</a></li>
+							<li><a href="{{ route('front.tools.website-library') }}">Sitothèque</a></li>
 						</ul>
 					</li>
 					<li><a href="{{ route('front.accessibility') }}">Accessibilité</a></li>
