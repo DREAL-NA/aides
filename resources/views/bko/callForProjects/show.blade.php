@@ -58,7 +58,7 @@
 		<div class="form-group">
 			<label class="col-lg-3 control-label">Bénéficiaire - Observations</label>
 			<div class="col-lg-9">
-				<p class="form-control-static">{{ $callForProjects->beneficiary_comments }}</p>
+				<p class="form-control-static">{!! nl2br($callForProjects->beneficiary_comments) !!}</p>
 			</div>
 		</div>
 		<div class="form-group">
@@ -85,19 +85,19 @@
 		<div class="form-group">
 			<label class="col-lg-3 control-label">Dotation - Commentaires</label>
 			<div class="col-lg-9">
-				<p class="form-control-static">{{ $callForProjects->allocation_comments }}</p>
+				<p class="form-control-static">{!! nl2br($callForProjects->allocation_comments) !!}</p>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-lg-3 control-label">Relais technique DREAL / DDTMs</label>
 			<div class="col-lg-9">
-				<p class="form-control-static">{{ $callForProjects->technical_relay }}</p>
+				<p class="form-control-static">{!! nl2br($callForProjects->technical_relay) !!}</p>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-lg-3 control-label">Contact(s) porteur de projet</label>
 			<div class="col-lg-9">
-				<p class="form-control-static">{{ $callForProjects->project_holder_contact }}</p>
+				<p class="form-control-static">{!! nl2br($callForProjects->project_holder_contact) !!}</p>
 			</div>
 		</div>
 		<div class="form-group">

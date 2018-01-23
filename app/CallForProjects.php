@@ -96,8 +96,8 @@ class CallForProjects extends Model {
 	public static function getRelationshipData($class, $items, $data_id_name) {
 		$ids = self::filterDataById($items, $data_id_name);
 
-		if(empty($ids)) {
-			return null;
+		if($ids->isEmpty()) {
+			return collect();
 		}
 
 		return $class::whereIn('id', $ids)->get();

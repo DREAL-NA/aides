@@ -118,7 +118,6 @@ class CallForProjectsController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit(CallForProjects $callForProjects) {
-		$callForProjects->load('subthematic');
 		$primary_thematics = Thematic::primary()->orderBy('name', 'asc')->get();
 		$subthematics = Thematic::sub()->orderBy('name', 'asc')->get()->groupBy('parent_id');
 
