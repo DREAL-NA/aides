@@ -41,3 +41,19 @@ mark,
 .mark {
 	background-color: $color-highlighting;
 }
+
+.heading-with-actions {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	.actions {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+
+		a {
+			margin-left: 10px;
+		}
+	}
+}

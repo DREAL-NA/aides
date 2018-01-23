@@ -51,5 +51,5 @@ Route::group([ 'namespace' => 'Bko', 'domain' => config('app.bko_subdomain').'.'
 });
 
 Route::get('/', [ 'as' => 'front.home', 'uses' => 'FrontController@home' ]);
-Route::get('export/excel', [ 'as' => 'bko.export.xlsx', 'uses' => 'ExportController@xlsx' ]);
-Route::get('export/pdf', [ 'as' => 'bko.export.pdf', 'uses' => 'ExportController@pdf' ]);
+Route::get('export/excel', [ 'as' => 'export.xlsx', 'uses' => 'ExportController@xlsx' ]);
+Route::get('export/pdf', [ 'as' => 'export.pdf', 'uses' => 'ExportController@pdf' ]);
