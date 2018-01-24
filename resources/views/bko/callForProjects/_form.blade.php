@@ -189,19 +189,16 @@
 
 			$('#project_holder_id').select2({
 				ajax: window.utils.select2__ajaxOptions('{{ route('bko.porteur-dispositif.select2') }}'),
-				allowClear: true,
 				multiple: true
 			});
 
 			$('#perimeter_id').select2({
 				ajax: window.utils.select2__ajaxOptions('{{ route('bko.perimetre.select2') }}'),
-				allowClear: true,
 				multiple: true
 			});
 
 			$('#beneficiary_id').select2({
 				ajax: window.utils.select2__ajaxOptions('{{ route('bko.beneficiaire.select2') }}'),
-				allowClear: true,
 				multiple: true
 			});
 

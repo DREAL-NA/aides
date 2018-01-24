@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5b2c776ac630ed60ea48fe5d70fd089f",
+    "content-hash": "99b352a1f7ae2e4fd7e9416275f58e1a",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -2120,6 +2120,55 @@
                 "spatie"
             ],
             "time": "2018-01-07T06:34:55+00:00"
+        },
+        {
+            "name": "spatie/laravel-sluggable",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-sluggable.git",
+                "reference": "2d907c0e1d43b75e97968cdcd2f77d76cff543a2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-sluggable/zipball/2d907c0e1d43b75e97968cdcd2f77d76cff543a2",
+                "reference": "2d907c0e1d43b75e97968cdcd2f77d76cff543a2",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "~5.5.0",
+                "illuminate/support": "~5.5.0",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.5.0",
+                "phpunit/phpunit": "^6.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Sluggable\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Generate slugs when saving Eloquent models",
+            "homepage": "https://github.com/spatie/laravel-sluggable",
+            "keywords": [
+                "laravel-sluggable",
+                "spatie"
+            ],
+            "time": "2017-09-13T16:56:50+00:00"
         },
         {
             "name": "spatie/pdf-to-image",

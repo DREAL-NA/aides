@@ -6,3 +6,17 @@
  */
 
 require('./front/bootstrap');
+
+(function($) {
+	"use strict";
+
+	$('select').selectric({
+		responsive: true,
+		multiple: {
+			separator: ', ',
+			keepMenuOpen: true,
+			maxLabelEntries: 2
+		}
+	});
+
+})(jQuery);

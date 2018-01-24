@@ -7,9 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class CallForProjects extends Model {
-	use SoftDeletes;
+	use SoftDeletes, HasSlug;
 
 	protected $guarded = [];
 	protected $dates   = [ 'deleted_at', 'closing_date' ];
@@ -37,6 +39,17 @@ class CallForProjects extends Model {
 		});
 	}
 
+	/**
+	 * Get the options for generating the slug.
+	 */
+	public function getSlugOptions(): SlugOptions {
+		return SlugOptions::create()
+		                  ->generateSlugsFrom('name')
+		                  ->saveSlugsTo('slug')
+		                  ->slugsShouldBeNoLongerThan(200)
+		                  ->usingLanguage('fr');
+	}
+
 	public function rules() {
 		return [
 			'thematic_id'            => [
@@ -53,17 +66,17 @@ class CallForProjects extends Model {
 			],
 			'name'                   => 'required|min:2',
 			'closing_date'           => 'nullable|date_format:Y-m-d',
-//			'project_holder_id'      => 'nullable|exists:project_holders,id',
+			//			'project_holder_id'      => 'nullable|exists:project_holders,id',
 			'project_holders'        => 'nullable|exists:project_holders,id',
 			'project_holder_contact' => 'nullable',
-//			'perimeter_id'           => 'nullable|exists:perimeters,id',
+			//			'perimeter_id'           => 'nullable|exists:perimeters,id',
 			'perimeters'             => 'nullable|exists:perimeters,id',
 			'objectives'             => 'nullable|min:2',
-//			'beneficiary_id'         => 'nullable|exists:beneficiaries,id',
+			//			'beneficiary_id'         => 'nullable|exists:beneficiaries,id',
 			'beneficiaries'          => 'nullable|exists:beneficiaries,id',
 			'beneficiary_comments'   => 'nullable',
-//			'allocation_global'      => 'required_without:allocation_per_project|in:1',
-//			'allocation_per_project' => 'required_without:allocation_global|in:1',
+			//			'allocation_global'      => 'required_without:allocation_per_project|in:1',
+			//			'allocation_per_project' => 'required_without:allocation_global|in:1',
 			'allocation_global'      => 'in:1',
 			'allocation_per_project' => 'in:1',
 			'allocation_amount'      => 'nullable',

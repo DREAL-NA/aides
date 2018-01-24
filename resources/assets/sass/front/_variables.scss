@@ -33,6 +33,7 @@ $list-group-border: $front-border-color;
 $navbar-default-border: $front-border-color;
 $panel-default-border: $front-border-color;
 $panel-inner-border: $front-border-color;
+$page-header-border-color: lighten($color-3, 50%);
 
 // Headings
 $headings-font-family: "Raleway", "Roboto", sans-serif;
@@ -62,3 +63,17 @@ $panel-default-heading-bg: #fff;
 
 // Menu
 $height-submenu: 60px;
+
+
+// Selector
+$selectric-main-color: $color-gray-1; // Color used in border
+$selectric-secondary-color: $selectric-main-color; // Color used in button
+$selectric-text-color: $text-color; // Color used in label
+$selectric-bg-color: $color-white; // Background color
+$selectric-btn-bg-color: $selectric-bg-color; // Button background color
+$selectric-height: 40px; // Outer height
+$selectric-spacing: 10px; // Label left padding
+$selectric-border-width: 1px; // Outer border width
+$selectric-border-radius: 0px; // Border radius
+$selectric-inner-height: $selectric-height - ($selectric-border-width * 2); // Inner height
+$selectric-font-size: $font-size-base; // Font size

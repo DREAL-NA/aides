@@ -86,6 +86,7 @@ Route::get('/outils/sitotheque', function() {
 })->name('front.tools.website-library');
 
 Route::get('/dispositifs-financiers', [ 'as' => 'front.dispositifs', 'uses' => 'FrontController@callForProjects' ]);
+Route::get('/dispositifs-financiers/{slug}', [ 'as' => 'front.dispositifs.unique', 'uses' => 'FrontController@callForProjectsUnique' ]);
 
 // Exports
 Route::get('export/pdf', [ 'as' => 'export.pdf', 'uses' => 'ExportController@pdf' ]);

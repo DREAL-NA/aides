@@ -12,8 +12,12 @@
 // Bootstrap
 //@import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
+// Selectric
+@import "~selectric/src/selectric";
+@import "front/components/selectric-custom";
+
 // Font Awesome
-//@import "~font-awesome/scss/font-awesome";
+@import "~font-awesome/scss/font-awesome";
 
 @import "front/base";
 @import "front/components/header";
@@ -22,3 +26,4 @@
 @import "front/components/breadcrumb";
 
 @import "front/page/home";
+@import "front/page/dispositifs";

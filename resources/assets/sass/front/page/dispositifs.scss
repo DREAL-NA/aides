@@ -1,0 +1,178 @@
+.page-dispositifs {
+	.filters-dispositifs {
+		background-color: $color-3;
+		color: $color-white;
+		padding: 30px;
+		margin: 30px -30px;
+
+		h4 {
+			margin-top: 0;
+			margin-bottom: 15px;
+		}
+
+		.filter-items {
+			display: flex;
+			align-items: flex-start;
+			justify-content: flex-start;
+		}
+
+		.filter-item {
+			width: 20%;
+		}
+	}
+
+	.content-dispositifs {
+		.page-header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-bottom: 0;
+		}
+
+		.page-title {
+			h3 {
+				margin-top: 0;
+			}
+		}
+
+		.page-meta {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			.result-count {
+				strong {
+					color: $color-1;
+				}
+			}
+
+			.helper-links {
+				display: flex;
+				align-items: center;
+				justify-content: flex-end;
+				margin-left: 50px;
+			}
+		}
+
+		.dispositif-items {
+
+		}
+
+		.dispositif-item,
+		.dispositifs-items-header {
+			display: flex;
+			align-items: stretch;
+			flex-wrap: wrap;
+			border-bottom: 1px solid $page-header-border-color;
+
+			.beneficiary {
+				width: 20%;
+				padding: 30px 15px;
+			}
+
+			.infos {
+				width: 65%;
+				border-left: 1px solid $page-header-border-color;
+				border-right: 1px solid $page-header-border-color;
+			}
+
+			.closing-date {
+				width: 15%;
+				padding: 30px 15px;
+			}
+		}
+
+		.dispositifs-items-header {
+			font-weight: 500;
+			font-size: 1.2em;
+			text-align: center;
+
+			.infos {
+				padding: 30px;
+			}
+		}
+
+		.dispositif-item {
+			.beneficiary {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				font-weight: 500;
+			}
+
+			.infos {
+				padding: 15px 15px 0;
+
+				.title {
+					margin-bottom: 15px;
+
+					a {
+						@include linkInherit;
+					}
+				}
+
+				.thematic {
+					font-size: 1.15em;
+					font-family: $headings-font-family;
+					color: $color-1;
+					font-weight: 700;
+					text-align: right;
+				}
+
+				.common-data-wrapper {
+					margin-top: 15px;
+
+					.common-data {
+						& + .common-data {
+							margin-top: 5px;
+						}
+					}
+				}
+
+				.common-data {
+					display: flex;
+					align-items: flex-start;
+
+					.label {
+						font-weight: 500;
+						width: 150px;
+					}
+
+					.items {
+						p {
+							margin: 0;
+						}
+					}
+				}
+				
+				.see-record {
+					float: right;
+					padding: 10px 15px;
+					margin-right: -16px;
+					margin-bottom: -1px;
+					@include linkInherit;
+					color: $color-white;
+					background-color: $color-1;
+					transition: all 250ms ease-in-out;
+
+					&:hover {
+						background-color: lighten($color-1, 10%);
+						color: $color-white;
+					}
+				}
+
+				.external-link {
+					.fa {
+						margin-left: 5px;
+					}
+				}
+			}
+
+			.closing-date {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+		}
+	}
+}
