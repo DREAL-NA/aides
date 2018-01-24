@@ -86,5 +86,5 @@ Route::get('/outils/sitotheque', function() {
 })->name('front.tools.website-library');
 
 // Exports
-Route::get('export/{type}', [ 'as' => 'export.xlsx', 'uses' => 'ExportController@xlsx' ]);
 Route::get('export/pdf', [ 'as' => 'export.pdf', 'uses' => 'ExportController@pdf' ]);
+Route::get('export/{type}', [ 'as' => 'export.xlsx', 'uses' => 'ExportController@xlsx' ]);
