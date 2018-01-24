@@ -57,7 +57,9 @@
 					<p class="form-control-static"><b>Nom :</b> {{ $callForProjects->beneficiary->name }}</p>
 					<p class="form-control-static"><b>Description :</b><br>{!! nl2br($callForProjects->beneficiary->description) !!}</p>
 				@endif
-				<p class="form-control-static"><b>Observations :</b><br>{!! nl2br($callForProjects->beneficiary_comments) !!}</p>
+				@if(!empty($callForProjects->beneficiary_comments))
+					<p class="form-control-static"><b>Observations :</b><br>{!! nl2br($callForProjects->beneficiary_comments) !!}</p>
+				@endif
 			</div>
 		</div>
 		<div class="form-group">
