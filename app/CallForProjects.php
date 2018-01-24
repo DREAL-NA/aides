@@ -20,6 +20,13 @@ class CallForProjects extends Model {
 		parent::boot();
 
 		static::saving(function($reply) {
+			if(empty(request()->get('allocation_global'))) {
+				$reply->allocation_global = 0;
+			}
+			if(empty(request()->get('allocation_per_project'))) {
+				$reply->allocation_per_project = 0;
+			}
+
 			$reply->editor_id = Auth::user()->id;
 		});
 	}
@@ -46,8 +53,10 @@ class CallForProjects extends Model {
 			'objectives'             => 'nullable|min:2',
 			'beneficiary_id'         => 'nullable|exists:beneficiaries,id',
 			'beneficiary_comments'   => 'nullable',
-			'allocation_global'      => 'required_without:allocation_per_project|in:1',
-			'allocation_per_project' => 'required_without:allocation_global|in:1',
+//			'allocation_global'      => 'required_without:allocation_per_project|in:1',
+//			'allocation_per_project' => 'required_without:allocation_global|in:1',
+			'allocation_global'      => 'in:1',
+			'allocation_per_project' => 'in:1',
 			'allocation_amount'      => 'nullable',
 			'allocation_comments'    => 'nullable',
 			'technical_relay'        => 'nullable',

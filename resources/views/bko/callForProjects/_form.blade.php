@@ -100,7 +100,7 @@
 		<textarea class="form-control" rows="3" name="beneficiary_comments" id="beneficiary_comments">{{ old('beneficiary_comments', $callForProjects->beneficiary_comments) }}</textarea>
 	</div>
 	<div class="form-group">
-		<label>Dotation*</label>
+		<label>Dotation</label>
 		<div class="checkboxes">
 			<label class="checkbox-inline">
 				<input type="checkbox" name="allocation_global" id="allocation_global" value="1" {{ empty($allocation_global) ? '' : 'checked="checked"' }}> Dotation globale

@@ -103,7 +103,7 @@
 		<div class="form-group">
 			<label class="col-lg-3 control-label">Adresse internet</label>
 			<div class="col-lg-9">
-				<p class="form-control-static">{{ $callForProjects->website_url }}</p>
+				<p class="form-control-static"><a href="{{ $callForProjects->website_url }}">{{ $callForProjects->website_url }}</a></p>
 			</div>
 		</div>
 	</div>

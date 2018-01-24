@@ -5,12 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
+	<meta name="author" content="{{ config('meta.author') }}">
+	<meta name="language" content="{{ app()->getLocale() }}">
+
+	<meta property="og:title" content="{{ config('app.name') }}" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="{{ config('app.url') }}" />
+	<meta property="og:image" content="/favicon-32x32.png" />
+	<meta property="og:description" content="{{ config('meta.description') }}" />
+	<meta property="og:locale" content="{{ config('meta.locale') }}" />
+
+	<meta content="{{ config('meta.description') }}" name="description">
+	<meta content="{{ config('meta.keywords') }}" name="keywords">
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+	<link rel="manifest" href="/manifest.json">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#fa824c">
+	<meta name="theme-color" content="#ffffff">
+
+	<link rel="canonical" href="{{ config('app.url') }}" />
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ (app()->environment() == 'production' ? '' : 'DEV - ') }}@yield('meta_title'){{ ' | '.config('app.name', 'DREAL') }}</title>
+    <title>{{ (app()->environment() == 'production' ? '' : 'DEV - ') }}@yield('meta_title'){{ ' | '.config('app.name') }}</title>
 
-    <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
