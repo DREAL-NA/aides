@@ -67,17 +67,9 @@
 	<script>
 		var table;
 
-		function searchFilterArrayValues(values, column) {
-			var search_values = [];
-			for(var i=0; i<values.length; i++) {
-				search_values.push($.fn.DataTable.ext.type.search.string($.fn.dataTable.util.escapeRegex(values[i])));
-			}
-			table.columns(column).search(search_values.length > 0 ? '('+search_values.join('|')+')' : '', true, false);
-		}
-
 		function filterResults() {
-			searchFilterArrayValues($('#filter__organizationType').val(), 0);
-			searchFilterArrayValues($('#filter__perimeter').val(), 3);
+			window.utils.searchFilterArrayValues($('#filter__organizationType').val(), 0);
+			window.utils.searchFilterArrayValues($('#filter__perimeter').val(), 3);
 			table.draw();
 		}
 

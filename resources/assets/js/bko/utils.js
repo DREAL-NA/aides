@@ -64,7 +64,12 @@ window.utils = {
 			}
 		});
 	},
-	deleteRow() {
-
+	searchFilterArrayValues(values, column) {
+		var search_values = [];
+		for(var i=0; i<values.length; i++) {
+			// search_values.push($.fn.DataTable.ext.type.search.string($.fn.dataTable.util.escapeRegex(values[i])));
+			search_values.push($.fn.dataTable.util.escapeRegex(values[i]));
+		}
+		table.columns(column).search(search_values.length > 0 ? '('+search_values.join('|')+')' : '', true, false);
 	}
 }

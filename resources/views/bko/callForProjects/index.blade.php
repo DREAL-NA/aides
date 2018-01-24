@@ -120,20 +120,13 @@
 @push('inline-script')
 	<script>
 		var table;
-		function searchFilterArrayValues(values, column) {
-			var search_values = [];
-			for(var i=0; i<values.length; i++) {
-				search_values.push($.fn.DataTable.ext.type.search.string($.fn.dataTable.util.escapeRegex(values[i])));
-			}
-			table.columns(column).search(search_values.length > 0 ? '^('+search_values.join('|')+')$' : '', true, false);
-		}
 
 		function filterResults() {
-			searchFilterArrayValues($('#filter__thematic').val(), 0);
-			searchFilterArrayValues($('#filter__subthematic').val(), 1);
-			searchFilterArrayValues($('#filter__projectHolder').val(), 4);
-			searchFilterArrayValues($('#filter__perimeter').val(), 5);
-			searchFilterArrayValues($('#filter__beneficiary').val(), 7);
+			window.utils.searchFilterArrayValues($('#filter__thematic').val(), 0);
+			window.utils.searchFilterArrayValues($('#filter__subthematic').val(), 1);
+			window.utils.searchFilterArrayValues($('#filter__projectHolder').val(), 4);
+			window.utils.searchFilterArrayValues($('#filter__perimeter').val(), 5);
+			window.utils.searchFilterArrayValues($('#filter__beneficiary').val(), 7);
 
 			table.draw();
 		}

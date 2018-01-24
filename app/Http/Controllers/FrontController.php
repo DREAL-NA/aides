@@ -17,6 +17,12 @@ class FrontController extends Controller {
 		return view('front.home', compact('countCallsForProjects', 'thematics', 'perimeters'));
 	}
 
+	public function callForProjects(Request $request) {
+		$callsForProjects = CallForProjects::with([ 'thematic', 'projectHolders', 'perimeters', 'beneficiaries' ])->opened()->get();
+
+		return view('front.call-for-projects', compact('callsForProjects'));
+	}
+
 	public function contactPost(Request $request) {
 
 	}

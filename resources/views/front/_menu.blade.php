@@ -5,7 +5,7 @@
 				<a href="#" menu-selector="who">Qui sommes-nous ?</a>
 			</li>
 			<li class="menu-item">
-				<a href="#">Dispositifs financiers</a>
+				<a href="{{ route('front.dispositifs') }}">Dispositifs financiers</a>
 			</li>
 			<li class="menu-item">
 				<a href="#" menu-selector="tools">Outils</a>
