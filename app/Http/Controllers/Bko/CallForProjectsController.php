@@ -17,7 +17,7 @@ class CallForProjectsController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		$callsForProjects = CallForProjects::with('thematic')->opened()->get();
+		$callsForProjects = CallForProjects::with([ 'thematic', 'projectHolders', 'perimeters', 'beneficiaries' ])->opened()->get();
 		$callsOfTheWeek = CallForProjects::filterCallsOfTheWeek($callsForProjects)->pluck('id');
 
 //		$primary_thematics = Thematic::primary()->orderBy('name', 'asc')->get();
@@ -27,9 +27,9 @@ class CallForProjectsController extends Controller {
 			return $item->thematic;
 		})->unique()->values();
 
-		$perimeters = CallForProjects::getRelationshipData(Perimeter::class, $callsForProjects, 'perimeter_id');
-		$beneficiaries = CallForProjects::getRelationshipData(Beneficiary::class, $callsForProjects, 'beneficiary_id');
-		$project_holders = CallForProjects::getRelationshipData(ProjectHolder::class, $callsForProjects, 'project_holder_id');
+		$perimeters = $callsForProjects->pluck('perimeters')->flatten();
+		$project_holders = $callsForProjects->pluck('projectHolders')->flatten();
+
 		$subthematics = CallForProjects::getRelationshipData(Thematic::class, $callsForProjects, 'subthematic_id');
 		if(!empty($subthematics)) {
 			$subthematics = $subthematics->groupBy('parent_id');
@@ -37,7 +37,7 @@ class CallForProjectsController extends Controller {
 
 		$title = "Liste des dispositifs financiers ouverts";
 
-		return view('bko.callForProjects.index', compact('callsForProjects', 'primary_thematics', 'subthematics', 'project_holders', 'perimeters', 'beneficiaries', 'title', 'callsOfTheWeek'));
+		return view('bko.callForProjects.index', compact('callsForProjects', 'primary_thematics', 'subthematics', 'project_holders', 'perimeters', 'title', 'callsOfTheWeek'));
 	}
 
 	/**
@@ -46,7 +46,7 @@ class CallForProjectsController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function indexClosed() {
-		$callsForProjects = CallForProjects::with('thematic')->closed()->get();
+		$callsForProjects = CallForProjects::with([ 'thematic', 'projectHolders', 'perimeters', 'beneficiaries' ])->opened()->get();
 		$callsOfTheWeek = CallForProjects::filterCallsOfTheWeek($callsForProjects)->pluck('id');
 //		$primary_thematics = Thematic::primary()->orderBy('name', 'asc')->get();
 //		$subthematics = Thematic::sub()->orderBy('name', 'asc')->get()->groupBy('parent_id');
@@ -55,9 +55,8 @@ class CallForProjectsController extends Controller {
 			return $item->thematic;
 		})->unique()->values();
 
-		$perimeters = CallForProjects::getRelationshipData(Perimeter::class, $callsForProjects, 'perimeter_id');
-		$beneficiaries = CallForProjects::getRelationshipData(Beneficiary::class, $callsForProjects, 'beneficiary_id');
-		$project_holders = CallForProjects::getRelationshipData(ProjectHolder::class, $callsForProjects, 'project_holder_id');
+		$perimeters = $callsForProjects->pluck('perimeters')->flatten();
+		$project_holders = $callsForProjects->pluck('projectHolders')->flatten();
 		$subthematics = CallForProjects::getRelationshipData(Thematic::class, $callsForProjects, 'subthematic_id');
 		if(!empty($subthematics)) {
 			$subthematics = $subthematics->groupBy('parent_id');
@@ -65,7 +64,7 @@ class CallForProjectsController extends Controller {
 
 		$title = "Liste des dispositifs financiers fermés";
 
-		return view('bko.callForProjects.index', compact('callsForProjects', 'primary_thematics', 'subthematics', 'project_holders', 'perimeters', 'beneficiaries', 'title', 'callsOfTheWeek'));
+		return view('bko.callForProjects.index', compact('callsForProjects', 'primary_thematics', 'subthematics', 'project_holders', 'perimeters', 'title', 'callsOfTheWeek'));
 	}
 
 	/**
@@ -93,7 +92,7 @@ class CallForProjectsController extends Controller {
 
 		$validatedData = $request->validate($callForProjects->rules());
 
-		$callForProjects->fill($validatedData);
+		$callForProjects->fill(array_except($validatedData, [ 'perimeters', 'project_holders', 'beneficiaries' ]));
 		$callForProjects->save();
 
 		return redirect(route('bko.call.edit', $callForProjects))->with('success', "Le dispositif financier a bien été ajouté.");
@@ -135,7 +134,7 @@ class CallForProjectsController extends Controller {
 	public function update(Request $request, CallForProjects $callForProjects) {
 		$validatedData = $request->validate($callForProjects->rules());
 
-		$callForProjects->fill($validatedData);
+		$callForProjects->fill(array_except($validatedData, [ 'perimeters', 'project_holders', 'beneficiaries' ]));
 		$callForProjects->save();
 
 		return redirect(route('bko.call.edit', $callForProjects))->with('success', "Le dispositif financier a bien été modifié.");

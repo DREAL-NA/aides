@@ -127,7 +127,7 @@ class BeneficiaryController extends Controller {
 		$data = $data->map(function($item) {
 			return [
 				'id' => $item->id,
-				'text' => $item->name,
+				'text' => Beneficiary::types()[$item->type].' | '.$item->name,
 			];
 		});
 

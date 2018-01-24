@@ -5,9 +5,18 @@
 	@php
 	$thematic_id = old('thematic_id', $callForProjects->thematic_id);
 	$subthematic_id = old('subthematic_id', $callForProjects->subthematic_id);
-	$project_holder_id = old('project_holder_id', $callForProjects->project_holder_id);
-	$perimeter_id = old('perimeter_id', $callForProjects->perimeter_id);
-	$beneficiary_id = old('beneficiary_id', $callForProjects->beneficiary_id);
+	$project_holders = old('project_holders');
+	if(!empty($project_holders)) {
+		$callForProjects->projectHolders = \App\ProjectHolder::whereIn('id', $project_holders)->get();
+	}
+	$perimeters = old('perimeters');
+	if(!empty($perimeters)) {
+		$callForProjects->perimeters = \App\Perimeter::whereIn('id', $perimeters)->get();
+	}
+	$beneficiaries = old('beneficiaries');
+	if(!empty($beneficiaries)) {
+		$callForProjects->beneficiaries = \App\Beneficiary::whereIn('id', $beneficiaries)->get();
+	}
 	$allocation_global = old('allocation_global', $callForProjects->allocation_global);
 	$allocation_per_project = old('allocation_per_project', $callForProjects->allocation_per_project);
 	@endphp
@@ -46,12 +55,11 @@
 	<div class="form-group">
 		<label for="project_holder_id">Porteur du dispositif</label>
 		<div class="input-group">
-			<select name="project_holder_id" id="project_holder_id" class="form-control select2-allow-clear">
-				@if(!empty($project_holder_id))
-					@php($project_holder = \App\ProjectHolder::where('id', $project_holder_id)->first())
-					@if(!empty($project_holder->id))
+			<select name="project_holders[]" id="project_holder_id" class="form-control select2-allow-clear" multiple>
+				@if(!$callForProjects->projectHolders->isEmpty())
+					@foreach($callForProjects->projectHolders as $project_holder)
 						<option value="{{ $project_holder->id }}" selected>{{ $project_holder->name }}</option>
-					@endif
+					@endforeach
 				@endif
 			</select>
 			<span class="input-group-btn">
@@ -62,12 +70,11 @@
 	<div class="form-group">
 		<label for="perimeter_id">Périmètre</label>
 		<div class="input-group">
-			<select name="perimeter_id" id="perimeter_id" class="form-control select2-allow-clear">
-				@if(!empty($perimeter_id))
-					@php($perimeter = \App\Perimeter::where('id', $perimeter_id)->first())
-					@if(!empty($perimeter->id))
+			<select name="perimeters[]" id="perimeter_id" class="form-control select2-allow-clear" multiple>
+				@if(!$callForProjects->perimeters->isEmpty())
+					@foreach($callForProjects->perimeters as $perimeter)
 						<option value="{{ $perimeter->id }}" selected>{{ $perimeter->name }}</option>
-					@endif
+					@endforeach
 				@endif
 			</select>
 			<span class="input-group-btn">
@@ -82,12 +89,11 @@
 	<div class="form-group">
 		<label for="beneficiary_id">Bénéficiaire</label>
 		<div class="input-group">
-			<select name="beneficiary_id" id="beneficiary_id" class="form-control select2-allow-clear">
-				@if(!empty($beneficiary_id))
-					@php($beneficiary = \App\Beneficiary::where('id', $beneficiary_id)->first())
-					@if(!empty($beneficiary->id))
-						<option value="{{ $beneficiary->id }}" selected>{{ $beneficiary->name }}</option>
-					@endif
+			<select name="beneficiaries[]" id="beneficiary_id" class="form-control select2-allow-clear" multiple>
+				@if(!$callForProjects->beneficiaries->isEmpty())
+					@foreach($callForProjects->beneficiaries as $beneficiary)
+							<option value="{{ $beneficiary->id }}" selected>{{ \App\Beneficiary::types()[$beneficiary->type].' | '.$beneficiary->name }}</option>
+					@endforeach
 				@endif
 			</select>
 			<span class="input-group-btn">
@@ -183,17 +189,20 @@
 
 			$('#project_holder_id').select2({
 				ajax: window.utils.select2__ajaxOptions('{{ route('bko.porteur-dispositif.select2') }}'),
-				allowClear: true
+				allowClear: true,
+				multiple: true
 			});
 
 			$('#perimeter_id').select2({
 				ajax: window.utils.select2__ajaxOptions('{{ route('bko.perimetre.select2') }}'),
-				allowClear: true
+				allowClear: true,
+				multiple: true
 			});
 
 			$('#beneficiary_id').select2({
 				ajax: window.utils.select2__ajaxOptions('{{ route('bko.beneficiaire.select2') }}'),
-				allowClear: true
+				allowClear: true,
+				multiple: true
 			});
 
 			$('#save__modalNewProjectHolder').on('click', function() {

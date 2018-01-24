@@ -1,8 +1,9 @@
 <footer>
 	<div class="container footer">
 		<div class="footer-first">
-			@include('svg.marianne')
-			<p class="brand">DREAL Nouvelle-Aquitaine</p>
+			{{--@include('svg.marianne')--}}
+			{{--<p class="brand">DREAL Nouvelle-Aquitaine</p>--}}
+			<img src="{{ asset('images/logo_1.png') }}" alt="DREAL Nouvelle-Aquitaine" class="logo-image">
 		</div>
 		<div class="footer-middle">
 			<h2 class="title">Plan du site</h2>

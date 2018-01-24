@@ -89,26 +89,23 @@
 					</tr>
 				</thead>
 				<tbody>
-					@foreach($callsForProjects as $callForProject)
+					@foreach($callsForProjects as $callForProjects)
 						@php
-						$beneficiary = empty($callForProject->beneficiary_id) ? null : $beneficiaries->firstWhere('id', $callForProject->beneficiary_id);
-						$perimeter = empty($callForProject->perimeter_id) ? null : $perimeters->firstWhere('id', $callForProject->perimeter_id);
-						$project_holder = empty($callForProject->project_holder_id) ? null : $project_holders->firstWhere('id', $callForProject->project_holder_id);
-						$subthematic = empty($subthematics[$callForProject->thematic->id]) ? null : $subthematics[$callForProject->thematic->id]->firstWhere('id', $callForProject->subthematic_id);
+						$subthematic = empty($subthematics[$callForProjects->thematic->id]) ? null : $subthematics[$callForProjects->thematic->id]->firstWhere('id', $callForProjects->subthematic_id);
 						@endphp
-						<tr class="{{ in_array($callForProject->id, $callsOfTheWeek->toArray()) ? 'item-of-the-week' : '' }}">
-							<td>{{ $callForProject->thematic->name }}</td>
+						<tr class="{{ in_array($callForProjects->id, $callsOfTheWeek->toArray()) ? 'item-of-the-week' : '' }}">
+							<td>{{ $callForProjects->thematic->name }}</td>
 							<td>{{ empty($subthematic) ? '' : $subthematic->name }}</td>
-							<td>{{ $callForProject->name }}</td>
-							<td>{{ empty($callForProject->closing_date) ? '' : $callForProject->closing_date->format('d/m/Y') }}</td>
-							<td>{{ empty($project_holder) ? '' : $project_holder->name }}</td>
-							<td>{{ empty($perimeter) ? '' : $perimeter->name }}</td>
-							<td>{{ \Illuminate\Support\Str::words($callForProject->objectives, 50) }}</td>
-							<td>{{ empty($beneficiary) ? '' : \App\Beneficiary::types()[$beneficiary->type] }}</td>
+							<td>{{ $callForProjects->name }}</td>
+							<td>{{ empty($callForProjects->closing_date) ? '' : $callForProjects->closing_date->format('d/m/Y') }}</td>
+							<td>{{ $callForProjects->projectHolders->pluck('name')->implode(', ') }}</td>
+							<td>{{ $callForProjects->perimeters->pluck('name')->implode(', ') }}</td>
+							<td>{{ \Illuminate\Support\Str::words($callForProjects->objectives, 50) }}</td>
+							<td>{{ $callForProjects->beneficiaries->pluck('type_label')->implode(', ') }}</td>
 							<td class="text-right col-actions">
-								<a href="{{ route('bko.call.show', $callForProject) }}" data-tooltip="tooltip" title="Voir la fiche"><i class="fa fa-eye" aria-hidden="true"></i></a>
-								<a href="{{ route('bko.call.edit', $callForProject) }}" data-tooltip="tooltip" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-								<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-tooltip="tooltip"data-id="{{ $callForProject->id }}">
+								<a href="{{ route('bko.call.show', $callForProjects) }}" data-tooltip="tooltip" title="Voir la fiche"><i class="fa fa-eye" aria-hidden="true"></i></a>
+								<a href="{{ route('bko.call.edit', $callForProjects) }}" data-tooltip="tooltip" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+								<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-tooltip="tooltip"data-id="{{ $callForProjects->id }}">
 									<i class="fa fa-trash-o" aria-hidden="true"></i>
 								</a>
 							</td>

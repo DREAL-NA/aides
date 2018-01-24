@@ -1,7 +1,8 @@
 <header>
 	<a href="{{ route('front.home') }}" class="link-marianne">
-		@include('svg.marianne')
-		<span class="title">DREAL <br>Nouvelle-Aquitaine</span>
+		{{--@include('svg.marianne')--}}
+		{{--<span class="title">DREAL <br>Nouvelle-Aquitaine</span>--}}
+		<img src="{{ asset('images/logo_1.png') }}" alt="DREAL Nouvelle-Aquitaine" class="logo-image">
 	</a>
 	<div class="container">
 		<a href="{{ route('front.home') }}" class="link-title">

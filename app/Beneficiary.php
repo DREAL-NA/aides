@@ -37,4 +37,12 @@ class Beneficiary extends Model {
 			'description' => 'present',
 		];
 	}
+
+	public function getTypeLabelAttribute() {
+		return self::types()[$this->attributes['type']];
+	}
+
+	public function getNameCompleteAttribute() {
+		return self::types()[$this->attributes['type']].' | '.$this->attributes['name'];
+	}
 }

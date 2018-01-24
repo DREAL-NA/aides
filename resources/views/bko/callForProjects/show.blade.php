@@ -32,15 +32,15 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="col-lg-3 control-label">Porteur du dispositif</label>
+			<label class="col-lg-3 control-label">Porteurs du dispositif</label>
 			<div class="col-lg-9">
-				<p class="form-control-static">{{ empty($callForProjects->project_holder_id) ? '' : $callForProjects->projectHolder->name }}</p>
+				<p class="form-control-static">{{ $callForProjects->projectHolders->pluck('name')->implode(', ') }}</p>
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="col-lg-3 control-label">Périmètre</label>
+			<label class="col-lg-3 control-label">Périmètres</label>
 			<div class="col-lg-9">
-				<p class="form-control-static">{{ empty($callForProjects->perimeter_id) ? '' : $callForProjects->perimeter->name }}</p>
+				<p class="form-control-static">{{ $callForProjects->perimeters->pluck('name')->implode(', ') }}</p>
 			</div>
 		</div>
 		<div class="form-group">
@@ -50,17 +50,22 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="col-lg-3 control-label">Bénéficiaire</label>
+			<label class="col-lg-3 control-label">Bénéficiaires</label>
 			<div class="col-lg-9">
-				@if(!empty($callForProjects->beneficiary_id))
-					<p class="form-control-static"><b>Type :</b> {{ \App\Beneficiary::types()[$callForProjects->beneficiary->type] }}</p>
-					<p class="form-control-static"><b>Nom :</b> {{ $callForProjects->beneficiary->name }}</p>
-					<p class="form-control-static"><b>Description :</b><br>{!! nl2br($callForProjects->beneficiary->description) !!}</p>
-				@endif
-				@if(!empty($callForProjects->beneficiary_comments))
-					<p class="form-control-static"><b>Observations :</b><br>{!! nl2br($callForProjects->beneficiary_comments) !!}</p>
+				@if(!empty($callForProjects->beneficiaries))
+					@foreach($callForProjects->beneficiaries as $beneficiary)
+						<div class="beneficiary-item">
+							<p class="form-control-static"><b>Type :</b> {{ $beneficiary->type_label }}</p>
+							<p class="form-control-static"><b>Nom :</b> {{ $beneficiary->name }}</p>
+							<p class="form-control-static"><b>Description :</b><br>{!! nl2br($beneficiary->description) !!}</p>
+						</div>
+					@endforeach
 				@endif
 			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-3 control-label">Bénéficiaires - Observations</label>
+			<p class="form-control-static">{!! nl2br($callForProjects->beneficiary_comments) !!}</p>
 		</div>
 		<div class="form-group">
 			<label class="col-lg-3 control-label">Dotation</label>

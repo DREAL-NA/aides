@@ -19,15 +19,21 @@ class CallForProjects extends Model {
 	protected static function boot() {
 		parent::boot();
 
-		static::saving(function($reply) {
+		static::saving(function($item) {
 			if(empty(request()->get('allocation_global'))) {
-				$reply->allocation_global = 0;
+				$item->allocation_global = 0;
 			}
 			if(empty(request()->get('allocation_per_project'))) {
-				$reply->allocation_per_project = 0;
+				$item->allocation_per_project = 0;
 			}
 
-			$reply->editor_id = Auth::user()->id;
+			$item->editor_id = Auth::user()->id;
+		});
+
+		static::saved(function($item) {
+			$item->projectHolders()->sync(request()->get('project_holders'));
+			$item->perimeters()->sync(request()->get('perimeters'));
+			$item->beneficiaries()->sync(request()->get('beneficiaries'));
 		});
 	}
 
@@ -47,11 +53,14 @@ class CallForProjects extends Model {
 			],
 			'name'                   => 'required|min:2',
 			'closing_date'           => 'nullable|date_format:Y-m-d',
-			'project_holder_id'      => 'nullable|exists:project_holders,id',
+//			'project_holder_id'      => 'nullable|exists:project_holders,id',
+			'project_holders'        => 'nullable|exists:project_holders,id',
 			'project_holder_contact' => 'nullable',
-			'perimeter_id'           => 'nullable|exists:perimeters,id',
+//			'perimeter_id'           => 'nullable|exists:perimeters,id',
+			'perimeters'             => 'nullable|exists:perimeters,id',
 			'objectives'             => 'nullable|min:2',
-			'beneficiary_id'         => 'nullable|exists:beneficiaries,id',
+//			'beneficiary_id'         => 'nullable|exists:beneficiaries,id',
+			'beneficiaries'          => 'nullable|exists:beneficiaries,id',
 			'beneficiary_comments'   => 'nullable',
 //			'allocation_global'      => 'required_without:allocation_per_project|in:1',
 //			'allocation_per_project' => 'required_without:allocation_global|in:1',
@@ -73,15 +82,30 @@ class CallForProjects extends Model {
 	}
 
 	public function projectHolder() {
-		return $this->belongsTo(ProjectHolder::class);
+		//		return $this->belongsTo(ProjectHolder::class);
+		return $this->belongsToMany(ProjectHolder::class, 'call_for_projects_project_holders', 'call_for_project_id', 'project_holder_id');
+	}
+
+	public function projectHolders() {
+		return $this->belongsToMany(ProjectHolder::class, 'call_for_projects_project_holders', 'call_for_project_id', 'project_holder_id');
 	}
 
 	public function perimeter() {
-		return $this->belongsTo(Perimeter::class);
+		//		return $this->belongsTo(Perimeter::class);
+		return $this->belongsToMany(Perimeter::class, 'call_for_projects_perimeters', 'call_for_project_id', 'perimeter_id');
+	}
+
+	public function perimeters() {
+		return $this->belongsToMany(Perimeter::class, 'call_for_projects_perimeters', 'call_for_project_id', 'perimeter_id');
 	}
 
 	public function beneficiary() {
-		return $this->belongsTo(Beneficiary::class);
+		//		return $this->belongsTo(Beneficiary::class);
+		return $this->belongsToMany(Beneficiary::class, 'beneficiaries_call_for_projects', 'call_for_project_id', 'beneficiary_id');
+	}
+
+	public function beneficiaries() {
+		return $this->belongsToMany(Beneficiary::class, 'beneficiaries_call_for_projects', 'call_for_project_id', 'beneficiary_id');
 	}
 
 	public function scopeClosed($query) {
@@ -89,13 +113,13 @@ class CallForProjects extends Model {
 	}
 
 	public function scopeOpened($query) {
-//		return $query->whereDate('closing_date', '>=', date('Y-m-d 00:00:00'))->orWhereRaw('closing_date is null', []);
+		//		return $query->whereDate('closing_date', '>=', date('Y-m-d 00:00:00'))->orWhereRaw('closing_date is null', []);
 		return $query->whereDate('closing_date', '>=', date('Y-m-d 00:00:00'))->orWhereNull('closing_date');
 	}
 
 	// retrieve relationships data with call for projects
 	public static function filterDataById($items, $data_id_name) {
-		return $items->reject(function ($item) use ($data_id_name) {
+		return $items->reject(function($item) use ($data_id_name) {
 			return is_null($item->{$data_id_name});
 		})->map(function($item) use ($data_id_name) {
 			return $item->{$data_id_name};
@@ -114,7 +138,7 @@ class CallForProjects extends Model {
 
 	public static function filterCallsOfTheWeek($items) {
 		$start_date = Carbon::now()->startOfWeek();
-		$end_date = Carbon::now()->endOfWeek();
+		$end_date   = Carbon::now()->endOfWeek();
 
 		return $items->filter(function($item) use ($start_date, $end_date) {
 			return $item->updated_at >= $start_date && $item->updated_at <= $end_date;
