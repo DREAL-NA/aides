@@ -33,7 +33,7 @@ class Beneficiary extends Model {
 				'required',
 				Rule::in(self::types()->keys()->toArray()),
 			],
-			'name'        => 'required|min:2',
+			'name'        => 'nullable|min:2',
 			'description' => 'present',
 		];
 	}
