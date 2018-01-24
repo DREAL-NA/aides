@@ -5,7 +5,8 @@
 		<div class="title">{{ $title }}</div>
 		@if(!$callsForProjects->isEmpty())
 			<div class="actions">
-				<a href="{{ route('export.xlsx') }}" data-tooltip="tooltip" title="Exporter en Excel"><i class="fa fa-file-excel-o" aria-hidden="true"></i></a>
+				<a href="{{ route('export.xlsx', [ 'type' => 'xlsx' ]) }}" data-tooltip="tooltip" title="Exporter en Excel"><i class="fa fa-file-excel-o" aria-hidden="true"></i></a>
+				<a href="{{ route('export.xlsx', [ 'type' => 'ods' ]) }}" data-tooltip="tooltip" title="Exporter en LibreOffice"><i class="fa fa-file-text-o" aria-hidden="true"></i></a>
 				<a href="{{ route('export.pdf') }}" data-tooltip="tooltip" title="Exporter en PDF"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
 			</div>
 		@endif
@@ -63,8 +64,8 @@
 					<label for="filter__beneficiary">Bénéficiaire</label>
 					<select id="filter__beneficiary" class="form-control select2-filter" multiple="multiple">
 						<option></option>
-						@foreach($beneficiaries as $beneficiary)
-							<option value="{{ $beneficiary->name }}">{{ \App\Beneficiary::types()[$beneficiary->type] }} - {{ $beneficiary->name }}</option>
+						@foreach(\App\Beneficiary::types() as $type)
+							<option value="{{ $type }}">{{ $type }}</option>
 						@endforeach
 					</select>
 				</div>
@@ -103,7 +104,7 @@
 							<td>{{ empty($project_holder) ? '' : $project_holder->name }}</td>
 							<td>{{ empty($perimeter) ? '' : $perimeter->name }}</td>
 							<td>{{ \Illuminate\Support\Str::words($callForProject->objectives, 50) }}</td>
-							<td>{{ empty($beneficiary) ? '' : $beneficiary->name }}</td>
+							<td>{{ empty($beneficiary) ? '' : \App\Beneficiary::types()[$beneficiary->type] }}</td>
 							<td class="text-right col-actions">
 								<a href="{{ route('bko.call.show', $callForProject) }}" data-tooltip="tooltip" title="Voir la fiche"><i class="fa fa-eye" aria-hidden="true"></i></a>
 								<a href="{{ route('bko.call.edit', $callForProject) }}" data-tooltip="tooltip" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>

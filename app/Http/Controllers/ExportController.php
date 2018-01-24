@@ -18,19 +18,23 @@ class ExportController extends Controller {
 		$this->filename         = 'dispositifs_financiers_'.$date;
 	}
 
-	public function xlsx(Request $request) {
+	public function xlsx($type) {
+		if(empty($type) || !in_array($type, [ 'xlsx', 'ods' ])) {
+			$type = 'xlsx';
+		}
+
 		Excel::create($this->filename, function($excel) {
 			foreach($this->callsForProjects as $thematic => $callsForProjects) {
 				$thematic = $callsForProjects->first()->thematic;
 				$callsOfTheWeek = CallForProjects::filterCallsOfTheWeek($callsForProjects)->pluck('id');
-				$excel->sheet($thematic->name, function($sheet) use ($callsForProjects, $callsOfTheWeek) {
+				$excel->sheet(str_limit($thematic->name, 30, '.'), function($sheet) use ($callsForProjects, $callsOfTheWeek) {
 					$sheet->loadView('exports.excel', [ 'callsForProjects' => $callsForProjects, 'callsOfTheWeek' => $callsOfTheWeek ]);
 				});
 			}
-		})->export('xlsx');
+		})->export($type);
 	}
 
-	public function pdf(Request $request) {
+	public function pdf() {
 		$pdf = PDF::loadView('exports.pdf', [ 'callsForProjects' => $this->callsForProjects ])->setPaper('a4', 'landscape');
 
 		return $pdf->download($this->filename.'.pdf');

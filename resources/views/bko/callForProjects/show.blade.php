@@ -52,21 +52,12 @@
 		<div class="form-group">
 			<label class="col-lg-3 control-label">Bénéficiaire</label>
 			<div class="col-lg-9">
-				<p class="form-control-static">{{ empty($callForProjects->beneficiary_id) ? '' : \App\Beneficiary::types()[$callForProjects->beneficiary->type].' - '.$callForProjects->beneficiary->name }}</p>
-			</div>
-		</div>
-		@if(!empty($callForProjects->beneficiary_id))
-			<div class="form-group">
-				<label class="col-lg-3 control-label">Bénéficiaire - Description</label>
-				<div class="col-lg-9">
-					<p class="form-control-static">{!! nl2br($callForProjects->beneficiary->description) !!}</p>
-				</div>
-			</div>
-		@endif
-		<div class="form-group">
-			<label class="col-lg-3 control-label">Bénéficiaire - Observations</label>
-			<div class="col-lg-9">
-				<p class="form-control-static">{!! nl2br($callForProjects->beneficiary_comments) !!}</p>
+				@if(!empty($callForProjects->beneficiary_id))
+					<p class="form-control-static"><b>Type :</b> {{ \App\Beneficiary::types()[$callForProjects->beneficiary->type] }}</p>
+					<p class="form-control-static"><b>Nom :</b> {{ $callForProjects->beneficiary->name }}</p>
+					<p class="form-control-static"><b>Description :</b><br>{!! nl2br($callForProjects->beneficiary->description) !!}</p>
+				@endif
+				<p class="form-control-static"><b>Observations :</b><br>{!! nl2br($callForProjects->beneficiary_comments) !!}</p>
 			</div>
 		</div>
 		<div class="form-group">
