@@ -36,7 +36,7 @@
 				<td width="25" valign="top" style="wrap-text: true;">{{ empty($project_holder) ? '' : $project_holder->name }}</td>
 				<td width="25" valign="top" style="wrap-text: true;">{{ empty($perimeter) ? '' : $perimeter->name }}</td>
 				<td width="80" valign="top" style="wrap-text: true;">{!! nl2br($callForProjects->objectives) !!}</td>
-				<td width="80" valign="top" style="wrap-text: true;">{!! empty($beneficiary) ? '' : $beneficiary->name.'<br><br>' !!}{!! nl2br($callForProjects->beneficiary_comments) !!}</td>
+				<td width="80" valign="top" style="wrap-text: true;">{!! empty($beneficiary) ? '' : \App\Beneficiary::types()[$beneficiary->type].'<br><br>'.$beneficiary->name.'<br><br>' !!}{!! nl2br($callForProjects->beneficiary_comments) !!}</td>
 				<td width="80" valign="top" style="wrap-text: true;">
 					{!! implode('<br>', $allocations) !!}
 					@if(!empty($callForProjects->allocation_amount))
