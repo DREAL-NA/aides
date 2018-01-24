@@ -27,8 +27,8 @@ class CallForProjectsController extends Controller {
 			return $item->thematic;
 		})->unique()->values();
 
-		$perimeters = $callsForProjects->pluck('perimeters')->flatten();
-		$project_holders = $callsForProjects->pluck('projectHolders')->flatten();
+		$perimeters = $callsForProjects->pluck('perimeters')->flatten()->unique('name')->sortBy('name');
+		$project_holders = $callsForProjects->pluck('projectHolders')->flatten()->unique('name')->sortBy('name');
 
 		$subthematics = CallForProjects::getRelationshipData(Thematic::class, $callsForProjects, 'subthematic_id');
 		if(!empty($subthematics)) {
