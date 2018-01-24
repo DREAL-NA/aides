@@ -43,6 +43,6 @@ class Beneficiary extends Model {
 	}
 
 	public function getNameCompleteAttribute() {
-		return self::types()[$this->attributes['type']].' | '.$this->attributes['name'];
+		return self::types()[$this->attributes['type']].(empty($this->attributes['name']) ? '' : ' | '.$this->attributes['name']);
 	}
 }

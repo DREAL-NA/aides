@@ -92,7 +92,7 @@
 			<select name="beneficiaries[]" id="beneficiary_id" class="form-control select2-allow-clear" multiple>
 				@if(!$callForProjects->beneficiaries->isEmpty())
 					@foreach($callForProjects->beneficiaries as $beneficiary)
-							<option value="{{ $beneficiary->id }}" selected>{{ \App\Beneficiary::types()[$beneficiary->type].' | '.$beneficiary->name }}</option>
+							<option value="{{ $beneficiary->id }}" selected>{{ $beneficiary->name_complete }}</option>
 					@endforeach
 				@endif
 			</select>
