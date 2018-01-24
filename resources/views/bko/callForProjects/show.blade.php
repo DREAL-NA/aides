@@ -52,9 +52,17 @@
 		<div class="form-group">
 			<label class="col-lg-3 control-label">Bénéficiaire</label>
 			<div class="col-lg-9">
-				<p class="form-control-static">{{ empty($callForProjects->beneficiary_id) ? '' : $callForProjects->beneficiary->name }}</p>
+				<p class="form-control-static">{{ empty($callForProjects->beneficiary_id) ? '' : \App\Beneficiary::types()[$callForProjects->beneficiary->type].' - '.$callForProjects->beneficiary->name }}</p>
 			</div>
 		</div>
+		@if(!empty($callForProjects->beneficiary_id))
+			<div class="form-group">
+				<label class="col-lg-3 control-label">Bénéficiaire - Description</label>
+				<div class="col-lg-9">
+					<p class="form-control-static">{!! nl2br($callForProjects->beneficiary->description) !!}</p>
+				</div>
+			</div>
+		@endif
 		<div class="form-group">
 			<label class="col-lg-3 control-label">Bénéficiaire - Observations</label>
 			<div class="col-lg-9">

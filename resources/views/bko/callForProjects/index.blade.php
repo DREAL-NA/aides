@@ -64,7 +64,7 @@
 					<select id="filter__beneficiary" class="form-control select2-filter" multiple="multiple">
 						<option></option>
 						@foreach($beneficiaries as $beneficiary)
-							<option value="{{ $beneficiary->name }}">{{ $beneficiary->name }}</option>
+							<option value="{{ $beneficiary->name }}">{{ \App\Beneficiary::types()[$beneficiary->type] }} - {{ $beneficiary->name }}</option>
 						@endforeach
 					</select>
 				</div>
