@@ -101,7 +101,7 @@
 							<td>{{ $callForProjects->projectHolders->pluck('name')->implode(', ') }}</td>
 							<td>{{ $callForProjects->perimeters->pluck('name')->implode(', ') }}</td>
 							<td>{{ \Illuminate\Support\Str::words($callForProjects->objectives, 50) }}</td>
-							<td>{{ $callForProjects->beneficiaries->pluck('type_label')->implode(', ') }}</td>
+							<td>{{ $callForProjects->beneficiaries->pluck('type_label')->unique()->implode(', ') }}</td>
 							<td class="text-right col-actions">
 								<a href="{{ route('bko.call.show', $callForProjects) }}" data-tooltip="tooltip" title="Voir la fiche"><i class="fa fa-eye" aria-hidden="true"></i></a>
 								<a href="{{ route('bko.call.edit', $callForProjects) }}" data-tooltip="tooltip" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
