@@ -23,7 +23,9 @@
 						<div class="result-count"><strong>{{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }}</strong> correspondent à votre recherche</div>
 						<div class="helper-links">
 							<?php // Icones Excel, PDF, CSV ?>
-							Exporter les résultats (@TODO)
+							<span>Exporter les résultats :</span>
+							<a href="{{ route('export.xlsx', [ 'type' => 'xlsx' ]) }}" class="export-results export-results-excel" title="Exporter les résultats - Excel">Excel <i class="fa fa-file-excel-o" aria-hidden="true"></i></a>
+							<a href="{{ route('export.pdf') }}" class="export-results export-results-pdf" title="Exporter les résultats - PDF">PDF <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
 						</div>
 					</div>
 				</div>
@@ -36,7 +38,10 @@
 					@foreach($callsForProjects as $callForProjects)
 						@php($url = route('front.dispositifs.unique', [ 'slug' => $callForProjects->slug ]))
 						<article class="dispositif-item" data-id="{{ $callForProjects->id }}">
-							<div class="beneficiary"><p>{!! $callForProjects->beneficiaries->unique()->sortBy('name_complete')->pluck('name_complete')->implode('</p><p>') !!}</p></div>
+							<div class="beneficiary">
+								<div class="last-modified">Dernière modification :<br>{{ $callForProjects->updated_at->format('d/m/Y') }}</div>
+								<p>{!! $callForProjects->beneficiaries->unique()->sortBy('name_complete')->pluck('name_complete')->implode('</p><p>') !!}</p>
+							</div>
 							<div class="infos">
 								<div class="thematic">
 									{{ $callForProjects->thematic->name }}
@@ -44,7 +49,9 @@
 										/ {{ $callForProjects->subthematic->name }}
 									@endif
 								</div>
-								<h4 class="title"><a href="{{ $url }}">{{ $callForProjects->name }}</a></h4>
+								<h4 class="title">
+									<a href="{{ $url }}">{{ $callForProjects->name }}</a>
+								</h4>
 								<div class="objectives">{{ \Illuminate\Support\Str::words($callForProjects->objectives, 50) }}</div>
 								<div class="common-data-wrapper">
 									@if(!$callForProjects->perimeters->isEmpty())

@@ -50,7 +50,15 @@
 				</td>
 				<td width="80" valign="top" style="wrap-text: true;">{!! nl2br($callForProjects->technical_relay) !!}</td>
 				<td width="80" valign="top" style="wrap-text: true;">{!! nl2br($callForProjects->project_holder_contact) !!}</td>
-				<td width="30" valign="top" style="wrap-text: true;">{{ $callForProjects->website_url }}</td>
+				<td width="30" valign="top" style="wrap-text: true; color: blue; text-decoration: underline;">
+					@if($type == 'pdf')
+						<a href="{{ $callForProjects->website_url }}" target="_blank">
+							Lien vers le site
+						</a>
+					@else
+						{{ $callForProjects->website_url }}
+					@endif
+				</td>
 			</tr>
 		@endforeach
 	</tbody>

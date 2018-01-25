@@ -60,11 +60,13 @@
 			align-items: center;
 			justify-content: space-between;
 			margin-bottom: 0;
+			padding-bottom: 20px;
 		}
 
 		.page-title {
 			h3 {
 				margin-top: 0;
+				margin-bottom: 0;
 			}
 		}
 
@@ -85,7 +87,21 @@
 				justify-content: flex-end;
 				margin-left: 50px;
 			}
+
+			.export-results {
+
+			}
+
+			.export-results-excel {
+				margin: 0 10px;
+			}
 		}
+
+		//.item-of-the-week {
+		//	color: $color-1;
+		//	margin-right: 10px;
+		//	font-size: 1.5em;
+		//}
 
 		.dispositif-items {
 			margin-bottom: 4em;
@@ -138,13 +154,26 @@
 				flex-direction: column;
 				justify-content: center;
 				font-weight: 500;
+				position: relative;
+
+				.last-modified {
+					position: absolute;
+					top: 10px;
+					left: 0;
+					font-weight: 300;
+					line-height: 1.3;
+					color: darken($color-gray-1, 15%);
+				}
 			}
 
 			.infos {
-				padding: 15px 15px 45px;
+				//padding: 15px 15px 45px;
+				padding: 20px 15px 45px;
 				position: relative;
 
 				.title {
+					//display: flex;
+					//align-items: center;
 					margin-bottom: 15px;
 
 					a {
@@ -158,6 +187,7 @@
 					color: $color-1;
 					font-weight: 700;
 					text-align: right;
+					margin-bottom: 15px;
 				}
 
 				.common-data-wrapper {
@@ -217,6 +247,7 @@
 				display: flex;
 				align-items: center;
 				justify-content: center;
+				font-weight: 500;
 			}
 		}
 	}

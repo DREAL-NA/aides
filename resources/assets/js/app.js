@@ -7,6 +7,16 @@
 
 require('./front/bootstrap');
 
+function getDispositifs() {
+	var $data = $('.form-filters').serialize();
+	var url = $('.form-filters').attr('action');
+
+	if($data.length > 0) {
+		url += '?' + $data;
+	}
+	document.location.href = url;
+}
+
 (function($) {
 	"use strict";
 
@@ -24,20 +34,37 @@ require('./front/bootstrap');
 		}
 	});
 
-	$('.form-filters').on('click', '.submit-filters', function() {
-		var $data = $('.form-filters').serialize();
-		var url = $('.form-filters').attr('action');
-
-		if($data.length > 0) {
-			url += '?' + $data;
+	$('.form-home').on('click', '.submit-filters', function() {
+		console.log($('.selectPerimeter').val());
+		if(!$('.thematics_hidden').get(0)) {
+			window.vex.dialog.alert("Vous devez sélectionner au moins un besoin de financement.");
+			return false;
+		} else if($('.selectPerimeter').val().length == 0) {
+			window.vex.dialog.alert("Vous devez sélectionner au moins une localisation.");
+			return false;
 		}
-		document.location.href = url;
+		getDispositifs();
 	});
 
-	$('.form-filters').on('click', '.reset-filters', function() {
+	$('.form-dispositifs').on('click', '.submit-filters', function() {
+		getDispositifs();
+	});
+
+	$('.form-dispositifs').on('click', '.reset-filters', function() {
 		$('.form-filters select').each(function() {
 			$(this).val('').data('selectric').refresh();
 		});
 	});
 
+	$('.export-results').on('click', function(e) {
+		e.preventDefault();
+
+		var $data = window.location.href.split('?')[1];
+		var url = $(this).attr('href');
+
+		if($data !== undefined) {
+			url += '?' + $data;
+		}
+		document.location.href = url;
+	});
 })(jQuery);

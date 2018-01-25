@@ -20,8 +20,7 @@ class FrontController extends Controller {
 	}
 
 	public function callForProjects(Request $request) {
-//		dd($request->all());
-		$callsForProjects = CallForProjects::with([ 'thematic', 'subthematic', 'projectHolders', 'perimeters', 'beneficiaries' ])->opened();
+		$callsForProjects = CallForProjects::with([ 'thematic', 'subthematic', 'projectHolders', 'perimeters', 'beneficiaries' ])->orderBy('updated_at', 'desc')->opened();
 
 		$pagination_appends = [];
 		if(!empty($request->get(Thematic::URI_NAME_THEMATIC))) {

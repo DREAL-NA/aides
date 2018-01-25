@@ -19,7 +19,7 @@
 			</div>
 			<div class="filters-step step-perimeter">
 				<h5 class="title">2. Sélectionner votre localisation</h5>
-				<select name="{{ \App\Perimeter::URI_NAME }}[]" class="filters-select" multiple>
+				<select name="{{ \App\Perimeter::URI_NAME }}[]" class="filters-select selectPerimeter" multiple>
 					<option disabled>Sélectionnez une localisation</option>
 					@foreach($perimeters as $perimeter)
 						<option value="{{ $perimeter->id }}">{{ $perimeter->name }}</option>
@@ -29,6 +29,15 @@
 			<button type="button" class="filters-submit-button submit-filters">Rechercher</button>
 		</form>
 	</div>
+
+	<div class="page-content">
+		<div class="page-header">
+			<h3>Actualités</h3>
+		</div>
+		<div class="content">
+
+		</div>
+	</div>
 @endsection
 
 @push('inline-script')
@@ -36,7 +45,6 @@
 		(function($) {
 			"use strict";
 
-			console.log('lol');
 			function manageThematics() {
 				$('input.thematics_hidden').remove();
 				var _form = $('.form-home');

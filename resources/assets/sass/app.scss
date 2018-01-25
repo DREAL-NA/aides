@@ -12,6 +12,10 @@
 // Bootstrap
 //@import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
+@import "~vex-js/sass/vex";
+@import "~vex-js/sass/vex-theme-plain";
+@import "front/components/vex-custom";
+
 // Selectric
 @import "~selectric/src/selectric";
 @import "front/components/selectric-custom";

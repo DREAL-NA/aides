@@ -132,12 +132,22 @@ class CallForProjects extends Model {
 	}
 
 	public static function filterCallsOfTheWeek($items) {
+		if(empty($items)) {
+			$items = self::with([ 'thematic', 'projectHolders', 'perimeters', 'beneficiaries' ])->opened()->get();
+		}
 		$start_date = Carbon::now()->startOfWeek();
 		$end_date   = Carbon::now()->endOfWeek();
 
 		return $items->filter(function($item) use ($start_date, $end_date) {
 			return $item->updated_at >= $start_date && $item->updated_at <= $end_date;
 		});
+	}
+
+	public function isOfTheWeek() {
+		$start_date = Carbon::now()->startOfWeek();
+		$end_date   = Carbon::now()->endOfWeek();
+
+		return $this->updated_at >= $start_date && $this->updated_at <= $end_date;
 	}
 
 	// Attributes casting

@@ -11,6 +11,10 @@ try {
 
 	require('selectric/src/jquery.selectric')
 	require('./menu');
+
+	window.vex = require('vex-js');
+	window.vex.registerPlugin(require('vex-dialog'));
+	window.vex.defaultOptions.className = 'vex-theme-plain';
 } catch (e) {
 }
 

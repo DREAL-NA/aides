@@ -1,6 +1,6 @@
 <div class="filters-dispositifs">
 	<h4>Affiner votre recherche</h4>
-	<form action="{{ route('front.dispositifs') }}" class="form-filters" method="get">
+	<form action="{{ route('front.dispositifs') }}" class="form-dispositifs form-filters" method="get">
 		<div class="filter-items">
 			<div class="filter-item">
 				<select name="{{ \App\Thematic::URI_NAME_THEMATIC }}[]" class="filters-select" multiple>

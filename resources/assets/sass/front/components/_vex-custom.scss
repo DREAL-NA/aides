@@ -1,0 +1,19 @@
+.vex {
+	&.vex-theme-plain {
+		.vex-content {
+			padding: 30px 20px;
+		}
+
+		.vex-dialog-button {
+			&.vex-dialog-button-primary {
+				background: $color-1;
+			}
+		}
+
+		.vex-dialog-form {
+			.vex-dialog-message {
+				margin-bottom: 30px;
+			}
+		}
+	}
+}
