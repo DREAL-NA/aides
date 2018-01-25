@@ -29,15 +29,6 @@
 			<button type="button" class="filters-submit-button submit-filters">Rechercher</button>
 		</form>
 	</div>
-
-	<div class="page-content">
-		<div class="page-header">
-			<h3>Actualités</h3>
-		</div>
-		<div class="content">
-
-		</div>
-	</div>
 @endsection
 
 @push('inline-script')
