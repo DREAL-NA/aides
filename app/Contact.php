@@ -3,9 +3,18 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Mail;
 
 class Contact extends Model {
 	protected $guarded = [];
+
+	protected static function boot() {
+		parent::boot();
+
+		static::created(function($item) {
+			Mail::send(new \App\Mail\Contact($item));
+		});
+	}
 
 	public function rules() {
 		return [

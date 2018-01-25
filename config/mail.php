@@ -56,8 +56,13 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'no-reply@ngiraud.me'),
+        'name' => env('MAIL_FROM_NAME', 'Site internet DREAL'),
+    ],
+
+    'to' => [
+        'address' => env('MAIL_TO_ADDRESS', 'sylvie.frugier@developpement-durable.gouv.fr'),
+        'name' => env('MAIL_TO_NAME', 'Sylvie Frugier'),
     ],
 
     /*

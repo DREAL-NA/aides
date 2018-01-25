@@ -26,10 +26,10 @@
 					{{ session('success') }}
 				</div>
 			@endif
-			<input name="name" placeholder="Votre nom" type="text" tabindex="1"  autofocus value="{{ old('name') }}">
-			<input name="email" placeholder="Votre adresse e-mail" type="email" tabindex="2" value="{{ old('email') }}">
-			<input name="subject" placeholder="L'objet de votre message" type="text" tabindex="3" value="{{ old('subject') }}">
-			<textarea name="message" placeholder="Ecrivez votre message ici..." tabindex="4" >{{ old('message') }}</textarea>
+			<input name="name" placeholder="Votre nom" type="text" tabindex="1" required autofocus value="{{ old('name') }}">
+			<input name="email" placeholder="Votre adresse e-mail" type="email" tabindex="2" required value="{{ old('email') }}">
+			<input name="subject" placeholder="L'objet de votre message" type="text" tabindex="3" required value="{{ old('subject') }}">
+			<textarea name="message" placeholder="Ecrivez votre message ici..." tabindex="4" required>{{ old('message') }}</textarea>
 			<button name="submit" type="submit" id="contact-submit">Envoyer votre message</button>
 		</form>
 	</div>
