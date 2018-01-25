@@ -10460,6 +10460,8 @@ __webpack_require__(145);
 (function ($) {
 	"use strict";
 
+	$('.menu-list').menu();
+
 	$('select').selectric({
 		responsive: true,
 		labelBuilder: function labelBuilder(currItem) {

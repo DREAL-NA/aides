@@ -10,6 +10,8 @@ require('./front/bootstrap');
 (function($) {
 	"use strict";
 
+	$('.menu-list').menu();
+
 	$('select').selectric({
 		responsive: true,
 		labelBuilder: function(currItem) {
