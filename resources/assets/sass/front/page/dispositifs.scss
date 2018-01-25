@@ -48,6 +48,7 @@
 			.submit-filters {
 				background-color: $color-1;
 				color: $color-white;
+				font-weight: 500;
 				@include hoverButton($color-1);
 			}
 		}
@@ -140,7 +141,8 @@
 			}
 
 			.infos {
-				padding: 15px 15px 0;
+				padding: 15px 15px 45px;
+				position: relative;
 
 				.title {
 					margin-bottom: 15px;
@@ -185,14 +187,17 @@
 				}
 				
 				.see-record {
-					float: right;
+					position: absolute;
+					bottom: 0;
+					right: 0;
 					padding: 10px 15px;
-					margin-right: -16px;
+					margin-right: -1px;
 					margin-bottom: -1px;
 					@include linkInherit;
 					background-color: $color-1;
 					color: $color-white;
 					transition: all 250ms ease-in-out;
+					font-weight: 500;
 
 					@include hoverButton($color-1);
 

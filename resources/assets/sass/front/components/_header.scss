@@ -4,7 +4,11 @@ header {
 	text-align: center;
 	padding: 30px 15px;
 	border-bottom: thin solid $body-bg;
-
+	
+	.container {
+		position: relative;
+	}
+	
 	.link-title {
 		@include linkInherit;
 
