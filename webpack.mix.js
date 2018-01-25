@@ -1,4 +1,5 @@
 let mix = require('laravel-mix');
+// require('laravel-mix-purgecss');
 
 /*
  |--------------------------------------------------------------------------
@@ -19,16 +20,17 @@ mix.webpackConfig({
 });
 
 mix.js('resources/assets/js/bko.js', 'public/js')
+	.js('resources/assets/js/app.js', 'public/js')
 	.sass('resources/assets/sass/bko.scss', 'public/css')
-	.options({
-		processCssUrls: false,
-	});
-
-mix.js('resources/assets/js/app.js', 'public/js')
 	.sass('resources/assets/sass/app.scss', 'public/css')
 	.options({
 		processCssUrls: false,
 	});
+
+	// .purgeCss({
+	// 	enabled: true,
+	// 	extensions: ['html', 'php', 'js'],
+	// });
 
 if (mix.inProduction()) {
 	mix.version();

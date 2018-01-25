@@ -19,6 +19,38 @@
 		.filter-item {
 			width: 20%;
 		}
+
+		.form-action {
+			margin-top: 20px;
+			display: flex;
+			align-items: stretch;
+			justify-content: center;
+
+			.reset-filters,
+			.submit-filters {
+				display: block;
+				margin: 0 15px;
+				//font-size: 1.2em;
+				padding: 10px 50px;
+				border: none;
+				outline: none;
+				border-radius: 2px;
+				transition: all 250ms ease-in-out;
+			}
+
+			.reset-filters {
+				background-color: $color-3;
+				border: 1px solid $color-white;
+				color: $color-white;
+				@include hoverButton($color-3);
+			}
+
+			.submit-filters {
+				background-color: $color-1;
+				color: $color-white;
+				@include hoverButton($color-1);
+			}
+		}
 	}
 
 	.content-dispositifs {
@@ -55,7 +87,7 @@
 		}
 
 		.dispositif-items {
-
+			margin-bottom: 4em;
 		}
 
 		.dispositif-item,
@@ -90,6 +122,13 @@
 			.infos {
 				padding: 30px;
 			}
+		}
+
+		.dispositifs-empty {
+			padding: 15px 30px;
+			background-color: $color-6;
+			color: $color-white;
+			text-align: center;
 		}
 
 		.dispositif-item {
@@ -151,12 +190,13 @@
 					margin-right: -16px;
 					margin-bottom: -1px;
 					@include linkInherit;
-					color: $color-white;
 					background-color: $color-1;
+					color: $color-white;
 					transition: all 250ms ease-in-out;
 
+					@include hoverButton($color-1);
+
 					&:hover {
-						background-color: lighten($color-1, 10%);
 						color: $color-white;
 					}
 				}

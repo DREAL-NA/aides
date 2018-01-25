@@ -9,7 +9,6 @@
 try {
 	window.$ = window.jQuery = require('jquery');
 
-	require('bootstrap-sass');
 	require('selectric/src/jquery.selectric')
 	require('./menu');
 } catch (e) {

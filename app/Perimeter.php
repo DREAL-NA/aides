@@ -12,6 +12,8 @@ class Perimeter extends Model {
 	protected $guarded = [];
 	protected $dates   = [ 'deleted_at' ];
 
+	const URI_NAME = 'perim';
+
 	public function rules() {
 		return [
 			'name'        => 'required|min:2',

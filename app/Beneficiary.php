@@ -18,6 +18,8 @@ class Beneficiary extends Model {
 	protected $guarded = [];
 	protected $dates   = [ 'deleted_at' ];
 
+	const URI_NAME = 'benef';
+
 	public static function types() {
 		return collect([
 			self::TYPE_STATE        => 'État',

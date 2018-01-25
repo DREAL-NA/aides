@@ -12,6 +12,8 @@ class ProjectHolder extends Model {
 	protected $guarded = [];
 	protected $dates   = [ 'deleted_at' ];
 
+	const URI_NAME = 'proje';
+
 	public function rules() {
 		return [
 			'name'        => 'required|min:2',

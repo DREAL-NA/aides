@@ -1,0 +1,129 @@
+// breakpoints
+
+$S:     480px;
+$M:     768px;
+$L:     1170px;
+$pagination-border-radius: .25em;
+$pagination-border-color: $page-header-border-color;
+
+// media queries
+
+@mixin MQ($canvas) {
+	@if $canvas == S {
+		@media only screen and (min-width: $S) { @content; }
+	}
+	@else if $canvas == M {
+		@media only screen and (min-width: $M) { @content; }
+	}
+	@else if $canvas == L {
+		@media only screen and (min-width: $L) { @content; }
+	}
+}
+
+/* --------------------------------
+Basic style
+-------------------------------- */
+
+.pagination-nav {
+	text-align: center;
+}
+
+.pagination {
+	width: 90%;
+	max-width: $M;
+	margin: 0 auto 2em;
+	text-align: center;
+	padding: 0;
+
+	li {
+		/* hide numbers on small devices */
+		display: none;
+		margin: 0 .2em;
+
+		&.button {
+			/* make sure prev next buttons are visible */
+			display: inline-block;
+		}
+
+		&.disabled {
+			/* button disabled */
+			color: $pagination-border-color;
+			pointer-events: none;
+		}
+	}
+
+	a, span {
+		display: inline-block;
+		@include user-select(none);
+		/* use padding and font-size to change buttons size */
+		padding: .6em .8em;
+		font-size: 1.6rem;
+	}
+
+	a {
+		@include linkInherit;
+
+		&:hover {
+			background-color: $pagination-border-color;
+			transition: all 250ms;
+		}
+	}
+
+	.current {
+		/* selected number */
+		background-color: $color-1;
+		border-color: $color-1;
+		color: $color-white;
+		pointer-events: none;
+	}
+
+	@include MQ(M) {
+		li {
+			display: inline-block;
+		}
+	}
+
+	@include MQ(L) {
+		margin: 0 auto 4em;
+	}
+}
+
+/* --------------------------------
+
+No space - remove distance between list items
+
+-------------------------------- */
+
+.pagination.no-space {
+	width: auto;
+	max-width: none;
+	display: inline-block;
+	border-radius: $pagination-border-radius;
+	@include clearfix;
+	border: 1px solid $pagination-border-color;
+
+	li {
+		margin: 0;
+		float: left;
+		border-right: 1px solid $pagination-border-color;
+
+		&:last-of-type {
+			border-right: none;
+		}
+	}
+
+	a, span {
+		float: left;
+		border-radius: 0;
+		padding: .8em 1em;
+		border: none;
+	}
+
+	li:first-of-type a {
+		border-radius: $pagination-border-radius 0 0 $pagination-border-radius;
+	}
+
+	li:last-of-type a {
+		border-radius: 0 $pagination-border-radius $pagination-border-radius 0;
+	}
+}

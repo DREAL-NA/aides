@@ -66,13 +66,10 @@ class CallForProjects extends Model {
 			],
 			'name'                   => 'required|min:2',
 			'closing_date'           => 'nullable|date_format:Y-m-d',
-			//			'project_holder_id'      => 'nullable|exists:project_holders,id',
 			'project_holders'        => 'nullable|exists:project_holders,id',
 			'project_holder_contact' => 'nullable',
-			//			'perimeter_id'           => 'nullable|exists:perimeters,id',
 			'perimeters'             => 'nullable|exists:perimeters,id',
 			'objectives'             => 'nullable|min:2',
-			//			'beneficiary_id'         => 'nullable|exists:beneficiaries,id',
 			'beneficiaries'          => 'nullable|exists:beneficiaries,id',
 			'beneficiary_comments'   => 'nullable',
 			//			'allocation_global'      => 'required_without:allocation_per_project|in:1',
@@ -94,27 +91,12 @@ class CallForProjects extends Model {
 		return $this->belongsTo(Thematic::class);
 	}
 
-	public function projectHolder() {
-		//		return $this->belongsTo(ProjectHolder::class);
-		return $this->belongsToMany(ProjectHolder::class, 'call_for_projects_project_holders', 'call_for_project_id', 'project_holder_id');
-	}
-
 	public function projectHolders() {
 		return $this->belongsToMany(ProjectHolder::class, 'call_for_projects_project_holders', 'call_for_project_id', 'project_holder_id');
 	}
 
-	public function perimeter() {
-		//		return $this->belongsTo(Perimeter::class);
-		return $this->belongsToMany(Perimeter::class, 'call_for_projects_perimeters', 'call_for_project_id', 'perimeter_id');
-	}
-
 	public function perimeters() {
 		return $this->belongsToMany(Perimeter::class, 'call_for_projects_perimeters', 'call_for_project_id', 'perimeter_id');
-	}
-
-	public function beneficiary() {
-		//		return $this->belongsTo(Beneficiary::class);
-		return $this->belongsToMany(Beneficiary::class, 'beneficiaries_call_for_projects', 'call_for_project_id', 'beneficiary_id');
 	}
 
 	public function beneficiaries() {

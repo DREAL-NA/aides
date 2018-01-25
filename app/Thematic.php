@@ -13,6 +13,9 @@ class Thematic extends Model {
 	protected $guarded = [];
 	protected $dates   = [ 'deleted_at' ];
 
+	const URI_NAME_THEMATIC = 'thema';
+	const URI_NAME_SUBTHEMATIC = 'subthema';
+
 	public function rules() {
 		return [
 			'name'        => 'required|min:2',

@@ -1,14 +1,16 @@
 @extends('layouts.app')
 
+@section('meta_title', "Dispositifs financiers")
+
 @section('breadcrumb')
 	<li>
-		<span>Dispositifs de formation</span>
+		<span>Dispositifs financiers</span>
 	</li>
 @endsection
 
 @section('content')
 	<div class="page-content page-dispositifs">
-		<h2>Dispositifs de formation</h2>
+		<h2>Dispositifs financiers</h2>
 		@include('front.dispositifs.filters')
 
 		<div class="content">
@@ -18,10 +20,10 @@
 						<h3>Votre recherche</h3>
 					</div>
 					<div class="page-meta">
-						<div class="result-count"><strong>10 Aides</strong> correspondent à votre recherche</div>
+						<div class="result-count"><strong>{{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }}</strong> correspondent à votre recherche</div>
 						<div class="helper-links">
 							<?php // Icones Excel, PDF, CSV ?>
-							Exporter les résultats
+							Exporter les résultats (@TODO)
 						</div>
 					</div>
 				</div>
@@ -80,7 +82,11 @@
 							</div>
 						</article>
 					@endforeach
+					@if($callsForProjects->isEmpty())
+						<p class="dispositifs-empty">Aucune aide ne correspond à votre recherche. Veuillez modifier vos filtres.</p>
+					@endif
 				</section>
+				{{ $callsForProjects->appends($pagination_appends)->links() }}
 			</div>
 		</div>
 	</div>

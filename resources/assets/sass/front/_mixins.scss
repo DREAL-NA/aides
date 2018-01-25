@@ -8,3 +8,10 @@
 		text-decoration: none;
 	}
 }
+
+@mixin hoverButton($color) {
+	&:hover {
+		background-color: lighten($color, 10%);
+		color: inherit;
+	}
+}
