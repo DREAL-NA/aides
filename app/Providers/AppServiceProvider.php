@@ -20,6 +20,9 @@ class AppServiceProvider extends ServiceProvider {
 	 * @return void
 	 */
 	public function register() {
-		//
+		if(app()->environment() != 'local') {
+			$this->app->alias('bugsnag.logger', \Illuminate\Contracts\Logging\Log::class);
+			$this->app->alias('bugsnag.logger', \Psr\Log\LoggerInterface::class);;
+		}
 	}
 }
