@@ -44,7 +44,7 @@
 		<input type="text" class="form-control" name="name" id="name" value="{{ old('name', $callForProjects->name) }}">
 	</div>
 	<div class="form-group">
-		<label for="closing_date">Date de clotûre</label>
+		<label for="closing_date">Date de clôture</label>
 		<div class="input-group date">
 			<input type="text" class="form-control" name="closing_date" id="closing_date" value="{{ old('closing_date', $callForProjects->closing_date) }}">
 			<span class="input-group-addon">

@@ -33,7 +33,7 @@
 					<div class="dispositifs-items-header">
 						<div class="beneficiary">Bénéficiaires</div>
 						<div class="infos">Informations</div>
-						<div class="closing-date">Date de clotûre</div>
+						<div class="closing-date">Date de clôture</div>
 					</div>
 					@foreach($callsForProjects as $callForProjects)
 						@php($url = route('front.dispositifs.unique', [ 'slug' => $callForProjects->slug ]))

@@ -26,7 +26,7 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label class="col-lg-3 control-label">Date de clotûre</label>
+			<label class="col-lg-3 control-label">Date de clôture</label>
 			<div class="col-lg-9">
 				<p class="form-control-static">{{ empty($callForProjects->closing_date) ? '' : $callForProjects->closing_date->format('d/m/Y') }}</p>
 			</div>

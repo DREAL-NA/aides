@@ -80,7 +80,7 @@
 						<th>Thématique</th>
 						<th>Sous-thématique</th>
 						<th>Intitulé</th>
-						<th>Date de clotûre</th>
+						<th>Date de clôture</th>
 						<th>Porteur du dispositif</th>
 						<th>Périmètre</th>
 						<th>Objectifs</th>
