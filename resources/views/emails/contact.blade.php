@@ -10,5 +10,3 @@ Vous avez reçu un message depuis le site internet, envoyé le {{ $contact->upda
 **Message:**
 <p>{{ $contact->message }}</p>
 @endcomponent
-
-test intégration bitbucket - meistertask
