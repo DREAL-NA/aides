@@ -51,7 +51,6 @@ class ExportController extends Controller {
 			$type = 'xlsx';
 		}
 
-		sqdfghj
 		Excel::create($this->filename, function($excel) {
 			if($this->callsForProjects->isEmpty()) {
 				$excel->sheet('Feuille 1', function($sheet) {
