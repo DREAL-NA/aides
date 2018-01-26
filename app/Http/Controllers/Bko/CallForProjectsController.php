@@ -46,7 +46,7 @@ class CallForProjectsController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function indexClosed() {
-		$callsForProjects = CallForProjects::with([ 'thematic', 'projectHolders', 'perimeters', 'beneficiaries' ])->opened()->get();
+		$callsForProjects = CallForProjects::with([ 'thematic', 'projectHolders', 'perimeters', 'beneficiaries' ])->closed()->get();
 		$callsOfTheWeek = CallForProjects::filterCallsOfTheWeek($callsForProjects)->pluck('id');
 //		$primary_thematics = Thematic::primary()->orderBy('name', 'asc')->get();
 //		$subthematics = Thematic::sub()->orderBy('name', 'asc')->get()->groupBy('parent_id');
