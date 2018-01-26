@@ -17,9 +17,6 @@
 	<tbody>
 		@foreach($callsForProjects as $callForProjects)
 			@php
-				$beneficiary = empty($callForProjects->beneficiary_id) ? null : $callForProjects->beneficiary;
-				$perimeter = empty($callForProjects->perimeter_id) ? null : $callForProjects->perimeter;
-				$project_holder = empty($callForProjects->project_holder_id) ? null : $callForProjects->projectHolder;
 				$subthematic = empty($callForProjects->subthematic_id) ? null : $callForProjects->subthematic;
 				$allocations = [];
 				if(!empty($callForProjects->allocation_global)) {

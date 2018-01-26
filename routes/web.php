@@ -90,6 +90,7 @@ Route::get('/dispositifs-financiers/{slug}', [ 'as' => 'front.dispositifs.unique
 
 // Exports
 Route::get('export/pdf', [ 'as' => 'export.pdf', 'uses' => 'ExportController@pdf' ]);
+Route::get('export/ods', [ 'as' => 'export.pdf', 'uses' => 'ExportController@ods' ]);
 Route::get('export/{type}', [ 'as' => 'export.xlsx', 'uses' => 'ExportController@xlsx' ]);
 
 Route::fallback(function(){
