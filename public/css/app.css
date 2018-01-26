@@ -6066,6 +6066,10 @@ body {
   margin-top: 30px;
 }
 
+.page-header.no-bottom {
+  margin-bottom: 0;
+}
+
 input:hover, input:focus {
   outline: 0;
   border: 1px solid #8EE4AF;
@@ -6683,57 +6687,29 @@ No space - remove distance between list items
   color: #FFFFFF;
 }
 
-.select-container {
-  position: relative;
-  width: 300px;
-  cursor: pointer;
+.page-home {
+  margin-top: 75px;
 }
 
-.select-container .arr {
-  background: transparent;
-  bottom: 5px;
-  position: absolute;
-  right: 15px;
-  top: 5px;
-  width: 20px;
-  pointer-events: none;
+.news-item .middle .item-wrapper {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #daf2ed;
+  padding-bottom: 10px;
 }
 
-.select-container .arr:before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: 0;
-  margin-top: -4px;
-  pointer-events: none;
-  border-top: 10px solid #8EE4AF;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
+.news-item .middle .item-wrapper:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
 }
 
-.select-container .arr:after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: 4px;
-  margin-top: -4px;
-  pointer-events: none;
-  border-top: 6px solid #F5F5F5;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
+.news-item .middle .item-wrapper .title {
+  margin-bottom: 5px;
 }
 
-.select-container select {
-  border: 1px solid rgba(51, 51, 51, 0.1);
-  background-color: #F5F5F5;
-  width: 100%;
-  padding: 10px 15px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  outline: none;
+.news-item .middle .item-wrapper .closing-date {
+  font-size: .9em;
   font-weight: 500;
-  cursor: pointer;
+  margin-bottom: 10px;
 }
 
 .page-dispositifs .filters-dispositifs {
@@ -6936,7 +6912,6 @@ No space - remove distance between list items
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-bottom: 0;
   padding-bottom: 20px;
 }
 
@@ -6978,12 +6953,12 @@ No space - remove distance between list items
   margin: 0 10px;
 }
 
-.page-dispositifs .content-dispositifs .dispositif-items {
+.dispositif-items {
   margin-bottom: 4em;
 }
 
-.page-dispositifs .content-dispositifs .dispositif-item,
-.page-dispositifs .content-dispositifs .dispositifs-items-header {
+.dispositif-item,
+.dispositifs-items-header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -6995,43 +6970,61 @@ No space - remove distance between list items
   border-bottom: 1px solid #daf2ed;
 }
 
-.page-dispositifs .content-dispositifs .dispositif-item .beneficiary,
-.page-dispositifs .content-dispositifs .dispositifs-items-header .beneficiary {
+.dispositif-item .first,
+.dispositifs-items-header .first {
   width: 20%;
   padding: 30px 15px;
 }
 
-.page-dispositifs .content-dispositifs .dispositif-item .infos,
-.page-dispositifs .content-dispositifs .dispositifs-items-header .infos {
+.dispositif-item .middle,
+.dispositifs-items-header .middle {
   width: 65%;
   border-left: 1px solid #daf2ed;
   border-right: 1px solid #daf2ed;
 }
 
-.page-dispositifs .content-dispositifs .dispositif-item .closing-date,
-.page-dispositifs .content-dispositifs .dispositifs-items-header .closing-date {
+.dispositif-item .middle.full,
+.dispositifs-items-header .middle.full {
+  width: 80%;
+}
+
+.dispositif-item .last,
+.dispositifs-items-header .last {
   width: 15%;
   padding: 30px 15px;
 }
 
-.page-dispositifs .content-dispositifs .dispositifs-items-header {
+.dispositifs-items-header {
   font-weight: 500;
   font-size: 1.2em;
   text-align: center;
 }
 
-.page-dispositifs .content-dispositifs .dispositifs-items-header .infos {
-  padding: 30px;
+.dispositifs-items-header .first,
+.dispositifs-items-header .last,
+.dispositifs-items-header .middle {
+  padding: 30px 15px;
 }
 
-.page-dispositifs .content-dispositifs .dispositifs-empty {
+.dispositifs-items-header.slim .first,
+.dispositifs-items-header.slim .last,
+.dispositifs-items-header.slim .middle {
+  padding: 15px;
+}
+
+.dispositifs-empty {
   padding: 15px 30px;
   background-color: #ffb347;
   color: #FFFFFF;
   text-align: center;
 }
 
-.page-dispositifs .content-dispositifs .dispositif-item .beneficiary {
+.dispositifs-empty.no-bck {
+  background-color: transparent;
+  color: #333;
+}
+
+.dispositif-item .first {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -7046,26 +7039,32 @@ No space - remove distance between list items
   position: relative;
 }
 
-.page-dispositifs .content-dispositifs .dispositif-item .infos {
+.dispositif-item .first.thematic {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.dispositif-item .middle {
   padding: 20px 15px 45px;
   position: relative;
 }
 
-.page-dispositifs .content-dispositifs .dispositif-item .infos .title {
+.dispositif-item .middle .title {
   margin-bottom: 15px;
 }
 
-.page-dispositifs .content-dispositifs .dispositif-item .infos .title a {
+.dispositif-item .middle .title a {
   color: inherit;
   text-decoration: none;
 }
 
-.page-dispositifs .content-dispositifs .dispositif-item .infos .title a:hover, .page-dispositifs .content-dispositifs .dispositif-item .infos .title a:focus {
+.dispositif-item .middle .title a:hover, .dispositif-item .middle .title a:focus {
   color: inherit;
   text-decoration: none;
 }
 
-.page-dispositifs .content-dispositifs .dispositif-item .infos .thematic {
+.dispositif-item .middle .thematic {
   font-size: 1.15em;
   font-family: "Raleway", "Roboto", sans-serif;
   color: #5CDB95;
@@ -7074,15 +7073,15 @@ No space - remove distance between list items
   margin-bottom: 15px;
 }
 
-.page-dispositifs .content-dispositifs .dispositif-item .infos .common-data-wrapper {
+.dispositif-item .middle .common-data-wrapper {
   margin-top: 15px;
 }
 
-.page-dispositifs .content-dispositifs .dispositif-item .infos .common-data-wrapper .common-data + .common-data {
+.dispositif-item .middle .common-data-wrapper .common-data + .common-data {
   margin-top: 5px;
 }
 
-.page-dispositifs .content-dispositifs .dispositif-item .infos .common-data {
+.dispositif-item .middle .common-data {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -7091,16 +7090,16 @@ No space - remove distance between list items
           align-items: flex-start;
 }
 
-.page-dispositifs .content-dispositifs .dispositif-item .infos .common-data .label {
+.dispositif-item .middle .common-data .label {
   font-weight: 500;
   width: 150px;
 }
 
-.page-dispositifs .content-dispositifs .dispositif-item .infos .common-data .items p {
+.dispositif-item .middle .common-data .items p {
   margin: 0;
 }
 
-.page-dispositifs .content-dispositifs .dispositif-item .infos .see-record {
+.dispositif-item .middle .see-record {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -7116,25 +7115,25 @@ No space - remove distance between list items
   font-weight: 500;
 }
 
-.page-dispositifs .content-dispositifs .dispositif-item .infos .see-record:hover, .page-dispositifs .content-dispositifs .dispositif-item .infos .see-record:focus {
+.dispositif-item .middle .see-record:hover, .dispositif-item .middle .see-record:focus {
   color: inherit;
   text-decoration: none;
 }
 
-.page-dispositifs .content-dispositifs .dispositif-item .infos .see-record:hover {
+.dispositif-item .middle .see-record:hover {
   background-color: #86e4b0;
   color: inherit;
 }
 
-.page-dispositifs .content-dispositifs .dispositif-item .infos .see-record:hover {
+.dispositif-item .middle .see-record:hover {
   color: #FFFFFF;
 }
 
-.page-dispositifs .content-dispositifs .dispositif-item .infos .external-link .fa {
+.dispositif-item .middle .external-link .fa {
   margin-left: 5px;
 }
 
-.page-dispositifs .content-dispositifs .dispositif-item .closing-date {
+.dispositif-item .last {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -7148,7 +7147,7 @@ No space - remove distance between list items
   position: relative;
 }
 
-.page-dispositifs .content-dispositifs .dispositif-item .last-modified {
+.dispositif-item .last-modified {
   position: absolute;
   top: 10px;
   right: 0;

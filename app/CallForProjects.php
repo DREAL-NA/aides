@@ -112,6 +112,12 @@ class CallForProjects extends Model {
 		return $query->whereDate('closing_date', '>=', date('Y-m-d 00:00:00'))->orWhereNull('closing_date');
 	}
 
+	public function scopeOfTheWeek($query) {
+		$start_date = Carbon::now()->startOfWeek();
+		$end_date   = Carbon::now()->endOfWeek();
+		return $query->whereBetween('updated_at', [ $start_date->format('Y-m-d 00:00:00'), $end_date->format('Y-m-d 23:59:59') ]);
+	}
+
 	public function scopeClosingDateNull($query) {
 		return $query->whereNull('closing_date');
 	}
@@ -146,9 +152,6 @@ class CallForProjects extends Model {
 	}
 
 	public static function filterCallsOfTheWeek($items) {
-		if(empty($items)) {
-			$items = self::with([ 'thematic', 'projectHolders', 'perimeters', 'beneficiaries' ])->opened()->get();
-		}
 		$start_date = Carbon::now()->startOfWeek();
 		$end_date   = Carbon::now()->endOfWeek();
 

@@ -89,7 +89,6 @@
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
-			margin-bottom: 0;
 			padding-bottom: 20px;
 		}
 
@@ -126,161 +125,173 @@
 				margin: 0 10px;
 			}
 		}
+	}
+}
 
-		//.item-of-the-week {
-		//	color: $color-1;
-		//	margin-right: 10px;
-		//	font-size: 1.5em;
-		//}
+.dispositif-items {
+	margin-bottom: 4em;
+}
 
-		.dispositif-items {
-			margin-bottom: 4em;
+.dispositif-item,
+.dispositifs-items-header {
+	display: flex;
+	align-items: stretch;
+	flex-wrap: wrap;
+	border-bottom: 1px solid $page-header-border-color;
+
+	.first {
+		width: 20%;
+		padding: 30px 15px;
+	}
+	.middle {
+		width: 65%;
+		border-left: 1px solid $page-header-border-color;
+		border-right: 1px solid $page-header-border-color;
+
+		&.full {
+			width: 80%;
+		}
+	}
+	.last {
+		width: 15%;
+		padding: 30px 15px;
+	}
+}
+
+.dispositifs-items-header {
+	font-weight: 500;
+	font-size: 1.2em;
+	text-align: center;
+
+	.first,
+	.last,
+	.middle {
+		padding: 30px 15px;
+	}
+
+	&.slim {
+		.first,
+		.last,
+		.middle {
+			padding: 15px;
+		}
+	}
+}
+
+.dispositifs-empty {
+	padding: 15px 30px;
+	background-color: $color-6;
+	color: $color-white;
+	text-align: center;
+
+	&.no-bck {
+		background-color: transparent;
+		color: $text-color;
+	}
+}
+
+.dispositif-item {
+	.first {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		font-weight: 500;
+		position: relative;
+
+		&.thematic {
+			justify-content: flex-start;
+		}
+	}
+
+	.middle {
+		padding: 20px 15px 45px;
+		position: relative;
+
+		.title {
+			margin-bottom: 15px;
+
+			a {
+				@include linkInherit;
+			}
 		}
 
-		.dispositif-item,
-		.dispositifs-items-header {
+		.thematic {
+			font-size: 1.15em;
+			font-family: $headings-font-family;
+			color: $color-1;
+			font-weight: 700;
+			text-align: right;
+			margin-bottom: 15px;
+		}
+
+		.common-data-wrapper {
+			margin-top: 15px;
+
+			.common-data {
+				& + .common-data {
+					margin-top: 5px;
+				}
+			}
+		}
+
+		.common-data {
 			display: flex;
-			align-items: stretch;
-			flex-wrap: wrap;
-			border-bottom: 1px solid $page-header-border-color;
+			align-items: flex-start;
 
-			.beneficiary {
-				width: 20%;
-				padding: 30px 15px;
+			.label {
+				font-weight: 500;
+				width: 150px;
 			}
 
-			.infos {
-				width: 65%;
-				border-left: 1px solid $page-header-border-color;
-				border-right: 1px solid $page-header-border-color;
-			}
-
-			.closing-date {
-				width: 15%;
-				padding: 30px 15px;
+			.items {
+				p {
+					margin: 0;
+				}
 			}
 		}
 
-		.dispositifs-items-header {
-			font-weight: 500;
-			font-size: 1.2em;
-			text-align: center;
-
-			.infos {
-				padding: 30px;
-			}
-		}
-
-		.dispositifs-empty {
-			padding: 15px 30px;
-			background-color: $color-6;
+		.see-record {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			padding: 10px 15px;
+			margin-right: -1px;
+			margin-bottom: -1px;
+			@include linkInherit;
+			background-color: $color-1;
 			color: $color-white;
-			text-align: center;
-		}
+			transition: all 250ms ease-in-out;
+			font-weight: 500;
 
-		.dispositif-item {
-			.beneficiary {
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				font-weight: 500;
-				position: relative;
-			}
+			@include hoverButton($color-1);
 
-			.infos {
-				//padding: 15px 15px 45px;
-				padding: 20px 15px 45px;
-				position: relative;
-
-				.title {
-					//display: flex;
-					//align-items: center;
-					margin-bottom: 15px;
-
-					a {
-						@include linkInherit;
-					}
-				}
-
-				.thematic {
-					font-size: 1.15em;
-					font-family: $headings-font-family;
-					color: $color-1;
-					font-weight: 700;
-					text-align: right;
-					margin-bottom: 15px;
-				}
-
-				.common-data-wrapper {
-					margin-top: 15px;
-
-					.common-data {
-						& + .common-data {
-							margin-top: 5px;
-						}
-					}
-				}
-
-				.common-data {
-					display: flex;
-					align-items: flex-start;
-
-					.label {
-						font-weight: 500;
-						width: 150px;
-					}
-
-					.items {
-						p {
-							margin: 0;
-						}
-					}
-				}
-				
-				.see-record {
-					position: absolute;
-					bottom: 0;
-					right: 0;
-					padding: 10px 15px;
-					margin-right: -1px;
-					margin-bottom: -1px;
-					@include linkInherit;
-					background-color: $color-1;
-					color: $color-white;
-					transition: all 250ms ease-in-out;
-					font-weight: 500;
-
-					@include hoverButton($color-1);
-
-					&:hover {
-						color: $color-white;
-					}
-				}
-
-				.external-link {
-					.fa {
-						margin-left: 5px;
-					}
-				}
-			}
-
-			.closing-date {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				font-weight: 500;
-				position: relative;
-			}
-
-			.last-modified {
-				position: absolute;
-				top: 10px;
-				right: 0;
-				text-align: right;
-				font-weight: 300;
-				line-height: 1.3;
-				color: darken($color-gray-1, 15%);
+			&:hover {
+				color: $color-white;
 			}
 		}
+
+		.external-link {
+			.fa {
+				margin-left: 5px;
+			}
+		}
+	}
+
+	.last {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: 500;
+		position: relative;
+	}
+
+	.last-modified {
+		position: absolute;
+		top: 10px;
+		right: 0;
+		text-align: right;
+		font-weight: 300;
+		line-height: 1.3;
+		color: darken($color-gray-1, 15%);
 	}
 }

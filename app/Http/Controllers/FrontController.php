@@ -17,8 +17,9 @@ class FrontController extends Controller {
 		$countCallsForProjects = CallForProjects::opened()->count();
 		$thematics = Thematic::primary()->orderBy('name', 'asc')->get();
 		$perimeters = Perimeter::orderBy('name', 'asc')->get();
+		$callsOfTheWeek = CallForProjects::with([ 'thematic', 'subthematic', 'projectHolders', 'perimeters', 'beneficiaries' ])->ofTheWeek()->orderBy('updated_at', 'desc')->get()->groupBy('thematic_id');
 
-		return view('front.home', compact('countCallsForProjects', 'thematics', 'perimeters'));
+		return view('front.home', compact('countCallsForProjects', 'thematics', 'perimeters', 'callsOfTheWeek'));
 	}
 
 	public function callForProjects(Request $request) {

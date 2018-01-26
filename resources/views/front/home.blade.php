@@ -29,6 +29,45 @@
 			<button type="button" class="filters-submit-button submit-filters">Rechercher</button>
 		</form>
 	</div>
+
+	<div class="page-content page-home">
+		<div class="content">
+			<section class="content-home">
+				<div class="page-header no-bottom">
+					<h3>Actualités de la semaine</h3>
+				</div>
+
+				<section class="dispositif-items">
+					<div class="dispositifs-items-header slim">
+						<div class="first thematic">Thématique</div>
+						<div class="middle full infos">Informations</div>
+					</div>
+					@foreach($callsOfTheWeek as $thematic_id => $callsForProjects_thematic)
+						<article class="dispositif-item news-item">
+							<div class="first thematic">{{ $callsForProjects_thematic->first()->thematic->name }}</div>
+							<div class="middle full infos">
+								@foreach($callsForProjects_thematic as $callForProjects)
+									<div class="item-wrapper">
+										@php($url = route('front.dispositifs.unique', [ 'slug' => $callForProjects->slug ]))
+										<h5 class="title">
+											<a href="{{ $url }}">{{ $callForProjects->name }}</a>
+										</h5>
+										@if(!empty($callForProjects->closing_date))
+											<div class="closing-date">Date de clôture : {{ $callForProjects->closing_date->format('d/m/Y') }}</div>
+										@endif
+										<div class="objectives">{{ \Illuminate\Support\Str::words($callForProjects->objectives, 50) }}</div>
+									</div>
+								@endforeach
+							</div>
+						</article>
+					@endforeach
+					@if($callsOfTheWeek->isEmpty())
+						<p class="dispositifs-empty no-bck">Aucune nouvelle aide cette semaine.</p>
+					@endif
+				</section>
+			</div>
+		</div>
+	</div>
 @endsection
 
 @push('inline-script')

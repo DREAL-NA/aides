@@ -15,7 +15,7 @@
 
 		<div class="content">
 			<div class="content-dispositifs">
-				<div class="page-header">
+				<div class="page-header no-bottom">
 					<div class="page-title">
 						<h3>Votre recherche</h3>
 					</div>
@@ -31,20 +31,20 @@
 				</div>
 				<section class="dispositif-items">
 					<div class="dispositifs-items-header">
-						<div class="beneficiary">Bénéficiaires</div>
-						<div class="infos">Informations</div>
-						<div class="closing-date">Date de clôture</div>
+						<div class="first beneficiary">Bénéficiaires</div>
+						<div class="middle infos">Informations</div>
+						<div class="last closing-date">Date de clôture</div>
 					</div>
 					@foreach($callsForProjects as $callForProjects)
 						@php($url = route('front.dispositifs.unique', [ 'slug' => $callForProjects->slug ]))
 						<article class="dispositif-item" data-id="{{ $callForProjects->id }}">
-							<div class="beneficiary">
+							<div class="first beneficiary">
 								@foreach($callForProjects->beneficiaries->unique()->sortBy('name_complete') as $beneficiary)
 									@php($selected = (!empty(request()->get(\App\Beneficiary::URI_NAME)) && in_array($beneficiary->type, request()->get(\App\Beneficiary::URI_NAME))) ?: false)
 									<p class="{{ $selected ? 'mark' : '' }}">{{ $beneficiary->name_complete }}</p>
 								@endforeach
 							</div>
-							<div class="infos">
+							<div class="middle infos">
 								<div class="thematic">
 									{{ $callForProjects->thematic->name }}
 									@if(!empty($callForProjects->subthematic))
@@ -86,8 +86,8 @@
 								</div>
 								<a href="{{ $url }}" class="see-record">Voir la fiche complète</a>
 							</div>
-							<div class="closing-date">
-								<div class="last-modified">Dernière modification<br>{{ $callForProjects->updated_at->format('d/m/Y') }}</div>
+							<div class="last closing-date">
+								<div class="last-modified">Dernière modification :<br>{{ $callForProjects->updated_at->format('d/m/Y') }}</div>
 								{{ empty($callForProjects->closing_date) ? '' : $callForProjects->closing_date->format('d/m/Y') }}
 							</div>
 						</article>

@@ -72,55 +72,31 @@
 	}
 }
 
-.select-container {
-	position: relative;
-	width: 300px;
-	cursor: pointer;
+.page-home {
+	margin-top: 75px;
+}
 
-	.arr {
-		background: transparent;
-		bottom: 5px;
-		position: absolute;
-		right: 15px;
-		top: 5px;
-		width: 20px;
-		pointer-events: none;
+.news-item {
+	.middle {
+		.item-wrapper {
+			margin-bottom: 10px;
+			border-bottom: 1px solid $page-header-border-color;
+			padding-bottom: 10px;
 
-		&:before {
-			content: '';
-			position: absolute;
-			top: 50%;
-			right: 0;
-			margin-top: -4px;
-			pointer-events: none;
-			border-top: 10px solid $color-4;
-			border-left: 10px solid transparent;
-			border-right: 10px solid transparent;
+			&:last-child {
+				margin-bottom: 0;
+				border-bottom: none;
+			}
+
+			.title {
+				margin-bottom: 5px;
+			}
+
+			.closing-date {
+				font-size: .9em;
+				font-weight: 500;
+				margin-bottom: 10px;
+			}
 		}
-
-		&:after {
-			content: '';
-			position: absolute;
-			top: 50%;
-			right: 4px;
-			margin-top: -4px;
-			pointer-events: none;
-			border-top: 6px solid $color-gray-1;
-			border-left: 6px solid transparent;
-			border-right: 6px solid transparent;
-		}
-	}
-
-	select {
-		border: 1px solid rgba($text-color, 0.1);
-		background-color: $color-gray-1;
-		width: 100%;
-		padding: 10px 15px;
-		-webkit-appearance: none;
-		-moz-appearance: none;
-		appearance: none;
-		outline: none;
-		font-weight: 500;
-		cursor: pointer;
 	}
 }

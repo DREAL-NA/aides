@@ -48,6 +48,12 @@ body {
 	}
 }
 
+.page-header {
+	&.no-bottom {
+		margin-bottom: 0;
+	}
+}
+
 input {
 	&:hover,
 	&:focus {
