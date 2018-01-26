@@ -6075,6 +6075,11 @@ input:hover, input:focus {
   border: 1px solid #8EE4AF;
 }
 
+.page-error {
+  text-align: center;
+  margin: 100px 0;
+}
+
 ::-webkit-input-placeholder {
   color: #807f7f;
 }

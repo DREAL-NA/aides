@@ -92,9 +92,6 @@ Route::get('/dispositifs-financiers/{slug}', [ 'as' => 'front.dispositifs.unique
 Route::get('export/pdf', [ 'as' => 'export.pdf', 'uses' => 'ExportController@pdf' ]);
 Route::get('export/{type}', [ 'as' => 'export.xlsx', 'uses' => 'ExportController@xlsx' ]);
 
-
-Route::get('/mailable', function () {
-	$contact = App\Contact::find(1);
-
-	return new App\Mail\Contact($contact);
-});
+Route::fallback(function(){
+	return response()->view('errors.404', [], 404);
+})->name('front.error');

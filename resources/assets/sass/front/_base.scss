@@ -62,6 +62,11 @@ input {
 	}
 }
 
+.page-error {
+	text-align: center;
+	margin: 100px 0;
+}
+
 ::-webkit-input-placeholder {
 	color: lighten($text-color, 30%);
 }

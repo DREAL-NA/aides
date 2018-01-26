@@ -40,7 +40,7 @@
     @include('front._menu')
 
 	<div class="container main-wrapper">
-		@if(Route::currentRouteName() != 'front.home')
+		@if(Route::currentRouteName() != 'front.home' && Route::currentRouteName() != 'front.error')
 			@include('front._breadcrumb')
 		@endif
 
