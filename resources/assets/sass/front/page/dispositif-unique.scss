@@ -1,0 +1,39 @@
+.page-dispositif-unique {
+	.content {
+		display: flex;
+		align-items: flex-start;
+		margin-top: 50px;
+	}
+	.first {
+		width: 70%;
+		padding-right: 30px;
+		border-right: 1px solid $page-header-border-color;
+	}
+
+	.last {
+		width: 30%;
+		padding-left: 30px;
+	}
+
+	.page-item {
+		margin-bottom: 30px;
+	}
+
+	.page-header {
+		margin-top: 0;
+
+		h3 {
+			margin-top: 0;
+		}
+	}
+
+	.item-content {
+		.description {
+			margin-top: 15px;
+
+			.strong {
+				font-weight: bold;
+			}
+		}
+	}
+}

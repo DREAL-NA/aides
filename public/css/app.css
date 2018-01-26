@@ -7157,6 +7157,47 @@ No space - remove distance between list items
   color: #cfcfcf;
 }
 
+.page-dispositif-unique .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-top: 50px;
+}
+
+.page-dispositif-unique .first {
+  width: 70%;
+  padding-right: 30px;
+  border-right: 1px solid #daf2ed;
+}
+
+.page-dispositif-unique .last {
+  width: 30%;
+  padding-left: 30px;
+}
+
+.page-dispositif-unique .page-item {
+  margin-bottom: 30px;
+}
+
+.page-dispositif-unique .page-header {
+  margin-top: 0;
+}
+
+.page-dispositif-unique .page-header h3 {
+  margin-top: 0;
+}
+
+.page-dispositif-unique .item-content .description {
+  margin-top: 15px;
+}
+
+.page-dispositif-unique .item-content .description .strong {
+  font-weight: bold;
+}
+
 .form-contact {
   max-width: 500px;
   border: thin solid #daf2ed;
