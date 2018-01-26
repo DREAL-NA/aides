@@ -10,6 +10,8 @@ try {
 	window.$ = window.jQuery = require('jquery');
 
 	require('selectric/src/jquery.selectric')
+	require('air-datepicker');
+	require('air-datepicker/dist/js/i18n/datepicker.fr');
 	require('./menu');
 
 	window.vex = require('vex-js');

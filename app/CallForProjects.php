@@ -112,6 +112,20 @@ class CallForProjects extends Model {
 		return $query->whereDate('closing_date', '>=', date('Y-m-d 00:00:00'))->orWhereNull('closing_date');
 	}
 
+	public function scopeClosingDateNull($query) {
+		return $query->whereNull('closing_date');
+	}
+	public function scopeClosingDateNotNull($query) {
+		return $query->whereNotNull('closing_date');
+	}
+
+	public function scopeClosingDateAfter($query, $date) {
+		if(! $date instanceof Carbon) {
+			$date = Carbon::createFromFormat('d/m/Y', $date);
+		}
+		return $query->whereDate('closing_date', '>=', $date->format('Y-m-d 00:00:00'));
+	}
+
 	// retrieve relationships data with call for projects
 	public static function filterDataById($items, $data_id_name) {
 		return $items->reject(function($item) use ($data_id_name) {

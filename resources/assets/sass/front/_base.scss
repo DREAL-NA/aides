@@ -47,3 +47,27 @@ body {
 		margin-top: 30px;
 	}
 }
+
+input {
+	&:hover,
+	&:focus {
+		outline: 0;
+		border: 1px solid $color-4;
+	}
+}
+
+::-webkit-input-placeholder {
+	color: lighten($text-color, 30%);
+}
+
+:-moz-placeholder {
+	color: lighten($text-color, 30%);
+}
+
+::-moz-placeholder {
+	color: lighten($text-color, 30%);
+}
+
+:-ms-input-placeholder {
+	color: lighten($text-color, 30%);
+}

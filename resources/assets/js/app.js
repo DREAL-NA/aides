@@ -54,6 +54,8 @@ function getDispositifs() {
 		$('.form-filters select').each(function() {
 			$(this).val('').data('selectric').refresh();
 		});
+		$picker.data('datepicker').clear();
+		$('.form-filters input[type="checkbox"]').prop('checked', false);
 	});
 
 	$('.export-results').on('click', function(e) {
@@ -67,4 +69,16 @@ function getDispositifs() {
 		}
 		document.location.href = url;
 	});
+
+	var $picker = $('#filter_closing_date').datepicker({
+		language: 'fr',
+		clearButton: true,
+	});
+
+	if($('#filter_closing_date').val() != '') {
+		var closingDateString = $('#filter_closing_date').val();
+		var dateParts = closingDateString.split("/");
+		var closingDate = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]); // month is 0-based
+		$picker.data('datepicker').selectDate(closingDate);
+	}
 })(jQuery);

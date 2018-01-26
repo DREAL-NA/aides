@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Beneficiary;
 use App\CallForProjects;
+use App\Helpers\Date;
 use App\Perimeter;
 use App\ProjectHolder;
 use App\Thematic;
@@ -38,6 +39,11 @@ class ExportController extends Controller {
 			$callsForProjects->whereHas('beneficiaries', function($query) use ($request) {
 				$query->whereIn('type', $request->get(Beneficiary::URI_NAME));
 			});
+		}
+		if(!empty($request->get('date_null')) && $request->get('date_null') == 1) {
+			$callsForProjects->closingDateNull();
+		} elseif(!empty($request->get('date')) && Date::isValid($request->get('date'))) {
+			$callsForProjects->closingDateAfter($request->get('date'));
 		}
 		$callsForProjects = $callsForProjects->get()->groupBy('thematic_id');
 		$this->callsForProjects = $callsForProjects;

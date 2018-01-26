@@ -28,6 +28,7 @@ $text-color: #333;
 // Body
 //$body-bg: #efefef;
 $body-bg: $color-5;
+$state-warning-bg: $color-5;
 
 // Borders
 $front-border-color: darken($body-bg, 10%);
@@ -61,7 +62,6 @@ $input-color-placeholder: lighten($text-color, 30%);
 
 // Panels
 $panel-default-heading-bg: #fff;
-
 
 // Menu
 $height-submenu: 60px;

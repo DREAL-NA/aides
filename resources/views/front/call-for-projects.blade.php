@@ -39,8 +39,10 @@
 						@php($url = route('front.dispositifs.unique', [ 'slug' => $callForProjects->slug ]))
 						<article class="dispositif-item" data-id="{{ $callForProjects->id }}">
 							<div class="beneficiary">
-								<div class="last-modified">Dernière modification :<br>{{ $callForProjects->updated_at->format('d/m/Y') }}</div>
-								<p>{!! $callForProjects->beneficiaries->unique()->sortBy('name_complete')->pluck('name_complete')->implode('</p><p>') !!}</p>
+								@foreach($callForProjects->beneficiaries->unique()->sortBy('name_complete') as $beneficiary)
+									@php($selected = (!empty(request()->get(\App\Beneficiary::URI_NAME)) && in_array($beneficiary->type, request()->get(\App\Beneficiary::URI_NAME))) ?: false)
+									<p class="{{ $selected ? 'mark' : '' }}">{{ $beneficiary->name_complete }}</p>
+								@endforeach
 							</div>
 							<div class="infos">
 								<div class="thematic">
@@ -85,6 +87,7 @@
 								<a href="{{ $url }}" class="see-record">Voir la fiche complète</a>
 							</div>
 							<div class="closing-date">
+								<div class="last-modified">Dernière modification<br>{{ $callForProjects->updated_at->format('d/m/Y') }}</div>
 								{{ empty($callForProjects->closing_date) ? '' : $callForProjects->closing_date->format('d/m/Y') }}
 							</div>
 						</article>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Beneficiary;
 use App\CallForProjects;
 use App\Contact;
+use App\Helpers\Date;
 use App\Perimeter;
 use App\ProjectHolder;
 use App\Thematic;
@@ -50,6 +51,12 @@ class FrontController extends Controller {
 			});
 			$pagination_appends[Beneficiary::URI_NAME] = $request->get(Beneficiary::URI_NAME);
 		}
+		if(!empty($request->get('date_null')) && $request->get('date_null') == 1) {
+			$callsForProjects->closingDateNull();
+		} elseif(!empty($request->get('date')) && Date::isValid($request->get('date'))) {
+			$callsForProjects->closingDateAfter($request->get('date'));
+		}
+
 		$callsForProjects = $callsForProjects->paginate(20);
 
 		$primary_thematics = Thematic::primary()->orderBy('name', 'asc')->get();

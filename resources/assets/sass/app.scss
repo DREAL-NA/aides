@@ -6,6 +6,7 @@
 // Variables
 @import "front/variables";
 
+
 @import "front/bootstrap";
 @import "front/mixins";
 
@@ -22,6 +23,9 @@
 
 // Font Awesome
 @import "~font-awesome/scss/font-awesome";
+
+// Datepicker
+@import "front/components/datepicker-custom";
 
 @import "front/base";
 @import "front/components/header";
