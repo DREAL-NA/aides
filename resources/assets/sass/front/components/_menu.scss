@@ -93,6 +93,48 @@
 			color: $color-1;
 		}
 	}
+
+	@include mobile {
+		.menu-list {
+			align-items: stretch;
+			flex-wrap: wrap;
+		}
+
+		.menu-item {
+			width: calc(100% / 3);
+
+			a {
+				height: 100%;
+				padding: 10px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+			}
+		}
+
+		.menu-children {
+			.container {
+				padding: 0;
+			}
+		}
+
+		.menu-list-children {
+			flex-wrap: wrap;
+		}
+
+		.menu-item-children {
+			width: calc(100% / 3);
+
+			a {
+				text-align: center;
+				padding: 10px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+		}
+	}
 }
 
 @keyframes menuBorderWidth {

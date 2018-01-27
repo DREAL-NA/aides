@@ -36,4 +36,26 @@
 			}
 		}
 	}
+
+	@include mobile {
+		.content {
+			flex-wrap: wrap;
+		}
+
+		.first,
+		.last {
+			width: 100%;
+		}
+
+		.last {
+			order: 1;
+			padding: 0;
+		}
+
+		.first {
+			order: 2;
+			border-right: none;
+			padding: 0;
+		}
+	}
 }

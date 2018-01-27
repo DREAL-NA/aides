@@ -31,20 +31,21 @@
 				</div>
 				<section class="dispositif-items">
 					<div class="dispositifs-items-header">
-						<div class="first beneficiary">Bénéficiaires</div>
+						<div class="first beneficiary hidden-xs">Bénéficiaires</div>
 						<div class="middle infos">Informations</div>
-						<div class="last closing-date">Date de clôture</div>
+						<div class="last closing-date hidden-xs">Date de clôture</div>
 					</div>
 					@foreach($callsForProjects as $callForProjects)
 						@php($url = route('front.dispositifs.unique', [ 'slug' => $callForProjects->slug ]))
 						<article class="dispositif-item" data-id="{{ $callForProjects->id }}">
-							<div class="first beneficiary">
+							<div class="first beneficiary hidden-xs">
 								@foreach($callForProjects->beneficiaries->unique()->sortBy('name_complete') as $beneficiary)
 									@php($selected = (!empty(request()->get(\App\Beneficiary::URI_NAME)) && in_array($beneficiary->type, request()->get(\App\Beneficiary::URI_NAME))) ?: false)
 									<p class="{{ $selected ? 'mark' : '' }}">{{ $beneficiary->name_complete }}</p>
 								@endforeach
 							</div>
 							<div class="middle infos">
+								<div class="last-modified visible-xs">Dernière modification : {{ $callForProjects->updated_at->format('d/m/Y') }}</div>
 								<div class="thematic">
 									{{ $callForProjects->thematic->name }}
 									@if(!empty($callForProjects->subthematic))
@@ -56,6 +57,25 @@
 								</h4>
 								<div class="objectives">{{ \Illuminate\Support\Str::words($callForProjects->objectives, 50) }}</div>
 								<div class="common-data-wrapper">
+									@if(!empty($callForProjects->closing_date))
+										<div class="common-data closing-date visible-xs">
+											<span class="label">Date de clôture :</span>
+											<div class="items">
+												<p>{{ $callForProjects->closing_date->format('d/m/Y') }}</p>
+											</div>
+										</div>
+									@endif
+									@if(!$callForProjects->beneficiaries->isEmpty())
+										<div class="common-data beneficiaries visible-xs">
+											<span class="label">Bénéficiaires :</span>
+											<div class="items">
+												@foreach($callForProjects->beneficiaries->unique()->sortBy('name_complete') as $beneficiary)
+													@php($selected = (!empty(request()->get(\App\Beneficiary::URI_NAME)) && in_array($beneficiary->type, request()->get(\App\Beneficiary::URI_NAME))) ?: false)
+													<p class="{{ $selected ? 'mark' : '' }}">{{ $beneficiary->name_complete }}</p>
+												@endforeach
+											</div>
+										</div>
+									@endif
 									@if(!$callForProjects->perimeters->isEmpty())
 										<div class="common-data perimeters">
 											<span class="label">Périmètres :</span>
@@ -86,7 +106,7 @@
 								</div>
 								<a href="{{ $url }}" class="see-record">Voir la fiche complète</a>
 							</div>
-							<div class="last closing-date">
+							<div class="last closing-date hidden-xs">
 								<div class="last-modified">Dernière modification :<br>{{ $callForProjects->updated_at->format('d/m/Y') }}</div>
 								{{ empty($callForProjects->closing_date) ? '' : $callForProjects->closing_date->format('d/m/Y') }}
 							</div>

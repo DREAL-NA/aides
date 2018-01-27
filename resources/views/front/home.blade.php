@@ -39,13 +39,13 @@
 
 				<section class="dispositif-items">
 					<div class="dispositifs-items-header slim">
-						<div class="first thematic">Thématique</div>
-						<div class="middle full infos">Informations</div>
+						<div class="first thematic hidden-xs">Thématique</div>
+						<div class="middle full infos no-border-right hidden-xs">Informations</div>
 					</div>
 					@foreach($callsOfTheWeek as $thematic_id => $callsForProjects_thematic)
 						<article class="dispositif-item news-item">
-							<div class="first thematic">{{ $callsForProjects_thematic->first()->thematic->name }}</div>
-							<div class="middle full infos">
+							<div class="first thematic"><span class="visible-xs">Thématique : </span>{{ $callsForProjects_thematic->first()->thematic->name }}</div>
+							<div class="middle full infos no-border-right">
 								@foreach($callsForProjects_thematic as $callForProjects)
 									<div class="item-wrapper">
 										@php($url = route('front.dispositifs.unique', [ 'slug' => $callForProjects->slug ]))

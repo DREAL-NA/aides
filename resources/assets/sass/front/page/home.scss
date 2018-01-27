@@ -47,6 +47,14 @@
 						background-color: rgba($text-color, 0.2);
 					}
 				}
+
+				@include mobile {
+					width: calc(100% / 3);
+
+					a {
+						font-size: .85em;
+					}
+				}
 			}
 		}
 	}

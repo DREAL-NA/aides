@@ -75,6 +75,17 @@ footer {
 				}
 			}
 		}
+
+		@include mobile {
+			padding-top: 15px;
+			padding-bottom: 15px;
+
+			.footer-first,
+			.footer-middle,
+			.footer-last {
+				width: 100%;
+			}
+		}
 	}
 
 	.reseaux {
@@ -92,6 +103,10 @@ footer {
 
 			li {
 				width: 25%;
+
+				@include mobile {
+					width: 100%;
+				}
 			}
 		}
 
