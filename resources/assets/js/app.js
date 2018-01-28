@@ -75,7 +75,7 @@ function getDispositifs() {
 		clearButton: true,
 	});
 
-	if($('#filter_closing_date').val() != '') {
+	if($('#filter_closing_date').get(0) && $('#filter_closing_date').val() != '') {
 		var closingDateString = $('#filter_closing_date').val();
 		var dateParts = closingDateString.split("/");
 		var closingDate = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]); // month is 0-based
