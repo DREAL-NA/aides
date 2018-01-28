@@ -6,7 +6,7 @@
 			<img src="{{ asset('images/logo_1.png') }}" alt="DREAL Nouvelle-Aquitaine" class="logo-image">
 		</a>
 		<a href="{{ route('front.home') }}" class="link-title">
-			<h1>{{ ucfirst(config('app.domain')) }}</h1>
+			<h1>{{ ucfirst(config('app.name')) }}</h1>
 			<p class="description">La base de données de référence sur les aides aux territoires ouverte à tous</p>
 		</a>
 	</div>

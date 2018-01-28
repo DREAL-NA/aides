@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'DREAL'),
+    'name' => env('APP_NAME', 'Des aides pour les territoires'),
     'default_page_title' => 'Accueil',
 
     'contact_mail' => 'sylvie.frugier@developpement-durable.gouv.fr',
