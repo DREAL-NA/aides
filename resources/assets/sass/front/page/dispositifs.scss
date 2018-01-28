@@ -148,12 +148,12 @@
 			}
 
 			.export-results {
-
+				margin-left: 10px;
 			}
 
-			.export-results-excel {
-				margin: 0 10px;
-			}
+			//.export-results-excel {
+			//	margin: 0 10px;
+			//}
 		}
 
 		@include mobile {

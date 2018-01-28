@@ -7350,8 +7350,8 @@ No space - remove distance between list items
   margin-left: 50px;
 }
 
-.page-dispositifs .content-dispositifs .page-meta .export-results-excel {
-  margin: 0 10px;
+.page-dispositifs .content-dispositifs .page-meta .export-results {
+  margin-left: 10px;
 }
 
 @media (max-width: 767px) {

@@ -64,7 +64,7 @@ class ExportController extends Controller
         $this->filename = 'dispositifs_financiers_' . $date;
     }
 
-    public function xlsx($type)
+    public function xlsx()
     {
         if (empty($type) || !in_array($type, ['xlsx', 'ods'])) {
             $type = 'xlsx';

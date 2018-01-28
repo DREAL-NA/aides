@@ -103,8 +103,8 @@ Route::get('/dispositifs-financiers/{slug}',
 
 // Exports
 Route::get('export/pdf', ['as' => 'export.pdf', 'uses' => 'ExportController@pdf']);
-Route::get('export/ods', ['as' => 'export.pdf', 'uses' => 'ExportController@ods']);
-Route::get('export/{type}', ['as' => 'export.xlsx', 'uses' => 'ExportController@xlsx']);
+Route::get('export/ods', ['as' => 'export.ods', 'uses' => 'ExportController@ods']);
+Route::get('export/xlsx', ['as' => 'export.xlsx', 'uses' => 'ExportController@xlsx']);
 
 Route::fallback(function () {
     return response()->view('errors.404', [], 404);
