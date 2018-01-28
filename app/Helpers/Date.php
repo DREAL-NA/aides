@@ -8,14 +8,16 @@
 
 namespace App\Helpers;
 
-class Date {
+class Date
+{
 
-	public static function isValid($date, $format='d/m/Y') {
-		if($format == 'd/m/Y') {
-			return preg_match('#^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/(19|20)\d\d$#', $date);
-		}
+    public static function isValid($date, $format = 'd/m/Y')
+    {
+        if ($format == 'd/m/Y') {
+            return preg_match('#^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/(19|20)\d\d$#', $date);
+        }
 
-		return false;
-	}
+        return false;
+    }
 
 }

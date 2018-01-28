@@ -8,16 +8,20 @@
 
 namespace App\Traits;
 
-trait Description {
-	public function setDescriptionAttribute($value) {
-		$this->attributes['description'] = nl2br($value);
-	}
+trait Description
+{
+    public function setDescriptionAttribute($value)
+    {
+        $this->attributes['description'] = nl2br($value);
+    }
 
-	public function getDescriptionAttribute($value) {
-		return preg_replace('#<br\s*/?>#i', "", $value);
-	}
+    public function getDescriptionAttribute($value)
+    {
+        return preg_replace('#<br\s*/?>#i', "", $value);
+    }
 
-	public function getDescriptionHtmlAttribute() {
-		return nl2br($this->description);
-	}
+    public function getDescriptionHtmlAttribute()
+    {
+        return nl2br($this->description);
+    }
 }

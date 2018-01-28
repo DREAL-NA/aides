@@ -26,7 +26,7 @@ class AddSlugCallForProjectsTable extends Migration
     public function down()
     {
         Schema::table('calls_for_projects', function (Blueprint $table) {
-	        $table->string('slug');
+            $table->string('slug');
         });
     }
 }

@@ -15,8 +15,8 @@ class CreateBeneficiariesCallForProjectsTable extends Migration
     {
         Schema::create('beneficiaries_call_for_projects', function (Blueprint $table) {
             $table->increments('id');
-	        $table->integer('beneficiary_id')->unsigned()->index();
-	        $table->integer('call_for_project_id')->unsigned()->index();
+            $table->integer('beneficiary_id')->unsigned()->index();
+            $table->integer('call_for_project_id')->unsigned()->index();
         });
     }
 

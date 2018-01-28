@@ -15,10 +15,10 @@ class CreatePerimetersTable extends Migration
     {
         Schema::create('perimeters', function (Blueprint $table) {
             $table->increments('id');
-	        $table->string('name');
-	        $table->text('description')->nullable();
+            $table->string('name');
+            $table->text('description')->nullable();
             $table->timestamps();
-	        $table->softDeletes();
+            $table->softDeletes();
         });
     }
 

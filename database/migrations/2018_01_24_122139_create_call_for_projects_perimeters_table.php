@@ -15,8 +15,8 @@ class CreateCallForProjectsPerimetersTable extends Migration
     {
         Schema::create('call_for_projects_perimeters', function (Blueprint $table) {
             $table->increments('id');
-	        $table->integer('perimeter_id')->unsigned()->index();
-	        $table->integer('call_for_project_id')->unsigned()->index();
+            $table->integer('perimeter_id')->unsigned()->index();
+            $table->integer('call_for_project_id')->unsigned()->index();
         });
     }
 

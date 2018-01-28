@@ -15,10 +15,10 @@ class CreateProjectHoldersTable extends Migration
     {
         Schema::create('project_holders', function (Blueprint $table) {
             $table->increments('id');
-	        $table->string('name');
-	        $table->text('description')->nullable();
+            $table->string('name');
+            $table->text('description')->nullable();
             $table->timestamps();
-	        $table->softDeletes();
+            $table->softDeletes();
         });
     }
 

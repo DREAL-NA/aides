@@ -16,12 +16,12 @@ class CreateBeneficiariesTable extends Migration
         Schema::create('beneficiaries', function (Blueprint $table) {
             $table->increments('id');
             $table->tinyInteger('type')->unsigned();
-	        $table->string('name')->nullable();
-	        $table->text('description')->nullable();
+            $table->string('name')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
-	        $table->softDeletes();
+            $table->softDeletes();
 
-	        $table->index('type');
+            $table->index('type');
         });
     }
 
@@ -32,9 +32,9 @@ class CreateBeneficiariesTable extends Migration
      */
     public function down()
     {
-	    Schema::table('beneficiaries', function(Blueprint $table) {
-		    $table->dropIndex([ 'type' ]);
-	    });
+        Schema::table('beneficiaries', function (Blueprint $table) {
+            $table->dropIndex(['type']);
+        });
         Schema::dropIfExists('beneficiaries');
     }
 }

@@ -11,88 +11,101 @@
 |
 */
 
-Route::group([ 'domain' => config('app.bko_subdomain').'.'.config('app.domain') ], function() {
-	Auth::routes();
+Route::group(['domain' => config('app.bko_subdomain') . '.' . config('app.domain')], function () {
+    Auth::routes();
 });
 
-Route::group([ 'namespace' => 'Bko', 'domain' => config('app.bko_subdomain').'.'.config('app.domain'), 'middleware' => [ 'auth' ] ], function() {
-	Route::get('/', [ 'as' => 'bko.home', 'uses' => 'IndexController@index' ]);
+Route::group([
+    'namespace' => 'Bko',
+    'domain' => config('app.bko_subdomain') . '.' . config('app.domain'),
+    'middleware' => ['auth']
+], function () {
+    Route::get('/', ['as' => 'bko.home', 'uses' => 'IndexController@index']);
 
-	Route::resource('thematic', 'ThematicController', [ 'as' => 'bko', 'except' => [ 'show' ] ]);
-	Route::resource('subthematic', 'SubthematicController', [ 'as' => 'bko', 'parameters' => [ 'subthematic' => 'thematic' ], 'except' => [ 'show' ] ]);
+    Route::resource('thematic', 'ThematicController', ['as' => 'bko', 'except' => ['show']]);
+    Route::resource('subthematic', 'SubthematicController',
+        ['as' => 'bko', 'parameters' => ['subthematic' => 'thematic'], 'except' => ['show']]);
 
-	Route::resource('porteur-dispositif', 'ProjectHolderController', [ 'as' => 'bko', 'parameters' => [ 'porteur-dispositif' => 'project_holder' ], 'except' => [ 'show' ] ]);
-	Route::post('porteur-dispositif/select2', [ 'as' => 'bko.porteur-dispositif.select2', 'uses' => 'ProjectHolderController@select2' ]);
+    Route::resource('porteur-dispositif', 'ProjectHolderController',
+        ['as' => 'bko', 'parameters' => ['porteur-dispositif' => 'project_holder'], 'except' => ['show']]);
+    Route::post('porteur-dispositif/select2',
+        ['as' => 'bko.porteur-dispositif.select2', 'uses' => 'ProjectHolderController@select2']);
 
-	Route::resource('perimetre', 'PerimeterController', [ 'as' => 'bko', 'parameters' => [ 'perimetre' => 'perimeter' ], 'except' => [ 'show' ] ]);
-	Route::post('perimetre/select2', [ 'as' => 'bko.perimetre.select2', 'uses' => 'PerimeterController@select2' ]);
+    Route::resource('perimetre', 'PerimeterController',
+        ['as' => 'bko', 'parameters' => ['perimetre' => 'perimeter'], 'except' => ['show']]);
+    Route::post('perimetre/select2', ['as' => 'bko.perimetre.select2', 'uses' => 'PerimeterController@select2']);
 
-	Route::resource('beneficiaire', 'BeneficiaryController', [ 'as' => 'bko', 'parameters' => [ 'beneficiaire' => 'beneficiary' ], 'except' => [ 'show' ] ]);
-	Route::post('beneficiaire/select2', [ 'as' => 'bko.beneficiaire.select2', 'uses' => 'BeneficiaryController@select2' ]);
+    Route::resource('beneficiaire', 'BeneficiaryController',
+        ['as' => 'bko', 'parameters' => ['beneficiaire' => 'beneficiary'], 'except' => ['show']]);
+    Route::post('beneficiaire/select2',
+        ['as' => 'bko.beneficiaire.select2', 'uses' => 'BeneficiaryController@select2']);
 
-	Route::resource('structure', 'OrganizationTypeController', [ 'as' => 'bko', 'parameters' => [ 'structure' => 'organizationType' ], 'except' => [ 'show' ] ]);
-	Route::post('structure/select2', [ 'as' => 'bko.structure.select2', 'uses' => 'OrganizationTypeController@select2' ]);
+    Route::resource('structure', 'OrganizationTypeController',
+        ['as' => 'bko', 'parameters' => ['structure' => 'organizationType'], 'except' => ['show']]);
+    Route::post('structure/select2', ['as' => 'bko.structure.select2', 'uses' => 'OrganizationTypeController@select2']);
 
-	Route::resource('site', 'WebsiteController', [ 'as' => 'bko', 'parameters' => [ 'site' => 'website' ] ]);
+    Route::resource('site', 'WebsiteController', ['as' => 'bko', 'parameters' => ['site' => 'website']]);
 
-	Route::get('appel-a-projet/clotures', [ 'as' => 'bko.call.indexClosed', 'uses' => 'CallForProjectsController@indexClosed' ]);
-	Route::resource('appel-a-projet', 'CallForProjectsController', [
-		'names' => [
-			'index' => 'bko.call.index',
-			'create' => 'bko.call.create',
-			'store' => 'bko.call.store',
-			'show' => 'bko.call.show',
-			'edit' => 'bko.call.edit',
-			'update' => 'bko.call.update',
-			'destroy' => 'bko.call.destroy',
-		],
-		'parameters' => [ 'appel-a-projet' => 'callForProjects' ]
-	]);
+    Route::get('appel-a-projet/clotures',
+        ['as' => 'bko.call.indexClosed', 'uses' => 'CallForProjectsController@indexClosed']);
+    Route::resource('appel-a-projet', 'CallForProjectsController', [
+        'names' => [
+            'index' => 'bko.call.index',
+            'create' => 'bko.call.create',
+            'store' => 'bko.call.store',
+            'show' => 'bko.call.show',
+            'edit' => 'bko.call.edit',
+            'update' => 'bko.call.update',
+            'destroy' => 'bko.call.destroy',
+        ],
+        'parameters' => ['appel-a-projet' => 'callForProjects']
+    ]);
 });
 
-Route::get('/', [ 'as' => 'front.home', 'uses' => 'FrontController@home' ]);
+Route::get('/', ['as' => 'front.home', 'uses' => 'FrontController@home']);
 
-Route::post('/contact', [ 'as' => 'front.contact.store', 'uses' => 'FrontController@contactStore' ]);
-Route::get('/contact', function() {
-	return view('front.contact');
+Route::post('/contact', ['as' => 'front.contact.store', 'uses' => 'FrontController@contactStore']);
+Route::get('/contact', function () {
+    return view('front.contact');
 })->name('front.contact');
 
-Route::get('/mentions-legales', function() {
-	return view('front.legal-notice');
+Route::get('/mentions-legales', function () {
+    return view('front.legal-notice');
 })->name('front.legal-notice');
 
-Route::get('/accessibilite', function() {
-	return view('front.accessibility');
+Route::get('/accessibilite', function () {
+    return view('front.accessibility');
 })->name('front.accessibility');
 
-Route::get('/qui-sommes-nous/projet', function() {
-	return view('front.about-us.project');
+Route::get('/qui-sommes-nous/projet', function () {
+    return view('front.about-us.project');
 })->name('front.about-us.project');
 
-Route::get('/qui-sommes-nous/base-de-donnees', function() {
-	return view('front.about-us.database');
+Route::get('/qui-sommes-nous/base-de-donnees', function () {
+    return view('front.about-us.database');
 })->name('front.about-us.database');
 
-Route::get('/qui-sommes-nous/equipe', function() {
-	return view('front.about-us.team');
+Route::get('/qui-sommes-nous/equipe', function () {
+    return view('front.about-us.team');
 })->name('front.about-us.team');
 
-Route::get('/outils/mise-a-disposition-des-donnees', function() {
-	return view('front.tools.data');
+Route::get('/outils/mise-a-disposition-des-donnees', function () {
+    return view('front.tools.data');
 })->name('front.tools.data');
 
-Route::get('/outils/sitotheque', function() {
-	return view('front.tools.website-library');
+Route::get('/outils/sitotheque', function () {
+    return view('front.tools.website-library');
 })->name('front.tools.website-library');
 
-Route::get('/dispositifs-financiers', [ 'as' => 'front.dispositifs', 'uses' => 'FrontController@callForProjects' ]);
-Route::get('/dispositifs-financiers/{slug}', [ 'as' => 'front.dispositifs.unique', 'uses' => 'FrontController@callForProjectsUnique' ]);
+Route::get('/dispositifs-financiers', ['as' => 'front.dispositifs', 'uses' => 'FrontController@callForProjects']);
+Route::get('/dispositifs-financiers/{slug}',
+    ['as' => 'front.dispositifs.unique', 'uses' => 'FrontController@callForProjectsUnique']);
 
 // Exports
-Route::get('export/pdf', [ 'as' => 'export.pdf', 'uses' => 'ExportController@pdf' ]);
-Route::get('export/ods', [ 'as' => 'export.pdf', 'uses' => 'ExportController@ods' ]);
-Route::get('export/{type}', [ 'as' => 'export.xlsx', 'uses' => 'ExportController@xlsx' ]);
+Route::get('export/pdf', ['as' => 'export.pdf', 'uses' => 'ExportController@pdf']);
+Route::get('export/ods', ['as' => 'export.pdf', 'uses' => 'ExportController@ods']);
+Route::get('export/{type}', ['as' => 'export.xlsx', 'uses' => 'ExportController@xlsx']);
 
-Route::fallback(function(){
-	return response()->view('errors.404', [], 404);
+Route::fallback(function () {
+    return response()->view('errors.404', [], 404);
 })->name('front.error');

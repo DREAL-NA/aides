@@ -14,11 +14,11 @@ class CreateOrganizationTypesTable extends Migration
     public function up()
     {
         Schema::create('organization_types', function (Blueprint $table) {
-	        $table->increments('id');
-	        $table->string('name');
-	        $table->text('description')->nullable();
-	        $table->timestamps();
-	        $table->softDeletes();
+            $table->increments('id');
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
