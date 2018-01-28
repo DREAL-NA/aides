@@ -20,7 +20,7 @@ try {
 	require('datatables.net-responsive');
 	require('datatables.net-responsive-bs');
 	require('mark.js')
-	require('datatables.mark.js')
+	require('datatables.mark.js/dist/datatables.mark.es6')
 
 	require('./utils');
 

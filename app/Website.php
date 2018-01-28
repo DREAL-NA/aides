@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Rules\UrlTextarea;
 use App\Traits\Description;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -28,7 +29,7 @@ class Website extends Model implements HasMedia
             'delay' => 'nullable',
             'allocated_budget' => 'nullable',
             'beneficiaries' => 'nullable',
-            'website_url' => 'nullable|url',
+            'website_url' => ['nullable', new UrlTextarea],
             'description' => 'nullable',
             'logo' => 'image',
         ];
@@ -124,5 +125,9 @@ class Website extends Model implements HasMedia
     public function getBeneficiariesHtmlAttribute()
     {
         return nl2br($this->beneficiaries);
+    }
+
+    public function getUrlArrayAttribute() {
+        return explode(PHP_EOL, $this->attributes['website_url']);
     }
 }

@@ -86,7 +86,7 @@
 										</div>
 									@endif
 									@if(!$callForProjects->projectHolders->isEmpty())
-										<div class="common-data perimeters">
+										<div class="common-data projectHolders">
 											<span class="label">Porteurs du dispositif :</span>
 											<div class="items">
 												<p>{!! $callForProjects->projectHolders->unique()->sortBy('name')->pluck('name')->implode('</p><p>') !!}</p>

@@ -27,10 +27,10 @@ mix.js('resources/assets/js/bko.js', 'public/js')
 		processCssUrls: false,
 	});
 
-	// .purgeCss({
-	// 	enabled: true,
-	// 	extensions: ['html', 'php', 'js'],
-	// });
+// mix.purgeCss({
+// 	enabled: true,
+// 	extensions: ['html', 'php', 'js'],
+// });
 
 if (mix.inProduction()) {
 	mix.version();

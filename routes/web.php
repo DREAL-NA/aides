@@ -93,9 +93,7 @@ Route::get('/outils/mise-a-disposition-des-donnees', function () {
     return view('front.tools.data');
 })->name('front.tools.data');
 
-Route::get('/outils/sitotheque', function () {
-    return view('front.tools.website-library');
-})->name('front.tools.website-library');
+Route::get('/outils/sitotheque', ['as' => 'front.tools.website-library', 'uses' => 'FrontController@websites']);
 
 Route::get('/dispositifs-financiers', ['as' => 'front.dispositifs', 'uses' => 'FrontController@callForProjects']);
 Route::get('/dispositifs-financiers/{slug}',

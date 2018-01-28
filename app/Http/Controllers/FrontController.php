@@ -9,6 +9,7 @@ use App\Helpers\Date;
 use App\Perimeter;
 use App\ProjectHolder;
 use App\Thematic;
+use App\Website;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -103,6 +104,12 @@ class FrontController extends Controller
         }
 
         return view('front.call-for-projects-unique', compact('callForProjects'));
+    }
+
+    public function websites() {
+        $websites = Website::with(['organizationType', 'perimeters'])->get()->sortBy('name');
+
+        return view('front.tools.website-library', compact('websites'));
     }
 
     public function contactStore(Request $request)
