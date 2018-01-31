@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Beneficiary;
 use App\CallForProjects;
+use App\Export;
 use App\Helpers\Date;
 use App\Perimeter;
 use App\ProjectHolder;
@@ -15,6 +16,7 @@ use Box\Spout\Writer\Style\StyleBuilder;
 use Box\Spout\Writer\WriterFactory;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class ExportController extends Controller
 {
@@ -66,37 +68,81 @@ class ExportController extends Controller
 
     public function xlsx()
     {
-        if (empty($type) || !in_array($type, ['xlsx', 'ods'])) {
-            $type = 'xlsx';
+
+        // Create new Spreadsheet object
+        $spreadsheet = new Spreadsheet();
+        // Set document properties
+//        $spreadsheet->getProperties()->setCreator('Nicolas Giraud')
+//            ->setLastModifiedBy('Nicolas Giraud')
+//            ->setTitle('XLSX Test Document')
+//            ->setSubject('XLSX Test Document subject')
+//            ->setDescription('Test document for XLSX, generated using PHP classes.');
+
+        // Set the data
+        // @TODO HERE
+        $inc = 1;
+        foreach ($this->callsForProjects as $thematic => $callsForProjects) {
+            $thematic = $callsForProjects->first()->thematic;
+            $callsOfTheWeek = CallForProjects::filterCallsOfTheWeek($callsForProjects)->pluck('id');
+
+            if ($inc == 1) {
+                $sheet = $writer->getCurrentSheet();
+            } else {
+                $sheet = $writer->addNewSheetAndMakeItCurrent();
+            }
+            $sheet->setName(str_limit($thematic->name, 30, '.'));
+            $writer->addRowWithStyle($headerRow, $styleHeader);
+
+            foreach ($callsForProjects as $callsForProject) {
+                $subthematic = empty($callsForProject->subthematic_id) ? null : $callsForProject->subthematic;
+                $allocations = [];
+                if (!empty($callsForProject->allocation_global)) {
+                    $allocations[] = 'Dotation globale';
+                }
+                if (!empty($callsForProject->allocation_per_project)) {
+                    $allocations[] = 'Dotation par projet';
+                }
+
+                $alloc_text = implode("\n", $allocations);
+                if (!empty($callsForProject->allocation_amount)) {
+                    $alloc_text .= "\n\n" . $callsForProject->allocation_amount;
+                }
+                if (!empty($callsForProject->allocation_comments)) {
+                    $alloc_text .= "\n" . $callsForProject->allocation_comments;
+                }
+
+                $styleRow = $styleRowInit;
+                $styleRow = in_array($callsForProject->id,
+                    $callsOfTheWeek->toArray()) ? $styleRow->setBackgroundColor('5CDB95') : $styleRow;
+                $styleRow = $styleRow->build();
+
+                $row = [
+                    empty($subthematic) ? '' : $subthematic->name,
+                    $callsForProject->name,
+                    empty($callsForProject->closing_date) ? '' : $callsForProject->closing_date->format('d/m/Y'),
+                    $callsForProject->projectHolders->pluck('name')->implode("\n"),
+                    $callsForProject->perimeters->pluck('name')->implode("\n"),
+                    $callsForProject->objectives,
+                    $callsForProject->beneficiaries->pluck('name_complete')->implode("\n") . "\n" . $callsForProject->beneficiary_comments,
+                    $alloc_text,
+                    $callsForProject->technical_relay,
+                    $callsForProject->project_holder_contact,
+                    $callsForProject->website_url,
+                ];
+                $writer->addRowWithStyle($row, $styleRow);
+            }
+
+//				$writer->addRow($rowColWidth);
+
+            $inc++;
         }
 
-        Excel::create($this->filename, function ($excel) {
-            if ($this->callsForProjects->isEmpty()) {
-                $excel->sheet('Feuille 1', function ($sheet) {
-                    $sheet->fromArray(['Aucune aide ne correspond à votre recherche. Veuillez modifier vos filtres.']);
-                });
-            } else {
-                foreach ($this->callsForProjects as $thematic => $callsForProjects) {
-                    $thematic = $callsForProjects->first()->thematic;
-                    $callsOfTheWeek = CallForProjects::filterCallsOfTheWeek($callsForProjects)->pluck('id');
-                    $excel->sheet(str_limit($thematic->name, 30, '.'),
-                        function ($sheet) use ($callsForProjects, $callsOfTheWeek) {
-                            $sheet->loadView('exports.excel', [
-                                'callsForProjects' => $callsForProjects,
-                                'callsOfTheWeek' => $callsOfTheWeek,
-                                'type' => 'xlsx'
-                            ]);
 
-                            // Fix for linking website
-                            $inc = 2;
-                            foreach ($callsForProjects as $callsForProject) {
-                                $sheet->getCell('K' . $inc)->getHyperlink()->setUrl($callsForProject->website_url);
-                                $inc++;
-                            }
-                        });
-                }
-            }
-        })->export($type);
+        // Download the file
+        $export = new Export($spreadsheet, 'filename', 'xlsx');
+        $export->download();
+
+        die();
     }
 
     public function pdf()
