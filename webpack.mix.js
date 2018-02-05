@@ -1,5 +1,5 @@
 let mix = require('laravel-mix');
-require('laravel-mix-purgecss');
+// require('laravel-mix-purgecss');
 
 /*
  |--------------------------------------------------------------------------
@@ -27,10 +27,10 @@ mix.js('resources/assets/js/bko.js', 'public/js')
 		processCssUrls: false,
 	});
 
-mix.purgeCss({
-	enabled: true,
-	extensions: ['html', 'php', 'js'],
-});
+// mix.purgeCss({
+// 	enabled: true,
+// 	extensions: ['html', 'php', 'js'],
+// });
 
 if (mix.inProduction()) {
 	mix.version();
