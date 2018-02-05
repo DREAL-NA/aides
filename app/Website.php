@@ -23,7 +23,7 @@ class Website extends Model implements HasMedia
         return [
             'organization_type_id' => 'required|exists:organization_types,id',
             'themes' => 'nullable',
-            'name' => 'required|min:2',
+            'name' => 'required|min:2|max:255',
             'perimeters' => 'nullable|array',
             'perimeter_comments' => 'nullable',
             'delay' => 'nullable',
@@ -127,7 +127,8 @@ class Website extends Model implements HasMedia
         return nl2br($this->beneficiaries);
     }
 
-    public function getUrlArrayAttribute() {
+    public function getUrlArrayAttribute()
+    {
         return explode(PHP_EOL, $this->attributes['website_url']);
     }
 }

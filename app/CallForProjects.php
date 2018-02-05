@@ -68,7 +68,7 @@ class CallForProjects extends Model
                     $query->whereNotNull('parent_id');
                 }),
             ],
-            'name' => 'required|min:2',
+            'name' => 'required|min:2|max:255',
             'closing_date' => 'nullable|date_format:Y-m-d',
             'project_holders' => 'nullable|exists:project_holders,id',
             'project_holder_contact' => 'nullable',
