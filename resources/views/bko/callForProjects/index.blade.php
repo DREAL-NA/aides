@@ -5,9 +5,12 @@
 		<div class="title">{{ $title }}</div>
 		@if(!$callsForProjects->isEmpty())
 			<div class="actions">
-				<a href="{{ route('export.xlsx') }}" data-tooltip="tooltip" title="Exporter en Excel"><i class="fa fa-file-excel-o" aria-hidden="true"></i></a>
-				<a href="{{ route('export.ods') }}" data-tooltip="tooltip" title="Exporter en LibreOffice"><i class="fa fa-file-text-o" aria-hidden="true"></i></a>
-				<a href="{{ route('export.pdf') }}" data-tooltip="tooltip" title="Exporter en PDF"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+				<a href="{{ route('export.xlsx') }}" data-tooltip="tooltip" title="Exporter en Excel"><i
+							class="fa fa-file-excel-o" aria-hidden="true"></i></a>
+				<a href="{{ route('export.ods') }}" data-tooltip="tooltip" title="Exporter en LibreOffice"><i
+							class="fa fa-file-text-o" aria-hidden="true"></i></a>
+				<a href="{{ route('export.pdf') }}" data-tooltip="tooltip" title="Exporter en PDF"><i
+							class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
 			</div>
 		@endif
 	</div>
@@ -76,41 +79,45 @@
 		<div class="col-lg-12">
 			<table class="table table-striped table-hover table-condensed" id="table__callsForProjects">
 				<thead>
-					<tr>
-						<th>Thématique</th>
-						<th>Sous-thématique</th>
-						<th>Intitulé</th>
-						<th>Date de clôture</th>
-						<th>Porteur du dispositif</th>
-						<th>Périmètre</th>
-						<th>Objectifs</th>
-						<th>Bénéficiaires</th>
-						<th></th>
-					</tr>
+				<tr>
+					<th>Thématique</th>
+					<th>Sous-thématique</th>
+					<th>Intitulé</th>
+					<th>Date de clôture</th>
+					<th>Porteur du dispositif</th>
+					<th>Périmètre</th>
+					<th>Objectifs</th>
+					<th>Bénéficiaires</th>
+					<th></th>
+				</tr>
 				</thead>
 				<tbody>
-					@foreach($callsForProjects as $callForProjects)
-						@php
+				@foreach($callsForProjects as $callForProjects)
+					@php
 						$subthematic = empty($subthematics[$callForProjects->thematic->id]) ? null : $subthematics[$callForProjects->thematic->id]->firstWhere('id', $callForProjects->subthematic_id);
-						@endphp
-						<tr class="{{ in_array($callForProjects->id, $callsOfTheWeek->toArray()) ? 'item-of-the-week' : '' }}">
-							<td>{{ $callForProjects->thematic->name }}</td>
-							<td>{{ empty($subthematic) ? '' : $subthematic->name }}</td>
-							<td>{{ $callForProjects->name }}</td>
-							<td>{{ empty($callForProjects->closing_date) ? '' : $callForProjects->closing_date->format('d/m/Y') }}</td>
-							<td>{{ $callForProjects->projectHolders->pluck('name')->implode(', ') }}</td>
-							<td>{{ $callForProjects->perimeters->pluck('name')->implode(', ') }}</td>
-							<td>{{ \Illuminate\Support\Str::words($callForProjects->objectives, 50) }}</td>
-							<td>{{ $callForProjects->beneficiaries->pluck('type_label')->unique()->implode(', ') }}</td>
-							<td class="text-right col-actions">
-								<a href="{{ route('bko.call.show', $callForProjects) }}" data-tooltip="tooltip" title="Voir la fiche"><i class="fa fa-eye" aria-hidden="true"></i></a>
-								<a href="{{ route('bko.call.edit', $callForProjects) }}" data-tooltip="tooltip" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-								<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-tooltip="tooltip"data-id="{{ $callForProjects->id }}">
-									<i class="fa fa-trash-o" aria-hidden="true"></i>
-								</a>
-							</td>
-						</tr>
-					@endforeach
+					@endphp
+					<tr class="{{ in_array($callForProjects->id, $callsOfTheWeek->toArray()) ? 'item-of-the-week' : '' }}">
+						<td>{{ $callForProjects->thematic->name }}</td>
+						<td>{{ empty($subthematic) ? '' : $subthematic->name }}</td>
+						<td>{{ $callForProjects->name }}</td>
+						<td>{{ empty($callForProjects->closing_date) ? '' : $callForProjects->closing_date->format('d/m/Y') }}</td>
+						<td>{{ $callForProjects->projectHolders->pluck('name')->implode(', ') }}</td>
+						<td>{{ $callForProjects->perimeters->pluck('name')->implode(', ') }}</td>
+						<td>{{ \Illuminate\Support\Str::words($callForProjects->objectives, 50) }}</td>
+						<td>{{ $callForProjects->beneficiaries->pluck('type_label')->unique()->implode(', ') }}</td>
+						<td class="text-right col-actions">
+							<a href="{{ route('bko.call.show', $callForProjects) }}" data-tooltip="tooltip"
+							   title="Voir la fiche"><i class="fa fa-eye" aria-hidden="true"></i></a>
+							<a href="{{ route('bko.call.edit', $callForProjects) }}" data-tooltip="tooltip"
+							   title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+							<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal"
+							   data-target="#modalDeleteItem" data-tooltip="tooltip"
+							   data-id="{{ $callForProjects->id }}">
+								<i class="fa fa-trash-o" aria-hidden="true"></i>
+							</a>
+						</td>
+					</tr>
+				@endforeach
 				</tbody>
 			</table>
 		</div>
@@ -131,26 +138,26 @@
 			table.draw();
 		}
 
-		(function($) {
+		(function ($) {
 			"use strict";
 
 			table = $('#table__callsForProjects').DataTable({
 				"columns": [
-					null,
-					null,
-					null,
-					{ "type": "date-uk" },
-					null,
-					null,
-					null,
-					null,
-					{ "orderable": false }
+					{type: 'natural'},
+					{type: 'natural'},
+					{type: 'natural'},
+					{"type": "date-uk"},
+					{type: 'natural'},
+					{type: 'natural'},
+					{type: 'natural'},
+					{type: 'natural'},
+					{"orderable": false}
 				],
 			});
 
 			$('.select2-filter')
 				.select2()
-				.on('change', function() {
+				.on('change', function () {
 					filterResults();
 				});
 		})(jQuery);

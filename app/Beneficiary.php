@@ -25,9 +25,9 @@ class Beneficiary extends Model
     {
         return collect([
             self::TYPE_STATE => 'État',
-            self::TYPE_COLLECTIVITY => 'Collectivité',
-            self::TYPE_COMPANY => 'Entreprise',
-            self::TYPE_OTHER => 'Autre',
+            self::TYPE_COLLECTIVITY => 'Collectivités',
+            self::TYPE_COMPANY => 'Entreprises',
+            self::TYPE_OTHER => 'Autres',
         ]);
     }
 

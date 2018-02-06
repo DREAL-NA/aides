@@ -5,25 +5,27 @@
 @section('content')
 	<table class="table table-striped table-hover" id="table__thematics">
 		<thead>
-			<tr>
-				<th>Nom</th>
-				<th>Description</th>
-				<th></th>
-			</tr>
+		<tr>
+			<th>Nom</th>
+			<th>Description</th>
+			<th></th>
+		</tr>
 		</thead>
 		<tbody>
-			@foreach($thematics as $thematic)
-				<tr>
-					<td>{{ $thematic->name }}</td>
-					<td>{!! $thematic->description_html !!}</td>
-					<td class="text-right col-actions">
-						<a href="{{ route('bko.thematic.edit', $thematic) }}" data-tooltip="tooltip" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-						<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-tooltip="tooltip" data-id="{{ $thematic->id }}">
-							<i class="fa fa-trash-o" aria-hidden="true"></i>
-						</a>
-					</td>
-				</tr>
-			@endforeach
+		@foreach($thematics as $thematic)
+			<tr>
+				<td>{{ $thematic->name }}</td>
+				<td>{!! $thematic->description_html !!}</td>
+				<td class="text-right col-actions">
+					<a href="{{ route('bko.thematic.edit', $thematic) }}" data-tooltip="tooltip" title="Modifier"><i
+								class="fa fa-pencil" aria-hidden="true"></i></a>
+					<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal"
+					   data-target="#modalDeleteItem" data-tooltip="tooltip" data-id="{{ $thematic->id }}">
+						<i class="fa fa-trash-o" aria-hidden="true"></i>
+					</a>
+				</td>
+			</tr>
+		@endforeach
 		</tbody>
 	</table>
 @endsection
@@ -32,14 +34,14 @@
 	<script>
 		var table;
 
-		(function($) {
+		(function ($) {
 			"use strict";
 
 			table = $('#table__thematics').DataTable({
 				"columns": [
-					null,
-					null,
-					{ "orderable": false }
+					{type: 'natural'},
+					{type: 'natural'},
+					{"orderable": false}
 				],
 			});
 		})(jQuery);
