@@ -13,6 +13,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Style\Color;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
@@ -178,7 +179,7 @@ class ExportController extends Controller
             $spreadsheet->addSheet($worksheet);
 
             $worksheet->getStyle('A2:K' . $number)->getAlignment()->setWrapText(true)->setVertical(Alignment::VERTICAL_TOP);
-            $worksheet->getStyle('K2:K' . $number)->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLUE);
+            $worksheet->getStyle('K2:K' . $number)->getFont()->getColor()->setARGB(Color::COLOR_BLUE);
 
             foreach ($rows_bck as $row) {
                 $worksheet->getStyle($row)->getFill()
