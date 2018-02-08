@@ -30,6 +30,7 @@ class Export
         $this->spreadsheet = $spreadsheet;
         $this->name = $name;
         $this->extension = $extension;
+        dd('Passe 4');
     }
 
     public function save()

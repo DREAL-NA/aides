@@ -190,8 +190,6 @@ class ExportController extends Controller
 
         $spreadsheet->removeSheetByIndex(0);
 
-        dd('Passe 3');
-
         // Download the file
         $export = new Export($spreadsheet, $this->filename, $type);
         $export->download();
