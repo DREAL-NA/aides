@@ -74,8 +74,6 @@ class ExportController extends Controller
         // Create new Spreadsheet object
         $spreadsheet = new Spreadsheet();
 
-        dd('Passe 2');
-
         // Set document properties
         $spreadsheet->getProperties()->setCreator('DREAL')
             ->setLastModifiedBy('DREAL')
@@ -191,6 +189,8 @@ class ExportController extends Controller
         }
 
         $spreadsheet->removeSheetByIndex(0);
+
+        dd('Passe 3');
 
         // Download the file
         $export = new Export($spreadsheet, $this->filename, $type);
