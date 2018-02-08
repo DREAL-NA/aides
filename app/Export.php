@@ -87,10 +87,10 @@ class Export
     protected function applyHeaders()
     {
         // Redirect output to a client’s web browser (Xlsx)
+        phpinfo();
         header('Content-Type: ' . $this->getContentType());
         header('Content-Disposition: attachment;filename="' . $this->getFilename() . '"');
         header('Cache-Control: max-age=0');
-        dd($this->getContentType(), $this->getFilename(), 2);
 
 
         if (in_array($this->extension, [self::EXTENSION_XLSX, self::EXTENSION_ODS])) {
