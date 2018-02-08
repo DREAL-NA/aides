@@ -104,7 +104,7 @@ class Export
     /**
      * @return Spreadsheet
      */
-    public function getSpreadsheet(): Spreadsheet
+    public function getSpreadsheet()
     {
         return $this->spreadsheet;
     }
