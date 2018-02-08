@@ -39,7 +39,10 @@ class FrontController extends Controller
             'projectHolders',
             'perimeters',
             'beneficiaries'
-        ])->orderBy('updated_at', 'desc')->opened();
+        ])
+//          ->orderBy('closing_date', 'asc')
+            ->orderByRaw('-closing_date desc')
+            ->opened();
 
         $pagination_appends = [];
         if (!empty($request->get(Thematic::URI_NAME_THEMATIC))) {
@@ -106,7 +109,8 @@ class FrontController extends Controller
         return view('front.call-for-projects-unique', compact('callForProjects'));
     }
 
-    public function websites() {
+    public function websites()
+    {
         $websites = Website::with(['organizationType', 'perimeters'])->get()->sortBy('name');
 
         return view('front.tools.website-library', compact('websites'));
