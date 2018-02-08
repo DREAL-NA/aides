@@ -30,7 +30,6 @@ class Export
         $this->spreadsheet = $spreadsheet;
         $this->name = $name;
         $this->extension = $extension;
-        dd('Passe 4');
     }
 
     public function save()
@@ -43,6 +42,7 @@ class Export
     {
         // Check different rules before starting the process
         $this->rules();
+        dd('Passe 5');
 
         $this->applyHeaders();
 
