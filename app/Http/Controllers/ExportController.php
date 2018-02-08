@@ -193,8 +193,6 @@ class ExportController extends Controller
         // Download the file
         $export = new Export($spreadsheet, $this->filename, $type);
         $export->download();
-
-        die();
     }
 
     public function pdf()
