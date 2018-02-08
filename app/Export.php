@@ -50,6 +50,7 @@ class Export
 //        $this->writer = IOFactory::createWriter($this->spreadsheet, 'Xlsx');
 
         // Save the new file
+        dd($this->writer);
         $this->writer->save('php://output');
     }
 
