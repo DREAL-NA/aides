@@ -155,6 +155,7 @@ class ExportController extends Controller
                 $worksheet->setCellValue($letter . $number, $callsForProject->website_url);
 //                $worksheet->getCell($letter . $number)->getHyperlink()->setUrl($callsForProject->website_url);
 
+
                 if (in_array($callsForProject->id, $callsOfTheWeek->toArray())) {
                     $rows_bck[] = 'A' . $number . ':K' . $number;
                 }
