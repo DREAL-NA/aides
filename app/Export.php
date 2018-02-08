@@ -50,7 +50,6 @@ class Export
 //        $this->writer = IOFactory::createWriter($this->spreadsheet, 'Xlsx');
 
         // Save the new file
-        dd($this->writer);
         $this->writer->save('php://output');
     }
 
@@ -87,11 +86,9 @@ class Export
     protected function applyHeaders()
     {
         // Redirect output to a client’s web browser (Xlsx)
-        phpinfo();
         header('Content-Type: ' . $this->getContentType());
         header('Content-Disposition: attachment;filename="' . $this->getFilename() . '"');
         header('Cache-Control: max-age=0');
-
 
         if (in_array($this->extension, [self::EXTENSION_XLSX, self::EXTENSION_ODS])) {
             // Only apply to ODS and XLSX files
@@ -120,7 +117,8 @@ class Export
     {
         switch ($this->extension) {
             case self::EXTENSION_XLSX:
-                return "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+//                return "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                return "application/vnd.ms-excel";
                 break;
 
             case self::EXTENSION_ODS:
