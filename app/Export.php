@@ -44,11 +44,11 @@ class Export
         $this->rules();
 
         $this->applyHeaders();
+        dd('Passe 7');
 
         // Set the good writer
         $this->setWriter();
 //        $this->writer = IOFactory::createWriter($this->spreadsheet, 'Xlsx');
-        dd('Passe 6');
 
         // Save the new file
         dd($this->writer);
