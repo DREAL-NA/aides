@@ -67,6 +67,7 @@ class ExportController extends Controller
 
     public function xlsx($type)
     {
+        dd('Passe');
         if (!in_array($type, ['xlsx', 'ods'])) {
             abort(422);
         }
