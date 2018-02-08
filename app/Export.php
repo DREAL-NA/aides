@@ -42,13 +42,13 @@ class Export
     {
         // Check different rules before starting the process
         $this->rules();
-        dd('Passe 5');
 
         $this->applyHeaders();
 
         // Set the good writer
         $this->setWriter();
 //        $this->writer = IOFactory::createWriter($this->spreadsheet, 'Xlsx');
+        dd('Passe 6');
 
         // Save the new file
         dd($this->writer);
