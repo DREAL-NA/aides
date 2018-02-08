@@ -188,7 +188,7 @@ class ExportController extends Controller
             }
         }
 
-//        $spreadsheet->removeSheetByIndex(0);
+        $spreadsheet->removeSheetByIndex(0);
 
         // Download the file
         $export = new Export($spreadsheet, $this->filename, $type);
