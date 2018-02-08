@@ -67,13 +67,14 @@ class ExportController extends Controller
 
     public function xlsx($type)
     {
-        dd('Passe');
         if (!in_array($type, ['xlsx', 'ods'])) {
             abort(422);
         }
 
         // Create new Spreadsheet object
         $spreadsheet = new Spreadsheet();
+
+        dd('Passe 2');
 
         // Set document properties
         $spreadsheet->getProperties()->setCreator('DREAL')
