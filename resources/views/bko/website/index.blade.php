@@ -31,32 +31,35 @@
 		<div class="col-lg-12">
 			<table class="table table-striped table-hover table-condensed" id="table__websites">
 				<thead>
-					<tr>
-						<th>Structure</th>
-						<th>Thèmes</th>
-						<th>Nom</th>
-						<th>Périmètre</th>
-						<th>Adresse internet</th>
-						<th></th>
-					</tr>
+				<tr>
+					<th>Structure</th>
+					<th>Thèmes</th>
+					<th>Nom</th>
+					<th>Périmètre</th>
+					<th>Adresse internet</th>
+					<th></th>
+				</tr>
 				</thead>
 				<tbody>
-					@foreach($websites as $website)
-						<tr>
-							<td>{{ $website->organizationType->name }}</td>
-							<td>{!! $website->themes_html !!}</td>
-							<td>{{ $website->name }}</td>
-							<td>{!! $website->perimeters->implode('name', ', ') !!}</td>
-							<td>{{ $website->website_url }}</td>
-							<td class="text-right col-actions">
-								<a href="{{ route('bko.site.show', $website) }}" data-tooltip="tooltip" title="Voir la fiche"><i class="fa fa-eye" aria-hidden="true"></i></a>
-								<a href="{{ route('bko.site.edit', $website) }}" data-tooltip="tooltip" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-								<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-tooltip="tooltip" data-id="{{ $website->id }}">
-									<i class="fa fa-trash-o" aria-hidden="true"></i>
-								</a>
-							</td>
-						</tr>
-					@endforeach
+				@foreach($websites as $website)
+					<tr>
+						<td>{{ $website->organizationType->name }}</td>
+						<td>{!! $website->themes_html !!}</td>
+						<td>{{ $website->name }}</td>
+						<td>{!! $website->perimeters->implode('name', ', ') !!}</td>
+						<td>{{ $website->website_url }}</td>
+						<td class="text-right col-actions">
+							<a href="{{ route('bko.site.show', $website) }}" data-tooltip="tooltip"
+							   title="Voir la fiche"><i class="fa fa-eye" aria-hidden="true"></i></a>
+							<a href="{{ route('bko.site.edit', $website) }}" data-tooltip="tooltip" title="Modifier"><i
+										class="fa fa-pencil" aria-hidden="true"></i></a>
+							<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal"
+							   data-target="#modalDeleteItem" data-tooltip="tooltip" data-id="{{ $website->id }}">
+								<i class="fa fa-trash-o" aria-hidden="true"></i>
+							</a>
+						</td>
+					</tr>
+				@endforeach
 				</tbody>
 			</table>
 		</div>
@@ -73,23 +76,23 @@
 			table.draw();
 		}
 
-		(function($) {
+		(function ($) {
 			"use strict";
 
 			table = $('#table__websites').DataTable({
 				"columns": [
-					null,
-					null,
-					null,
-					null,
-					null,
-					{ "orderable": false }
+					{type: 'natural'},
+					{type: 'natural'},
+					{type: 'natural'},
+					{type: 'natural'},
+					{type: 'natural'},
+					{"orderable": false}
 				],
 			});
 
 			$('.select2-filter')
 				.select2()
-				.on('change', function() {
+				.on('change', function () {
 					filterResults();
 				});
 		})(jQuery);

@@ -22,27 +22,29 @@
 		<div class="col-lg-12">
 			<table class="table table-striped table-hover" id="table__beneficiaries">
 				<thead>
-					<tr>
-						<th>Type</th>
-						<th>Nom</th>
-						<th>Description</th>
-						<th></th>
-					</tr>
+				<tr>
+					<th>Type</th>
+					<th>Nom</th>
+					<th>Description</th>
+					<th></th>
+				</tr>
 				</thead>
 				<tbody>
-					@foreach($beneficiaries as $beneficiary)
-						<tr>
-							<td>{{ $types[$beneficiary->type] }}</td>
-							<td>{{ $beneficiary->name }}</td>
-							<td>{!! $beneficiary->description_html !!}</td>
-							<td class="text-right col-actions">
-								<a href="{{ route('bko.beneficiaire.edit', $beneficiary) }}" data-tooltip="tooltip" title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-								<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-tooltip="tooltip" data-id="{{ $beneficiary->id }}">
-									<i class="fa fa-trash-o" aria-hidden="true"></i>
-								</a>
-							</td>
-						</tr>
-					@endforeach
+				@foreach($beneficiaries as $beneficiary)
+					<tr>
+						<td>{{ $types[$beneficiary->type] }}</td>
+						<td>{{ $beneficiary->name }}</td>
+						<td>{!! $beneficiary->description_html !!}</td>
+						<td class="text-right col-actions">
+							<a href="{{ route('bko.beneficiaire.edit', $beneficiary) }}" data-tooltip="tooltip"
+							   title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+							<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal"
+							   data-target="#modalDeleteItem" data-tooltip="tooltip" data-id="{{ $beneficiary->id }}">
+								<i class="fa fa-trash-o" aria-hidden="true"></i>
+							</a>
+						</td>
+					</tr>
+				@endforeach
 				</tbody>
 			</table>
 		</div>
@@ -64,9 +66,9 @@
 
 			table = $('#table__beneficiaries').DataTable({
 				"columns": [
-					null,
-					null,
-					null,
+					{type: 'natural'},
+					{type: 'natural'},
+					{type: 'natural'},
 					{"orderable": false}
 				],
 			});

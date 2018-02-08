@@ -25,9 +25,9 @@ class Beneficiary extends Model
     {
         return collect([
             self::TYPE_STATE => 'État',
-            self::TYPE_COLLECTIVITY => 'Collectivité',
-            self::TYPE_COMPANY => 'Entreprise',
-            self::TYPE_OTHER => 'Autre',
+            self::TYPE_COLLECTIVITY => 'Collectivités',
+            self::TYPE_COMPANY => 'Entreprises',
+            self::TYPE_OTHER => 'Autres',
         ]);
     }
 
@@ -38,7 +38,7 @@ class Beneficiary extends Model
                 'required',
                 Rule::in(self::types()->keys()->toArray()),
             ],
-            'name' => 'nullable|min:2',
+            'name' => 'nullable|min:2|max:255',
             'description' => 'present',
         ];
     }

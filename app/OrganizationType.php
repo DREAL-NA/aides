@@ -16,7 +16,7 @@ class OrganizationType extends Model
     public function rules()
     {
         return [
-            'name' => 'required|min:2',
+            'name' => 'required|min:2|max:255',
             'description' => 'present',
         ];
     }
