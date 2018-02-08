@@ -86,19 +86,20 @@ class Export
 
     protected function applyHeaders()
     {
+        dd($this->getContentType(), $this->getFilename());
         // Redirect output to a client’s web browser (Xlsx)
         header('Content-Type: ' . $this->getContentType());
         header('Content-Disposition: attachment;filename="' . $this->getFilename() . '"');
         header('Cache-Control: max-age=0');
 
-//        if (in_array($this->extension, [self::EXTENSION_XLSX, self::EXTENSION_ODS])) {
-//            // Only apply to ODS and XLSX files
-//            // If you're serving to IE over SSL, then the following may be needed
-//            header('Expires: Mon, 26 Jul 2015 05:00:00 GMT'); // Date in the past
-//            header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT'); // always modified
-//            header('Cache-Control: cache, must-revalidate'); // HTTP/1.1
-//            header('Pragma: public'); // HTTP/1.0
-//        }
+        if (in_array($this->extension, [self::EXTENSION_XLSX, self::EXTENSION_ODS])) {
+            // Only apply to ODS and XLSX files
+            // If you're serving to IE over SSL, then the following may be needed
+            header('Expires: Mon, 26 Jul 2015 05:00:00 GMT'); // Date in the past
+            header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT'); // always modified
+            header('Cache-Control: cache, must-revalidate'); // HTTP/1.1
+            header('Pragma: public'); // HTTP/1.0
+        }
     }
 
     /**
