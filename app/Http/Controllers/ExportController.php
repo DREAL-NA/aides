@@ -62,7 +62,7 @@ class ExportController extends Controller
         $this->callsForProjects = $callsForProjects;
 
         $date = date('YmdHis');
-        $this->filename = 'dispositifs_financiers_' . $date;
+        $this->filename = 'dispo_finan_' . $date;
     }
 
     public function xlsx($type)

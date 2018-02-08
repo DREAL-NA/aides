@@ -86,8 +86,6 @@ class Export
     protected function applyHeaders()
     {
         // Redirect output to a client’s web browser (Xlsx)
-        dd('Content-Type: ' . $this->getContentType(),
-            'Content-Disposition: attachment;filename="' . $this->getFilename() . '"');
         header('Content-Type: ' . $this->getContentType());
         header('Content-Disposition: attachment;filename="' . $this->getFilename() . '"');
         header('Cache-Control: max-age=0');
