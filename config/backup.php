@@ -62,7 +62,8 @@ return [
              * The disk names on which the backups will be stored.
              */
             'disks' => [
-                'local',
+//                'local',
+                'dropbox',
             ],
         ],
     ],
@@ -77,12 +78,12 @@ return [
     'notifications' => [
 
         'notifications' => [
-            \Spatie\Backup\Notifications\Notifications\BackupHasFailed::class => ['mail'],
-            \Spatie\Backup\Notifications\Notifications\UnhealthyBackupWasFound::class => ['mail'],
-            \Spatie\Backup\Notifications\Notifications\CleanupHasFailed::class => ['mail'],
-            \Spatie\Backup\Notifications\Notifications\BackupWasSuccessful::class => ['mail'],
-            \Spatie\Backup\Notifications\Notifications\HealthyBackupWasFound::class => ['mail'],
-            \Spatie\Backup\Notifications\Notifications\CleanupWasSuccessful::class => ['mail'],
+            \Spatie\Backup\Notifications\Notifications\BackupHasFailed::class => ['mail', 'slack'],
+            \Spatie\Backup\Notifications\Notifications\UnhealthyBackupWasFound::class => ['mail', 'slack'],
+            \Spatie\Backup\Notifications\Notifications\CleanupHasFailed::class => ['mail', 'slack'],
+            \Spatie\Backup\Notifications\Notifications\BackupWasSuccessful::class => [],
+            \Spatie\Backup\Notifications\Notifications\HealthyBackupWasFound::class => ['mail', 'slack'],
+            \Spatie\Backup\Notifications\Notifications\CleanupWasSuccessful::class => [],
         ],
 
         /*
@@ -92,16 +93,17 @@ return [
         'notifiable' => \Spatie\Backup\Notifications\Notifiable::class,
 
         'mail' => [
-            'to' => 'your@example.com',
+            'to' => 'contact@ngiraud.me',
         ],
 
         'slack' => [
-            'webhook_url' => '',
+            'webhook_url' => 'https://hooks.slack.com/services/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',
 
             /*
              * If this is set to null the default channel of the webhook will be used.
              */
             'channel' => null,
+
         ],
     ],
 
@@ -111,12 +113,12 @@ return [
      * UnHealthyBackupWasFound event will be fired.
      */
     'monitorBackups' => [
-        [
-            'name' => config('app.name'),
-            'disks' => ['local'],
-            'newestBackupsShouldNotBeOlderThanDays' => 1,
-            'storageUsedMayNotBeHigherThanMegabytes' => 5000,
-        ],
+//        [
+//            'name' => config('app.name'),
+//            'disks' => ['local'],
+//            'newestBackupsShouldNotBeOlderThanDays' => 1,
+//            'storageUsedMayNotBeHigherThanMegabytes' => 5000,
+//        ],
 
         /*
         [
@@ -150,22 +152,22 @@ return [
             /*
              * The number of days for which daily backups must be kept.
              */
-            'keepDailyBackupsForDays' => 16,
+            'keepDailyBackupsForDays' => 1,
 
             /*
              * The number of weeks for which one weekly backup must be kept.
              */
-            'keepWeeklyBackupsForWeeks' => 8,
+            'keepWeeklyBackupsForWeeks' => 1,
 
             /*
              * The number of months for which one monthly backup must be kept.
              */
-            'keepMonthlyBackupsForMonths' => 4,
+            'keepMonthlyBackupsForMonths' => 1,
 
             /*
              * The number of years for which one yearly backup must be kept.
              */
-            'keepYearlyBackupsForYears' => 2,
+            'keepYearlyBackupsForYears' => 1,
 
             /*
              * After cleaning up the backups remove the oldest backup until

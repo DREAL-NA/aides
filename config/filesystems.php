@@ -63,6 +63,13 @@ return [
             'bucket' => env('AWS_BUCKET'),
         ],
 
+        'dropbox' => [
+            'driver' => 'dropbox',
+            'accessToken' => "ZP8TvJfIWGQAAAAAAAAQPeCqJLoXwAg7iOng2WWu97RKwHCbD2mW8_rnIGhjJAXx",
+            'authorizationToken' => "ZP8TvJfIWGQAAAAAAAAQPeCqJLoXwAg7iOng2WWu97RKwHCbD2mW8_rnIGhjJAXx",
+            'clientIdentifier' => "ngiraud/backups",
+        ]
+
     ],
 
 ];
