@@ -82,7 +82,7 @@ return [
             \Spatie\Backup\Notifications\Notifications\UnhealthyBackupWasFound::class => ['mail', 'slack'],
             \Spatie\Backup\Notifications\Notifications\CleanupHasFailed::class => ['mail', 'slack'],
             \Spatie\Backup\Notifications\Notifications\BackupWasSuccessful::class => [],
-            \Spatie\Backup\Notifications\Notifications\HealthyBackupWasFound::class => ['mail', 'slack'],
+            \Spatie\Backup\Notifications\Notifications\HealthyBackupWasFound::class => [],
             \Spatie\Backup\Notifications\Notifications\CleanupWasSuccessful::class => [],
         ],
 
