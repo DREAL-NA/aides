@@ -59,8 +59,7 @@
                                 @endforeach
                             </div>
                             <div class="middle infos">
-                                <div class="last-modified visible-xs">Dernière modification
-                                    : {{ $callForProjects->updated_at->format('d/m/Y') }}</div>
+                                <div class="last-modified visible-xs">Dernière modification &nbsp;: {{ $callForProjects->updated_at->format('d/m/Y') }}</div>
                                 <div class="thematic">
                                     {{ $callForProjects->thematic->name }}
                                     @if(!empty($callForProjects->subthematic))

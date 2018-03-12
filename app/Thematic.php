@@ -18,6 +18,16 @@ class Thematic extends Model
     const URI_NAME_THEMATIC = 'thema';
     const URI_NAME_SUBTHEMATIC = 'subthema';
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($thematic) {
+            $thematic->callForProjects()->delete();
+        });
+    }
+
+
     public function rules()
     {
         return [
@@ -43,6 +53,11 @@ class Thematic extends Model
     public function children()
     {
         return $this->hasMany(self::class, 'parent_id');
+    }
+
+    public function callForProjects()
+    {
+        return $this->hasMany(CallForProjects::class);
     }
 
     public function parent()
