@@ -70,7 +70,7 @@ class WebsiteController extends Controller
             $website->addLogo();
         }
 
-        return redirect(route('bko.site.edit', $website))->with('success', "Le site de recensmeent a bien été ajouté.");
+        return redirect(route('bko.site.edit', $website))->with('success', "Le site de recensement a bien été ajouté.");
     }
 
     /**
@@ -129,7 +129,7 @@ class WebsiteController extends Controller
         }
 
         return redirect(route('bko.site.edit', $website))->with('success',
-            "Le site de recensmeent a bien été modifié.");
+            "Le site de recensement a bien été modifié.");
     }
 
     /**
