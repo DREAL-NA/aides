@@ -22,6 +22,7 @@ class ExportController extends Controller
 
     protected $callsForProjects;
     protected $filename;
+    protected $thematics;
 
     public function __construct(Request $request)
     {
@@ -58,8 +59,11 @@ class ExportController extends Controller
         } elseif (!empty($request->get('date')) && Date::isValid($request->get('date'))) {
             $callsForProjects->closingDateAfter($request->get('date'));
         }
-        $callsForProjects = $callsForProjects->get()->groupBy('thematic_id');
-        $this->callsForProjects = $callsForProjects;
+        $callsForProjects = $callsForProjects->get();
+
+        $this->thematics = $callsForProjects->pluck('thematic', 'thematic_id')->sortBy('slug');
+
+        $this->callsForProjects = $callsForProjects->groupBy('thematic_id');;
 
         $date = date('YmdHis');
         $this->filename = 'dispositifs_financiers_' . $date;
@@ -96,8 +100,12 @@ class ExportController extends Controller
             'Lien vers le site'
         ];
 
-        foreach ($this->callsForProjects as $thematic => $callsForProjects) {
-            $thematic = $callsForProjects->first()->thematic;
+        foreach ($this->thematics as $thematic_id => $thematic) {
+            if (empty($this->callsForProjects[$thematic->id])) {
+                continue;
+            }
+
+            $callsForProjects = $this->callsForProjects[$thematic->id];
             $callsOfTheWeek = CallForProjects::filterCallsOfTheWeek($callsForProjects)->pluck('id');
 
             // Create a new worksheet
@@ -202,8 +210,11 @@ class ExportController extends Controller
 
     public function pdf()
     {
-        $pdf = PDF::loadView('exports.pdf',
-            ['callsForProjects' => $this->callsForProjects, 'type' => 'pdf'])->setPaper('a4', 'landscape');
+        $pdf = PDF::loadView(
+            'exports.pdf',
+            ['thematics' => $this->thematics, 'callsForProjects' => $this->callsForProjects, 'type' => 'pdf']
+        )
+            ->setPaper('a4', 'landscape');
 
         return $pdf->download($this->filename . '.pdf');
     }

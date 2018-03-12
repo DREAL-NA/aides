@@ -47,7 +47,11 @@
                         <td>{!! $website->themes_html !!}</td>
                         <td>{{ $website->name }}</td>
                         <td>{!! $website->perimeters->implode('name', ', ') !!}</td>
-                        <td>{{ $website->website_url }}</td>
+                        <td>
+                            @if(!empty($website->website_url))
+                                <a href="{{ $website->website_url }}" target="_blank">Lien vers le site</a>
+                            @endif
+                        </td>
                         <td class="text-right col-actions">
                             <a href="{{ route('bko.site.show', $website) }}" data-tooltip="tooltip"
                                title="Voir la fiche"><i class="fa fa-eye" aria-hidden="true"></i></a>

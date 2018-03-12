@@ -1,12 +1,21 @@
-.selectric-wrapper  {
-	.selectric {
-		.label {
-			color: lighten($text-color, 30%);
-			font-weight: 500;
+.selectric-wrapper {
+    .selectric {
+        .label {
+            color: lighten($text-color, 30%);
+            font-weight: 500;
 
-			.selected {
-				color: $text-color;
-			}
-		}
-	}
+            .selected {
+                color: $text-color;
+            }
+        }
+    }
+}
+
+.selectric-items {
+    li {
+        &:hover {
+            background: $color-9;
+            color: $color-white;
+        }
+    }
 }

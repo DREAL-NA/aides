@@ -130,7 +130,7 @@ class CallForProjects extends Model
     {
         $start_date = Carbon::now()->startOfWeek();
         $end_date = Carbon::now()->endOfWeek();
-        return $query->whereBetween('updated_at',
+        return $query->whereBetween('created_at',
             [$start_date->format('Y-m-d 00:00:00'), $end_date->format('Y-m-d 23:59:59')]);
     }
 

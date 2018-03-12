@@ -31,7 +31,7 @@ class FrontController extends Controller
         return view('front.home', compact('countCallsForProjects', 'thematics', 'perimeters', 'callsOfTheWeek'));
     }
 
-    public function callForProjects(Request $request)
+    public function callForProjects(Request $request, $closed = false)
     {
         $callsForProjects = CallForProjects::with([
             'thematic',
@@ -41,8 +41,19 @@ class FrontController extends Controller
             'beneficiaries'
         ])
 //          ->orderBy('closing_date', 'asc')
-            ->orderByRaw('-closing_date desc')
-            ->opened();
+            ->orderByRaw('-closing_date desc');
+
+        if ($closed != false && $closed != 'clotures') {
+            abort(404);
+        }
+
+        $callsAreClosedOnes = false;
+        if ($closed == 'clotures') {
+            $callsForProjects = $callsForProjects->closed();
+            $callsAreClosedOnes = true;
+        } else {
+            $callsForProjects = $callsForProjects->opened();
+        }
 
         $pagination_appends = [];
         if (!empty($request->get(Thematic::URI_NAME_THEMATIC))) {
@@ -87,9 +98,10 @@ class FrontController extends Controller
         $perimeters = Perimeter::orderBy('name', 'asc')->get();
         $project_holders = ProjectHolder::orderBy('name', 'asc')->get();
 
-        return view('front.call-for-projects',
-            compact('callsForProjects', 'primary_thematics', 'subthematics', 'perimeters', 'project_holders',
-                'pagination_appends'));
+        return view(
+            'front.call-for-projects',
+            compact('callsForProjects', 'primary_thematics', 'subthematics', 'perimeters', 'project_holders', 'pagination_appends', 'callsAreClosedOnes')
+        );
     }
 
     public function callForProjectsUnique($slug, Request $request)
@@ -124,7 +136,7 @@ class FrontController extends Controller
         $contact->fill($validatedData);
         $contact->save();
 
-        return redirect(route('front.contact'))->with('success',
-            "Merci, votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.");
+        return redirect(route('front.contact'))
+            ->with('success', "Merci, votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.");
     }
 }

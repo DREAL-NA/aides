@@ -12,6 +12,7 @@ class Thematic extends Model
     use SoftDeletes, Description;
 
     protected $guarded = [];
+    protected $appends = ['slug'];
     protected $dates = ['deleted_at'];
 
     const URI_NAME_THEMATIC = 'thema';
@@ -57,5 +58,10 @@ class Thematic extends Model
     public function scopeSub($query)
     {
         return $query->whereNotNull('parent_id');
+    }
+
+    public function getSlugAttribute()
+    {
+        return str_slug($this->attributes['name']);
     }
 }

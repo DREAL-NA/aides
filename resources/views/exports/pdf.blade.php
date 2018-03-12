@@ -1,43 +1,55 @@
 <!DOCTYPE html>
 <html>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<style>
-		* { margin:0; padding:0 }
-		th, td, div { margin: 0; padding: 5px }
-		html { margin: 10px }
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<style>
+    * {
+        margin: 0;
+        padding: 0
+    }
 
-		.page-break {
-			page-break-after: always;
-		}
+    th, td, div {
+        margin: 0;
+        padding: 5px
+    }
 
-		table {
-			border-collapse: collapse;
-		}
+    html {
+        margin: 10px
+    }
 
-		table tr.selected td {
-			background-color: #5CDB95;
-			color: #ffffff;
-		}
+    .page-break {
+        page-break-after: always;
+    }
 
-		th, td {
-			border: thin solid #333;
-			width: auto !important;
-		}
-		h2 {
-			margin-bottom: 10px;
-		}
-	</style>
-	<body>
-		@foreach($callsForProjects as $thematic_id => $items)
-			@php($callsOfTheWeek = App\CallForProjects::filterCallsOfTheWeek($items)->pluck('id'))
-			@php($thematic = $items->first()->thematic)
+    table {
+        border-collapse: collapse;
+    }
 
-			<h2>{{ $thematic->name }}</h2>
-			@include('exports._table', [ 'callsForProjects' => $items, 'callsOfTheWeek' => $callsOfTheWeek ])
+    table tr.selected td {
+        background-color: #5CDB95;
+        color: #ffffff;
+    }
 
-			@if(! $loop->last)
-				<div class="page-break"></div>
-			@endif
-		@endforeach
-	</body>
+    th, td {
+        border: thin solid #333;
+        width: auto !important;
+    }
+
+    h2 {
+        margin-bottom: 10px;
+    }
+</style>
+<body>
+@foreach($thematics as $thematic_id => $thematic)
+    @php($items = $callsForProjects[$thematic_id])
+    @php($callsOfTheWeek = App\CallForProjects::filterCallsOfTheWeek($items)->pluck('id'))
+    @php($thematic = $items->first()->thematic)
+
+    <h2>{{ $thematic->name }}</h2>
+    @include('exports._table', [ 'callsForProjects' => $items, 'callsOfTheWeek' => $callsOfTheWeek ])
+
+    @if(! $loop->last)
+        <div class="page-break"></div>
+    @endif
+@endforeach
+</body>
 </html>

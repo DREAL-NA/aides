@@ -1,88 +1,102 @@
 body {
-	font-weight: 300;
+    font-weight: 300;
 }
 
-
 .main-wrapper {
-	background-color: $color-white;
-	min-height: 100vh;
+    background-color: $color-white;
+    min-height: 100vh;
 }
 
 .count-dispositifs-wrapper {
-	text-align: center;
-	background-color: $color-3;
-	padding: 30px 15px;
-	color: $color-white;
-	margin: 0 -15px;
+    text-align: center;
+    background-color: $color-3;
+    padding: 30px 15px;
+    color: $color-white;
+    margin: 0 -15px;
 
-	.count-dispositifs {
-		font-size: 1.2em;
-		margin-bottom: 0;
+    .count-dispositifs {
+        font-size: 1.2em;
+        margin-bottom: 0;
 
-		strong {
-			font-weight: 700;
-			font-size: 1.5em;
-			color: $color-1;
-		}
-	}
+        strong {
+            font-weight: 700;
+            font-size: 1.5em;
+            color: $color-4;
+        }
+    }
 
-	//.count-dispositifs {
-	//	font-size: 1.7em;
-	//	line-height: 1;
-	//	margin-bottom: 0;
-	//	text-transform: uppercase;
-	//
-	//	strong {
-	//		font-weight: 700;
-	//		font-size: 1.5em;
-	//		color: $color-1;
-	//	}
-	//}
+    //.count-dispositifs {
+    //	font-size: 1.7em;
+    //	line-height: 1;
+    //	margin-bottom: 0;
+    //	text-transform: uppercase;
+    //
+    //	strong {
+    //		font-weight: 700;
+    //		font-size: 1.5em;
+    //		color: $color-1;
+    //	}
+    //}
 }
 
 .page-content {
-	padding: 0 15px;
+    padding: 0 15px;
 
-	.content {
-		margin-top: 30px;
-	}
+    .content {
+        margin-top: 30px;
+    }
 
-	@include mobile {
-		padding: 0;
-	}
+    @include mobile {
+        padding: 0;
+    }
 }
 
 .page-header {
-	&.no-bottom {
-		margin-bottom: 0;
-	}
+    &.no-bottom {
+        margin-bottom: 0;
+    }
 }
 
 input {
-	&:hover,
-	&:focus {
-		outline: 0;
-		border: 1px solid $color-4;
-	}
+    &:hover,
+    &:focus {
+        outline: 0;
+        border: 1px solid $color-4;
+    }
+}
+
+a {
+    color: $color-9;
+
+    &:hover,
+    &:focus {
+        color: $color-2;
+    }
+}
+
+mark,
+.mark {
+    background-color: $color-9;
+    color: $color-white;
 }
 
 .page-error {
-	text-align: center;
-	margin: 100px 0;
+    text-align: center;
+    margin: 100px 0;
 }
 
 ::-webkit-input-placeholder {
-	color: lighten($text-color, 30%);
+    color: lighten($text-color, 30%);
 }
 
 :-moz-placeholder {
-	color: lighten($text-color, 30%);
+    color: lighten($text-color, 30%);
 }
 
 ::-moz-placeholder {
-	color: lighten($text-color, 30%);
+    color: lighten($text-color, 30%);
 }
 
 :-ms-input-placeholder {
-	color: lighten($text-color, 30%);
+    color: lighten($text-color, 30%);
 }

@@ -1,110 +1,113 @@
 .filters-wrapper {
-	margin: 30px auto;
-	max-width: 900px;
+    margin: 30px auto;
+    max-width: 900px;
 
-	.filters-step {
-		margin: 30px 0;
+    .filters-step {
+        margin: 30px 0;
 
-		.title {
-			margin: 0;
-			padding: 10px 0;
-			font-size: 1.2em;
-			line-height: 1.4em;
-		}
+        .title {
+            margin: 0;
+            padding: 10px 0;
+            font-size: 1.2em;
+            line-height: 1.4em;
+        }
 
-		.filters-items {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
-			align-items: stretch;
-			margin: 0;
-			padding: 0;
-			list-style-type: none;
+        .filters-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: stretch;
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
 
-			.filter-item {
-				width: 20%;
-				height: 100px;
+            .filter-item {
+                width: 20%;
+                height: 100px;
 
-				a {
-					padding: 15px 4px;
-					margin: 3px;
-					height: calc(100% - 6px);
-					text-align: center;
-					background-color: $color-gray-1;
-					border: 1px solid rgba($text-color, 0.1);
-					border-radius: 5px;
-					font-size: 1.15em;
-					font-weight: 500;
-					line-height: 1.3em;
-					color: $text-color;
-					text-decoration: none;
-					display: flex;
-					align-items: center;
-					justify-content: center;
+                a {
+                    padding: 15px 4px;
+                    margin: 3px;
+                    height: calc(100% - 6px);
+                    text-align: center;
+                    background-color: $color-gray-1;
+                    border: 1px solid rgba($text-color, 0.1);
+                    border-radius: 5px;
+                    font-size: 1.15em;
+                    font-weight: 500;
+                    line-height: 1.3em;
+                    color: $text-color;
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: all 250ms;
 
-					&:hover,
-					&.active {
-						background-color: rgba($text-color, 0.2);
-					}
-				}
+                    &:hover,
+                    &.active {
+                        background-color: $color-9;
+                        color: $color-white;
+                    }
+                }
 
-				@include mobile {
-					width: calc(100% / 3);
+                @include mobile {
+                    width: calc(100% / 3);
 
-					a {
-						font-size: .85em;
-					}
-				}
-			}
-		}
-	}
+                    a {
+                        font-size: .85em;
+                    }
+                }
+            }
+        }
+    }
 
-	.filters-submit-button {
-		display: block;
-		margin: 30px auto;
-		background-color: $color-1;
-		color: $color-white;
-		font-size: 1.2em;
-		padding: 10px 50px;
-		border: none;
-		outline: none;
-		border-radius: 2px;
-		transition: all 250ms ease-in-out;
-		font-weight: 500;
+    .filters-submit-button {
+        display: block;
+        margin: 30px auto;
+        background-color: $color-1;
+        color: $color-white;
+        font-size: 1.2em;
+        padding: 10px 50px;
+        border: none;
+        outline: none;
+        border-radius: 2px;
+        transition: all 250ms ease-in-out;
+        font-weight: 500;
 
-		@include hoverButton($color-1);
+        @include hoverButton($color-1);
 
-		&:hover {
-			color: $color-white;
-		}
-	}
+        &:hover {
+            color: $color-white;
+        }
+    }
 }
 
 .page-home {
-	margin-top: 75px;
+    margin-top: 75px;
 }
 
 .news-item {
-	.middle {
-		.item-wrapper {
-			margin-bottom: 10px;
-			border-bottom: 1px solid $page-header-border-color;
-			padding-bottom: 10px;
+    .middle {
+        .item-wrapper {
+            margin-bottom: 10px;
+            border-bottom: 1px solid $page-header-border-color;
+            padding-bottom: 10px;
 
-			&:last-child {
-				margin-bottom: 0;
-				border-bottom: none;
-			}
+            &:last-child {
+                margin-bottom: 0;
+                border-bottom: none;
+            }
 
-			.title {
-				margin-bottom: 5px;
-			}
+            .title {
+                margin-bottom: 5px;
+            }
 
-			.closing-date {
-				font-size: .9em;
-				font-weight: 500;
-				margin-bottom: 10px;
-			}
-		}
-	}
+            .closing-date,
+            .perimeters {
+                font-size: .9em;
+                font-weight: 500;
+                margin-bottom: 10px;
+            }
+        }
+    }
 }

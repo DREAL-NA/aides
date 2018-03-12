@@ -10,7 +10,10 @@
 
 @section('content')
     <div class="page-content page-dispositifs">
-        <h2>Dispositifs financiers</h2>
+        <h2>
+            <span>Dispositifs financiers{{ $callsAreClosedOnes ? ' clotûrés' : '' }}</span>
+            <a href="{{ route('front.dispositifs', ['closed' => $callsAreClosedOnes ? false : 'clotures']) }}">Voir les dispositifs{{ $callsAreClosedOnes ? '' : ' clotûrés' }}</a>
+        </h2>
         @include('front.dispositifs.filters')
 
         <div class="content">

@@ -1,98 +1,100 @@
 header {
-	background-color: $color-1;
-	color: $color-white;
-	text-align: center;
-	padding: 30px 15px;
-	border-bottom: thin solid $body-bg;
-	
-	.container {
-		position: relative;
-	}
-	
-	.link-title {
-		@include linkInherit;
+    background-color: $color-1;
+    color: $color-white;
+    text-align: center;
+    padding: 30px 15px;
+    border-bottom: thin solid $body-bg;
 
-		&:before {
-			content: '';
-			display: block;
-			width: 100px;
-			height: 3px;
-			background: url('/images/drapeau-liseret.png') no-repeat left center;
-			background-size: 100px 3px;
-			margin: auto auto 15px;
-		}
-	}
+    .container {
+        position: relative;
+    }
 
-	h1 {
-		margin: 0;
-		font-size: 4.4em;
-		padding-bottom: 15px;
-	}
+    .link-title {
+        @include linkInherit;
 
-	.description {
-		margin-bottom: 0;
-		font-style: italic;
-		font-size: 1.5em;
-	}
+        &:before {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: url('/images/drapeau-liseret.png') no-repeat left center;
+            background-size: 100px 3px;
+            margin: auto auto 15px;
+        }
+    }
 
-	.link-marianne {
-		top: 0;
-		left: 0;
-		position: absolute;
-		display: flex;
-		align-items: center;
-		@include linkInherit;
+    h1 {
+        font-size: 3.5em;
+        font-weight: 500;
+        padding-bottom: 15px;
+        max-width: 650px;
+        margin: 0 auto;
+    }
 
-		svg {
-			width: 100px;
-		}
+    .description {
+        margin-bottom: 0;
+        font-style: italic;
+        font-size: 1.5em;
+    }
 
-		.logo-image {
-			width: 100px;
-		}
-		
-		.title {
-			text-align: left;
-			font-size: 1.2em;
-			line-height: 1.2em;
-			font-weight: 500;
-			margin-left: 10px;
-		}
-	}
+    .link-marianne {
+        top: 0;
+        left: 0;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        @include linkInherit;
 
-	@include tablet {
-		h1,
-		.description {
-			max-width: 500px;
-			margin-left: auto;
-			margin-right: auto;
-		}
-	}
+        svg {
+            width: 100px;
+        }
 
-	@include mobile {
-		padding-left: 0;
-		padding-right: 0;
+        .logo-image {
+            width: 100px;
+        }
 
-		h1,
-		.description {
-			max-width: 300px;
-		}
+        .title {
+            text-align: left;
+            font-size: 1.2em;
+            line-height: 1.2em;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+    }
 
-		h1 {
-			font-size: 3em;
-			margin-top: 30px;
-		}
+    @include tablet {
+        h1,
+        .description {
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
 
-		.description {
-			font-size: 1.2em;
-		}
+    @include mobile {
+        padding-left: 0;
+        padding-right: 0;
 
-		.link-marianne {
-			top: -30px;
+        h1,
+        .description {
+            max-width: 300px;
+        }
 
-			.logo-image {
-				width: 50px;
-			}
-		}
-	}
+        h1 {
+            font-size: 3em;
+            margin-top: 30px;
+        }
+
+        .description {
+            font-size: 1.2em;
+        }
+
+        .link-marianne {
+            top: -30px;
+
+            .logo-image {
+                width: 50px;
+            }
+        }
+    }
 }

@@ -1,39 +1,29 @@
-
 // Fonts
 //@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:300,400,700');
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,600|Roboto:300,400,700');
-
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700|Roboto+Condensed:700');
 // Variables
 @import "front/variables";
-
-
 @import "front/bootstrap";
 @import "front/mixins";
-
 // Bootstrap
 //@import "~bootstrap-sass/assets/stylesheets/bootstrap";
-
 @import "~vex-js/sass/vex";
 @import "~vex-js/sass/vex-theme-plain";
 @import "front/components/vex-custom";
-
 // Selectric
 @import "~selectric/src/selectric";
 @import "front/components/selectric-custom";
-
 // Font Awesome
 @import "~font-awesome/scss/font-awesome";
-
 // Datepicker
 @import "front/components/datepicker-custom";
-
+@import "print";
 @import "front/base";
 @import "front/components/header";
 @import "front/components/menu";
 @import "front/components/footer";
 @import "front/components/breadcrumb";
 @import "front/components/pagination";
-
 @import "front/page/home";
 @import "front/page/dispositifs";
 @import "front/page/dispositif-unique";
