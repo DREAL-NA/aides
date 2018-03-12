@@ -60,6 +60,9 @@ Route::group([
         ],
         'parameters' => ['appel-a-projet' => 'callForProjects']
     ]);
+
+    Route::resource('utilisateur', 'UserController',
+        ['as' => 'bko', 'parameters' => ['utilisateur' => 'user'], 'except' => ['show']])->middleware('admin');
 });
 
 Route::get('/', ['as' => 'front.home', 'uses' => 'FrontController@home']);
