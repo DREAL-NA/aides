@@ -121,8 +121,8 @@ class CallForProjectsController extends Controller
         $callForProjects->fill(array_except($validatedData, ['perimeters', 'project_holders', 'beneficiaries']));
         $callForProjects->save();
 
-        return redirect(route('bko.call.edit', $callForProjects))->with('success',
-            "Le dispositif a bien été ajouté.");
+        return redirect(route('bko.call.edit', $callForProjects))
+            ->with('success', "Le dispositif a bien été ajouté.");
     }
 
     /**
@@ -167,8 +167,8 @@ class CallForProjectsController extends Controller
         $callForProjects->fill(array_except($validatedData, ['perimeters', 'project_holders', 'beneficiaries']));
         $callForProjects->save();
 
-        return redirect(route('bko.call.edit', $callForProjects))->with('success',
-            "Le dispositif a bien été modifié.");
+        return redirect(route('bko.call.edit', $callForProjects))
+            ->with('success', "Le dispositif a bien été modifié.");
     }
 
     /**

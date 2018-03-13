@@ -16,6 +16,9 @@ class CallForProjects extends Model
 
     protected $guarded = [];
     protected $dates = ['deleted_at', 'closing_date'];
+    protected $casts = [
+        'is_news' => 'boolean',
+    ];
 
     protected $table = 'calls_for_projects';
 
@@ -76,14 +79,15 @@ class CallForProjects extends Model
             'objectives' => 'nullable|min:2',
             'beneficiaries' => 'nullable|exists:beneficiaries,id',
             'beneficiary_comments' => 'nullable',
-            //			'allocation_global'      => 'required_without:allocation_per_project|in:1',
-            //			'allocation_per_project' => 'required_without:allocation_global|in:1',
+//			'allocation_global'      => 'required_without:allocation_per_project|in:1',
+//			'allocation_per_project' => 'required_without:allocation_global|in:1',
             'allocation_global' => 'in:1',
             'allocation_per_project' => 'in:1',
             'allocation_amount' => 'nullable',
             'allocation_comments' => 'nullable',
             'technical_relay' => 'nullable',
             'website_url' => 'nullable|url',
+            'is_news' => 'required|in:0,1',
         ];
     }
 
@@ -130,8 +134,10 @@ class CallForProjects extends Model
     {
         $start_date = Carbon::now()->startOfWeek();
         $end_date = Carbon::now()->endOfWeek();
-        return $query->whereBetween('created_at',
-            [$start_date->format('Y-m-d 00:00:00'), $end_date->format('Y-m-d 23:59:59')]);
+        
+        return $query
+            ->where('is_news', 1)
+            ->whereBetween('created_at', [$start_date->format('Y-m-d 00:00:00'), $end_date->format('Y-m-d 23:59:59')]);
     }
 
     public function scopeClosingDateNull($query)
