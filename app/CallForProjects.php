@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use Spatie\Feed\Feedable;
+use Spatie\Feed\FeedItem;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class CallForProjects extends Model
+class CallForProjects extends Model implements Feedable
 {
     use SoftDeletes, HasSlug;
 
@@ -119,6 +121,11 @@ class CallForProjects extends Model
     {
         return $this->belongsToMany(Beneficiary::class, 'beneficiaries_call_for_projects', 'call_for_project_id',
             'beneficiary_id');
+    }
+
+    public function editor()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function scopeClosed($query)
@@ -245,5 +252,32 @@ class CallForProjects extends Model
     public function getTechnicalRelayAttribute($value)
     {
         return preg_replace('#<br\s*/?>#i', "", $value);
+    }
+
+
+    /**
+     * Method used for the RSS feed
+     *
+     * @return array|\Spatie\Feed\FeedItem|void
+     */
+    public function toFeedItem()
+    {
+        return FeedItem::create()
+            ->id($this->slug)
+            ->title($this->name)
+            ->summary($this->objectives)
+            ->updated($this->updated_at)
+            ->link(route('front.dispositifs.unique', ['slug' => $this->slug]))
+            ->author(config('feed.author'));
+    }
+
+    public static function getFeedItems()
+    {
+        return self::latest('updated_at')->take(config('feed.itemsPerFeed'))->get();
+    }
+
+    public static function getFeedItemsByThematic($id)
+    {
+        return self::where('thematic_id', $id)->latest('updated_at')->take(config('feed.itemsPerFeed'))->get();
     }
 }

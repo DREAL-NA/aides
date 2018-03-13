@@ -68,6 +68,8 @@ Route::group([
         ['as' => 'bko', 'parameters' => ['utilisateur' => 'user'], 'except' => ['show']])->middleware('admin');
 });
 
+Route::feeds();
+
 Route::get('/', ['as' => 'front.home', 'uses' => 'FrontController@home']);
 
 Route::post('/contact', ['as' => 'front.contact.store', 'uses' => 'FrontController@contactStore']);
