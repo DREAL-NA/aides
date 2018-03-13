@@ -61,6 +61,9 @@ Route::group([
         'parameters' => ['appel-a-projet' => 'callForProjects']
     ]);
 
+    Route::get('appel-a-projet/{callForProjects}/dupliquer',
+        ['as' => 'bko.call.duplicate', 'uses' => 'CallForProjectsController@duplicate']);
+
     Route::resource('utilisateur', 'UserController',
         ['as' => 'bko', 'parameters' => ['utilisateur' => 'user'], 'except' => ['show']])->middleware('admin');
 });

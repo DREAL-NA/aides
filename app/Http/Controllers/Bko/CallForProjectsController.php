@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Perimeter;
 use App\ProjectHolder;
 use App\Thematic;
+use Grpc\Call;
 use Illuminate\Http\Request;
 
 class CallForProjectsController extends Controller
@@ -108,7 +109,7 @@ class CallForProjectsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  Request $request
      *
      * @return \Illuminate\Http\Response
      */
@@ -155,7 +156,7 @@ class CallForProjectsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  Request $request
      * @param  \App\CallForProjects $callForProjects
      *
      * @return \Illuminate\Http\Response
@@ -193,5 +194,28 @@ class CallForProjectsController extends Controller
         }
 
         return response()->json('error', 422);
+    }
+
+    /**
+     * Duplicate a call for projects
+     *
+     * @param  \App\CallForProjects $callForProjects
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function duplicate(CallForProjects $callForProjects)
+    {
+        $callForProjects->load(['projectHolders', 'perimeters', 'beneficiaries']);
+
+        $new = $callForProjects->replicate();
+
+        $new->push();
+
+        foreach ($callForProjects->getRelations() as $relation => $entries) {
+            $new->{$relation}()->saveMany($new->{$relation});
+        }
+
+        return redirect(route('bko.call.edit', $new))
+            ->with('success', "Le dispositif a bien été dupliqué.");
     }
 }

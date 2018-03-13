@@ -18,6 +18,8 @@ class CallForProjects extends Model
     protected $dates = ['deleted_at', 'closing_date'];
     protected $casts = [
         'is_news' => 'boolean',
+        'allocation_global' => 'boolean',
+        'allocation_per_project' => 'boolean',
     ];
 
     protected $table = 'calls_for_projects';
@@ -27,12 +29,12 @@ class CallForProjects extends Model
         parent::boot();
 
         static::saving(function ($item) {
-            if (empty(request()->get('allocation_global'))) {
-                $item->allocation_global = 0;
-            }
-            if (empty(request()->get('allocation_per_project'))) {
-                $item->allocation_per_project = 0;
-            }
+//            if (empty(request()->get('allocation_global'))) {
+//                $item->allocation_global = 0;
+//            }
+//            if (empty(request()->get('allocation_per_project'))) {
+//                $item->allocation_per_project = 0;
+//            }
 
             $item->editor_id = Auth::user()->id;
         });
@@ -134,7 +136,7 @@ class CallForProjects extends Model
     {
         $start_date = Carbon::now()->startOfWeek();
         $end_date = Carbon::now()->endOfWeek();
-        
+
         return $query
             ->where('is_news', 1)
             ->whereBetween('created_at', [$start_date->format('Y-m-d 00:00:00'), $end_date->format('Y-m-d 23:59:59')]);
