@@ -19,9 +19,10 @@
                 <td class="text-right col-actions">
                     <a href="{{ route('bko.structure.edit', $organizationType) }}" data-tooltip="tooltip"
                        title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    {{--<a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal" data-target="#modalDeleteItem" data-id="{{ $organizationType->id }}">--}}
-                    {{--<i class="fa fa-trash-o" aria-hidden="true"></i>--}}
-                    {{--</a>--}}
+                    <a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal"
+                       data-target="#modalDeleteItem" data-tooltip="tooltip" data-id="{{ $organizationType->id }}">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </a>
                 </td>
             </tr>
         @endforeach
@@ -47,10 +48,10 @@
     </script>
 @endpush
 
-{{--@section('after-content')--}}
-{{--@include('bko.components.modals.delete', [--}}
-{{--'title' => "Suppression d'une organisation",--}}
-{{--'question' => "Êtes-vous sûr de vouloir supprimer cette organisation ?",--}}
-{{--'action' => 'Bko\OrganizationTypeController@destroy',--}}
-{{--])--}}
-{{--@endsection--}}
+@section('after-content')
+    @include('bko.components.modals.delete', [
+        'title' => "Suppression d'une organisation",
+        'question' => "Êtes-vous sûr de vouloir supprimer cette organisation ?<br/>Cette suppression entrainera la suppression des sites de recensement associés.",
+        'action' => 'Bko\OrganizationTypeController@destroy',
+    ])
+@endsection
