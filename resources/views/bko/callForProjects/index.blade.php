@@ -3,15 +3,17 @@
 @section('heading')
     <div class="heading-with-actions">
         <div class="title">{{ $title }}</div>
-        @if(!$callsForProjects->isEmpty())
+        @if(!$closed && !$callsForProjects->isEmpty())
             <div class="actions">
-                <a href="{{ route('export.xlsx', ['type' => 'xlsx']) }}" data-tooltip="tooltip"
-                   title="Exporter en Excel"><i
-                            class="fa fa-file-excel-o" aria-hidden="true"></i></a>
-                <a href="{{ route('export.xlsx', ['type' => 'ods']) }}" data-tooltip="tooltip"
-                   title="Exporter en LibreOffice"><i class="fa fa-file-text-o" aria-hidden="true"></i></a>
-                <a href="{{ route('export.pdf') }}" data-tooltip="tooltip" title="Exporter en PDF"><i
-                            class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+                <a href="{{ route('export.xlsx', ['type' => 'xlsx']) }}" data-tooltip="tooltip" title="Exporter en Excel">
+                    <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+                </a>
+                <a href="{{ route('export.xlsx', ['type' => 'ods']) }}" data-tooltip="tooltip" title="Exporter en LibreOffice">
+                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                </a>
+                <a href="{{ route('export.pdf') }}" data-tooltip="tooltip" title="Exporter en PDF">
+                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                </a>
             </div>
         @endif
     </div>

@@ -28,20 +28,22 @@
                             <strong>{{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }}</strong>
                             correspondent à votre recherche
                         </div>
-                        <div class="helper-links">
-                            <?php // Icones Excel, PDF, CSV ?>
-                            <span>Exporter les résultats :</span>
-                            <a href="{{ route('export.xlsx', ['type' => 'ods']) }}"
-                               class="export-results export-results-ods" title="Exporter les résultats - LibreOffice">LibreOffice
-                                <i class="fa fa-file-text-o" aria-hidden="true"></i></a>
-                            <a href="{{ route('export.xlsx', ['type' => 'xlsx']) }}"
-                               class="export-results export-results-excel"
-                               title="Exporter les résultats - Excel">Excel
-                                <i class="fa fa-file-excel-o" aria-hidden="true"></i></a>
-                            <a href="{{ route('export.pdf') }}" class="export-results export-results-pdf"
-                               title="Exporter les résultats - PDF">PDF
-                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
-                        </div>
+                        @if(!$callsAreClosedOnes)
+                            <div class="helper-links">
+                                <?php // Icones Excel, PDF, CSV ?>
+                                <span>Exporter les résultats :</span>
+                                <a href="{{ route('export.xlsx', ['type' => 'ods']) }}"
+                                   class="export-results export-results-ods" title="Exporter les résultats - LibreOffice">LibreOffice
+                                    <i class="fa fa-file-text-o" aria-hidden="true"></i></a>
+                                <a href="{{ route('export.xlsx', ['type' => 'xlsx']) }}"
+                                   class="export-results export-results-excel"
+                                   title="Exporter les résultats - Excel">Excel
+                                    <i class="fa fa-file-excel-o" aria-hidden="true"></i></a>
+                                <a href="{{ route('export.pdf') }}" class="export-results export-results-pdf"
+                                   title="Exporter les résultats - PDF">PDF
+                                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+                            </div>
+                        @endif
                     </div>
                 </div>
                 <section class="dispositif-items">

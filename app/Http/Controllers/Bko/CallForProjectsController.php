@@ -44,9 +44,12 @@ class CallForProjectsController extends Controller
 
         $title = "Liste des dispositifs ouverts";
 
-        return view('bko.callForProjects.index',
-            compact('callsForProjects', 'primary_thematics', 'subthematics', 'project_holders', 'perimeters', 'title',
-                'callsOfTheWeek'));
+        $closed = false;
+
+        return view(
+            'bko.callForProjects.index',
+            compact('callsForProjects', 'primary_thematics', 'subthematics', 'project_holders', 'perimeters', 'title', 'callsOfTheWeek', 'closed')
+        );
     }
 
     /**
@@ -78,11 +81,14 @@ class CallForProjectsController extends Controller
             $subthematics = $subthematics->groupBy('parent_id');
         }
 
-        $title = "Liste des dispositifs fermés";
+        $title = "Liste des dispositifs clôturés";
 
-        return view('bko.callForProjects.index',
-            compact('callsForProjects', 'primary_thematics', 'subthematics', 'project_holders', 'perimeters', 'title',
-                'callsOfTheWeek'));
+        $closed = true;
+
+        return view(
+            'bko.callForProjects.index',
+            compact('callsForProjects', 'primary_thematics', 'subthematics', 'project_holders', 'perimeters', 'title', 'callsOfTheWeek', 'closed')
+        );
     }
 
     /**
