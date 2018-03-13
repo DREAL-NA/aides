@@ -187,7 +187,7 @@ class CallForProjects extends Model
         $end_date = Carbon::now()->endOfWeek();
 
         return $items->filter(function ($item) use ($start_date, $end_date) {
-            return $item->updated_at >= $start_date && $item->updated_at <= $end_date;
+            return $item->is_news && $item->updated_at >= $start_date && $item->updated_at <= $end_date;
         });
     }
 
@@ -196,7 +196,7 @@ class CallForProjects extends Model
         $start_date = Carbon::now()->startOfWeek();
         $end_date = Carbon::now()->endOfWeek();
 
-        return $this->updated_at >= $start_date && $this->updated_at <= $end_date;
+        return $this->is_news && $this->updated_at >= $start_date && $this->updated_at <= $end_date;
     }
 
     // Attributes casting
