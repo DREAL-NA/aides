@@ -18,7 +18,7 @@
                             <li><a href="{{ route('front.about-us.team') }}">L'équipe</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ route('front.dispositifs') }}">Dispositifs financiers</a></li>
+                    <li><a href="{{ route('front.dispositifs') }}">Dispositifs</a></li>
                     <li>
                         <a href="#">Outils</a>
                         <ul class="submenu">

@@ -167,8 +167,8 @@
 
 @section('after-content')
     @include('bko.components.modals.delete', [
-        'title' => "Suppression d'un dispositif financier",
-        'question' => "Êtes-vous sûr de vouloir supprimer ce dispositif financier ?",
+        'title' => "Suppression d'un dispositif",
+        'question' => "Êtes-vous sûr de vouloir supprimer ce dispositif ?",
         'action' => 'Bko\CallForProjectsController@destroy',
     ])
 @endsection

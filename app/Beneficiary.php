@@ -15,6 +15,7 @@ class Beneficiary extends Model
     const TYPE_COLLECTIVITY = 2;
     const TYPE_COMPANY = 3;
     const TYPE_OTHER = 4;
+    const TYPE_ASSOCIATION = 5;
 
     protected $guarded = [];
     protected $dates = ['deleted_at'];
@@ -25,6 +26,7 @@ class Beneficiary extends Model
     {
         return collect([
             self::TYPE_STATE => 'État',
+            self::TYPE_ASSOCIATION => 'Association',
             self::TYPE_COLLECTIVITY => 'Collectivités',
             self::TYPE_COMPANY => 'Entreprises',
             self::TYPE_OTHER => 'Autres',

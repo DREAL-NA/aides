@@ -19,12 +19,18 @@
             </div>
             <div class="filters-step step-perimeter">
                 <h5 class="title">2. Sélectionner votre localisation</h5>
-                <select name="{{ \App\Perimeter::URI_NAME }}[]" class="filters-select selectPerimeter" multiple>
-                    <option disabled>Sélectionnez une localisation</option>
-                    @foreach($perimeters as $perimeter)
-                        <option value="{{ $perimeter->id }}">{{ $perimeter->name }}</option>
-                    @endforeach
-                </select>
+                <div class="step-perimeter-container">
+                    <select name="{{ \App\Perimeter::URI_NAME }}[]" class="filters-select selectPerimeter" multiple>
+                        <option disabled>Sélectionnez une localisation</option>
+                        @foreach($perimeters as $perimeter)
+                            <option value="{{ $perimeter->id }}">{{ $perimeter->name }}</option>
+                        @endforeach
+                    </select>
+                    <div class="buttons">
+                        <button class="select-all" type="button">Tous</button>
+                        <button class="select-none" type="button">Aucun</button>
+                    </div>
+                </div>
             </div>
             <button type="button" class="filters-submit-button submit-filters">Rechercher</button>
         </form>
@@ -48,9 +54,9 @@
                             <div class="middle full infos no-border-right">
                                 @foreach($callsForProjects_thematic as $callForProjects)
                                     <div class="item-wrapper">
-                                        @php($url = route('front.dispositifs.unique', [ 'slug' => $callForProjects->slug ]))
+                                        @php($url = empty($callForProjects->website_url) ? route('front.dispositifs.unique', [ 'slug' => $callForProjects->slug ]) : $callForProjects->website_url)
                                         <h5 class="title">
-                                            <a href="{{ $url }}">{{ $callForProjects->name }}</a>
+                                            <a href="{{ $url }}" {{ empty($callForProjects->website_url) ? '' : 'target="_blank"' }}>{{ $callForProjects->name }}</a>
                                         </h5>
                                         @if(!empty($callForProjects->closing_date))
                                             <div class="closing-date">Date de clôture&nbsp;: {{ $callForProjects->closing_date->format('d/m/Y') }}</div>
@@ -94,6 +100,16 @@
                 $(this).toggleClass('active').promise().done(function () {
                     manageThematics();
                 });
+            });
+
+            $('.select-all').on('click', function () {
+                $('.selectPerimeter option').not(':disabled').prop('selected', true);
+                $('.selectPerimeter').data('selectric').refresh();
+            });
+
+            $('.select-none').on('click', function () {
+                $('.selectPerimeter option').not(':disabled').prop('selected', false);
+                $('.selectPerimeter').data('selectric').refresh();
             });
 
         })(jQuery);

@@ -42,7 +42,7 @@ class CallForProjectsController extends Controller
             $subthematics = $subthematics->groupBy('parent_id');
         }
 
-        $title = "Liste des dispositifs financiers ouverts";
+        $title = "Liste des dispositifs ouverts";
 
         return view('bko.callForProjects.index',
             compact('callsForProjects', 'primary_thematics', 'subthematics', 'project_holders', 'perimeters', 'title',
@@ -78,7 +78,7 @@ class CallForProjectsController extends Controller
             $subthematics = $subthematics->groupBy('parent_id');
         }
 
-        $title = "Liste des dispositifs financiers fermés";
+        $title = "Liste des dispositifs fermés";
 
         return view('bko.callForProjects.index',
             compact('callsForProjects', 'primary_thematics', 'subthematics', 'project_holders', 'perimeters', 'title',
@@ -116,7 +116,7 @@ class CallForProjectsController extends Controller
         $callForProjects->save();
 
         return redirect(route('bko.call.edit', $callForProjects))->with('success',
-            "Le dispositif financier a bien été ajouté.");
+            "Le dispositif a bien été ajouté.");
     }
 
     /**
@@ -162,7 +162,7 @@ class CallForProjectsController extends Controller
         $callForProjects->save();
 
         return redirect(route('bko.call.edit', $callForProjects))->with('success',
-            "Le dispositif financier a bien été modifié.");
+            "Le dispositif a bien été modifié.");
     }
 
     /**

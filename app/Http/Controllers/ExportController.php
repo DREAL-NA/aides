@@ -66,7 +66,7 @@ class ExportController extends Controller
         $this->callsForProjects = $callsForProjects->groupBy('thematic_id');;
 
         $date = date('YmdHis');
-        $this->filename = 'dispositifs_financiers_' . $date;
+        $this->filename = 'dispositifs_' . $date;
     }
 
     public function xlsx($type)
@@ -81,9 +81,9 @@ class ExportController extends Controller
         // Set document properties
         $spreadsheet->getProperties()->setCreator('DREAL')
             ->setLastModifiedBy('DREAL')
-            ->setTitle('Liste des dispositifs financiers')
-            ->setSubject('Liste des dispositifs financiers')
-            ->setDescription('Liste des dispositifs financiers');
+            ->setTitle('Liste des dispositifs')
+            ->setSubject('Liste des dispositifs')
+            ->setDescription('Liste des dispositifs');
 
         // Set the data
         $headerRow = [

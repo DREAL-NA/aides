@@ -1,18 +1,19 @@
 @extends('layouts.app')
 
-@section('meta_title', "Dispositifs financiers")
+@section('meta_title', "Dispositifs")
 
 @section('breadcrumb')
     <li>
-        <span>Dispositifs financiers</span>
+        <span>Dispositifs</span>
     </li>
 @endsection
 
 @section('content')
     <div class="page-content page-dispositifs">
         <h2>
-            <span>Dispositifs financiers{{ $callsAreClosedOnes ? ' clotûrés' : '' }}</span>
-            <a href="{{ route('front.dispositifs', ['closed' => $callsAreClosedOnes ? false : 'clotures']) }}">Voir les dispositifs{{ $callsAreClosedOnes ? '' : ' clotûrés' }}</a>
+            <span>Dispositifs{{ $callsAreClosedOnes ? ' clôturés' : '' }}</span>
+            <a href="{{ route('front.dispositifs', ['closed' => $callsAreClosedOnes ? false : 'clotures']) }}">Voir les
+                dispositifs {{ $callsAreClosedOnes ? 'ouverts' : 'clôturés' }}</a>
         </h2>
         @include('front.dispositifs.filters')
 

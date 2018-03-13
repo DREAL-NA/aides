@@ -1,123 +1,129 @@
 footer {
-	background-color: $color-2;
-	color: $color-white;
+    background-color: $color-2;
+    color: $color-white;
 
-	.footer {
-		display: flex;
-		align-items: flex-start;
-		justify-content: flex-start;
-		flex-wrap: wrap;
-		padding-top: 45px;
-		padding-bottom: 45px;
+    .footer {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        padding-top: 45px;
+        padding-bottom: 45px;
 
-		.footer-first,
-		.footer-middle,
-		.footer-last {
-			padding-left: 15px;
-			padding-right: 15px;
-			width: 33%;
-		}
+        .footer-first,
+        .footer-middle,
+        .footer-last {
+            padding-left: 15px;
+            padding-right: 15px;
+            width: 25%;
+        }
 
-		.svg-marianne {
-			width: 150px;
-			display: block;
-		}
+        .footer-middle {
+            padding-left: 15px;
+            padding-right: 15px;
+            width: 50%;
+        }
 
-		.logo-image {
-			width: 100px;
-		}
+        .svg-marianne {
+            width: 150px;
+            display: block;
+        }
 
-		.title,
-		.brand {
-			font-size: 1.5em;
-			line-height: 1.5em;
-			margin: 0 0 10px 0;
-		}
+        .logo-image {
+            width: 100px;
+        }
 
-		.title {
-			border-bottom: thin solid $color-gray-1;
-			padding: 15px 0;
-		}
+        .title,
+        .brand {
+            font-size: 1.5em;
+            line-height: 1.5em;
+            margin: 0 0 10px 0;
+        }
 
-		.brand {
-			font-family: $headings-font-family;
-			font-weight: $headings-font-weight;
-			margin-top: 15px;
-		}
+        .title {
+            border-bottom: thin solid $color-gray-1;
+            padding: 15px 0;
+        }
 
-		.sitemap {
-			//font-size: 1.2em;
-			//line-height: 1.2em;
-			//font-weight: 500;
-			margin-top: 15px;
+        .brand {
+            font-family: $headings-font-family;
+            font-weight: $headings-font-weight;
+            margin-top: 15px;
+        }
 
-			.sitemap-menu,
-			.submenu {
-				padding: 0;
-				list-style: none;
-			}
+        .sitemap {
+            //font-size: 1.2em;
+            //line-height: 1.2em;
+            //font-weight: 500;
+            margin-top: 15px;
 
-			.submenu {
-				margin-left: 15px;
-				margin-top: 5px;
-			}
+            .sitemap-menu,
+            .submenu {
+                padding: 0;
+                list-style: none;
+            }
 
-			.sitemap-menu {
-				margin: 0;
+            .submenu {
+                margin-left: 15px;
+                margin-top: 5px;
+            }
 
-				li {
-					margin-bottom: 5px;
-				}
+            .sitemap-menu {
+                margin: 0;
 
-				a {
-					@include linkInherit;
-					padding: 5px;
-				}
-			}
-		}
+                li {
+                    margin-bottom: 5px;
+                }
 
-		@include mobile {
-			padding-top: 15px;
-			padding-bottom: 15px;
+                a {
+                    @include linkInherit;
+                    padding: 5px;
+                }
+            }
+        }
 
-			.footer-first,
-			.footer-middle,
-			.footer-last {
-				width: 100%;
-			}
-		}
-	}
+        @include mobile {
+            padding-top: 15px;
+            padding-bottom: 15px;
 
-	.reseaux {
-		background-color: $text-color;
-		color: $color-white;
+            .footer-first,
+            .footer-middle,
+            .footer-last {
+                width: 100%;
+            }
+        }
+    }
 
-		ul {
-			padding: 0;
-			margin: 0;
-			list-style: none;
-			display: flex;
-			align-items: stretch;
-			justify-content: center;
-			flex-wrap: wrap;
+    .reseaux {
+        background-color: $text-color;
+        color: $color-white;
 
-			li {
-				width: 25%;
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            flex-wrap: wrap;
 
-				@include mobile {
-					width: 100%;
-				}
-			}
-		}
+            li {
+                width: 25%;
 
-		a {
-			@include linkInherit;
-			padding: 15px;
-			display: block;
-			text-align: center;
-			font-weight: 500;
-			font-size: 1.2em;
-			line-height: 1.2em;
-		}
-	}
+                @include mobile {
+                    width: 100%;
+                }
+            }
+        }
+
+        a {
+            @include linkInherit;
+            padding: 15px;
+            display: block;
+            text-align: center;
+            font-weight: 500;
+            font-size: 1.2em;
+            line-height: 1.2em;
+        }
+    }
 }

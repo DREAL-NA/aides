@@ -3,13 +3,11 @@
 
     <div class="panel-body">
         <div class="menu-category">
-            <h5 class="category-title">Dispositifs financiers</h5>
+            <h5 class="category-title">Dispositifs</h5>
             <ul class="menu">
-                <li class="menu-item"><a href="{{ route('bko.call.index') }}">Liste des dispositifs financiers
-                        ouverts</a></li>
-                <li class="menu-item"><a href="{{ route('bko.call.indexClosed') }}">Liste des dispositifs financiers
-                        clôturés</a></li>
-                <li class="menu-item"><a href="{{ route('bko.call.create') }}">Ajouter un dispositif financier</a></li>
+                <li class="menu-item"><a href="{{ route('bko.call.index') }}">Liste des dispositifs ouverts</a></li>
+                <li class="menu-item"><a href="{{ route('bko.call.indexClosed') }}">Liste des dispositifs clôturés</a></li>
+                <li class="menu-item"><a href="{{ route('bko.call.create') }}">Ajouter un dispositif</a></li>
                 @yield('menu-item-call')
             </ul>
         </div>
@@ -70,7 +68,7 @@
                 @yield('menu-item-organizationType')
             </ul>
         </div>
-        
+
         @admin
         <div class="menu-category">
             <h5 class="category-title">Utilisateurs</h5>

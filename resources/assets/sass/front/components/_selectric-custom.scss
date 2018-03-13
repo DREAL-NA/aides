@@ -11,6 +11,10 @@
     }
 }
 
+.selectric {
+    border-color: $page-header-border-color;
+}
+
 .selectric-items {
     li {
         &:hover {

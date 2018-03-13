@@ -1,5 +1,11 @@
 <?php
 
+/*
+|--------------------------------------------------------------------------
+| REGISTRATION IS DISABLED BY PUTTING A REDIRECTION IN showRegistrationForm and abort(404); in register method
+|--------------------------------------------------------------------------
+*/
+
 namespace App\Http\Controllers\Auth;
 
 use App\User;
@@ -40,6 +46,17 @@ class RegisterController extends Controller
         $this->middleware('auth');
     }
 
+    public function showRegistrationForm()
+    {
+        return redirect(route('bko.home'));
+    }
+
+    public function register(Request $request)
+    {
+        abort(404);
+    }
+
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -69,16 +86,4 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
-
-    public function showRegistrationForm()
-    {
-        return redirect(route('bko.home'));
-    }
-
-    public function register(Request $request)
-    {
-        abort(404);
-    }
-
-
 }

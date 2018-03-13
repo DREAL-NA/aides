@@ -61,6 +61,47 @@
         }
     }
 
+    .step-perimeter-container {
+        display: flex;
+        align-items: center;
+
+        .buttons {
+            display: flex;
+        }
+
+        @include tablet {
+            display: block;
+
+            .buttons {
+                margin-top: 15px;
+            }
+        }
+    }
+
+    .select-all,
+    .select-none {
+        width: 50%;
+        display: block;
+        padding: 8px 15px;
+        border: none;
+        outline: none;
+        border-radius: 2px;
+        transition: all 250ms ease-in-out;
+        margin-left: -1px;
+
+        background-color: transparent;
+        border: 1px solid $page-header-border-color;
+
+        &:hover {
+            background-color: $page-header-border-color;
+        }
+
+        @include tablet {
+            width: auto;
+            margin-right: 15px;
+        }
+    }
+
     .filters-submit-button {
         display: block;
         margin: 30px auto;

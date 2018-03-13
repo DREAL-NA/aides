@@ -12,20 +12,20 @@ let mix = require('laravel-mix');
  |
  */
 mix.webpackConfig({
-	resolve: {
-		alias: {
-			"markjs": "mark.js/dist/jquery.mark.js"
-		}
-	}
+    resolve: {
+        alias: {
+            "markjs": "mark.js/dist/jquery.mark.js"
+        }
+    }
 });
 
 mix.js('resources/assets/js/bko.js', 'public/js')
-	.js('resources/assets/js/app.js', 'public/js')
-	.sass('resources/assets/sass/bko.scss', 'public/css')
-	.sass('resources/assets/sass/app.scss', 'public/css')
-	.options({
-		processCssUrls: false,
-	});
+    .js('resources/assets/js/app.js', 'public/js')
+    .sass('resources/assets/sass/bko.scss', 'public/css')
+    .sass('resources/assets/sass/app.scss', 'public/css')
+    .options({
+        processCssUrls: false,
+    });
 
 // mix.purgeCss({
 // 	enabled: true,
@@ -33,11 +33,9 @@ mix.js('resources/assets/js/bko.js', 'public/js')
 // });
 
 if (mix.inProduction()) {
-	mix.version();
+    mix.version();
 }
 
-// mix.browserSync({
-// 	proxy: 'http://dreal.local'
-// });
+mix.browserSync('dreal.loc');
 
 mix.disableNotifications();

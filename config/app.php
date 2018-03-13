@@ -13,7 +13,9 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Des dispositifs financiers pour les territoires'),
+    'name' => env('APP_NAME', 'Des dispositifs pour les territoires'),
+    'subname' => "Une base de données sur les aides aux territoires ouverte à tous",
+
     'default_page_title' => 'Accueil',
 
     'contact_mail' => 'sylvie.frugier@developpement-durable.gouv.fr',

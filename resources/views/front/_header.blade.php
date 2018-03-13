@@ -7,7 +7,7 @@
         </a>
         <a href="{{ route('front.home') }}" class="link-title">
             <h1>{{ ucfirst(config('app.name')) }}</h1>
-            <p class="description">La base de données de référence sur les aides aux territoires ouverte à tous</p>
+            <p class="description">{{ config('app.subname') }}</p>
         </a>
     </div>
 </header>
