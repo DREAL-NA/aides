@@ -273,11 +273,11 @@ class CallForProjects extends Model implements Feedable
 
     public static function getFeedItems()
     {
-        return self::latest('updated_at')->take(config('feed.itemsPerFeed'))->get();
+        return self::latest('updated_at')->opened()->take(config('feed.itemsPerFeed'))->get();
     }
 
     public static function getFeedItemsByThematic($id)
     {
-        return self::where('thematic_id', $id)->latest('updated_at')->take(config('feed.itemsPerFeed'))->get();
+        return self::where('thematic_id', $id)->opened()->latest('updated_at')->take(config('feed.itemsPerFeed'))->get();
     }
 }
