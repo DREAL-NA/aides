@@ -107,6 +107,8 @@ Route::get('/dispositifs/{closed?}', ['as' => 'front.dispositifs', 'uses' => 'Fr
 Route::get('/dispositifs/detail/{slug}',
     ['as' => 'front.dispositifs.unique', 'uses' => 'FrontController@callForProjectsUnique']);
 
+Route::get('recherche', ['as' => 'front.search', 'uses' => 'FrontController@search']);
+
 // Exports
 Route::get('export/pdf', ['as' => 'export.pdf', 'uses' => 'ExportController@pdf']);
 //Route::get('export/ods', ['as' => 'export.ods', 'uses' => 'ExportController@ods']);
@@ -115,3 +117,19 @@ Route::get('export/{type}', ['as' => 'export.xlsx', 'uses' => 'ExportController@
 Route::fallback(function () {
     return response()->view('errors.404', [], 404);
 })->name('front.error');
+
+Route::get('/search', function () {
+//    $call = \App\CallForProjects::find(97);
+//    dd($call->toSearchableArray());
+
+    $data = App\Website::search('Charente-Maritime (17)')->paginate();
+
+    dd($data);
+
+    dd($data->pluck('id')->all());
+});
+
+Route::get('/model/{id}', function ($id) {
+    $model = \App\Website::find($id);
+    dd($model->toSearchableArray());
+});

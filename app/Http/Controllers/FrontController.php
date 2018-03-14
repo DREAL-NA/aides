@@ -88,7 +88,7 @@ class FrontController extends Controller
             $callsForProjects->closingDateAfter($request->get('date'));
         }
 
-        $callsForProjects = $callsForProjects->paginate(20);
+        $callsForProjects = $callsForProjects->paginate(config('app.pagination.perPage'));
 
         $primary_thematics = Thematic::primary()->orderBy('name', 'asc')->get();
         $subthematics = Thematic::sub()->orderBy('name', 'asc')->get();
@@ -123,7 +123,7 @@ class FrontController extends Controller
 
     public function websites()
     {
-        $websites = Website::with(['organizationType', 'perimeters'])->get()->sortBy('name');
+        $websites = Website::with(['organizationType', 'perimeters'])->orderBy('name')->paginate(config('app.pagination.perPage'));
 
         return view('front.tools.website-library', compact('websites'));
     }
@@ -138,5 +138,16 @@ class FrontController extends Controller
 
         return redirect(route('front.contact'))
             ->with('success', "Merci, votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.");
+    }
+
+    public function search(Request $request)
+    {
+        $query = empty($request->get('query')) ? '' : $request->get('query');
+
+        $callsForProjects = CallForProjects::search($query)->paginate(config('app.pagination.perPage'));
+
+        $callsForProjects->load(['thematic', 'subthematic', 'projectHolders', 'beneficiaries', 'perimeters']);
+
+        return view('front.search', compact('query', 'callsForProjects'));
     }
 }

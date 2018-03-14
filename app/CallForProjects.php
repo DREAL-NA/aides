@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use Laravel\Scout\Searchable;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 use Spatie\Sluggable\HasSlug;
@@ -14,7 +15,7 @@ use Spatie\Sluggable\SlugOptions;
 
 class CallForProjects extends Model implements Feedable
 {
-    use SoftDeletes, HasSlug;
+    use SoftDeletes, HasSlug, Searchable;
 
     protected $guarded = [];
     protected $dates = ['deleted_at', 'closing_date'];
@@ -279,5 +280,42 @@ class CallForProjects extends Model implements Feedable
     public static function getFeedItemsByThematic($id)
     {
         return self::where('thematic_id', $id)->opened()->latest('updated_at')->take(config('feed.itemsPerFeed'))->get();
+    }
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        $this->load(['thematic', 'subthematic', 'projectHolders', 'beneficiaries', 'perimeters']);
+
+        $this->makeHidden([
+            'created_at',
+            'deleted_at',
+            'updated_at',
+            'closing_date',
+            'is_news',
+            'editor_id',
+        ]);
+
+        $array = $this->toArray();
+
+        if (!empty($this->thematic->name)) {
+            $array['thematic'] = $this->thematic->name;
+        }
+
+        if (!empty($this->subthematic->name)) {
+            $array['subthematic'] = $this->subthematic->name;
+        }
+
+        $array['project_holders'] = $this->projectHolders->pluck('name')->implode(' , ');
+
+        $array['beneficiaries'] = $this->beneficiaries->pluck('name_complete')->implode(' , ');
+
+        $array['perimeters'] = $this->perimeters->pluck('name')->implode(' , ');
+
+        return $array;
     }
 }

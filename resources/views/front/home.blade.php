@@ -63,7 +63,8 @@
                                         @endif
                                         @if(!$callForProjects->perimeters->isEmpty())
                                             <div class="perimeters">
-                                                Périmètres&nbsp;: {!! $callForProjects->perimeters->unique()->sortBy('name')->pluck('name')->implode(', ') !!}</div>
+                                                Périmètres&nbsp;: {!! $callForProjects->perimeters->unique()->sortBy('name')->pluck('name')->implode(', ') !!}
+                                            </div>
                                         @endif
                                         <div class="objectives">{{ \Illuminate\Support\Str::words($callForProjects->objectives, 50) }}</div>
                                     </div>
@@ -75,8 +76,8 @@
                         <p class="dispositifs-empty no-bck">Aucune nouvelle aide cette semaine.</p>
                     @endif
                 </section>
+            </section>
         </div>
-    </div>
     </div>
 @endsection
 

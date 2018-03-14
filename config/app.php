@@ -45,6 +45,10 @@ return [
     'env' => env('APP_ENV', 'production'),
     'bko_subdomain' => env('BKO_SUBDOMAIN', 'bko'),
 
+    'pagination' => [
+        'perPage' => 20,
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode

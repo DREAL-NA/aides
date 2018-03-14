@@ -6,6 +6,7 @@ use App\Rules\UrlTextarea;
 use App\Traits\Description;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Scout\Searchable;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
 
@@ -131,4 +132,32 @@ class Website extends Model implements HasMedia
     {
         return explode(PHP_EOL, $this->attributes['website_url']);
     }
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+//    public function toSearchableArray()
+//    {
+//        $this->load(['organizationType', 'perimeters']);
+//
+//        $this->makeHidden([
+//            'created_at',
+//            'deleted_at',
+//            'updated_at',
+//        ]);
+//
+//        $array = $this->toArray();
+//
+//        if (!empty($this->organizationType->name)) {
+//            $array['organization_type'] = $this->organizationType->name;
+//        }
+//
+//        $array['perimeters'] = $this->perimeters->pluck('name')->implode(' , ');
+//
+//        return $array;
+//    }
+
+
 }

@@ -80,6 +80,9 @@
                     <p class="website-empty">Aucune site renseigné actuellement.</p>
                 @endif
             </section>
+
+            {{ $websites->links() }}
+            
         </div>
     </div>
 @endsection
