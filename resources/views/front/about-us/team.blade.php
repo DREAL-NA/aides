@@ -3,20 +3,47 @@
 @section('meta_title', "L'équipe")
 
 @section('breadcrumb')
-	<li>
-		<span>Qui sommes-nous ?</span>
-		<span class="chevron">></span>
-	</li>
-	<li>
-		<span>L'équipe</span>
-	</li>
+    <li>
+        <span>Qui sommes-nous ?</span>
+        <span class="chevron">></span>
+    </li>
+    <li>
+        <span>L'équipe</span>
+    </li>
 @endsection
 
 @section('content')
-	<div class="page-content">
-		<h2>L'équipe</h2>
-		<div class="content">
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus felis orci, ultrices at blandit non, tincidunt eu enim. Sed convallis porta elit nec efficitur. Fusce nec turpis vel sapien imperdiet venenatis. Nam interdum sem dolor, et consequat nibh feugiat vitae. Donec mollis a sapien non rutrum. Morbi turpis magna, commodo nec ex vel, commodo mollis nisl. Proin urna est, viverra nec velit ac, suscipit feugiat ante. Morbi cursus commodo dolor ac dignissim. Proin volutpat aliquet ligula, vel vulputate magna feugiat non. Duis maximus urna turpis, quis hendrerit lectus pulvinar vel. Sed eu nunc vitae urna volutpat bibendum. Morbi eleifend cursus ex, blandit interdum ex ullamcorper ut. Sed dictum ex eget dolor tincidunt sollicitudin. Maecenas tristique laoreet diam sit amet dignissim.</p>
-		</div>
-	</div>
+    <div class="page-content page-simple page-team">
+        <h2>L'équipe</h2>
+        <div class="content flex">
+            <div class="flex-item">
+                <h3>La DREAL Nouvelle-Aquitaine</h3>
+
+                <div class="team-items">
+                    <div class="team-item">
+                        <h4>Sylvie FRUGIER</h4>
+                        <p>Chargée de mission développement économique</p>
+                        <p>Service Mission Développement Durable (MDD)</p>
+                        <p>DREAL Nouvelle-Aquitaine (Site Limoges)</p>
+                        <p>Téléphone : <b>05 55 12 95 76</b> ou <b>06 99 03 39 58</b></p>
+                        <p>E-mail : <a href="mailto:{{ config('app.contact_mail') }}">{{ config('app.contact_mail') }}</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-item">
+                <h3>Le développeur web freelance</h3>
+
+                <div class="team-items">
+                    <div class="team-item">
+                        <h4>Nicolas GIRAUD</h4>
+                        <p>Site internet : <a href="https://www.nicolasgiraud.fr" target="_blank">https://www.nicolasgiraud.fr</a></p>
+                        <p>Téléphone : <b>06 74 31 72 31</b></p>
+                        <p>E-mail : <a href="mailto:contact@ngiraud.me">contact@ngiraud.me</a></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 @endsection

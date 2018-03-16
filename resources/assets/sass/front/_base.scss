@@ -44,10 +44,42 @@ body {
 
     .content {
         margin-top: 30px;
+
+        &.flex {
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: wrap;
+
+            .flex-item {
+                width: 50%;
+
+                @include tablet {
+                    width: 100%;
+                    margin-bottom: 15px;
+                }
+            }
+        }
     }
 
     @include mobile {
         padding: 0;
+    }
+}
+
+.page-simple {
+    margin-bottom: 30px;
+}
+
+.page-team {
+
+    h3 {
+        margin-bottom: 20px;
+    }
+
+    .team-item {
+        p {
+            margin-bottom: 5px;
+        }
     }
 }
 
