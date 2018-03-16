@@ -1,13 +1,13 @@
 @extends('layouts.bko')
 
-@section('heading', "Edition du périmètre : ".$perimeter->name)
-@section('menu-item-perimeter')
-	<li class="menu-item active"><a href="{{ route('bko.perimetre.edit', $perimeter) }}">Edition de {{ $perimeter->name }}</a></li>
+@section('heading', "Edition de l'utilisateur : ".$user->name)
+@section('menu-item-user')
+    <li class="menu-item active"><a href="{{ route('bko.utilisateur.edit', $user) }}">Edition de {{ $user->name }}</a></li>
 @endsection
 
 @section('content')
-	@include('bko.components.forms._default', [
-		'model' => $perimeter,
-		'options' => [ 'method' => 'PUT', 'url' => action('Bko\PerimeterController@update', $perimeter) ]
-	])
+    @include('bko.user._form', [
+        'model' => $user,
+        'options' => [ 'method' => 'PUT', 'url' => action('Bko\UserController@update', $user) ]
+    ])
 @endsection

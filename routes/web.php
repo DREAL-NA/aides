@@ -118,18 +118,20 @@ Route::fallback(function () {
     return response()->view('errors.404', [], 404);
 })->name('front.error');
 
-Route::get('/search', function () {
+if (app()->environment() != 'production') {
+    Route::get('/search', function () {
 //    $call = \App\CallForProjects::find(97);
 //    dd($call->toSearchableArray());
 
-    $data = App\Website::search('Charente-Maritime (17)')->paginate();
+        $data = App\CallForProjects::search('entreprise')->raw();
 
-    dd($data);
+        dd($data);
 
-    dd($data->pluck('id')->all());
-});
+        dd($data->pluck('id')->all());
+    });
 
-Route::get('/model/{id}', function ($id) {
-    $model = \App\Website::find($id);
-    dd($model->toSearchableArray());
-});
+    Route::get('/model/{id}', function ($id) {
+        $model = \App\CallForProjects::find($id);
+        dd($model->toSearchableArray());
+    });
+}

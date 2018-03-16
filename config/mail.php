@@ -60,9 +60,11 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Site internet DREAL'),
     ],
 
-    'to' => [
-        'address' => env('MAIL_TO_ADDRESS', 'sylvie.frugier@developpement-durable.gouv.fr'),
-        'name' => env('MAIL_TO_NAME', 'Sylvie Frugier'),
+    'contact' => [
+        'to' => [
+            'address' => env('MAIL_TO_ADDRESS', 'sylvie.frugier@developpement-durable.gouv.fr'),
+            'name' => env('MAIL_TO_NAME', 'Sylvie Frugier'),
+        ],
     ],
 
     /*

@@ -73,9 +73,9 @@
         <div class="menu-category">
             <h5 class="category-title">Utilisateurs</h5>
             <ul class="menu">
-                <li class="menu-item"><a href="{{ route('bko.structure.index') }}">Liste des utilisateurs</a></li>
-                <li class="menu-item"><a href="{{ route('bko.structure.create') }}">Ajouter un utilisateur</a></li>
-                @yield('menu-item-organizationType')
+                <li class="menu-item"><a href="{{ route('bko.utilisateur.index') }}">Liste des utilisateurs</a></li>
+                <li class="menu-item"><a href="{{ route('bko.utilisateur.create') }}">Ajouter un utilisateur</a></li>
+                @yield('menu-item-user')
             </ul>
         </div>
         @endadmin

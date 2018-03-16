@@ -2,59 +2,57 @@
 
 namespace App\Notifications;
 
+use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class ResetPasswordNotification extends Notification
+class NewBkoUser extends Notification
 {
     use Queueable;
 
-    private $token;
+    public $password;
 
     /**
      * Create a new notification instance.
      *
-     * @return void
+     * @param User $user
+     * @param $password
      */
-    public function __construct($token)
+    public function __construct($password)
     {
-        $this->token = $token;
+        $this->password = $password;
     }
 
     /**
      * Get the notification's delivery channels.
      *
      * @param  mixed $notifiable
-     *
      * @return array
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['mail', 'slack'];
     }
 
     /**
      * Get the mail representation of the notification.
      *
      * @param  mixed $notifiable
-     *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-            ->subject("Réinitialisation de votre mot de passe")
-            ->line("Vous recevez cet e-mail car vous avez demandé une réinitialisation de votre mot de passe.")
-            ->action('Réinitialiser mon mot de passe', url('/password/reset', ['token' => $this->token]))
-            ->line("Si vous n'avez pas demandé de réinitialisation, ne tenez pas compte d ecet e-mail.");
+        return (new MailMessage)->markdown('emails.user.new', [
+            'notifiable' => $notifiable,
+            'password' => $this->password,
+        ])->subject("Bienvenue sur l'administration du site \"" . config('app.name') . "\" !");
     }
 
     /**
      * Get the array representation of the notification.
      *
      * @param  mixed $notifiable
-     *
      * @return array
      */
     public function toArray($notifiable)

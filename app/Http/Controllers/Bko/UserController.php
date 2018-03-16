@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Bko;
 
+use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
@@ -15,7 +15,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::regular()->get();
+
+        return view('bko.user.index', compact('users'));
     }
 
     /**
@@ -25,7 +27,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $user = new User();
+
+        return view('bko.user.create', compact('user'));
     }
 
     /**
@@ -39,17 +43,16 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
         ]);
 
         $user = User::create($validatedData);
 
-        if ($request->ajax()) {
+        if (request()->wantsJson()) {
             return response()->json($user, 201);
-        } else {
-            return redirect(route('bko.utilisateur.edit', $user))
-                ->with('success', "L'utilisateur a bien été ajouté.");
         }
+
+        return redirect(route('bko.utilisateur.edit', $user))
+            ->with('success', "L'utilisateur a bien été ajouté.");
     }
 
     /**
@@ -71,7 +74,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('bko.user.edit', compact('user'));
     }
 
     /**
@@ -86,7 +89,6 @@ class UserController extends Controller
         $user->update($request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
         ]));
 
         if ($request->ajax()) {
