@@ -5,12 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ (app()->environment() == 'production' ? '' : 'DEV - ').'BKO - '.config('app.name', 'DREAL') }}</title>
 
-    <!-- Styles -->
     <link href="{{ mix('css/bko.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -34,14 +32,7 @@
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    &nbsp;
-                </ul>
-
-                <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
                     @guest
                         <li><a href="{{ route('login') }}">S'authentifier</a></li>
                     @else
@@ -52,9 +43,11 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li>
+                                    <a href="{{ route('bko.profile.edit') }}">Mon compte</a>
+                                </li>
+                                <li>
                                     <a href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-												 document.getElementById('logout-form').submit();">
+                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         Se déconnecter
                                     </a>
 
@@ -97,6 +90,7 @@
                         @yield('content')
                     </div>
                 </div>
+                @yield('panel-content')
             </div>
         </div>
     </div>

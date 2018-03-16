@@ -61,11 +61,13 @@ Route::group([
         'parameters' => ['appel-a-projet' => 'callForProjects']
     ]);
 
-    Route::get('appel-a-projet/{callForProjects}/dupliquer',
-        ['as' => 'bko.call.duplicate', 'uses' => 'CallForProjectsController@duplicate']);
+    Route::get('appel-a-projet/{callForProjects}/dupliquer', ['as' => 'bko.call.duplicate', 'uses' => 'CallForProjectsController@duplicate']);
 
-    Route::resource('utilisateur', 'UserController',
-        ['as' => 'bko', 'parameters' => ['utilisateur' => 'user'], 'except' => ['show']])->middleware('admin');
+    Route::resource('utilisateur', 'UserController', ['as' => 'bko', 'parameters' => ['utilisateur' => 'user'], 'except' => ['show']])->middleware('admin');
+
+    Route::get('profil', ['as' => 'bko.profile.edit', 'uses' => 'ProfileController@edit']);
+    Route::post('profil', ['as' => 'bko.profile.update', 'uses' => 'ProfileController@update']);
+    Route::post('profil/password', ['as' => 'bko.profile.password', 'uses' => 'ProfileController@updatePassword']);
 });
 
 Route::feeds();
