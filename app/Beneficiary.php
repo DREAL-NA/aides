@@ -40,7 +40,17 @@ class Beneficiary extends Model
                 'required',
                 Rule::in(self::types()->keys()->toArray()),
             ],
-            'name' => 'nullable|min:2|max:255',
+            'name' => [
+                'nullable',
+                'min:2',
+                'max:255',
+                Rule::unique('beneficiaries')->where(function ($query) {
+                    if (empty(request()->get('type'))) {
+                        return $query;
+                    }
+                    return $query->where('type', request()->get('type'));
+                })->ignore($this->id)
+            ],
             'description' => 'present',
         ];
     }

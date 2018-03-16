@@ -6,6 +6,7 @@ use App\Rules\UrlTextarea;
 use App\Traits\Description;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Validation\Rule;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
 
@@ -23,7 +24,17 @@ class Website extends Model implements HasMedia
         return [
             'organization_type_id' => 'required|exists:organization_types,id',
             'themes' => 'nullable',
-            'name' => 'required|min:2|max:255',
+            'name' => [
+                'required',
+                'min:2',
+                'max:255',
+                Rule::unique('websites')->where(function ($query) {
+                    if (empty(request()->get('organization_type_id'))) {
+                        return $query;
+                    }
+                    return $query->where('organization_type_id', request()->get('organization_type_id'));
+                })->ignore($this->id)
+            ],
             'perimeters' => 'nullable|array',
             'perimeter_comments' => 'nullable',
             'delay' => 'nullable',

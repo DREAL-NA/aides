@@ -5,6 +5,7 @@ namespace App;
 use App\Traits\Description;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Validation\Rule;
 
 class OrganizationType extends Model
 {
@@ -26,7 +27,12 @@ class OrganizationType extends Model
     public function rules()
     {
         return [
-            'name' => 'required|min:2|max:255',
+            'name' => [
+                'required',
+                'min:2',
+                'max:255',
+                Rule::unique('organization_types')->ignore($this->id)
+            ],
             'description' => 'present',
         ];
     }

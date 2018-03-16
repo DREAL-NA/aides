@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Bko;
 
+use App\Http\Controllers\Controller;
 use App\OrganizationType;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class OrganizationTypeController extends Controller
 {
@@ -96,7 +96,7 @@ class OrganizationTypeController extends Controller
         $organizationType->save();
 
         return redirect(route('bko.structure.edit', $organizationType))->with('success',
-            "La structure a bien été ajoutée.");
+            "La structure a bien été modifiée.");
     }
 
     /**

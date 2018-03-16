@@ -76,7 +76,25 @@ class CallForProjects extends Model implements Feedable
                     $query->whereNotNull('parent_id');
                 }),
             ],
-            'name' => 'required|min:2|max:255',
+            'name' => [
+                'nullable',
+                'min:2',
+                'max:255',
+                Rule::unique('calls_for_projects')->where(function ($query) {
+                    if (empty(request()->get('thematic_id')) && empty(request()->get('subthematic_id'))) {
+                        return $query;
+                    }
+
+                    if (!empty(request()->get('thematic_id'))) {
+                        $query = $query->where('thematic_id', request()->get('thematic_id'));
+                    }
+                    if (!empty(request()->get('subthematic_id'))) {
+                        $query = $query->where('subthematic_id', request()->get('subthematic_id'));
+                    }
+
+                    return $query;
+                })->ignore($this->id)
+            ],
             'closing_date' => 'nullable|date_format:Y-m-d',
             'project_holders' => 'nullable|exists:project_holders,id',
             'project_holder_contact' => 'nullable',

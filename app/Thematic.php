@@ -31,7 +31,12 @@ class Thematic extends Model
     public function rules()
     {
         return [
-            'name' => 'required|min:2|max:255',
+            'name' => [
+                'required',
+                'min:2',
+                'max:255',
+                Rule::unique('thematics')->ignore($this->id)
+            ],
             'description' => 'present',
         ];
     }
@@ -46,6 +51,9 @@ class Thematic extends Model
                 Rule::exists('thematics', 'id')->where(function ($query) {
                     $query->whereNull('parent_id');
                 }),
+                Rule::unique('thematics')->where(function ($query) {
+                    return $query->where('parent_id', request()->get('parent_id'));
+                })->ignore($this->id),
             ],
         ];
     }
