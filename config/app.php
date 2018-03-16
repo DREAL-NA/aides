@@ -192,8 +192,6 @@ return [
          */
         Barryvdh\DomPDF\ServiceProvider::class,
         Bugsnag\BugsnagLaravel\BugsnagServiceProvider::class,
-        Laravel\Scout\ScoutServiceProvider::class,
-        TeamTNT\Scout\TNTSearchScoutServiceProvider::class,
 
         /*
          * Application Service Providers...
