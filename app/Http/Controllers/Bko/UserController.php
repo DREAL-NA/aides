@@ -52,7 +52,7 @@ class UserController extends Controller
         }
 
         return redirect(route('bko.utilisateur.edit', $user))
-            ->with('success', "L'utilisateur a bien été ajouté.");
+            ->with('success', "L'utilisateur a bien été ajouté. Un mail lui a été envoyé contenant son mot de passe généré aléatoirement.");
     }
 
     /**
