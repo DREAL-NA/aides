@@ -54,8 +54,8 @@
 
 @section('after-content')
     @include('bko.components.modals.delete', [
-        'title' => "Suppression d'un périmètre",
-        'question' => "Êtes-vous sûr de vouloir supprimer ce périmètre ?",
-        'action' => 'Bko\PerimeterController@destroy',
+        'title' => "Suppression d'un utilisateur",
+        'question' => "Êtes-vous sûr de vouloir supprimer cet utilisateur ?",
+        'action' => 'Bko\UserController@destroy',
     ])
 @endsection
