@@ -68,6 +68,7 @@ Route::group([
     Route::get('profil', ['as' => 'bko.profile.edit', 'uses' => 'ProfileController@edit']);
     Route::post('profil', ['as' => 'bko.profile.update', 'uses' => 'ProfileController@update']);
     Route::post('profil/password', ['as' => 'bko.profile.password', 'uses' => 'ProfileController@updatePassword']);
+
 });
 
 Route::feeds();
@@ -112,9 +113,11 @@ Route::get('/dispositifs/detail/{slug}',
 Route::get('recherche', ['as' => 'front.search', 'uses' => 'FrontController@search']);
 
 // Exports
+Route::get('export/perimeters', ['as' => 'bko.export.perimeters', 'uses' => 'ExportController@perimeters'])->middleware('auth');
 Route::get('export/pdf', ['as' => 'export.pdf', 'uses' => 'ExportController@pdf']);
 //Route::get('export/ods', ['as' => 'export.ods', 'uses' => 'ExportController@ods']);
 Route::get('export/{type}', ['as' => 'export.xlsx', 'uses' => 'ExportController@xlsx']);
+
 
 Route::fallback(function () {
     return response()->view('errors.404', [], 404);

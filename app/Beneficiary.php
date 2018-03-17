@@ -18,6 +18,7 @@ class Beneficiary extends Model
     const TYPE_ASSOCIATION = 5;
 
     protected $guarded = [];
+    protected $appends = ['name_complete'];
     protected $dates = ['deleted_at'];
 
     const URI_NAME = 'benef';

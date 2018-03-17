@@ -4,6 +4,7 @@ namespace Tests;
 
 use App\User;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Support\Facades\Mail;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -16,6 +17,8 @@ abstract class TestCase extends BaseTestCase
 
     protected function signIn($user = null)
     {
+        Mail::fake();
+
         $user = $user ?: create(User::class, [
             'id' => 1,
             'name' => 'test',

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Beneficiary;
 use App\CallForProjects;
 use App\Export;
+use App\Exports\PerimetersExport;
 use App\Helpers\Date;
 use App\Perimeter;
 use App\ProjectHolder;
@@ -217,5 +218,12 @@ class ExportController extends Controller
             ->setPaper('a4', 'landscape');
 
         return $pdf->download($this->filename . '.pdf');
+    }
+
+    public function perimeters()
+    {
+        // @TODO : /model/{modelName}
+//        return (new {ModelName}Export())->download();
+        return (new PerimetersExport())->download();
     }
 }

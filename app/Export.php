@@ -3,6 +3,7 @@
 namespace App;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Csv;
 use PhpOffice\PhpSpreadsheet\Writer\Ods;
 use PhpOffice\PhpSpreadsheet\Writer\Pdf\Dompdf;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -12,8 +13,9 @@ class Export
     const EXTENSION_XLSX = 'xlsx';
     const EXTENSION_ODS = 'ods';
     const EXTENSION_PDF = 'pdf';
+    const EXTENSION_CSV = 'csv';
 
-    protected $extensions = [self::EXTENSION_XLSX, self::EXTENSION_ODS, self::EXTENSION_PDF];
+    protected $extensions = [self::EXTENSION_XLSX, self::EXTENSION_ODS, self::EXTENSION_PDF, self::EXTENSION_CSV];
     protected $spreadsheet;
     protected $writer;
     protected $extension;
@@ -77,6 +79,15 @@ class Export
                 $this->writer = new Dompdf($this->spreadsheet);
                 break;
 
+            case self::EXTENSION_CSV:
+                $this->writer = new Csv($this->spreadsheet);
+                $this->writer->setDelimiter(';');
+                $this->writer->setEnclosure('');
+                $this->writer->setLineEnding("\r\n");
+                $this->writer->setSheetIndex(0);
+                $this->writer->setUseBOM(true);
+                break;
+
             default:
         }
 
@@ -126,6 +137,10 @@ class Export
 
             case self::EXTENSION_PDF:
                 return "application/pdf";
+                break;
+
+            case self::EXTENSION_CSV:
+                return "text/csv";
                 break;
 
             default:
