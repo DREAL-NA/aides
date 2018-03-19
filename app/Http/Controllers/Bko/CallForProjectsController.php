@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers\Bko;
 
-use App\Beneficiary;
 use App\CallForProjects;
 use App\Http\Controllers\Controller;
-use App\Perimeter;
-use App\ProjectHolder;
 use App\Thematic;
-use Grpc\Call;
 use Illuminate\Http\Request;
 
 class CallForProjectsController extends Controller

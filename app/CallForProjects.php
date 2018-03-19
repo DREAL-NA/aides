@@ -39,7 +39,9 @@ class CallForProjects extends Model implements Feedable
 //                $item->allocation_per_project = 0;
 //            }
 
-            $item->editor_id = Auth::user()->id;
+            if (Auth::check()) {
+                $item->editor_id = Auth::user()->id;
+            }
         });
 
         static::saved(function ($item) {
