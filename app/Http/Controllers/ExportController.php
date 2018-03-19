@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Beneficiary;
 use App\CallForProjects;
-use App\Export;
-use App\Exports\PerimetersExport;
+use App\Exports\Writer;
 use App\Helpers\Date;
 use App\Perimeter;
 use App\ProjectHolder;
@@ -70,7 +69,7 @@ class ExportController extends Controller
         $this->filename = 'dispositifs_' . $date;
     }
 
-    public function xlsx($type)
+    public function dispositifsXlsx($type)
     {
         if (!in_array($type, ['xlsx', 'ods'])) {
             abort(422);
@@ -203,13 +202,13 @@ class ExportController extends Controller
         $spreadsheet->removeSheetByIndex(0);
 
         // Download the file
-        $export = new Export($spreadsheet, $this->filename, $type);
+        $export = new Writer($spreadsheet, $this->filename, $type);
         $export->download();
 
         die();
     }
 
-    public function pdf()
+    public function dispositifsPdf()
     {
         $pdf = PDF::loadView(
             'exports.pdf',
@@ -220,10 +219,20 @@ class ExportController extends Controller
         return $pdf->download($this->filename . '.pdf');
     }
 
-    public function perimeters()
+    public function table($table)
     {
-        // @TODO : /model/{modelName}
-//        return (new {ModelName}Export())->download();
-        return (new PerimetersExport())->download();
+        if (app()->environment() != 'production' && debugbar()->isEnabled()) {
+            debugbar()->disable();
+        }
+
+        $namespace = "App\\Exports\\";
+
+        $class = $namespace . studly_case($table) . 'Export';
+
+        if (!class_exists($class)) {
+            abort(404);
+        }
+
+        return (new $class)->download();
     }
 }

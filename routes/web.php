@@ -113,10 +113,9 @@ Route::get('/dispositifs/detail/{slug}',
 Route::get('recherche', ['as' => 'front.search', 'uses' => 'FrontController@search']);
 
 // Exports
-Route::get('export/perimeters', ['as' => 'bko.export.perimeters', 'uses' => 'ExportController@perimeters'])->middleware('auth');
-Route::get('export/pdf', ['as' => 'export.pdf', 'uses' => 'ExportController@pdf']);
-//Route::get('export/ods', ['as' => 'export.ods', 'uses' => 'ExportController@ods']);
-Route::get('export/{type}', ['as' => 'export.xlsx', 'uses' => 'ExportController@xlsx']);
+Route::get('export/{table}/csv', ['as' => 'bko.export.table', 'uses' => 'ExportController@table'])->middleware('auth');
+Route::get('export/dispositifs/pdf', ['as' => 'export.pdf', 'uses' => 'ExportController@dispositifsPdf']);
+Route::get('export/dispositifs/{type}', ['as' => 'export.xlsx', 'uses' => 'ExportController@dispositifsXlsx']);
 
 
 Route::fallback(function () {

@@ -6,8 +6,6 @@ use App\Beneficiary;
 
 class BeneficiariesExport extends GlobalExport implements GlobalExportInterface
 {
-    use Exportable;
-
     protected $columns = [
         'name_complete' => 'Nom',
         'description' => 'Description',

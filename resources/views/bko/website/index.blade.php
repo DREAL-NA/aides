@@ -1,6 +1,15 @@
 @extends('layouts.bko')
 
-@section('heading', "Liste des sites de recensement")
+@section('heading')
+    <div class="heading-with-actions">
+        <div class="title">Liste des sites de recensement</div>
+        <div class="actions">
+            <a href="{{ route('bko.export.table', ['table' => 'websites']) }}" data-tooltip="tooltip" title="Exporter en CSV">
+                <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+@endsection
 
 @section('content')
     <div class="row">

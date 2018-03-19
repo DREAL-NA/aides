@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Exports;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Csv;
@@ -8,7 +8,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Ods;
 use PhpOffice\PhpSpreadsheet\Writer\Pdf\Dompdf;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-class Export
+class Writer
 {
     const EXTENSION_XLSX = 'xlsx';
     const EXTENSION_ODS = 'ods';
@@ -82,7 +82,7 @@ class Export
             case self::EXTENSION_CSV:
                 $this->writer = new Csv($this->spreadsheet);
                 $this->writer->setDelimiter(';');
-                $this->writer->setEnclosure('');
+                $this->writer->setEnclosure('"');
                 $this->writer->setLineEnding("\r\n");
                 $this->writer->setSheetIndex(0);
                 $this->writer->setUseBOM(true);

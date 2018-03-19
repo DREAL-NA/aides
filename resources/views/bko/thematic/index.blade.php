@@ -1,6 +1,15 @@
 @extends('layouts.bko')
 
-@section('heading', "Liste des thématiques")
+@section('heading')
+    <div class="heading-with-actions">
+        <div class="title">Liste des thématiques</div>
+        <div class="actions">
+            <a href="{{ route('bko.export.table', ['table' => 'thematics']) }}" data-tooltip="tooltip" title="Exporter en CSV">
+                <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>
+@endsection
 
 @section('content')
     <table class="table table-striped table-hover" id="table__thematics">

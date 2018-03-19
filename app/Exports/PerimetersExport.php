@@ -6,8 +6,6 @@ use App\Perimeter;
 
 class PerimetersExport extends GlobalExport implements GlobalExportInterface
 {
-    use Exportable;
-
     protected $filename = 'perimeters';
 
     public function collection()
