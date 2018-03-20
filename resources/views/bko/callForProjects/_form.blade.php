@@ -23,6 +23,11 @@
     @endphp
 
     <div class="form-group">
+        <label>Dernière édition par</label>
+        <p class="form-control-static">{{ $callForProjects->editor->name }}</p>
+    </div>
+
+    <div class="form-group">
         <label>Ce dispositif apparaît dans la liste des actualités</label>
         <div class="checkboxes">
             <label class="radio-inline">

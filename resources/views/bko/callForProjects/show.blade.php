@@ -8,6 +8,12 @@
 @section('content')
     <div class="form-horizontal">
         <div class="form-group">
+            <label class="col-lg-3 control-label">Dernière édition par</label>
+            <div class="col-lg-9">
+                <p class="form-control-static">{{ $callForProjects->editor->name }}</p>
+            </div>
+        </div>
+        <div class="form-group">
             <label class="col-lg-3 control-label">Thématique</label>
             <div class="col-lg-9">
                 <p class="form-control-static">{{ $callForProjects->thematic->name }}</p>

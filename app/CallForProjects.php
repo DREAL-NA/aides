@@ -134,14 +134,12 @@ class CallForProjects extends Model implements Feedable
 
     public function perimeters()
     {
-        return $this->belongsToMany(Perimeter::class, 'call_for_projects_perimeters', 'call_for_project_id',
-            'perimeter_id');
+        return $this->belongsToMany(Perimeter::class, 'call_for_projects_perimeters', 'call_for_project_id', 'perimeter_id');
     }
 
     public function beneficiaries()
     {
-        return $this->belongsToMany(Beneficiary::class, 'beneficiaries_call_for_projects', 'call_for_project_id',
-            'beneficiary_id');
+        return $this->belongsToMany(Beneficiary::class, 'beneficiaries_call_for_projects', 'call_for_project_id', 'beneficiary_id');
     }
 
     public function editor()
