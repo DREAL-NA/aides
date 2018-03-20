@@ -60,14 +60,14 @@
                 @yield('menu-item-website')
             </ul>
         </div>
-        <div class="menu-category">
-            <h5 class="category-title">Organisations</h5>
-            <ul class="menu">
-                <li class="menu-item"><a href="{{ route('bko.structure.index') }}">Liste des organisations</a></li>
-                <li class="menu-item"><a href="{{ route('bko.structure.create') }}">Ajouter une organisation</a></li>
-                @yield('menu-item-organizationType')
-            </ul>
-        </div>
+        {{--<div class="menu-category">--}}
+        {{--<h5 class="category-title">Organisations</h5>--}}
+        {{--<ul class="menu">--}}
+        {{--<li class="menu-item"><a href="{{ route('bko.structure.index') }}">Liste des organisations</a></li>--}}
+        {{--<li class="menu-item"><a href="{{ route('bko.structure.create') }}">Ajouter une organisation</a></li>--}}
+        {{--@yield('menu-item-organizationType')--}}
+        {{--</ul>--}}
+        {{--</div>--}}
 
         @admin
         <div class="menu-category">

@@ -8,7 +8,7 @@ class WebsitesExport extends GlobalExport implements GlobalExportInterface
 {
     protected $columns = [
         'id' => 'ID',
-        'organization_type_name' => 'Organisation',
+//        'organization_type_name' => 'Organisation',
         'name' => 'Nom de la structure',
         'themes' => 'Thèmes',
         'perimeters' => 'Périmètres',
@@ -26,12 +26,13 @@ class WebsitesExport extends GlobalExport implements GlobalExportInterface
 
     public function collection()
     {
-        return Website::with(['perimeters', 'organizationType'])->get()
+        return Website::with(['perimeters'])->get()
             ->sortBy(function ($item) {
-                return [$item->organization_type_name, $item->name];
+//                return [$item->organization_type_name, $item->name];
+                return [$item->name];
             })
             ->map(function ($item) {
-                $item->organization_type_name = $item->organizationType->name;
+//                $item->organization_type_name = $item->organizationType->name;
                 $item->perimeters = $item->perimeters->pluck('name')->implode(', ');
 
                 return $item->only(array_keys($this->columns));

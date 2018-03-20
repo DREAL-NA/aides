@@ -3,31 +3,29 @@
     {{ csrf_field() }}
 
     @php
-        $organization_type_id = old('organization_type_id', $website->organization_type_id);
-
         $perimeters = $website->perimeters;
         if(!empty(old('perimeters'))) {
             $perimeters = \App\Perimeter::whereIn('id', old('perimeters'))->get();
         }
     @endphp
 
-    <div class="form-group">
-        <label for="project_holder_id">Organisation*</label>
-        <div class="input-group">
-            <select name="organization_type_id" id="organization_type_id" class="form-control">
-                @if(!empty($organization_type_id))
-                    @php($organization_type = \App\OrganizationType::where('id', $organization_type_id)->first())
-                    @if(!empty($organization_type->id))
-                        <option value="{{ $organization_type->id }}" selected>{{ $organization_type->name }}</option>
-                    @endif
-                @endif
-            </select>
-            <span class="input-group-btn">
-				<button class="btn btn-default" type="button" data-toggle="modal"
-                        data-target="#modalNewOrganizationType"><i class="fa fa-plus" aria-hidden="true"></i></button>
-			</span>
-        </div>
-    </div>
+    {{--<div class="form-group">--}}
+    {{--<label for="project_holder_id">Organisation*</label>--}}
+    {{--<div class="input-group">--}}
+    {{--<select name="organization_type_id" id="organization_type_id" class="form-control">--}}
+    {{--@if(!empty($organization_type_id))--}}
+    {{--@php($organization_type = \App\OrganizationType::where('id', $organization_type_id)->first())--}}
+    {{--@if(!empty($organization_type->id))--}}
+    {{--<option value="{{ $organization_type->id }}" selected>{{ $organization_type->name }}</option>--}}
+    {{--@endif--}}
+    {{--@endif--}}
+    {{--</select>--}}
+    {{--<span class="input-group-btn">--}}
+    {{--<button class="btn btn-default" type="button" data-toggle="modal"--}}
+    {{--data-target="#modalNewOrganizationType"><i class="fa fa-plus" aria-hidden="true"></i></button>--}}
+    {{--</span>--}}
+    {{--</div>--}}
+    {{--</div>--}}
     <div class="form-group">
         <label for="name">Nom de la structure*</label>
         <input type="text" class="form-control" name="name" id="name" value="{{ old('name', $website->name) }}">
@@ -99,47 +97,47 @@
         (function ($) {
             "use strict";
 
-            $('#organization_type_id').select2({
-                ajax: window.utils.select2__ajaxOptions('{{ route('bko.structure.select2') }}')
-            });
+            {{--$('#organization_type_id').select2({--}}
+            {{--ajax: window.utils.select2__ajaxOptions('{{ route('bko.structure.select2') }}')--}}
+            {{--});--}}
 
             $('#perimeter_id').select2({
                 ajax: window.utils.select2__ajaxOptions('{{ route('bko.perimetre.select2') }}')
             });
 
-            $('#save__modalNewOrganizationType').on('click', function () {
-                window.utils.saveNewItem('modalNewOrganizationType', '{{ action('Bko\OrganizationTypeController@store') }}', 'organization_type_id');
-            });
+            {{--$('#save__modalNewOrganizationType').on('click', function () {--}}
+            {{--window.utils.saveNewItem('modalNewOrganizationType', '{{ action('Bko\OrganizationTypeController@store') }}', 'organization_type_id');--}}
+            {{--});--}}
 
             $('#save__modalNewPerimeter').on('click', function () {
                 window.utils.saveNewItem('modalNewPerimeter', '{{ action('Bko\PerimeterController@store') }}', 'perimeter_id');
             });
 
-            $('#modalNewOrganizationType, #modalNewPerimeter').on('hidden.bs.modal', function (e) {
-                var _this = $(this);
-                _this.find('input[type="text"], textarea').val('');
-                _this.find('input[type="radio"], input[type="checkbox"]').prop('checked', false);
-            });
+            // $('#modalNewOrganizationType, #modalNewPerimeter').on('hidden.bs.modal', function (e) {
+            //     var _this = $(this);
+            //     _this.find('input[type="text"], textarea').val('');
+            //     _this.find('input[type="radio"], input[type="checkbox"]').prop('checked', false);
+            // });
         })(jQuery);
     </script>
 @endpush
 
 @section('after-content')
-    @component('bko.components.modals._default')
-        @slot('id', 'modalNewOrganizationType')
-        @slot('title', "Ajout d'une organisation")
-        @slot('slot')
-            @include('bko.components.forms._default', [
-                'model' => new \App\OrganizationType(),
-                'options' => [ 'method' => 'POST', 'url' => '#' ],
-                'modal' => 'modalNewOrganizationType',
-            ])
-        @endslot
-        @slot('footer')
-            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-            <button type="button" class="btn btn-primary" id="save__modalNewOrganizationType">Ajouter</button>
-        @endslot
-    @endcomponent
+    {{--@component('bko.components.modals._default')--}}
+    {{--@slot('id', 'modalNewOrganizationType')--}}
+    {{--@slot('title', "Ajout d'une organisation")--}}
+    {{--@slot('slot')--}}
+    {{--@include('bko.components.forms._default', [--}}
+    {{--'model' => new \App\OrganizationType(),--}}
+    {{--'options' => [ 'method' => 'POST', 'url' => '#' ],--}}
+    {{--'modal' => 'modalNewOrganizationType',--}}
+    {{--])--}}
+    {{--@endslot--}}
+    {{--@slot('footer')--}}
+    {{--<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>--}}
+    {{--<button type="button" class="btn btn-primary" id="save__modalNewOrganizationType">Ajouter</button>--}}
+    {{--@endslot--}}
+    {{--@endcomponent--}}
 
     @component('bko.components.modals._default')
         @slot('id', 'modalNewPerimeter')

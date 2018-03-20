@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Bko;
 
-use App\OrganizationType;
+use App\Http\Controllers\Controller;
 use App\Website;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class WebsiteController extends Controller
 {
@@ -16,15 +15,15 @@ class WebsiteController extends Controller
      */
     public function index()
     {
-        $websites = Website::with(['organizationType', 'perimeters'])->get();
-        $organizationTypes = $websites->map(function ($item) {
-            return $item->organizationType;
-        })->unique()->sortBy('name')->values();
+        $websites = Website::with(['perimeters'])->get();
+//        $organizationTypes = $websites->map(function ($item) {
+//            return $item->organizationType;
+//        })->unique()->sortBy('name')->values();
         $perimeters = $websites->map(function ($item) {
             return $item->perimeters;
         })->flatten()->unique('id')->sortBy('name')->values();
 
-        return view('bko.website.index', compact('websites', 'organizationTypes', 'perimeters'));
+        return view('bko.website.index', compact('websites', 'perimeters'));
     }
 
     /**

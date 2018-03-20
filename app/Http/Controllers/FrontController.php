@@ -123,7 +123,7 @@ class FrontController extends Controller
 
     public function websites()
     {
-        $websites = Website::with(['organizationType', 'perimeters'])->orderBy('name')->paginate(config('app.pagination.perPage'));
+        $websites = Website::with(['perimeters'])->orderBy('name')->paginate(config('app.pagination.perPage'));
 
         return view('front.tools.website-library', compact('websites'));
     }

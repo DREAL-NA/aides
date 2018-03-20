@@ -15,15 +15,15 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="row filters-table">
-                <div class="form-group">
-                    <label for="filter__organizationType">Organisations</label>
-                    <select id="filter__organizationType" class="form-control select2-filter" multiple="multiple">
-                        <option></option>
-                        @foreach($organizationTypes as $organizationType)
-                            <option value="{{ $organizationType->name }}">{{ $organizationType->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
+                {{--<div class="form-group">--}}
+                {{--<label for="filter__organizationType">Organisations</label>--}}
+                {{--<select id="filter__organizationType" class="form-control select2-filter" multiple="multiple">--}}
+                {{--<option></option>--}}
+                {{--@foreach($organizationTypes as $organizationType)--}}
+                {{--<option value="{{ $organizationType->name }}">{{ $organizationType->name }}</option>--}}
+                {{--@endforeach--}}
+                {{--</select>--}}
+                {{--</div>--}}
                 <div class="form-group">
                     <label for="filter__perimeter">Périmètre</label>
                     <select id="filter__perimeter" class="form-control select2-filter" multiple="multiple">
@@ -41,7 +41,7 @@
             <table class="table table-striped table-hover table-condensed" id="table__websites">
                 <thead>
                 <tr>
-                    <th>Organisation</th>
+                    {{--<th>Organisation</th>--}}
                     <th>Thèmes</th>
                     <th>Nom</th>
                     <th>Périmètre</th>
@@ -52,7 +52,7 @@
                 <tbody>
                 @foreach($websites as $website)
                     <tr>
-                        <td>{{ $website->organizationType->name }}</td>
+                        {{--                        <td>{{ $website->organizationType->name }}</td>--}}
                         <td>{!! $website->themes_html !!}</td>
                         <td>{{ $website->name }}</td>
                         <td>{!! $website->perimeters->implode('name', ', ') !!}</td>
@@ -84,7 +84,7 @@
         var table;
 
         function filterResults() {
-            window.utils.searchFilterArrayValues($('#filter__organizationType').val(), 0);
+            // window.utils.searchFilterArrayValues($('#filter__organizationType').val(), 0);
             window.utils.searchFilterArrayValues($('#filter__perimeter').val(), 3);
             table.draw();
         }
@@ -94,7 +94,7 @@
 
             table = $('#table__websites').DataTable({
                 "columns": [
-                    {type: 'natural'},
+                    // {type: 'natural'},
                     {type: 'natural'},
                     {type: 'natural'},
                     {type: 'natural'},

@@ -8,12 +8,12 @@
 
 @section('content')
     <div class="form-horizontal">
-        <div class="form-group">
-            <label class="col-lg-3 control-label">Organisation</label>
-            <div class="col-lg-9">
-                <p class="form-control-static">{{ $website->organizationType->name }}</p>
-            </div>
-        </div>
+        {{--<div class="form-group">--}}
+        {{--<label class="col-lg-3 control-label">Organisation</label>--}}
+        {{--<div class="col-lg-9">--}}
+        {{--<p class="form-control-static">{{ $website->organizationType->name }}</p>--}}
+        {{--</div>--}}
+        {{--</div>--}}
         <div class="form-group">
             <label class="col-lg-3 control-label">Nom de la structure*</label>
             <div class="col-lg-9">

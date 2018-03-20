@@ -16,11 +16,11 @@ $factory->state(App\User::class, 'custom', [
     'email' => 'contact@ngiraud.me',
 ]);
 
-$factory->define(App\OrganizationType::class, function (Faker $faker) {
-    return [
-        'name' => $faker->unique()->company,
-    ];
-});
+//$factory->define(App\OrganizationType::class, function (Faker $faker) {
+//    return [
+//        'name' => $faker->unique()->company,
+//    ];
+//});
 
 $factory->define(App\Perimeter::class, function (Faker $faker) {
     return [
@@ -76,9 +76,9 @@ $factory->define(App\Website::class, function (Faker $faker) {
         'name' => $faker->sentence(4),
         'perimeter_comments' => $faker->sentence(4),
         'website_url' => $faker->url,
-        'organization_type_id' => function () {
-            return factory(App\OrganizationType::class)->create()->id;
-        },
+//        'organization_type_id' => function () {
+//            return factory(App\OrganizationType::class)->create()->id;
+//        },
         'description' => $faker->paragraph
     ];
 });

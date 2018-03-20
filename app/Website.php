@@ -22,18 +22,13 @@ class Website extends Model implements HasMedia
     public function rules()
     {
         return [
-            'organization_type_id' => 'required|exists:organization_types,id',
+//            'organization_type_id' => 'required|exists:organization_types,id',
             'themes' => 'nullable',
             'name' => [
                 'required',
                 'min:2',
                 'max:255',
-                Rule::unique('websites')->where(function ($query) {
-                    if (empty(request()->get('organization_type_id'))) {
-                        return $query;
-                    }
-                    return $query->where('organization_type_id', request()->get('organization_type_id'));
-                })->ignore($this->id)
+                Rule::unique('websites')->ignore($this->id)
             ],
             'perimeters' => 'nullable|array',
             'perimeter_comments' => 'nullable',
@@ -46,10 +41,10 @@ class Website extends Model implements HasMedia
         ];
     }
 
-    public function organizationType()
-    {
-        return $this->belongsTo(OrganizationType::class);
-    }
+//    public function organizationType()
+//    {
+//        return $this->belongsTo(OrganizationType::class);
+//    }
 
     public function perimeters()
     {

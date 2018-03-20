@@ -40,9 +40,9 @@ Route::group([
     Route::post('beneficiaire/select2',
         ['as' => 'bko.beneficiaire.select2', 'uses' => 'BeneficiaryController@select2']);
 
-    Route::resource('structure', 'OrganizationTypeController',
-        ['as' => 'bko', 'parameters' => ['structure' => 'organizationType'], 'except' => ['show']]);
-    Route::post('structure/select2', ['as' => 'bko.structure.select2', 'uses' => 'OrganizationTypeController@select2']);
+//    Route::resource('structure', 'OrganizationTypeController',
+//        ['as' => 'bko', 'parameters' => ['structure' => 'organizationType'], 'except' => ['show']]);
+//    Route::post('structure/select2', ['as' => 'bko.structure.select2', 'uses' => 'OrganizationTypeController@select2']);
 
     Route::resource('site', 'WebsiteController', ['as' => 'bko', 'parameters' => ['site' => 'website']]);
 
