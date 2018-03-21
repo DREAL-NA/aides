@@ -85,7 +85,7 @@
 
         function filterResults() {
             // window.utils.searchFilterArrayValues($('#filter__organizationType').val(), 0);
-            window.utils.searchFilterArrayValues($('#filter__perimeter').val(), 3);
+            window.utils.searchFilterArrayValues($('#filter__perimeter').val(), 2);
             table.draw();
         }
 
