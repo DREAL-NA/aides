@@ -42,8 +42,8 @@
                 <thead>
                 <tr>
                     {{--<th>Organisation</th>--}}
-                    <th>Thèmes</th>
                     <th>Nom</th>
+                    <th>Thèmes</th>
                     <th>Périmètre</th>
                     <th>Adresse internet</th>
                     <th></th>
@@ -53,8 +53,8 @@
                 @foreach($websites as $website)
                     <tr>
                         {{--                        <td>{{ $website->organizationType->name }}</td>--}}
-                        <td>{!! $website->themes_html !!}</td>
                         <td>{{ $website->name }}</td>
+                        <td>{!! $website->themes_html !!}</td>
                         <td>{!! $website->perimeters->implode('name', ', ') !!}</td>
                         <td>
                             @if(!empty($website->website_url))
