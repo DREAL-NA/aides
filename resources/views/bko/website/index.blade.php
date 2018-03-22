@@ -54,10 +54,9 @@
                 @foreach($websites as $website)
                     <tr>
                         {{--                        <td>{{ $website->organizationType->name }}</td>--}}
-                        <td>
+                        <td class="td-logo">
                             @if(!empty($website->getFirstMedia(\App\Website::MEDIA_COLLECTION)))
-                                <img src="{{ $website->getFirstMedia(\App\Website::MEDIA_COLLECTION)->getUrl() }}" alt="logo"
-                                     class="img-responsive" style="width: 100px;">
+                                <img src="{{ $website->getFirstMedia(\App\Website::MEDIA_COLLECTION)->getUrl() }}" alt="logo" class="img-responsive">
                             @endif
                         </td>
                         <td>{{ $website->name }}</td>

@@ -1,60 +1,68 @@
 textarea {
-	min-width: 100%;
-	max-width: 100%;
-	width: 100%;
-	min-height: 70px;
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
+    min-height: 70px;
 }
 
 .input-group.date {
-	input {
-		cursor: pointer;
-	}
+    input {
+        cursor: pointer;
+    }
 }
 
 .filters-table {
-	margin-bottom: 30px;
+    margin-bottom: 30px;
 
-	.form-group {
-		@include make-lg-column(4);
-	}
+    .form-group {
+        @include make-lg-column(4);
+    }
 }
 
 table {
-	.col-actions {
-		a {
-			margin-left: 5px;
-		}
-	}
+    .col-actions {
+        a {
+            margin-left: 5px;
+        }
+    }
 
-	.item-of-the-week {
-		td {
-			background-color: $color-green-pastel;
-			color: $color-white;
+    .item-of-the-week {
+        td {
+            background-color: $color-green-pastel;
+            color: $color-white;
 
-			a {
-				color: inherit;
-			}
-		}
-	}
+            a {
+                color: inherit;
+            }
+        }
+    }
 }
 
 mark,
 .mark {
-	background-color: $color-highlighting;
+    background-color: $color-highlighting;
 }
 
 .heading-with-actions {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-	.actions {
-		display: flex;
-		align-items: center;
-		justify-content: flex-end;
+    .actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
 
-		a {
-			margin-left: 10px;
-		}
-	}
+        a {
+            margin-left: 10px;
+        }
+    }
+}
+
+.td-logo {
+    vertical-align: middle;
+
+    img {
+        width: 100px;
+    }
 }

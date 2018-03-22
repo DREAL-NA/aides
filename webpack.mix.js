@@ -36,6 +36,6 @@ if (mix.inProduction()) {
     mix.version();
 }
 
-mix.browserSync('dreal.loc');
+// mix.browserSync('dreal.loc');
 
 mix.disableNotifications();
