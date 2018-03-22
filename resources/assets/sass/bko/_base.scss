@@ -38,6 +38,22 @@ table {
     }
 }
 
+.table {
+    > tbody {
+        > tr {
+            > td {
+                &.td-logo {
+                    vertical-align: middle;
+
+                    img {
+                        width: 100px;
+                    }
+                }
+            }
+        }
+    }
+}
+
 mark,
 .mark {
     background-color: $color-highlighting;
@@ -56,13 +72,5 @@ mark,
         a {
             margin-left: 10px;
         }
-    }
-}
-
-.td-logo {
-    vertical-align: middle;
-
-    img {
-        width: 100px;
     }
 }
