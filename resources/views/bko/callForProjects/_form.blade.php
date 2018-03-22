@@ -22,10 +22,12 @@
         $is_news = old('is_news', $callForProjects->is_news);
     @endphp
 
-    <div class="form-group">
-        <label>Dernière édition par</label>
-        <p class="form-control-static">{{ $callForProjects->editor->name }}</p>
-    </div>
+    @if(!empty($callForProjects->id))
+        <div class="form-group">
+            <label>Dernière édition par</label>
+            <p class="form-control-static">{{ $callForProjects->editor->name }}</p>
+        </div>
+    @endif
 
     <div class="form-group">
         <label>Ce dispositif apparaît dans la liste des actualités</label>
