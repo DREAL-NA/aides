@@ -42,6 +42,7 @@
                 <thead>
                 <tr>
                     {{--<th>Organisation</th>--}}
+                    <th>Logo</th>
                     <th>Nom</th>
                     <th>Thèmes</th>
                     <th>Périmètre</th>
@@ -53,6 +54,12 @@
                 @foreach($websites as $website)
                     <tr>
                         {{--                        <td>{{ $website->organizationType->name }}</td>--}}
+                        <td>
+                            @if(!empty($website->getFirstMedia(\App\Website::MEDIA_COLLECTION)))
+                                <img src="{{ $website->getFirstMedia(\App\Website::MEDIA_COLLECTION)->getUrl() }}" alt="logo"
+                                     class="img-responsive" style="width: 150px; margin-bottom: 15px;">
+                            @endif
+                        </td>
                         <td>{{ $website->name }}</td>
                         <td>{!! $website->themes_html !!}</td>
                         <td>{!! $website->perimeters->implode('name', ', ') !!}</td>
@@ -93,8 +100,10 @@
             "use strict";
 
             table = $('#table__websites').DataTable({
+                "order": [[1, "asc"]],
                 "columns": [
                     // {type: 'natural'},
+                    {"orderable": false},
                     {type: 'natural'},
                     {type: 'natural'},
                     {type: 'natural'},
