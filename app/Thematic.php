@@ -44,16 +44,19 @@ class Thematic extends Model
     public function rulesSubthematic()
     {
         return [
-            'name' => 'required|min:2',
+            'name' => [
+                'required',
+                'min:2',
+                Rule::unique('thematics')->where(function ($query) {
+                    return $query->where('parent_id', request()->get('parent_id'));
+                })->ignore($this->id)
+            ],
             'description' => 'present',
             'parent_id' => [
                 'required',
                 Rule::exists('thematics', 'id')->where(function ($query) {
                     $query->whereNull('parent_id');
                 }),
-//                Rule::unique('thematics')->where(function ($query) {
-//                    return $query->where('parent_id', request()->get('parent_id'));
-//                })->ignore($this->id),
             ],
         ];
     }
