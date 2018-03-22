@@ -51,9 +51,9 @@ class Thematic extends Model
                 Rule::exists('thematics', 'id')->where(function ($query) {
                     $query->whereNull('parent_id');
                 }),
-                Rule::unique('thematics')->where(function ($query) {
-                    return $query->where('parent_id', request()->get('parent_id'));
-                })->ignore($this->id),
+//                Rule::unique('thematics')->where(function ($query) {
+//                    return $query->where('parent_id', request()->get('parent_id'));
+//                })->ignore($this->id),
             ],
         ];
     }
