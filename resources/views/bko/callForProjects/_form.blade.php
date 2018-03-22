@@ -25,7 +25,10 @@
     @if(!empty($callForProjects->id))
         <div class="form-group">
             <label>Dernière édition par</label>
-            <p class="form-control-static">{{ $callForProjects->editor->name }}</p>
+            <p class="form-control-static">
+                <a href="mailto:{{ $callForProjects->editor->email }}">{{ $callForProjects->editor->name }}</a>
+                le {{ $callForProjects->updated_at->format('d/m/Y') }}
+            </p>
         </div>
     @endif
 

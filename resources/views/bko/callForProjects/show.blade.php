@@ -10,7 +10,10 @@
         <div class="form-group">
             <label class="col-lg-3 control-label">Dernière édition par</label>
             <div class="col-lg-9">
-                <p class="form-control-static">{{ $callForProjects->editor->name }}</p>
+                <p class="form-control-static">
+                    <a href="mailto:{{ $callForProjects->editor->email }}">{{ $callForProjects->editor->name }}</a>
+                    le {{ $callForProjects->updated_at->format('d/m/Y') }}
+                </p>
             </div>
         </div>
         <div class="form-group">
