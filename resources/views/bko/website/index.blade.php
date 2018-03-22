@@ -57,7 +57,7 @@
                         <td>
                             @if(!empty($website->getFirstMedia(\App\Website::MEDIA_COLLECTION)))
                                 <img src="{{ $website->getFirstMedia(\App\Website::MEDIA_COLLECTION)->getUrl() }}" alt="logo"
-                                     class="img-responsive" style="width: 150px; margin-bottom: 15px;">
+                                     class="img-responsive" style="width: 100px;">
                             @endif
                         </td>
                         <td>{{ $website->name }}</td>
