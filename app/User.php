@@ -45,7 +45,9 @@ class User extends Authenticatable
 
 
             // Send mail notification to user
-            $user->notify(new NewBkoUser($password));
+            if (!app()->runningInConsole()) {
+                $user->notify(new NewBkoUser($password));
+            }
 
         });
     }
