@@ -21,16 +21,18 @@ class AppServiceProvider extends ServiceProvider
 
 
         // Setting feed routes for call for projects by thematic
-        $thematics = Thematic::primary()->get();
+        if (!$this->app->runningInConsole()) {
+            $thematics = Thematic::primary()->get();
 
-        foreach ($thematics as $thematic) {
-            $feedsThematic = [
-                'items' => ['App\CallForProjects@getFeedItemsByThematic', $thematic->id],
-                'url' => '/feed/thematic/' . $thematic->id,
-                'title' => 'Les ' . config('feed.itemsPerFeed') . ' derniers dispositifs sur la thématique : ' . $thematic->name,
-            ];
+            foreach ($thematics as $thematic) {
+                $feedsThematic = [
+                    'items' => ['App\CallForProjects@getFeedItemsByThematic', $thematic->id],
+                    'url' => '/feed/thematic/' . $thematic->id,
+                    'title' => 'Les ' . config('feed.itemsPerFeed') . ' derniers dispositifs sur la thématique : ' . $thematic->name,
+                ];
 
-            config(['feed.feeds.thematic_' . $thematic->id => $feedsThematic]);
+                config(['feed.feeds.thematic_' . $thematic->id => $feedsThematic]);
+            }
         }
     }
 
