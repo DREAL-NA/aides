@@ -1,4 +1,7 @@
 <?php
+/******************************************************************/
+/********************* DEPRECATED (FOR NOW) ***********************/
+/******************************************************************/
 
 namespace App;
 
@@ -13,6 +16,8 @@ class OrganizationType extends Model
 
     protected $guarded = [];
     protected $dates = ['deleted_at'];
+
+//    protected $hidden = ['deleted_at'];
 
     protected static function boot()
     {

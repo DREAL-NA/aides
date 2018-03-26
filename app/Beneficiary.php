@@ -20,6 +20,7 @@ class Beneficiary extends Model
     protected $guarded = [];
     protected $appends = ['name_complete'];
     protected $dates = ['deleted_at'];
+    protected $hidden = ['deleted_at', 'pivot'];
 
     const URI_NAME = 'benef';
 

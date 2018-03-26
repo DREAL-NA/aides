@@ -27,6 +27,8 @@ class CallForProjects extends Model implements Feedable
 
     protected $table = 'calls_for_projects';
 
+    protected $hidden = ['is_news', 'deleted_at', 'editor_id'];
+
     protected static function boot()
     {
         parent::boot();

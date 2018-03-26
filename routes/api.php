@@ -16,3 +16,51 @@ use Illuminate\Http\Request;
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
+
+//Route::get('/dispositifs/ouverts', function (Request $request) {
+//    return \App\CallForProjects::with([
+//        'thematic',
+//        'subthematic',
+//        'projectHolders',
+//        'perimeters',
+//        'beneficiaries'
+//    ])->opened()->get();
+//});
+//
+//Route::get('/dispositifs/clotures', function (Request $request) {
+//    return \App\CallForProjects::with([
+//        'thematic',
+//        'subthematic',
+//        'projectHolders',
+//        'perimeters',
+//        'beneficiaries'
+//    ])->closed()->get();
+//});
+
+Route::get('/dispositifs/{type?}', function (Request $request) {
+    $query = \App\CallForProjects::with([
+        'thematic',
+        'subthematic',
+        'projectHolders',
+        'perimeters',
+        'beneficiaries'
+    ]);
+
+    if (!empty($request->type)) {
+        if ($request->type == 'ouverts') {
+            $query = $query->opened();
+        } elseif ($request->type == 'clotures') {
+            $query = $query->closed();
+        } else {
+            return response()->json([
+                'message' => 'Not Found',
+            ], 404);
+        }
+    }
+
+    return $query->get();
+});
+
+Route::get('/sites', function (Request $request) {
+    return \App\Website::with(['perimeters'])->get();
+});

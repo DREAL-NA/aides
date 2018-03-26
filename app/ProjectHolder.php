@@ -13,6 +13,7 @@ class ProjectHolder extends Model
 
     protected $guarded = [];
     protected $dates = ['deleted_at'];
+    protected $hidden = ['deleted_at', 'pivot'];
 
     const URI_NAME = 'proje';
 

@@ -14,6 +14,7 @@ class Thematic extends Model
     protected $guarded = [];
     protected $appends = ['slug'];
     protected $dates = ['deleted_at'];
+    protected $hidden = ['deleted_at'];
 
     const URI_NAME_THEMATIC = 'thema';
     const URI_NAME_SUBTHEMATIC = 'subthema';
