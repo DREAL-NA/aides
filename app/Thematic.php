@@ -37,7 +37,8 @@ class Thematic extends Model
                 'min:2',
                 'max:255',
                 Rule::unique('thematics')->where(function ($query) {
-                    $query->whereNull('parent_id');
+                    $query->whereNull('parent_id')
+                        ->whereNull('deleted_at');
                 })->ignore($this->id)
             ],
             'description' => 'present',
@@ -51,14 +52,16 @@ class Thematic extends Model
                 'required',
                 'min:2',
                 Rule::unique('thematics')->where(function ($query) {
-                    return $query->where('parent_id', request()->get('parent_id'));
+                    return $query->where('parent_id', request()->get('parent_id'))
+                        ->whereNull('deleted_at');
                 })->ignore($this->id)
             ],
             'description' => 'present',
             'parent_id' => [
                 'required',
                 Rule::exists('thematics', 'id')->where(function ($query) {
-                    $query->whereNull('parent_id');
+                    $query->whereNull('parent_id')
+                        ->whereNull('deleted_at');
                 }),
             ],
         ];
