@@ -71,13 +71,13 @@ class CallForProjects extends Model implements Feedable
             'thematic_id' => [
                 'required',
                 Rule::exists('thematics', 'id')->where(function ($query) {
-                    $query->whereNull('parent_id');
+                    $query->whereNull('parent_id')->whereNull('deleted_at');
                 }),
             ],
             'subthematic_id' => [
                 'nullable',
                 Rule::exists('thematics', 'id')->where(function ($query) {
-                    $query->whereNotNull('parent_id');
+                    $query->whereNotNull('parent_id')->whereNull('deleted_at');
                 }),
             ],
             'name' => [
@@ -96,7 +96,7 @@ class CallForProjects extends Model implements Feedable
                         $query = $query->where('subthematic_id', request()->get('subthematic_id'));
                     }
 
-                    return $query;
+                    return $query->whereNull('deleted_at');
                 })->ignore($this->id)
             ],
             'closing_date' => 'nullable|date_format:Y-m-d',

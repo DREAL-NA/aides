@@ -24,7 +24,7 @@ class ProjectHolder extends Model
                 'required',
                 'min:2',
                 'max:255',
-                Rule::unique('project_holders')->ignore($this->id)
+                Rule::unique('project_holders')->whereNull('deleted_at')->ignore($this->id)
             ],
             'description' => 'present',
         ];

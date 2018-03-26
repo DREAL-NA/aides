@@ -36,7 +36,7 @@ class OrganizationType extends Model
                 'required',
                 'min:2',
                 'max:255',
-                Rule::unique('organization_types')->ignore($this->id)
+                Rule::unique('organization_types')->whereNull('deleted_at')->ignore($this->id)
             ],
             'description' => 'present',
         ];

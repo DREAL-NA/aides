@@ -28,7 +28,7 @@ class Website extends Model implements HasMedia
                 'required',
                 'min:2',
                 'max:255',
-                Rule::unique('websites')->ignore($this->id)
+                Rule::unique('websites')->whereNull('deleted_at')->ignore($this->id)
             ],
             'perimeters' => 'nullable|array',
             'perimeter_comments' => 'nullable',

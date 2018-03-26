@@ -50,7 +50,7 @@ class Beneficiary extends Model
                     if (empty(request()->get('type'))) {
                         return $query;
                     }
-                    return $query->where('type', request()->get('type'));
+                    return $query->where('type', request()->get('type'))->whereNull('deleted_at');
                 })->ignore($this->id)
             ],
             'description' => 'present',

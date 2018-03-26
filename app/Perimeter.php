@@ -24,7 +24,7 @@ class Perimeter extends Model
                 'required',
                 'min:2',
                 'max:255',
-                Rule::unique('perimeters')->ignore($this->id)
+                Rule::unique('perimeters')->whereNull('deleted_at')->ignore($this->id)
             ],
             'description' => 'present',
         ];
