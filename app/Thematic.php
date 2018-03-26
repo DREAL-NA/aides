@@ -36,7 +36,9 @@ class Thematic extends Model
                 'required',
                 'min:2',
                 'max:255',
-                Rule::unique('thematics')->ignore($this->id)
+                Rule::unique('thematics')->where(function ($query) {
+                    $query->whereNull('parent_id');
+                })->ignore($this->id)
             ],
             'description' => 'present',
         ];
