@@ -167,7 +167,7 @@ class CallForProjects extends Model implements Feedable
 
         return $query
             ->where('is_news', 1)
-            ->whereBetween('created_at', [$start_date->format('Y-m-d 00:00:00'), $end_date->format('Y-m-d 23:59:59')]);
+            ->whereBetween('updated_at', [$start_date->format('Y-m-d 00:00:00'), $end_date->format('Y-m-d 23:59:59')]);
     }
 
     public function scopeClosingDateNull($query)
