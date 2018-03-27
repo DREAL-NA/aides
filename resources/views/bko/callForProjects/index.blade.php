@@ -87,8 +87,8 @@
                     <th>Sous-thématique</th>
                     <th>Intitulé</th>
                     <th>Date de clôture</th>
-                    <th>Porteur du dispositif</th>
-                    <th>Périmètre</th>
+                    <th>Porteurs du dispositif</th>
+                    <th>Périmètres</th>
                     <th>Objectifs</th>
                     <th>Bénéficiaires</th>
                     <th></th>
@@ -132,8 +132,8 @@
         var table;
 
         function filterResults() {
-            window.utils.searchFilterArrayValues($('#filter__thematic').val(), 0);
-            window.utils.searchFilterArrayValues($('#filter__subthematic').val(), 1);
+            window.utils.searchFilterArrayValues($('#filter__thematic').val(), 0, true);
+            window.utils.searchFilterArrayValues($('#filter__subthematic').val(), 1, true);
             window.utils.searchFilterArrayValues($('#filter__projectHolder').val(), 4);
             window.utils.searchFilterArrayValues($('#filter__perimeter').val(), 5);
             window.utils.searchFilterArrayValues($('#filter__beneficiary').val(), 7);

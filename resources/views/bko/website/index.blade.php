@@ -12,30 +12,30 @@
 @endsection
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="row filters-table">
-                {{--<div class="form-group">--}}
-                {{--<label for="filter__organizationType">Organisations</label>--}}
-                {{--<select id="filter__organizationType" class="form-control select2-filter" multiple="multiple">--}}
-                {{--<option></option>--}}
-                {{--@foreach($organizationTypes as $organizationType)--}}
-                {{--<option value="{{ $organizationType->name }}">{{ $organizationType->name }}</option>--}}
-                {{--@endforeach--}}
-                {{--</select>--}}
-                {{--</div>--}}
-                <div class="form-group">
-                    <label for="filter__perimeter">Périmètre</label>
-                    <select id="filter__perimeter" class="form-control select2-filter" multiple="multiple">
-                        <option></option>
-                        @foreach($perimeters as $perimeter)
-                            <option value="{{ $perimeter->name }}">{{ $perimeter->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-        </div>
-    </div>
+    {{--<div class="row">--}}
+    {{--<div class="col-lg-12">--}}
+    {{--<div class="row filters-table">--}}
+    {{--<div class="form-group">--}}
+    {{--<label for="filter__organizationType">Organisations</label>--}}
+    {{--<select id="filter__organizationType" class="form-control select2-filter" multiple="multiple">--}}
+    {{--<option></option>--}}
+    {{--@foreach($organizationTypes as $organizationType)--}}
+    {{--<option value="{{ $organizationType->name }}">{{ $organizationType->name }}</option>--}}
+    {{--@endforeach--}}
+    {{--</select>--}}
+    {{--</div>--}}
+    {{--<div class="form-group">--}}
+    {{--<label for="filter__perimeter">Périmètre</label>--}}
+    {{--<select id="filter__perimeter" class="form-control select2-filter" multiple="multiple">--}}
+    {{--<option></option>--}}
+    {{--@foreach($perimeters as $perimeter)--}}
+    {{--<option value="{{ $perimeter->name }}">{{ $perimeter->name }}</option>--}}
+    {{--@endforeach--}}
+    {{--</select>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
+    {{--</div>--}}
     <div class="row">
         <div class="col-lg-12">
             <table class="table table-striped table-hover table-condensed" id="table__websites">
@@ -91,7 +91,7 @@
 
         function filterResults() {
             // window.utils.searchFilterArrayValues($('#filter__organizationType').val(), 0);
-            window.utils.searchFilterArrayValues($('#filter__perimeter').val(), 2);
+            window.utils.searchFilterArrayValues($('#filter__perimeter').val(), 3);
             table.draw();
         }
 

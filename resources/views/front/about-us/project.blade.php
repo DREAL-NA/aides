@@ -60,16 +60,35 @@
             <br>
 
             <h4>Comment ?</h4>
-            <p>Un site internet recense quotidiennement les dispositifs par thématique (ouverture du site prévu fin mars 2018).</p>
-            <p>À noter que la démarche fait partie du projet « Aides-territoires » porté les ministères de la transition écologique et solidaire (MET) et de la cohésion des
-                territoires (MCT). Cette démarche doit permettre aux collectivités :</p>
+            <p>Le site internet recense quotidiennement les dispositifs par thématique.</p>
+            <p>
+                <i>La fiche du dispositif a été rédigée à partir des informations diffusées par les organismes. Ces informations sont données à titre indicatif et ne peuvent en
+                    aucun cas engager la responsabilité de la DREAL NA. L’obtention des aides est liée à des critères relatif au porteur de projet, à son projet, ainsi qu’à un
+                    certain
+                    nombre de conditions fixées et précisées par l’organisme. Nous vous recommandons de vous adresser directement aux organismes gestionnaires mentionnés dans la
+                    fiche pour
+                    déterminer si votre projet est éligible à une aide. Enfin, si vous notez des omissions ou des erreurs dans cette fiche, merci de nous adresser vos remarques :
+                    <a href="mailto:sylvie.frugier@developpement-durable.gouv.fr">sylvie.frugier@developpement-durable.gouv.fr</a></i>
+            </p>
 
-            <ul>
-                <li>de mieux identifier les aides auxquelles les acteurs du territoire peuvent prétendre pour leurs projets de territoires (démarche développée par la DREAL
-                    Nouvelle-Aquitaine),
-                </li>
-                <li>de simplifier leur candidature aux dispositifs.</li>
-            </ul>
+            <div class="flex">
+                <div class="flex-item">
+                    <img src="/images/aides-territoires.png" alt="aides-territoires">
+                </div>
+                <div class="flex-item">
+                    <p>Ce site internet développe aussi des liens avec la start up d'Etat Aides-territoires, portée par les ministères de la transition écologique et solidaire
+                        (MTES) et de
+                        la cohésion des territoires (MCT), et qui permet aux porteurs de projets:</p>
+
+                    <ul>
+                        <li>d'identifier les aides pertinentes auxquelles ils peuvent prétendre pour leurs projets</li>
+                        <li>de simplifier leur candidature aux dispositifs.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p>Une version pilote d'Aides-territoires va être déployée au 2ème trimestre 2018. Elle concernera les projets de quartiers durables, et sera ensuite déployée sur
+                d'autres types de projets.</p>
 
             <br>
 

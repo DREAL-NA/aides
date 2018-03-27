@@ -15,7 +15,7 @@ class WebsiteController extends Controller
      */
     public function index()
     {
-        $websites = Website::with(['perimeters'])->get();
+        $websites = Website::with(['perimeters', 'media'])->get();
 //        $organizationTypes = $websites->map(function ($item) {
 //            return $item->organizationType;
 //        })->unique()->sortBy('name')->values();
