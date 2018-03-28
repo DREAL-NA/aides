@@ -3,20 +3,28 @@
 @section('meta_title', "La base de données")
 
 @section('breadcrumb')
-	<li>
-		<span>Qui sommes-nous ?</span>
-		<span class="chevron">></span>
-	</li>
-	<li>
-		<span>La base de données</span>
-	</li>
+    <li>
+        <span>Qui sommes-nous ?</span>
+        <span class="chevron">></span>
+    </li>
+    <li>
+        <span>La base de données</span>
+    </li>
 @endsection
 
 @section('content')
-	<div class="page-content">
-		<h2>La base de données</h2>
-		<div class="content">
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus felis orci, ultrices at blandit non, tincidunt eu enim. Sed convallis porta elit nec efficitur. Fusce nec turpis vel sapien imperdiet venenatis. Nam interdum sem dolor, et consequat nibh feugiat vitae. Donec mollis a sapien non rutrum. Morbi turpis magna, commodo nec ex vel, commodo mollis nisl. Proin urna est, viverra nec velit ac, suscipit feugiat ante. Morbi cursus commodo dolor ac dignissim. Proin volutpat aliquet ligula, vel vulputate magna feugiat non. Duis maximus urna turpis, quis hendrerit lectus pulvinar vel. Sed eu nunc vitae urna volutpat bibendum. Morbi eleifend cursus ex, blandit interdum ex ullamcorper ut. Sed dictum ex eget dolor tincidunt sollicitudin. Maecenas tristique laoreet diam sit amet dignissim.</p>
-		</div>
-	</div>
+    <div class="page-content">
+        <h2>La base de données</h2>
+        <div class="content">
+            <p><b>La fiche du dispositif a été rédigée à partir des informations diffusées par les organismes</b> (voir dans le site, les organismes recensés à Outils, Sitothèque).
+            </p>
+            <p>Ces informations sont données à titre indicatif et ne peuvent en aucun cas engager la responsabilité de la DREAL NA. L’obtention des aides est liée à des critères
+                relatif au porteur de projet, à son projet, ainsi qu’à un certain nombre de conditions fixées et précisées par l’organisme. Nous vous recommandons de vous adresser
+                directement aux organismes gestionnaires mentionnés dans la fiche pour déterminer si votre projet est éligible à une aide. Enfin, si vous notez des omissions ou des
+                erreurs dans cette fiche, merci de nous adresser vos remarques à :</p>
+            <p>Sylvie FRUGIER :</p>
+            <p>E-mail : <a href="mailto:{{ config('app.contact_mail') }}">{{ config('app.contact_mail') }}</a></p>
+            <p>Tél. : <b>05 55 12 95 76</b> et <b>06 99 03 39 58</b></p>
+        </div>
+    </div>
 @endsection

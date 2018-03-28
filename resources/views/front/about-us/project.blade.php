@@ -68,7 +68,7 @@
                     nombre de conditions fixées et précisées par l’organisme. Nous vous recommandons de vous adresser directement aux organismes gestionnaires mentionnés dans la
                     fiche pour
                     déterminer si votre projet est éligible à une aide. Enfin, si vous notez des omissions ou des erreurs dans cette fiche, merci de nous adresser vos remarques :
-                    <a href="mailto:sylvie.frugier@developpement-durable.gouv.fr">sylvie.frugier@developpement-durable.gouv.fr</a></i>
+                    <a href="mailto:{{ config('app.contact_mail') }}">{{ config('app.contact_mail') }}</a></i>
             </p>
 
             <div class="flex">

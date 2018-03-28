@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Des dispositifs pour les territoires (Phase expérimentale)'),
+    'name' => env('APP_NAME', 'Des dispositifs pour les territoires (Site pilote)'),
     'subname' => "Une base de données sur les aides aux territoires ouverte à tous",
 
     'default_page_title' => 'Accueil',

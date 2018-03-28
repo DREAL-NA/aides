@@ -8,7 +8,7 @@
     <div class="filters-wrapper">
         <form action="{{ route('front.dispositifs') }}" method="get" class="form-home form-filters">
             <div class="filters-step step-thematic">
-                <h5 class="title">1. Préciser vos besoins en financement</h5>
+                <h5 class="title">1. Préciser vos besoins</h5>
                 <ul class="filters-items">
                     @foreach($thematics as $thematic)
                         <li class="filter-item">
