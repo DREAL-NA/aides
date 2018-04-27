@@ -30,7 +30,7 @@
                                     <h5 class="title">
                                         <a href="{{ $url }}" {{ empty($callForProjects->website_url) ? '' : 'target="_blank"' }}>{{ $callForProjects->name }}</a>
                                     </h5>
-                                    <div class="thematic">Thématique : {{ $callForProjects->thematic->name }}</div>
+                                    <div class="thematic">{{ $callForProjects->thematic->name }} / {{ $callForProjects->subthematic->name }}</div>
                                     @if(!empty($callForProjects->closing_date))
                                         <div class="closing-date">Date de clôture&nbsp;: {{ $callForProjects->closing_date->format('d/m/Y') }}</div>
                                     @endif

@@ -8,7 +8,10 @@
     <div class="filters-wrapper">
         <form action="{{ route('front.dispositifs') }}" method="get" class="form-home form-filters">
             <div class="filters-step step-thematic">
-                <h5 class="title">1. Préciser vos besoins</h5>
+                <div class="title-container">
+                    <h5 class="title">1.&nbsp;Préciser vos besoins</h5>
+                    <button class="select-all" type="button">Tout sélectionner</button>
+                </div>
                 <ul class="filters-items">
                     @foreach($thematics as $thematic)
                         <li class="filter-item">
@@ -66,6 +69,11 @@
                                                 Périmètres&nbsp;: {!! $callForProjects->perimeters->unique()->sortBy('name')->pluck('name')->implode(', ') !!}
                                             </div>
                                         @endif
+                                        @if(!$callForProjects->projectHolders->isEmpty())
+                                            <div class="perimeters">
+                                                Porteurs du dispositif&nbsp;: {!! $callForProjects->projectHolders->unique()->sortBy('name')->pluck('name')->implode(', ') !!}
+                                            </div>
+                                        @endif
                                         <div class="objectives">{{ \Illuminate\Support\Str::words($callForProjects->objectives, 50) }}</div>
                                     </div>
                                 @endforeach
@@ -103,12 +111,18 @@
                 });
             });
 
-            $('.select-all').on('click', function () {
+            $('.step-thematic .select-all').on('click', function () {
+                $('.selectThematic').each(function () {
+                    $(this).trigger('click');
+                });
+            });
+
+            $('.step-perimeter .select-all').on('click', function () {
                 $('.selectPerimeter option').not(':disabled').prop('selected', true);
                 $('.selectPerimeter').data('selectric').refresh();
             });
 
-            $('.select-none').on('click', function () {
+            $('.step-perimeter .select-none').on('click', function () {
                 $('.selectPerimeter option').not(':disabled').prop('selected', false);
                 $('.selectPerimeter').data('selectric').refresh();
             });

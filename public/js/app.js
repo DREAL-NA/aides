@@ -10483,6 +10483,44 @@ function getDispositifs() {
         }
     });
 
+    $('#filter-thematic').on('selectric-select', function (element) {
+        var thematics = $(this).val();
+
+        if (thematics.length > 0) {
+            $('#filter-subthematic optgroup').attr('disabled', true);
+
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = thematics[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var thematic = _step.value;
+
+                    console.log(thematic);
+                    $('#filter-subthematic optgroup[data-id="' + thematic + '"]').attr('disabled', false);
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+        } else {
+            $('#filter-subthematic optgroup').attr('disabled', false);
+        }
+
+        $('#filter-subthematic').selectric('refresh');
+    });
+
     $('.form-home').on('click', '.submit-filters', function () {
         if (!$('.thematics_hidden').get(0)) {
             window.vex.dialog.alert("Vous devez sélectionner au moins un besoin de financement.");

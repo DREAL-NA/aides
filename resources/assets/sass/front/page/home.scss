@@ -5,6 +5,13 @@
     .filters-step {
         margin: 30px 0;
 
+        .title-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
         .title {
             margin: 0;
             padding: 10px 0;
@@ -87,6 +94,7 @@
         border-radius: 2px;
         transition: all 250ms ease-in-out;
         margin-left: -1px;
+        font-weight: normal;
 
         background-color: transparent;
         border: 1px solid $page-header-border-color;
