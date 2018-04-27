@@ -81,7 +81,7 @@ class CallForProjects extends Model implements Feedable
                 }),
             ],
             'name' => [
-                'nullable',
+                'required',
                 'min:2',
                 'max:255',
                 Rule::unique('calls_for_projects')->where(function ($query) {
