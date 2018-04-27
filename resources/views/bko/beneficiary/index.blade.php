@@ -20,7 +20,7 @@
                     <select id="filter__type" class="form-control select2-filter">
                         <option></option>
                         @foreach($types as $key => $type)
-                            <option value="{{ $type }}">{{ $type }}</option>
+                            <option value="{{ $key }}">{{ $type }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -32,6 +32,7 @@
             <table class="table table-striped table-hover" id="table__beneficiaries">
                 <thead>
                 <tr>
+                    <th></th>
                     <th>Type</th>
                     <th>Nom</th>
                     <th>Description</th>
@@ -41,6 +42,7 @@
                 <tbody>
                 @foreach($beneficiaries as $beneficiary)
                     <tr>
+                        <td>{{ $beneficiary->type }}</td>
                         <td>{{ $types[$beneficiary->type] }}</td>
                         <td>{{ $beneficiary->name }}</td>
                         <td>{!! $beneficiary->description_html !!}</td>
@@ -75,6 +77,11 @@
 
             table = $('#table__beneficiaries').DataTable({
                 "columns": [
+                    {
+                        "targets": [1],
+                        "visible": false,
+                        "searchable": true
+                    },
                     {type: 'natural'},
                     {type: 'natural'},
                     {type: 'natural'},

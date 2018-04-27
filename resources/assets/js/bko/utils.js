@@ -73,10 +73,13 @@ window.utils = {
 
             if (strict === true) {
                 label = '^' + label + '$';
+            } else {
+                label = ',' + label + ',';
             }
 
             search_values.push(label);
         }
+
         table.columns(column).search(search_values.length > 0 ? '(' + search_values.join('|') + ')' : '', true, false);
     },
     dt__replaceString(data) {

@@ -74,3 +74,9 @@ mark,
         }
     }
 }
+
+.select2-container--bootstrap {
+    .select2-results__option[aria-disabled=true] {
+        display: none;
+    }
+}

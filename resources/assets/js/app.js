@@ -40,7 +40,6 @@ function getDispositifs() {
             $('#filter-subthematic optgroup').attr('disabled', true);
 
             for (let thematic of thematics) {
-                console.log(thematic);
                 $('#filter-subthematic optgroup[data-id="' + thematic + '"]').attr('disabled', false);
             }
         } else {

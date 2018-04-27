@@ -20,7 +20,7 @@
                     <select id="filter__thematic" class="form-control select2-filter">
                         <option></option>
                         @foreach($primary_thematics as $thematic)
-                            <option value="{{ $thematic->name }}">{{ $thematic->name }}</option>
+                            <option value="{{ $thematic->id }}">{{ $thematic->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -32,6 +32,7 @@
             <table class="table table-striped table-hover" id="table__subthematics">
                 <thead>
                 <tr>
+                    <th></th>
                     <th>Thématique</th>
                     <th>Nom</th>
                     <th>Description</th>
@@ -41,6 +42,7 @@
                 <tbody>
                 @foreach($thematics as $thematic)
                     <tr>
+                        <td>{{ is_null($thematic->parent) ? '' : $thematic->parent->id }}</td>
                         <td>{{ is_null($thematic->parent) ? '' : $thematic->parent->name }}</td>
                         <td>{{ $thematic->name }}</td>
                         <td>{!! $thematic->description_html !!}</td>
@@ -74,6 +76,11 @@
 
             table = $('#table__subthematics').DataTable({
                 "columns": [
+                    {
+                        "targets": [1],
+                        "visible": false,
+                        "searchable": true
+                    },
                     {type: 'natural'},
                     {type: 'natural'},
                     {type: 'natural'},
