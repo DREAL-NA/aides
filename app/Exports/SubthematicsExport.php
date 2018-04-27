@@ -21,7 +21,7 @@ class SubthematicsExport extends GlobalExport implements GlobalExportInterface
     {
         return Thematic::with('parent')->sub()->get()
             ->sortBy(function ($item) {
-                return [$item->parent->name, $item->name];
+                return [$item->parent->name, $item->slug];
             })
             ->map(function ($item) {
                 $item->parent_name = $item->parent->name;

@@ -10,7 +10,7 @@ class ThematicsExport extends GlobalExport implements GlobalExportInterface
 
     public function collection()
     {
-        return Thematic::primary()->get(array_keys($this->columns))->sortBy('name')->makeHidden('slug');
+        return Thematic::primary()->get(array_keys($this->columns))->sortBy('slug')->makeHidden('slug');
     }
 
 }

@@ -29,14 +29,14 @@ class CallForProjectsController extends Controller
 
         $primary_thematics = $callsForProjects->map(function ($item) {
             return $item->thematic;
-        })->unique()->values()->sortBy('name');
+        })->unique()->values()->sortBy('slug');
 
         $perimeters = $callsForProjects->pluck('perimeters')->flatten()->unique('name')->sortBy('name');
         $project_holders = $callsForProjects->pluck('projectHolders')->flatten()->unique('name')->sortBy('name');
 
         $subthematics = CallForProjects::getRelationshipData(Thematic::class, $callsForProjects, 'subthematic_id');
         if (!empty($subthematics)) {
-            $subthematics = $subthematics->sortBy('name')->groupBy('parent_id');
+            $subthematics = $subthematics->sortBy('slug')->groupBy('parent_id');
         }
 
         $title = "Liste des dispositifs ouverts";
