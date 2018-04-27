@@ -6308,7 +6308,7 @@ body {
 .count-dispositifs-wrapper {
   text-align: center;
   background-color: #379683;
-  padding: 30px 15px;
+  padding: 20px 15px;
   color: #FFFFFF;
   margin: 0 -15px;
 }
@@ -6450,7 +6450,7 @@ header {
   background-color: #96c5a4;
   color: #FFFFFF;
   text-align: center;
-  padding: 30px 15px;
+  padding: 15px;
   border-bottom: thin solid #f5f4ef;
 }
 
@@ -6479,10 +6479,10 @@ header .link-title:before {
 }
 
 header h1 {
-  font-size: 3.5em;
+  font-size: 3em;
   font-weight: 500;
-  padding-bottom: 15px;
-  max-width: 700px;
+  padding-bottom: 10px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -6516,7 +6516,7 @@ header .link-marianne svg {
 }
 
 header .link-marianne .logo-image {
-  width: 100px;
+  width: 80px;
 }
 
 header .link-marianne .title {
@@ -6611,7 +6611,7 @@ header .link-marianne .title {
 }
 
 .menu-nav .menu-item a {
-  padding: 20px 15px;
+  padding: 15px;
   font-weight: 400;
   display: block;
   -webkit-transition: all 250ms ease-in-out;
@@ -6675,11 +6675,11 @@ header .link-marianne .title {
 }
 
 .menu-nav .menu-list-children.active {
-  height: 60px;
+  height: 50px;
 }
 
 .menu-nav .menu-item-children a {
-  padding: 20px 15px;
+  padding: 15px;
   font-weight: 400;
   display: block;
   -webkit-transition: all 250ms;
