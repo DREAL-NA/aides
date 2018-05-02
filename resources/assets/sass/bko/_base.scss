@@ -79,4 +79,16 @@ mark,
     .select2-results__option[aria-disabled=true] {
         display: none;
     }
+
+    .select2-results__group {
+        border-top: thin solid $text-color;
+        color: $color-green-pastel;
+        font-size: 14px;
+
+        & + .select2-results__options {
+            .select2-results__option {
+                padding-left: 30px;
+            }
+        }
+    }
 }
