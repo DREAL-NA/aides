@@ -48,7 +48,7 @@
                     <a rel="nofollow noopener" href="http://www.gouvernement.fr" target="_blank" title="gouvernement.fr - Ouvrir dans une nouvelle fenêtre">gouvernement.fr</a>
                 </li>
                 <li>
-                    <a rel="nofollow noopener" href="http://www.france.fr" target="_blank" title="france.fr - Ouvrir dans une nouvelle fenêtre">france.fr</a>
+                    <a rel="nofollow noopener" href="http://www.france.fr" target="_blank" title="france.fr - Ouvrir dans une nouvelle fenêtre">france.fr*</a>
                 </li>
             </ul>
         </div>
