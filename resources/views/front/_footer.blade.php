@@ -3,7 +3,9 @@
         <div class="footer-first">
             {{--@include('svg.marianne')--}}
             {{--<p class="brand">DREAL Nouvelle-Aquitaine</p>--}}
-            <img src="{{ asset('images/logo_ministere.jpg') }}" alt="DREAL Nouvelle-Aquitaine" class="logo-image">
+            <img src="{{ asset('images/logo_ministere.jpg') }}" alt="Ministère de la Transition Écologique et Solidaire" class="logo-image">
+            <img src="{{ asset('images/logo_dreal.png') }}" alt="DREAL Nouvelle-Aquitaine" class="logo-image">
+            <img src="{{ asset('images/logo_prefet.png') }}" alt="Préfet de la région Nouvelle-Aquitaine" class="logo-image">
         </div>
         <div class="footer-middle">
             <h2 class="title">Plan du site</h2>
