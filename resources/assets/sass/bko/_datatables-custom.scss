@@ -1,29 +1,29 @@
 .dataTables_wrapper {
-	.dataTables_paginate {
-		.paginate_button {
-			padding-left: 0;
-			padding-right: 0;
-			margin-left: -2px;
+    .dataTables_paginate {
+        .paginate_button {
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: -2px;
 
-			&:focus {
-				outline: none;
-			}
-			&:hover,
-			&:active {
-				border: 1px solid transparent;
-				background: transparent;
-				box-shadow: unset;
-			}
-		}
-	}
+            &:focus {
+                outline: none;
+            }
+            &:hover,
+            &:active {
+                border: 1px solid transparent;
+                background: transparent;
+                box-shadow: unset;
+            }
+        }
+    }
 }
 
 table.dataTable {
-	thead {
-		.sorting,
-		.sorting_asc,
-		.sorting_desc {
-			background-image: none;
-		}
-	}
+    thead {
+        .sorting,
+        .sorting_asc,
+        .sorting_desc {
+            background-image: none;
+        }
+    }
 }

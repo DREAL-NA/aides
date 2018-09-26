@@ -20,6 +20,7 @@
 @section('content')
     @include('bko.callForProjects._form', [
         'callForProjects' => $callForProjects,
-        'options' => [ 'method' => 'PUT', 'url' => action('Bko\CallForProjectsController@update', $callForProjects) ]
+        'options' => [ 'method' => 'PUT', 'url' => action('Bko\CallForProjectsController@update', $callForProjects) ],
+        'perimeters' => $perimeters
     ])
 @endsection

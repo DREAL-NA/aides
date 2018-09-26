@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\User;
 
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -20,9 +20,10 @@ class CallForProjectsTest extends TestCase
     /** @test */
     function an_admin_can_create_a_user()
     {
-        $user = make(User::class);
+        $user = factory(User::class)->make();
 
-        $this->postJson(route('bko.utilisateur.store'), $user->toArray())
-            ->assertStatus(201);
+        $response = $this->postJson(route('bko.utilisateur.store'), $user->toArray());
+
+        $response->assertStatus(201);
     }
 }

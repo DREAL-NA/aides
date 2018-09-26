@@ -3,6 +3,10 @@
 
     <div class="panel-body">
         <div class="menu-category">
+            <h5 class="category-title"><a href="{{ route('bko.home') }}">Tableau de bord</a></h5>
+        </div>
+
+        <div class="menu-category">
             <h5 class="category-title">Dispositifs</h5>
             <ul class="menu">
                 <li class="menu-item"><a href="{{ route('bko.call.index') }}">Liste des dispositifs ouverts</a></li>
@@ -68,6 +72,15 @@
         {{--@yield('menu-item-organizationType')--}}
         {{--</ul>--}}
         {{--</div>--}}
+
+        <div class="menu-category">
+            <h5 class="category-title">Newsletter</h5>
+            <ul class="menu">
+                <li class="menu-item"><a href="{{ route('bko.subscriber.index') }}">Liste des abonnés</a></li>
+                <li class="menu-item"><a href="{{ route('bko.subscriber.create') }}">Ajouter un abonné</a></li>
+                @yield('menu-item-newsletter')
+            </ul>
+        </div>
 
         @admin
         <div class="menu-category">

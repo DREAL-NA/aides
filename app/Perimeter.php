@@ -26,7 +26,14 @@ class Perimeter extends Model
                 'max:255',
                 Rule::unique('perimeters')->whereNull('deleted_at')->ignore($this->id)
             ],
-            'description' => 'present',
+            'description' => 'nullable',
+            'parents' => ['array'],
+            'parents.*' => [Rule::exists('perimeters', 'id')->whereNull('deleted_at')->whereNot('id', $this->id)]
         ];
+    }
+
+    public function parents()
+    {
+        return $this->belongsToMany(self::class, 'perimeters_parents', 'child_id', 'parent_id');
     }
 }

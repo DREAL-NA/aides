@@ -20,12 +20,17 @@ class Kernel extends ConsoleKernel
      * Define the application's command schedule.
      *
      * @param  \Illuminate\Console\Scheduling\Schedule $schedule
+     *
      * @return void
      */
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('backup:clean')->daily()->at('05:15');
         $schedule->command('backup:run')->daily()->at('05:30');
+
+        // Scheduling newsletter campaign
+        // Every Friday at 13h (French hour), 15h (UTC time => hour on server)
+        $schedule->command('newsletter:send')->weeklyOn(5, '15:00');
     }
 
     /**

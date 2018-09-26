@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Bko;
 
+use App\Http\Controllers\Controller;
 use App\Thematic;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class SubthematicController extends Controller
 {
@@ -29,10 +29,8 @@ class SubthematicController extends Controller
     public function create()
     {
         $thematic = new Thematic();
-        $primary_thematics = Thematic::primary()->orderBy('name', 'asc')->get();
 
-
-        return view('bko.subthematic.create', compact('thematic', 'primary_thematics'));
+        return view('bko.subthematic.create', compact('thematic'));
     }
 
     /**
@@ -50,6 +48,10 @@ class SubthematicController extends Controller
 
         $thematic->fill($validatedData);
         $thematic->save();
+
+        if ($request->ajax()) {
+            return response()->json($thematic);
+        }
 
         return redirect(route('bko.subthematic.edit', $thematic))->with('success', "La thématique a bien été ajoutée.");
     }
@@ -75,9 +77,7 @@ class SubthematicController extends Controller
      */
     public function edit(Thematic $thematic)
     {
-        $primary_thematics = Thematic::primary()->orderBy('name', 'asc')->get();
-
-        return view('bko.subthematic.edit', compact('thematic', 'primary_thematics'));
+        return view('bko.subthematic.edit', compact('thematic'));
     }
 
     /**
@@ -121,5 +121,31 @@ class SubthematicController extends Controller
         }
 
         return response()->json('error', 422);
+    }
+
+    public function select2(Request $request)
+    {
+        if (empty($request->get('parent_id'))) {
+            return response()->json([
+                'results' => []
+            ]);
+        }
+
+        $query = Thematic::sub()->where('parent_id', $request->get('parent_id'))->orderBy('name', 'asc');
+
+        if (!empty($request->q)) {
+            $query = $query->where('name', 'like', '%' . $request->q . '%');
+        }
+
+        $data = $query->get();
+
+        $data = $data->map(function ($item) {
+            return [
+                'id' => $item->id,
+                'text' => $item->name,
+            ];
+        });
+
+        return response()->json(['results' => $data]);
     }
 }

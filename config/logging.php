@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('LOG_CHANNEL', 'daily'),
+    'default' => env('LOG_CHANNEL', 'stack'),
 
     /*
     |--------------------------------------------------------------------------
@@ -30,9 +30,15 @@ return [
     */
 
     'channels' => [
-        'stack' => [
+        'stack-dev' => [
             'driver' => 'stack',
-            'channels' => ['single', 'daily'],
+//            'channels' => ['single', 'bugsnag'],
+            'channels' => ['single'],
+        ],
+
+        'stack-prod' => [
+            'driver' => 'stack',
+            'channels' => ['daily', 'bugsnag'],
         ],
 
         'single' => [
@@ -64,6 +70,10 @@ return [
         'errorlog' => [
             'driver' => 'errorlog',
             'level' => 'debug',
+        ],
+
+        'bugsnag' => [
+            'driver' => 'bugsnag',
         ],
     ],
 

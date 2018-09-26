@@ -21,7 +21,7 @@
             <div class="content-dispositifs">
                 <div class="page-header no-bottom">
                     <div class="page-title">
-                        <h3>Votre recherche</h3>
+                        <h2>Votre recherche</h2>
                     </div>
                     <div class="page-meta">
                         <div class="result-count">
@@ -32,16 +32,20 @@
                             <div class="helper-links">
                                 <?php // Icones Excel, PDF, CSV ?>
                                 <span>Exporter les résultats :</span>
-                                <a href="{{ route('export.xlsx', ['type' => 'ods']) }}"
-                                   class="export-results export-results-ods" title="Exporter les résultats - LibreOffice">LibreOffice
-                                    <i class="fa fa-file-text-o" aria-hidden="true"></i></a>
-                                <a href="{{ route('export.xlsx', ['type' => 'xlsx']) }}"
+                                <a href="{{ route('export.csv', ['table' => 'dispositifs']) }}"
+                                   class="export-results export-results-ods"
+                                   title="Exporter les résultats - CSV"
+                                >CSV <i class="fa fa-file-text-o" aria-hidden="true"></i></a>
+
+                                <a href="{{ route('export.xlsx') }}"
                                    class="export-results export-results-excel"
-                                   title="Exporter les résultats - Excel">Excel
-                                    <i class="fa fa-file-excel-o" aria-hidden="true"></i></a>
+                                   title="Exporter les résultats - Excel"
+                                >Excel <i class="fa fa-file-excel-o" aria-hidden="true"></i></a>
+
                                 <a href="{{ route('export.pdf') }}" class="export-results export-results-pdf"
-                                   title="Exporter les résultats - PDF">PDF
-                                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+                                   title="Exporter les résultats - PDF"
+                                >PDF <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+
                             </div>
                         @endif
                     </div>
@@ -110,13 +114,26 @@
                                         </div>
                                     @endif
                                     @if(!empty($callForProjects->website_url))
-                                        <div class="common-data perimeters">
+                                        <div class="common-data">
                                             <span class="label">Site internet :</span>
                                             <div class="items">
                                                 <a class="external-link" href="{{ $callForProjects->website_url }}"
                                                    target="_blank"
                                                    title="Accéder au dispositif - Ouvrir dans une nouvelle fenêtre">
                                                     Accéder au dispositif
+                                                    <i class="fa fa-external-link" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                    @if(!empty($file = $callForProjects->getFile()))
+                                        <div class="common-data">
+                                            <span class="label">Fichier associé :</span>
+                                            <div class="items">
+                                                <a class="external-link" href="{{ $file }}"
+                                                   target="_blank"
+                                                   title="Télécharger le fichier - Ouvrir dans une nouvelle fenêtre">
+                                                    Télécharger le fichier
                                                     <i class="fa fa-external-link" aria-hidden="true"></i>
                                                 </a>
                                             </div>

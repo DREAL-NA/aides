@@ -1,0 +1,503 @@
+{
+  "members": [
+    {
+      "id": "4fb8ece29950c33b6994cad976a13dcc",
+      "email_address": "Sylvie.Frugier@developpement-durable.gouv.fr",
+      "unique_email_id": "b168f6496a",
+      "email_type": "html",
+      "status": "subscribed",
+      "merge_fields": {
+        "FNAME": "Sylvie",
+        "LNAME": "FRUGIER",
+        "ADDRESS": "",
+        "PHONE": "",
+        "BIRTHDAY": ""
+      },
+      "stats": {
+        "avg_open_rate": 0,
+        "avg_click_rate": 0
+      },
+      "ip_signup": "",
+      "timestamp_signup": "",
+      "ip_opt": "77.195.135.105",
+      "timestamp_opt": "2018-09-18T18:09:20+00:00",
+      "member_rating": 2,
+      "last_changed": "2018-09-19T08:02:03+00:00",
+      "language": "fr",
+      "vip": false,
+      "email_client": "",
+      "location": {
+        "latitude": 0,
+        "longitude": 0,
+        "gmtoff": 0,
+        "dstoff": 0,
+        "country_code": "",
+        "timezone": ""
+      },
+      "tags_count": 0,
+      "tags": [],
+      "list_id": "6d5bb6daaa",
+      "_links": [
+        {
+          "rel": "self",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/4fb8ece29950c33b6994cad976a13dcc",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Response.json"
+        },
+        {
+          "rel": "parent",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/CollectionResponse.json",
+          "schema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Lists\/Members.json"
+        },
+        {
+          "rel": "update",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/4fb8ece29950c33b6994cad976a13dcc",
+          "method": "PATCH",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Response.json",
+          "schema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/PATCH.json"
+        },
+        {
+          "rel": "upsert",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/4fb8ece29950c33b6994cad976a13dcc",
+          "method": "PUT",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Response.json",
+          "schema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/PUT.json"
+        },
+        {
+          "rel": "delete",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/4fb8ece29950c33b6994cad976a13dcc",
+          "method": "DELETE"
+        },
+        {
+          "rel": "activity",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/4fb8ece29950c33b6994cad976a13dcc\/activity",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Activity\/Response.json"
+        },
+        {
+          "rel": "goals",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/4fb8ece29950c33b6994cad976a13dcc\/goals",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Goals\/Response.json"
+        },
+        {
+          "rel": "notes",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/4fb8ece29950c33b6994cad976a13dcc\/notes",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Notes\/CollectionResponse.json"
+        },
+        {
+          "rel": "delete_permanent",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/4fb8ece29950c33b6994cad976a13dcc\/actions\/delete-permanent",
+          "method": "POST"
+        }
+      ]
+    },
+    {
+      "id": "35ccc0c4adde8c3193e3589f7d89fe9d",
+      "email_address": "contact@ngiraud.me",
+      "unique_email_id": "310b880d28",
+      "email_type": "html",
+      "status": "subscribed",
+      "merge_fields": {
+        "FNAME": "Nicolas",
+        "LNAME": "Giraud",
+        "ADDRESS": "",
+        "PHONE": "",
+        "BIRTHDAY": ""
+      },
+      "stats": {
+        "avg_open_rate": 0,
+        "avg_click_rate": 0
+      },
+      "ip_signup": "",
+      "timestamp_signup": "",
+      "ip_opt": "77.195.135.105",
+      "timestamp_opt": "2018-09-18T18:32:06+00:00",
+      "member_rating": 2,
+      "last_changed": "2018-09-18T18:37:22+00:00",
+      "language": "fr",
+      "vip": false,
+      "email_client": "",
+      "location": {
+        "latitude": 0,
+        "longitude": 0,
+        "gmtoff": 0,
+        "dstoff": 0,
+        "country_code": "",
+        "timezone": ""
+      },
+      "tags_count": 0,
+      "tags": [],
+      "list_id": "6d5bb6daaa",
+      "_links": [
+        {
+          "rel": "self",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/35ccc0c4adde8c3193e3589f7d89fe9d",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Response.json"
+        },
+        {
+          "rel": "parent",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/CollectionResponse.json",
+          "schema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Lists\/Members.json"
+        },
+        {
+          "rel": "update",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/35ccc0c4adde8c3193e3589f7d89fe9d",
+          "method": "PATCH",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Response.json",
+          "schema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/PATCH.json"
+        },
+        {
+          "rel": "upsert",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/35ccc0c4adde8c3193e3589f7d89fe9d",
+          "method": "PUT",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Response.json",
+          "schema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/PUT.json"
+        },
+        {
+          "rel": "delete",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/35ccc0c4adde8c3193e3589f7d89fe9d",
+          "method": "DELETE"
+        },
+        {
+          "rel": "activity",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/35ccc0c4adde8c3193e3589f7d89fe9d\/activity",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Activity\/Response.json"
+        },
+        {
+          "rel": "goals",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/35ccc0c4adde8c3193e3589f7d89fe9d\/goals",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Goals\/Response.json"
+        },
+        {
+          "rel": "notes",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/35ccc0c4adde8c3193e3589f7d89fe9d\/notes",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Notes\/CollectionResponse.json"
+        },
+        {
+          "rel": "delete_permanent",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/35ccc0c4adde8c3193e3589f7d89fe9d\/actions\/delete-permanent",
+          "method": "POST"
+        }
+      ]
+    },
+    {
+      "id": "c08f6665f96efbeb3a69553912190db8",
+      "email_address": "nicolas.giraud01+test1@gmail.com",
+      "unique_email_id": "b57b1740d3",
+      "email_type": "html",
+      "status": "subscribed",
+      "merge_fields": {
+        "FNAME": "Nico",
+        "LNAME": "Giraud",
+        "ADDRESS": "",
+        "PHONE": "",
+        "BIRTHDAY": ""
+      },
+      "stats": {
+        "avg_open_rate": 0,
+        "avg_click_rate": 0
+      },
+      "ip_signup": "",
+      "timestamp_signup": "",
+      "ip_opt": "77.195.135.105",
+      "timestamp_opt": "2018-09-19T07:31:25+00:00",
+      "member_rating": 2,
+      "last_changed": "2018-09-19T07:31:25+00:00",
+      "language": "",
+      "vip": false,
+      "email_client": "",
+      "location": {
+        "latitude": 0,
+        "longitude": 0,
+        "gmtoff": 0,
+        "dstoff": 0,
+        "country_code": "",
+        "timezone": ""
+      },
+      "tags_count": 0,
+      "tags": [],
+      "list_id": "6d5bb6daaa",
+      "_links": [
+        {
+          "rel": "self",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/c08f6665f96efbeb3a69553912190db8",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Response.json"
+        },
+        {
+          "rel": "parent",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/CollectionResponse.json",
+          "schema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Lists\/Members.json"
+        },
+        {
+          "rel": "update",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/c08f6665f96efbeb3a69553912190db8",
+          "method": "PATCH",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Response.json",
+          "schema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/PATCH.json"
+        },
+        {
+          "rel": "upsert",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/c08f6665f96efbeb3a69553912190db8",
+          "method": "PUT",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Response.json",
+          "schema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/PUT.json"
+        },
+        {
+          "rel": "delete",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/c08f6665f96efbeb3a69553912190db8",
+          "method": "DELETE"
+        },
+        {
+          "rel": "activity",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/c08f6665f96efbeb3a69553912190db8\/activity",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Activity\/Response.json"
+        },
+        {
+          "rel": "goals",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/c08f6665f96efbeb3a69553912190db8\/goals",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Goals\/Response.json"
+        },
+        {
+          "rel": "notes",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/c08f6665f96efbeb3a69553912190db8\/notes",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Notes\/CollectionResponse.json"
+        },
+        {
+          "rel": "delete_permanent",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/c08f6665f96efbeb3a69553912190db8\/actions\/delete-permanent",
+          "method": "POST"
+        }
+      ]
+    },
+    {
+      "id": "c17cfd463854d2e75911926f4928a068",
+      "email_address": "nicolas.giraud01+test2@gmail.com",
+      "unique_email_id": "bc6d83bad8",
+      "email_type": "html",
+      "status": "subscribed",
+      "merge_fields": {
+        "FNAME": "",
+        "LNAME": "",
+        "ADDRESS": "",
+        "PHONE": "",
+        "BIRTHDAY": ""
+      },
+      "stats": {
+        "avg_open_rate": 0,
+        "avg_click_rate": 0
+      },
+      "ip_signup": "",
+      "timestamp_signup": "",
+      "ip_opt": "77.195.135.105",
+      "timestamp_opt": "2018-09-19T07:33:06+00:00",
+      "member_rating": 2,
+      "last_changed": "2018-09-19T07:33:06+00:00",
+      "language": "",
+      "vip": false,
+      "email_client": "",
+      "location": {
+        "latitude": 0,
+        "longitude": 0,
+        "gmtoff": 0,
+        "dstoff": 0,
+        "country_code": "",
+        "timezone": ""
+      },
+      "tags_count": 0,
+      "tags": [],
+      "list_id": "6d5bb6daaa",
+      "_links": [
+        {
+          "rel": "self",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/c17cfd463854d2e75911926f4928a068",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Response.json"
+        },
+        {
+          "rel": "parent",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/CollectionResponse.json",
+          "schema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Lists\/Members.json"
+        },
+        {
+          "rel": "update",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/c17cfd463854d2e75911926f4928a068",
+          "method": "PATCH",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Response.json",
+          "schema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/PATCH.json"
+        },
+        {
+          "rel": "upsert",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/c17cfd463854d2e75911926f4928a068",
+          "method": "PUT",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Response.json",
+          "schema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/PUT.json"
+        },
+        {
+          "rel": "delete",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/c17cfd463854d2e75911926f4928a068",
+          "method": "DELETE"
+        },
+        {
+          "rel": "activity",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/c17cfd463854d2e75911926f4928a068\/activity",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Activity\/Response.json"
+        },
+        {
+          "rel": "goals",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/c17cfd463854d2e75911926f4928a068\/goals",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Goals\/Response.json"
+        },
+        {
+          "rel": "notes",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/c17cfd463854d2e75911926f4928a068\/notes",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Notes\/CollectionResponse.json"
+        },
+        {
+          "rel": "delete_permanent",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/c17cfd463854d2e75911926f4928a068\/actions\/delete-permanent",
+          "method": "POST"
+        }
+      ]
+    },
+    {
+      "id": "5c1c14a50d801f4beb49502b4120f56d",
+      "email_address": "nicolas.giraud01+test4@gmail.com",
+      "unique_email_id": "b5dd67bec4",
+      "email_type": "html",
+      "status": "subscribed",
+      "merge_fields": {
+        "FNAME": "",
+        "LNAME": "Resdg -tes",
+        "ADDRESS": "",
+        "PHONE": "",
+        "BIRTHDAY": ""
+      },
+      "stats": {
+        "avg_open_rate": 0,
+        "avg_click_rate": 0
+      },
+      "ip_signup": "",
+      "timestamp_signup": "",
+      "ip_opt": "77.195.135.105",
+      "timestamp_opt": "2018-09-19T07:49:49+00:00",
+      "member_rating": 2,
+      "last_changed": "2018-09-19T08:08:50+00:00",
+      "language": "",
+      "vip": false,
+      "email_client": "",
+      "location": {
+        "latitude": 0,
+        "longitude": 0,
+        "gmtoff": 0,
+        "dstoff": 0,
+        "country_code": "",
+        "timezone": ""
+      },
+      "tags_count": 0,
+      "tags": [],
+      "list_id": "6d5bb6daaa",
+      "_links": [
+        {
+          "rel": "self",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/5c1c14a50d801f4beb49502b4120f56d",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Response.json"
+        },
+        {
+          "rel": "parent",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/CollectionResponse.json",
+          "schema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Lists\/Members.json"
+        },
+        {
+          "rel": "update",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/5c1c14a50d801f4beb49502b4120f56d",
+          "method": "PATCH",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Response.json",
+          "schema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/PATCH.json"
+        },
+        {
+          "rel": "upsert",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/5c1c14a50d801f4beb49502b4120f56d",
+          "method": "PUT",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Response.json",
+          "schema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/PUT.json"
+        },
+        {
+          "rel": "delete",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/5c1c14a50d801f4beb49502b4120f56d",
+          "method": "DELETE"
+        },
+        {
+          "rel": "activity",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/5c1c14a50d801f4beb49502b4120f56d\/activity",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Activity\/Response.json"
+        },
+        {
+          "rel": "goals",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/5c1c14a50d801f4beb49502b4120f56d\/goals",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Goals\/Response.json"
+        },
+        {
+          "rel": "notes",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/5c1c14a50d801f4beb49502b4120f56d\/notes",
+          "method": "GET",
+          "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Notes\/CollectionResponse.json"
+        },
+        {
+          "rel": "delete_permanent",
+          "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members\/5c1c14a50d801f4beb49502b4120f56d\/actions\/delete-permanent",
+          "method": "POST"
+        }
+      ]
+    }
+  ],
+  "list_id": "6d5bb6daaa",
+  "total_items": 5,
+  "_links": [
+    {
+      "rel": "self",
+      "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members",
+      "method": "GET",
+      "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/CollectionResponse.json",
+      "schema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Lists\/Members.json"
+    },
+    {
+      "rel": "parent",
+      "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa",
+      "method": "GET",
+      "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Response.json"
+    },
+    {
+      "rel": "create",
+      "href": "https:\/\/us19.api.mailchimp.com\/3.0\/lists\/6d5bb6daaa\/members",
+      "method": "POST",
+      "targetSchema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/Response.json",
+      "schema": "https:\/\/us19.api.mailchimp.com\/schema\/3.0\/Definitions\/Lists\/Members\/POST.json"
+    }
+  ]
+}

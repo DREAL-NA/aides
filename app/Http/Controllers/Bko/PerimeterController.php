@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Bko;
 
+use App\Http\Controllers\Controller;
 use App\Perimeter;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class PerimeterController extends Controller
 {
@@ -15,7 +15,7 @@ class PerimeterController extends Controller
      */
     public function index()
     {
-        $perimeters = Perimeter::all();
+        $perimeters = Perimeter::with('parents')->get();
 
         return view('bko.perimeter.index', compact('perimeters'));
     }
@@ -29,7 +29,9 @@ class PerimeterController extends Controller
     {
         $perimeter = new Perimeter();
 
-        return view('bko.perimeter.create', compact('perimeter'));
+        $parents = Perimeter::all();
+
+        return view('bko.perimeter.create', compact('perimeter', 'parents'));
     }
 
     /**
@@ -44,11 +46,19 @@ class PerimeterController extends Controller
         $perimeter = new Perimeter();
         $validatedData = $request->validate($perimeter->rules());
 
+        $parents = collect($validatedData)->get('parents');
+        $validatedData = collect($validatedData)->except('parents')->toArray();
+
         $perimeter->fill($validatedData);
         $perimeter->save();
 
-        if ($request->ajax()) {
-            return response()->json($perimeter);
+        // Add the parents
+        if (!empty($parents)) {
+            $perimeter->parents()->sync($parents);
+        }
+
+        if ($request->ajax() || $request->wantsJson()) {
+            return response($perimeter, 201);
         } else {
             return redirect(route('bko.perimetre.edit', $perimeter))->with('success',
                 "Le périmètre a bien été ajouté.");
@@ -76,7 +86,10 @@ class PerimeterController extends Controller
      */
     public function edit(Perimeter $perimeter)
     {
-        return view('bko.perimeter.edit', compact('perimeter'));
+        $perimeter->load('parents');
+        $parents = Perimeter::where('id', '!=', $perimeter->id)->get();
+
+        return view('bko.perimeter.edit', compact('perimeter', 'parents'));
     }
 
     /**
@@ -91,11 +104,19 @@ class PerimeterController extends Controller
     {
         $validatedData = $request->validate($perimeter->rules());
 
+        $parents = collect($validatedData)->get('parents');
+        $validatedData = collect($validatedData)->except('parents')->toArray();
+
         $perimeter->fill($validatedData);
         $perimeter->save();
 
-        if ($request->ajax()) {
-            return response()->json($perimeter);
+        // Add the parents
+        if (!empty($parents)) {
+            $perimeter->parents()->sync($parents);
+        }
+
+        if ($request->ajax() || $request->wantsJson()) {
+            return response($perimeter, 201);
         } else {
             return redirect(route('bko.perimetre.edit', $perimeter))->with('success',
                 "Le périmètre a bien été modifié.");

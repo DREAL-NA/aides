@@ -18,6 +18,11 @@ abstract class GlobalExport
 
     protected $filename = 'export';
 
+    protected function filename()
+    {
+        return $this->filename;
+    }
+
     public function collection()
     {
         return collect();
@@ -30,7 +35,7 @@ abstract class GlobalExport
         $spreadsheet->getActiveSheet()->fromArray(array_values($this->columns), null, 'A1');
         $spreadsheet->getActiveSheet()->fromArray($this->collection()->toArray(), null, 'A2');
 
-        $export = new Writer($spreadsheet, $this->filename, $format);
+        $export = new Writer($spreadsheet, $this->filename(), $format);
         $export->download();
     }
 }

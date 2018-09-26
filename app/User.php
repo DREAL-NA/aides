@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Notifications\NewBkoUser;
 use App\Notifications\ResetPasswordNotification;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -38,11 +37,11 @@ class User extends Authenticatable
         parent::boot();
 
         static::creating(function ($user) {
+            // Generates a random password
+            $password = $user->generatePassword();
+            $user->password = Hash::make($password);
+
             if (!app()->runningInConsole()) {
-                // Generates a random password
-                $password = $user->generatePassword();
-                $user->password = Hash::make($password);
-                
                 // Send mail notification to user
                 $user->notify(new NewBkoUser($password));
             }

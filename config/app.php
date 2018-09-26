@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Des dispositifs pour les territoires (Site pilote)'),
+    'name' => env('APP_NAME', "Des dispositifs pour les territoires de la Nouvelle-Aquitaine (Site pilote)"),
     'subname' => "Une base de données sur les aides aux territoires ouverte à tous",
 
     'default_page_title' => 'Accueil',
@@ -203,6 +203,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         App\Providers\DropboxServiceProvider::class,
+        App\Providers\NewsletterServiceProvider::class,
 
     ],
 

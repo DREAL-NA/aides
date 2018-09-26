@@ -5,10 +5,10 @@
         <div class="title">{{ $title }}</div>
         @if(!$closed && !$callsForProjects->isEmpty())
             <div class="actions">
-                <a href="{{ route('export.xlsx', ['type' => 'xlsx']) }}" data-tooltip="tooltip" title="Exporter en Excel">
+                <a href="{{ route('export.xlsx') }}" data-tooltip="tooltip" title="Exporter en Excel">
                     <i class="fa fa-file-excel-o" aria-hidden="true"></i>
                 </a>
-                <a href="{{ route('export.xlsx', ['type' => 'ods']) }}" data-tooltip="tooltip" title="Exporter en LibreOffice">
+                <a href="{{ route('export.csv', ['table' => 'dispositifs']) }}" data-tooltip="tooltip" title="Exporter en CSV">
                     <i class="fa fa-file-text-o" aria-hidden="true"></i>
                 </a>
                 <a href="{{ route('export.pdf') }}" data-tooltip="tooltip" title="Exporter en PDF">

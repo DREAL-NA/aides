@@ -4,8 +4,8 @@
     <div class="heading-with-actions">
         <div class="title">Liste des sites de recensement</div>
         <div class="actions">
-            <a href="{{ route('bko.export.table', ['table' => 'websites']) }}" data-tooltip="tooltip" title="Exporter en CSV">
-                <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+            <a href="{{ route('export.csv', ['table' => 'websites']) }}" data-tooltip="tooltip" title="Exporter en CSV">
+                <i class="fa fa-file-text-o" aria-hidden="true"></i>
             </a>
         </div>
     </div>
@@ -55,8 +55,8 @@
                     <tr>
                         {{--                        <td>{{ $website->organizationType->name }}</td>--}}
                         <td class="td-logo">
-                            @if(!empty($website->getFirstMedia(\App\Website::MEDIA_COLLECTION)))
-                                <img src="{{ $website->getFirstMedia(\App\Website::MEDIA_COLLECTION)->getUrl() }}" alt="logo" class="img-responsive">
+                            @if(!empty($logo = $website->getLogo()))
+                                <img src="{{ $logo }}" alt="logo" class="img-responsive">
                             @endif
                         </td>
                         <td>{{ $website->name }}</td>

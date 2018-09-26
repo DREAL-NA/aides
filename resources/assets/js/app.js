@@ -6,8 +6,7 @@
 
 require('./front/bootstrap');
 
-function getDispositifs() {
-    var $data = $('.form-filters').serialize();
+function filteredSearch($data) {
     var url = $('.form-filters').attr('action');
 
     if ($data.length > 0) {
@@ -49,6 +48,12 @@ function getDispositifs() {
         $('#filter-subthematic').selectric('refresh');
     });
 
+    $('.quick-search').on('click', '.submit-button', function () {
+        var $data = $(this).parents('.form-filters').serialize();
+
+        filteredSearch($data);
+    });
+
     $('.form-home').on('click', '.submit-filters', function () {
         if (!$('.thematics_hidden').get(0)) {
             window.vex.dialog.alert("Vous devez sélectionner au moins un besoin de financement.");
@@ -57,11 +62,16 @@ function getDispositifs() {
             window.vex.dialog.alert("Vous devez sélectionner au moins une localisation.");
             return false;
         }
-        getDispositifs();
+
+        var $data = $(this).parents('.form-filters').serialize();
+
+        filteredSearch($data);
     });
 
     $('.form-dispositifs').on('click', '.submit-filters', function () {
-        getDispositifs();
+        var $data = $(this).parents('.form-filters').serialize();
+
+        filteredSearch($data);
     });
 
     $('.form-dispositifs').on('click', '.reset-filters', function () {

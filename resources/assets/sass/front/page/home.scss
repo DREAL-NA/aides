@@ -108,30 +108,50 @@
             margin-right: 15px;
         }
     }
+}
 
-    .filters-submit-button {
-        display: block;
-        margin: 30px auto;
-        background-color: $color-1;
+.submit-button {
+    display: block;
+    margin: 30px auto;
+    background-color: $color-1;
+    color: $color-white;
+    font-size: 1.2em;
+    padding: 10px 50px;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    transition: all 250ms ease-in-out;
+    font-weight: 500;
+
+    @include hoverButton($color-1);
+
+    &:hover {
         color: $color-white;
-        font-size: 1.2em;
-        padding: 10px 50px;
-        border: none;
-        outline: none;
-        border-radius: 2px;
-        transition: all 250ms ease-in-out;
-        font-weight: 500;
-
-        @include hoverButton($color-1);
-
-        &:hover {
-            color: $color-white;
-        }
     }
 }
 
-.page-home {
-    margin-top: 75px;
+.page-container {
+    .page-home {
+        margin-top: 75px;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        .websites-container {
+            h4 {
+                margin-bottom: 5px;
+            }
+
+            ul {
+                margin-bottom: 30px;
+
+                li {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
 }
 
 .news-item {

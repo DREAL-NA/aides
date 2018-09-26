@@ -144,6 +144,16 @@
                             </p>
                         </div>
                     @endif
+                    @if(!empty($file = $callForProjects->getFile()))
+                        <div class="item-content">
+                            <strong>Fichier associé</strong>
+                            <p>
+                                <a href="{{ $file }}" target="_blank" title="Télécharger le fichier - Ouvrir dans une nouvelle fenêtre">
+                                    Télécharger le fichier <i class="fa fa-external-link" aria-hidden="true"></i>
+                                </a>
+                            </p>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

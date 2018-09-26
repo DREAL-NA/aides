@@ -19,7 +19,7 @@ abstract class TestCase extends BaseTestCase
     {
         Mail::fake();
 
-        $user = $user ?: create(User::class, [
+        $user = $user ?: factory(User::class)->create([
             'id' => 1,
             'name' => 'test',
             'email' => 'test@dreal.loc',

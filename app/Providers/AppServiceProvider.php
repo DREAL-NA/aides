@@ -43,11 +43,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if (app()->environment() != 'local') {
-            $this->app->alias('bugsnag.logger', \Illuminate\Contracts\Logging\Log::class);
-            $this->app->alias('bugsnag.logger', \Psr\Log\LoggerInterface::class);;
-        } else {
-            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
-        }
+
     }
 }

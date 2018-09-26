@@ -1,0 +1,14 @@
+.newsWeeks__loadMoreResultsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+
+    .newsWeeks__loading,
+    .newsWeeks__loadMoreResults {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 15px;
+    }
+}

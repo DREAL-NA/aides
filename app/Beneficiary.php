@@ -28,7 +28,7 @@ class Beneficiary extends Model
     {
         return collect([
             self::TYPE_STATE => 'État',
-            self::TYPE_ASSOCIATION => 'Association',
+            self::TYPE_ASSOCIATION => 'Associations',
             self::TYPE_COLLECTIVITY => 'Collectivités',
             self::TYPE_COMPANY => 'Entreprises',
             self::TYPE_OTHER => 'Autres',
@@ -50,6 +50,7 @@ class Beneficiary extends Model
                     if (empty(request()->get('type'))) {
                         return $query;
                     }
+
                     return $query->where('type', request()->get('type'))->whereNull('deleted_at');
                 })->ignore($this->id)
             ],

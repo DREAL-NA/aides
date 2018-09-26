@@ -4,8 +4,8 @@
     <div class="heading-with-actions">
         <div class="title">Liste des sous-thématiques</div>
         <div class="actions">
-            <a href="{{ route('bko.export.table', ['table' => 'subthematics']) }}" data-tooltip="tooltip" title="Exporter en CSV">
-                <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+            <a href="{{ route('export.csv', ['table' => 'subthematics']) }}" data-tooltip="tooltip" title="Exporter en CSV">
+                <i class="fa fa-file-text-o" aria-hidden="true"></i>
             </a>
         </div>
     </div>

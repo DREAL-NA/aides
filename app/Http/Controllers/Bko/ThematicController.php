@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Bko;
 
+use App\Http\Controllers\Controller;
 use App\Thematic;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class ThematicController extends Controller
 {
@@ -47,6 +47,10 @@ class ThematicController extends Controller
 
         $thematic->fill($validatedData);
         $thematic->save();
+
+        if ($request->ajax()) {
+            return response()->json($thematic);
+        }
 
         return redirect(route('bko.thematic.edit', $thematic))->with('success', "La thématique a bien été ajoutée.");
     }
@@ -115,5 +119,23 @@ class ThematicController extends Controller
         }
 
         return response()->json('error', 422);
+    }
+
+    public function select2(Request $request)
+    {
+        if (!empty($request->q)) {
+            $data = Thematic::primary()->where('name', 'like', '%' . $request->q . '%')->orderBy('name', 'asc')->get();
+        } else {
+            $data = Thematic::primary()->orderBy('name', 'asc')->get();
+        }
+
+        $data = $data->map(function ($item) {
+            return [
+                'id' => $item->id,
+                'text' => $item->name,
+            ];
+        });
+
+        return response()->json(['results' => $data]);
     }
 }

@@ -13,7 +13,7 @@
         <div class="content">
             <section class="content-search">
                 <div class="page-header no-bottom">
-                    <h3>Votre recherche : {{ $query }} ({{ $callsForProjects->total() }} résultat{{ $callsForProjects->total() > 1 ? 's' : '' }})</h3>
+                    <h2>Votre recherche : {{ $query }} ({{ $callsForProjects->total() }} résultat{{ $callsForProjects->total() > 1 ? 's' : '' }})</h2>
                 </div>
 
                 <section class="dispositif-items search-items">

@@ -3,6 +3,7 @@
 namespace App;
 
 use Carbon\Carbon;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
@@ -10,12 +11,14 @@ use Illuminate\Validation\Rule;
 use Laravel\Scout\Searchable;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
-class CallForProjects extends Model implements Feedable
+class CallForProjects extends Model implements Feedable, HasMedia
 {
-    use SoftDeletes, HasSlug, Searchable;
+    use SoftDeletes, HasSlug, Searchable, HasMediaTrait;
 
     protected $guarded = [];
     protected $dates = ['deleted_at', 'closing_date'];
@@ -28,6 +31,8 @@ class CallForProjects extends Model implements Feedable
     protected $table = 'calls_for_projects';
 
     protected $hidden = ['is_news', 'deleted_at', 'editor_id'];
+
+    const MEDIA_COLLECTION = 'calls_for_projects';
 
     protected static function boot()
     {
@@ -59,10 +64,10 @@ class CallForProjects extends Model implements Feedable
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('name')
-            ->saveSlugsTo('slug')
-            ->slugsShouldBeNoLongerThan(200)
-            ->usingLanguage('fr');
+                          ->generateSlugsFrom('name')
+                          ->saveSlugsTo('slug')
+                          ->slugsShouldBeNoLongerThan(200)
+                          ->usingLanguage('fr');
     }
 
     public function rules()
@@ -114,6 +119,8 @@ class CallForProjects extends Model implements Feedable
             'allocation_comments' => 'nullable',
             'technical_relay' => 'nullable',
             'website_url' => 'nullable|url',
+            // Max file size : 5MB
+            'file' => 'file|max:5120',
             'is_news' => 'required|in:0,1',
         ];
     }
@@ -160,10 +167,15 @@ class CallForProjects extends Model implements Feedable
         return $query->whereDate('closing_date', '>=', date('Y-m-d 00:00:00'))->orWhereNull('closing_date');
     }
 
-    public function scopeOfTheWeek($query)
+    public function scopeOfTheWeek($query, $start_date = null, $end_date = null)
     {
-        $start_date = Carbon::now()->startOfWeek();
-        $end_date = Carbon::now()->endOfWeek();
+        if (is_null($start_date)) {
+            $start_date = Carbon::now()->startOfWeek();
+        }
+
+        if (is_null($end_date)) {
+            $end_date = Carbon::now()->endOfWeek();
+        }
 
         return $query
             ->where('is_news', 1)
@@ -185,7 +197,18 @@ class CallForProjects extends Model implements Feedable
         if (!$date instanceof Carbon) {
             $date = Carbon::createFromFormat('d/m/Y', $date);
         }
+
         return $query->whereDate('closing_date', '>=', $date->format('Y-m-d 00:00:00'));
+    }
+
+    public function scopeWithinLastDays($query, $nbDays)
+    {
+        return $query->whereDate('updated_at', '>=', now()->startOfDay()->subDays($nbDays));
+    }
+
+    public function scopeWithinLastMonths($query, $nbMonths)
+    {
+        return $query->whereDate('updated_at', '>=', now()->startOfDay()->subMonths($nbMonths));
     }
 
     // retrieve relationships data with call for projects
@@ -275,6 +298,35 @@ class CallForProjects extends Model implements Feedable
         return preg_replace('#<br\s*/?>#i', "", $value);
     }
 
+    public function normalizeFilename()
+    {
+        if (!request()->has('file')) {
+            throw new FileNotFoundException('No input file.');
+        }
+
+        return str_slug($this->name) . '.' . request()->file('file')->getClientOriginalExtension();
+    }
+
+    public function addFile()
+    {
+        $this->clearMediaCollection(static::MEDIA_COLLECTION);
+        $this->addMediaFromRequest('file')
+             ->usingFileName($this->normalizeFilename())
+             ->toMediaCollection(static::MEDIA_COLLECTION);
+    }
+
+    public function getFile()
+    {
+        if (empty($file = $this->getFirstMedia(static::MEDIA_COLLECTION))) {
+            return null;
+        }
+
+        // Init path: https://dreal.loc/storage/1/400.jpg
+        // Final path returned: /storage/1/400.jpg
+
+        return substr($file->getUrl(), strpos($file->getUrl(), config('app.domain')) + strlen(config('app.domain')));
+    }
+
 
     /**
      * Method used for the RSS feed
@@ -284,12 +336,12 @@ class CallForProjects extends Model implements Feedable
     public function toFeedItem()
     {
         return FeedItem::create()
-            ->id($this->slug)
-            ->title($this->name)
-            ->summary($this->objectives)
-            ->updated($this->updated_at)
-            ->link(route('front.dispositifs.unique', ['slug' => $this->slug]))
-            ->author(config('feed.author'));
+                       ->id($this->slug)
+                       ->title($this->name)
+                       ->summary($this->objectives)
+                       ->updated($this->updated_at)
+                       ->link(route('front.dispositifs.unique', ['slug' => $this->slug]))
+                       ->author(config('feed.author'));
     }
 
     public static function getFeedItems()

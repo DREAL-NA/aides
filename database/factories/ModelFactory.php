@@ -41,9 +41,11 @@ $factory->define(App\Thematic::class, function (Faker $faker) {
     ];
 });
 
-//$factory->state(App\Thematic::class, 'subthematic', [
-//    'parent_id' => App\Thematic::inRandomOrder()->first()->id
-//]);
+$factory->state(App\Thematic::class, 'subthematic', [
+    'parent_id' => function () {
+        return factory(\App\Thematic::class)->create();
+    },
+]);
 
 $factory->define(App\Beneficiary::class, function (Faker $faker) {
     return [
@@ -54,9 +56,13 @@ $factory->define(App\Beneficiary::class, function (Faker $faker) {
 
 $factory->define(App\CallForProjects::class, function (Faker $faker) {
     return [
-        'thematic_id' => App\Thematic::primary()->inRandomOrder()->first()->id,
+//        'thematic_id' => App\Thematic::primary()->inRandomOrder()->first()->id,
+        'thematic_id' => function () {
+            return factory(\App\Thematic::class)->create()->id;
+        },
         'subthematic_id' => null,
         'name' => $faker->unique()->company,
+        'slug' => $faker->unique()->slug,
         'closing_date' => $faker->dateTimeThisDecade()->format('Y-m-d H:i:s'),
         'project_holder_contact' => $faker->paragraph,
         'objectives' => $faker->paragraph,
@@ -65,8 +71,24 @@ $factory->define(App\CallForProjects::class, function (Faker $faker) {
         'allocation_per_project' => $faker->numberBetween(0, 1),
         'allocation_amount' => '1000 €',
         'website_url' => $faker->url,
-        'editor_id' => App\User::inRandomOrder()->first()->id
+        'editor_id' => App\User::inRandomOrder()->first()->id,
+        'is_news' => rand(0, 1)
     ];
+});
+
+$factory->state(App\CallForProjects::class, 'news', [
+    'closing_date' => now()->addDays(rand(1, 180)),
+    'is_news' => 1,
+]);
+
+$factory->state(App\CallForProjects::class, 'older-news', [
+    'is_news' => 1,
+    'created_at' => $date = now()->subDays(rand(10, 50)),
+    'updated_at' => $date,
+]);
+
+$factory->afterCreating(App\CallForProjects::class, function ($item, $faker) {
+    $item->perimeters()->save(factory(App\Perimeter::class)->make());
 });
 
 
@@ -82,3 +104,16 @@ $factory->define(App\Website::class, function (Faker $faker) {
         'description' => $faker->paragraph
     ];
 });
+
+$factory->define(App\NewsletterSubscriber::class, function (Faker $faker) {
+    return [
+        'email' => $faker->unique()->email,
+        'firstname' => $faker->firstName,
+        'lastname' => $faker->lastName,
+        'subscribed_at' => now()->subDays(random_int(1, 180)),
+    ];
+});
+
+$factory->state(App\NewsletterSubscriber::class, 'unsubscribed', [
+    'subscribed_at' => null,
+]);

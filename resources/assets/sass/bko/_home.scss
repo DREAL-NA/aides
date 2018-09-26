@@ -1,0 +1,31 @@
+.home-statistics {
+
+    .home-statistics__item {
+        margin: 30px 0;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .title {
+        border-bottom: thin solid $panel-default-border;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+    }
+
+    .cards-container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        .panel-card {
+            width: calc(100% / 3 - 30px);
+        }
+    }
+}

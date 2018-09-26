@@ -87,6 +87,27 @@ body {
     &.no-bottom {
         margin-bottom: 0;
     }
+
+    &.with-actions {
+        h2 {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+
+            @include mobile {
+                display: block;
+
+                span {
+                    display: block;
+                }
+            }
+        }
+
+        a {
+            font-size: 1.8rem;
+            font-weight: 500;
+        }
+    }
 }
 
 .flex {

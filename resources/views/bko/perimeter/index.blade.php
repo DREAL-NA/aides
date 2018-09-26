@@ -4,8 +4,8 @@
     <div class="heading-with-actions">
         <div class="title">Liste des périmètres</div>
         <div class="actions">
-            <a href="{{ route('bko.export.table', ['table' => 'perimeters']) }}" data-tooltip="tooltip" title="Exporter en CSV">
-                <i class="fa fa-file-excel-o" aria-hidden="true"></i>
+            <a href="{{ route('export.csv', ['table' => 'perimeters']) }}" data-tooltip="tooltip" title="Exporter en CSV">
+                <i class="fa fa-file-text-o" aria-hidden="true"></i>
             </a>
         </div>
     </div>
@@ -15,8 +15,9 @@
     <table class="table table-striped table-hover" id="table__perimeters">
         <thead>
         <tr>
-            <th>Nom</th>
+            <th style="width: 200px;">Nom</th>
             <th>Description</th>
+            <th style="width: 200px;">Parents associés</th>
             <th></th>
         </tr>
         </thead>
@@ -25,6 +26,7 @@
             <tr>
                 <td>{{ $perimeter->name }}</td>
                 <td>{!! $perimeter->description_html !!}</td>
+                <td>{{ $perimeter->parents->pluck('name')->implode(', ') }}</td>
                 <td class="text-right col-actions">
                     <a href="{{ route('bko.perimetre.edit', $perimeter) }}" data-tooltip="tooltip" title="Modifier"><i
                                 class="fa fa-pencil" aria-hidden="true"></i></a>
@@ -48,6 +50,7 @@
 
             table = $('#table__perimeters').DataTable({
                 "columns": [
+                    {type: 'natural'},
                     {type: 'natural'},
                     {type: 'natural'},
                     {"orderable": false}

@@ -82,9 +82,8 @@
     </div>
     <div class="form-group">
         <label for="logo">Logo</label>
-        @if(!empty($website->getFirstMedia(\App\Website::MEDIA_COLLECTION)))
-            <img src="{{ $website->getFirstMedia(\App\Website::MEDIA_COLLECTION)->getUrl() }}" alt="logo"
-                 class="img-responsive" style="width: 150px; margin-bottom: 15px;">
+        @if(!empty($logo = $website->getLogo()))
+            <img src="{{ $logo }}" alt="logo" class="img-responsive" style="width: 150px; margin-bottom: 15px;">
         @endif
         <input type="file" name="logo" id="logo" value="{{ old('logo') }}">
     </div>

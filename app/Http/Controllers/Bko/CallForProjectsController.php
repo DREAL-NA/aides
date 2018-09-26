@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Bko;
 
 use App\CallForProjects;
 use App\Http\Controllers\Controller;
+use App\Perimeter;
 use App\Thematic;
 use Illuminate\Http\Request;
 
@@ -96,10 +97,9 @@ class CallForProjectsController extends Controller
     public function create()
     {
         $callForProjects = new CallForProjects();
-        $primary_thematics = Thematic::primary()->orderBy('name', 'asc')->get();
-        $subthematics = Thematic::sub()->orderBy('name', 'asc')->get()->groupBy('parent_id');
+        $perimeters = Perimeter::all();
 
-        return view('bko.callForProjects.create', compact('callForProjects', 'primary_thematics', 'subthematics'));
+        return view('bko.callForProjects.create', compact('callForProjects', 'perimeters'));
     }
 
     /**
@@ -115,8 +115,16 @@ class CallForProjectsController extends Controller
 
         $validatedData = $request->validate($callForProjects->rules());
 
+        if (!empty($validatedData['file'])) {
+            unset($validatedData['file']);
+        }
+
         $callForProjects->fill(array_except($validatedData, ['perimeters', 'project_holders', 'beneficiaries']));
         $callForProjects->save();
+
+        if (!empty($request->file('file'))) {
+            $callForProjects->addFile();
+        }
 
         return redirect(route('bko.call.edit', $callForProjects))
             ->with('success', "Le dispositif a bien été ajouté.");
@@ -143,10 +151,9 @@ class CallForProjectsController extends Controller
      */
     public function edit(CallForProjects $callForProjects)
     {
-        $primary_thematics = Thematic::primary()->orderBy('name', 'asc')->get();
-        $subthematics = Thematic::sub()->orderBy('name', 'asc')->get()->groupBy('parent_id');
+        $perimeters = Perimeter::all();
 
-        return view('bko.callForProjects.edit', compact('callForProjects', 'primary_thematics', 'subthematics'));
+        return view('bko.callForProjects.edit', compact('callForProjects', 'perimeters'));
     }
 
     /**
@@ -161,8 +168,16 @@ class CallForProjectsController extends Controller
     {
         $validatedData = $request->validate($callForProjects->rules());
 
+        if (!empty($validatedData['file'])) {
+            unset($validatedData['file']);
+        }
+
         $callForProjects->fill(array_except($validatedData, ['perimeters', 'project_holders', 'beneficiaries']));
         $callForProjects->save();
+
+        if (!empty($request->file('file'))) {
+            $callForProjects->addFile();
+        }
 
         return redirect(route('bko.call.edit', $callForProjects))
             ->with('success', "Le dispositif a bien été modifié.");
@@ -205,10 +220,35 @@ class CallForProjectsController extends Controller
 
         $new = $callForProjects->replicate();
 
+        // Change the name
+        $inc = 0;
+        $isUnique = false;
+        while ($isUnique === false) {
+            $name = $new->name . ' - Dupliqué' . ($inc > 0 ? " - {$inc}" : '');
+
+            if (is_null($tmp = CallForProjects::whereName($name)->first())) {
+                $isUnique = true;
+                $new->name = $name;
+
+                break;
+            }
+
+            $inc++;
+        }
+
         $new->push();
 
+//         Saving relations
         foreach ($callForProjects->getRelations() as $relation => $entries) {
             $new->{$relation}()->saveMany($new->{$relation});
+        }
+
+        // Saving file
+        if (!empty($file = $callForProjects->getFirstMedia($collection = CallForProjects::MEDIA_COLLECTION))) {
+            $new->clearMediaCollection($collection);
+            $new
+                ->addMediaFromUrl($file->getUrl())
+                ->toMediaCollection($collection);
         }
 
         return redirect(route('bko.call.edit', $new))

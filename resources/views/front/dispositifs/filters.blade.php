@@ -1,6 +1,6 @@
 <div class="filters-dispositifs">
     <h4>Affiner votre recherche</h4>
-    <form action="{{ route('front.dispositifs') }}" class="form-dispositifs form-filters" method="get">
+    <form action="{{ route('front.dispositifs', ['closed' => request('closed')]) }}" class="form-dispositifs form-filters" method="get">
         <div class="filter-items">
             <div class="row-filters">
                 <div class="filter-item">
@@ -41,7 +41,7 @@
                     <select name="{{ \App\Perimeter::URI_NAME }}[]" class="filters-select" multiple>
                         <option disabled>Périmètres</option>
                         @foreach($perimeters as $perimeter)
-                            @php($selected = (!empty(request()->get(\App\Perimeter::URI_NAME)) && in_array($perimeter->id, request()->get(\App\Perimeter::URI_NAME))) ?: false)
+                            @php($selected = (!empty($paramsPerimeters) && $paramsPerimeters->contains($perimeter->id)) ?: false)
                             <option value="{{ $perimeter->id }}" {{ $selected ? 'selected="selected"' : '' }}>{{ $perimeter->name }}</option>
                         @endforeach
                     </select>

@@ -7,8 +7,8 @@ use App\Traits\Description;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Validation\Rule;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\HasMedia\Interfaces\HasMedia;
 
 class Website extends Model implements HasMedia
 {
@@ -53,8 +53,22 @@ class Website extends Model implements HasMedia
 
     public function addLogo()
     {
-        $this->clearMediaCollection(Website::MEDIA_COLLECTION);
-        $this->addMediaFromRequest('logo')->toMediaCollection(Website::MEDIA_COLLECTION);
+        $this->clearMediaCollection(static::MEDIA_COLLECTION);
+        $this->addMediaFromRequest('logo')->toMediaCollection(static::MEDIA_COLLECTION);
+    }
+
+    public function getLogo()
+    {
+        if (empty($logo = $this->getFirstMedia(static::MEDIA_COLLECTION))) {
+            return null;
+        }
+
+//        return $logo->getUrl();
+        
+        // Init path: https://dreal.loc/storage/1/400.jpg
+        // Final path returned: /storage/1/400.jpg
+
+        return substr($logo->getUrl(), strpos($logo->getUrl(), config('app.domain')) + strlen(config('app.domain')));
     }
 
     // Attributes casting
@@ -163,6 +177,4 @@ class Website extends Model implements HasMedia
 //
 //        return $array;
 //    }
-
-
 }

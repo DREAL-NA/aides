@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Gate;
+use App\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Auth;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -23,8 +24,14 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerPolicies();
+        // Unlog user if we are on the primary domain, not the bko subdomain
+        if (request()->getHost() == config('app.domain')) {
+            Auth::logout();
+        } elseif ($this->app->environment() === 'local') {
+            // Automatically sign in admin on local development
+            Auth::login(User::whereEmail('contact@ngiraud.me')->first(), true);
+        }
 
-        //
+        $this->registerPolicies();
     }
 }

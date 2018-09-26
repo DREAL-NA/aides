@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Beneficiary;
 use App\CallForProjects;
 use App\Exports\Writer;
-use App\Helpers\Date;
-use App\Perimeter;
-use App\ProjectHolder;
-use App\Thematic;
+use App\Resources\CallsForProjects;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -26,40 +22,7 @@ class ExportController extends Controller
 
     public function __construct(Request $request)
     {
-        $callsForProjects = CallForProjects::with([
-            'thematic',
-            'subthematic',
-            'perimeters',
-            'beneficiaries',
-            'projectHolders'
-        ])->orderBy('updated_at', 'desc')->opened();
-        if (!empty($request->get(Thematic::URI_NAME_THEMATIC))) {
-            $callsForProjects->whereIn('thematic_id', $request->get(Thematic::URI_NAME_THEMATIC));
-        }
-        if (!empty($request->get(Thematic::URI_NAME_SUBTHEMATIC))) {
-            $callsForProjects->whereIn('subthematic_id', $request->get(Thematic::URI_NAME_SUBTHEMATIC));
-        }
-        if (!empty($request->get(ProjectHolder::URI_NAME))) {
-            $callsForProjects->whereHas('projectHolders', function ($query) use ($request) {
-                $query->whereIn('project_holder_id', $request->get(ProjectHolder::URI_NAME));
-            });
-        }
-        if (!empty($request->get(Perimeter::URI_NAME))) {
-            $callsForProjects->whereHas('perimeters', function ($query) use ($request) {
-                $query->whereIn('perimeter_id', $request->get(Perimeter::URI_NAME));
-            });
-        }
-        if (!empty($request->get(Beneficiary::URI_NAME))) {
-            $callsForProjects->whereHas('beneficiaries', function ($query) use ($request) {
-                $query->whereIn('type', $request->get(Beneficiary::URI_NAME));
-            });
-        }
-        if (!empty($request->get('date_null')) && $request->get('date_null') == 1) {
-            $callsForProjects->closingDateNull();
-        } elseif (!empty($request->get('date')) && Date::isValid($request->get('date'))) {
-            $callsForProjects->closingDateAfter($request->get('date'));
-        }
-        $callsForProjects = $callsForProjects->get();
+        $callsForProjects = (new CallsForProjects())->get();
 
         $this->thematics = $callsForProjects->pluck('thematic', 'thematic_id')->sortBy('slug');
 
@@ -69,21 +32,24 @@ class ExportController extends Controller
         $this->filename = 'dispositifs_' . $date;
     }
 
-    public function dispositifsXlsx($type)
+    public function dispositifsXlsx()
     {
-        if (!in_array($type, ['xlsx', 'ods'])) {
-            abort(422);
-        }
+        // Before we allowed ODS file type, replaced by CSV
+//        if (!in_array($type, ['xlsx', 'csv'])) {
+//            abort(422);
+//        }
+
+        $type = 'xlsx';
 
         // Create new Spreadsheet object
         $spreadsheet = new Spreadsheet();
 
         // Set document properties
         $spreadsheet->getProperties()->setCreator('DREAL')
-            ->setLastModifiedBy('DREAL')
-            ->setTitle('Liste des dispositifs')
-            ->setSubject('Liste des dispositifs')
-            ->setDescription('Liste des dispositifs');
+                    ->setLastModifiedBy('DREAL')
+                    ->setTitle('Liste des dispositifs')
+                    ->setSubject('Liste des dispositifs')
+                    ->setDescription('Liste des dispositifs');
 
         // Set the data
         $headerRow = [
@@ -194,8 +160,8 @@ class ExportController extends Controller
 
             foreach ($rows_bck as $row) {
                 $worksheet->getStyle($row)->getFill()
-                    ->setFillType(Fill::FILL_SOLID)
-                    ->getStartColor()->setRGB('5CDB95');
+                          ->setFillType(Fill::FILL_SOLID)
+                          ->getStartColor()->setRGB('5CDB95');
             }
         }
 
@@ -214,13 +180,17 @@ class ExportController extends Controller
             'exports.pdf',
             ['thematics' => $this->thematics, 'callsForProjects' => $this->callsForProjects, 'type' => 'pdf']
         )
-            ->setPaper('a4', 'landscape');
+                  ->setPaper('a4', 'landscape');
 
         return $pdf->download($this->filename . '.pdf');
     }
 
     public function table($table)
     {
+        if ($table !== 'dispositifs' && auth()->check() === false) {
+            abort(404);
+        }
+
         if (app()->environment() != 'production' && debugbar()->isEnabled()) {
             debugbar()->disable();
         }

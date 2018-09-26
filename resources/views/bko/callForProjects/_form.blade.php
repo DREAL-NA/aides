@@ -1,21 +1,18 @@
-<form action="{{ $options['url'] }}" method="post">
+<form action="{{ $options['url'] }}" method="post" enctype="multipart/form-data">
     {{ method_field($options['method']) }}
     {{ csrf_field() }}
 
     @php
         $thematic_id = old('thematic_id', $callForProjects->thematic_id);
         $subthematic_id = old('subthematic_id', $callForProjects->subthematic_id);
-        $project_holders = old('project_holders');
-        if(!empty($project_holders)) {
-            $callForProjects->projectHolders = \App\ProjectHolder::whereIn('id', $project_holders)->get();
+        if(!empty(old('project_holders'))) {
+            $callForProjects->projectHolders = \App\ProjectHolder::whereIn('id', old('project_holders'))->get();
         }
-        $perimeters = old('perimeters');
-        if(!empty($perimeters)) {
-            $callForProjects->perimeters = \App\Perimeter::whereIn('id', $perimeters)->get();
+        if(!empty(old('perimeters'))) {
+            $callForProjects->perimeters = \App\Perimeter::whereIn('id', old('perimeters'))->get();
         }
-        $beneficiaries = old('beneficiaries');
-        if(!empty($beneficiaries)) {
-            $callForProjects->beneficiaries = \App\Beneficiary::whereIn('id', $beneficiaries)->get();
+        if(!empty(old('beneficiaries'))) {
+            $callForProjects->beneficiaries = \App\Beneficiary::whereIn('id', old('beneficiaries'))->get();
         }
         $allocation_global = old('allocation_global', $callForProjects->allocation_global);
         $allocation_per_project = old('allocation_per_project', $callForProjects->allocation_per_project);
@@ -46,21 +43,31 @@
 
     <div class="form-group">
         <label for="thematic_id">Thématique*</label>
-        <select name="thematic_id" id="thematic_id" class="form-control select2-input">
-            <option></option>
-            @foreach($primary_thematics as $item)
-                <option value="{{ $item->id }}" {{ empty($thematic_id) || $thematic_id != $item->id ? '' : 'selected="selected"' }}>{{ $item->name }}</option>
-            @endforeach
-        </select>
+        <div class="input-group">
+            <select name="thematic_id" id="thematic_id" class="form-control select2-input">
+                <option></option>
+                @if(!empty($callForProjects->thematic_id))
+                    <option value="{{ $callForProjects->thematic_id }}" selected>{{ $callForProjects->thematic->name }}</option>
+                @endif
+            </select>
+            <span class="input-group-btn">
+				<button class="btn btn-default" type="button" data-toggle="modal" data-target="#modalNewThematic"><i class="fa fa-plus" aria-hidden="true"></i></button>
+			</span>
+        </div>
     </div>
     <div class="form-group">
         <label for="subthematic_id">Sous-thématique</label>
-        <select name="subthematic_id" id="subthematic_id" class="form-control select2-allow-clear">
-            <option></option>
-            @if(!empty($callForProjects->subthematic_id))
-                <option value="{{ $callForProjects->subthematic_id }}" selected>{{ $callForProjects->subthematic->name }}</option>
-            @endif
-        </select>
+        <div class="input-group">
+            <select name="subthematic_id" id="subthematic_id" class="form-control select2-input select2-allow-clear">
+                <option></option>
+                @if(!empty($callForProjects->subthematic_id))
+                    <option value="{{ $callForProjects->subthematic_id }}" selected>{{ $callForProjects->subthematic->name }}</option>
+                @endif
+            </select>
+            <span class="input-group-btn">
+				<button class="btn btn-default" type="button" data-toggle="modal" data-target="#modalNewSubthematic"><i class="fa fa-plus" aria-hidden="true"></i></button>
+			</span>
+        </div>
     </div>
     <div class="form-group">
         <label for="name">Intitulé*</label>
@@ -164,39 +171,32 @@
         <textarea class="form-control" rows="3" name="website_url" id="website_url">{{ old('website_url', $callForProjects->website_url) }}</textarea>
     </div>
 
+    <div class="form-group">
+        <label for="file">Fichier</label>
+        @if(!empty($file = $callForProjects->getFile()))
+            <div>
+                <a href="{{ $file }}" target="_blank">{{ $file }}</a>
+            </div>
+            <br>
+        @endif
+        <input type="file" name="file" id="file" value="{{ old('file') }}">
+    </div>
+
     <button type="submit" class="btn btn-primary">Enregistrer</button>
 </form>
 
 @push('inline-script')
     <script>
-        var $_subthematics_data = {!! $subthematics->toJson() !!};
-
         function initSubthematicData(start) {
-            var thematic_id = $('#thematic_id').val();
+            var parent_id = $('#thematic_id').val();
 
-            if (thematic_id == '') {
-                return false;
-            }
-
-            var custom_data = [];
-            if ($_subthematics_data[thematic_id] !== undefined) {
-                custom_data = $.map($_subthematics_data[thematic_id], function (obj) {
-                    var selected = false;
-                    if (start == true) {
-                        var value_selected = '{{ $subthematic_id }}';
-                        if (value_selected == obj.id) {
-                            selected = true;
-                        }
-                    }
-                    return {
-                        id: obj.id,
-                        text: obj.name,
-                        selected: selected
-                    }
+            $('#subthematic_id')
+                .empty()
+                .append($('<option>'))
+                .select2({
+                    ajax: window.utils.select2__ajaxOptions('{{ route('bko.subthematic.select2') }}?parent_id=' + parent_id),
+                    allowClear: true
                 });
-            }
-
-            $('#subthematic_id').empty().append($('<option>')).select2({data: custom_data, allowClear: true});
         }
 
         (function ($) {
@@ -210,7 +210,9 @@
                 showClear: true
             });
 
-            $('#thematic_id').on('change', function () {
+            $('#thematic_id').select2({
+                ajax: window.utils.select2__ajaxOptions('{{ route('bko.thematic.select2') }}')
+            }).on('change', function () {
                 initSubthematicData();
             });
 
@@ -238,13 +240,36 @@
             });
 
             $('#save__modalNewBeneficiary').on('click', function () {
+                console.log('{{ action('Bko\BeneficiaryController@store') }}');
                 window.utils.saveNewItem('modalNewBeneficiary', '{{ action('Bko\BeneficiaryController@store') }}', 'beneficiary_id');
             });
 
-            $('#modalNewProjectHolder, #modalNewPerimeter, #modalNewBeneficiary').on('hidden.bs.modal', function (e) {
+            $('#save__modalNewThematic').on('click', function () {
+                window.utils.saveNewItem('modalNewThematic', '{{ action('Bko\ThematicController@store') }}', 'thematic_id');
+            });
+
+            $('#save__modalNewSubthematic').on('click', function () {
+                window.utils.saveNewItem('modalNewSubthematic', '{{ action('Bko\SubthematicController@store') }}', 'subthematic_id');
+            });
+
+            $('#modalNewProjectHolder, #modalNewPerimeter, #modalNewBeneficiary, #modalNewThematic, #modalNewSubthematic').on('hidden.bs.modal', function (e) {
                 var _this = $(this);
                 _this.find('input[type="text"], textarea').val('');
                 _this.find('input[type="radio"], input[type="checkbox"]').prop('checked', false);
+                _this.find('.select2-input').val('').trigger('change');
+            });
+
+            $('#modalNewSubthematic').on('show.bs.modal', function (e) {
+                var thematic_id = $('#thematic_id').val();
+
+                if (thematic_id === undefined || thematic_id === '') {
+                    return false;
+                }
+
+                var thematic_text = $('#thematic_id option[value="' + thematic_id + '"]').text();
+
+                var option = new Option(thematic_text, thematic_id, true, true);
+                $('#modalNewSubthematic #parent_id__modalNewSubthematic').html(option).trigger('change');
             });
         })(jQuery);
     </script>
@@ -271,10 +296,11 @@
         @slot('id', 'modalNewPerimeter')
         @slot('title', "Ajout d'un périmètre")
         @slot('slot')
-            @include('bko.components.forms._default', [
+            @include('bko.perimeter._form', [
                 'model' => new \App\Perimeter(),
                 'options' => [ 'method' => 'POST', 'url' => '#' ],
                 'modal' => 'modalNewPerimeter',
+                'parents' => $perimeters
             ])
         @endslot
         @slot('footer')
@@ -296,6 +322,38 @@
         @slot('footer')
             <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
             <button type="button" class="btn btn-primary" id="save__modalNewBeneficiary">Ajouter</button>
+        @endslot
+    @endcomponent
+
+    @component('bko.components.modals._default')
+        @slot('id', 'modalNewThematic')
+        @slot('title', "Ajout d'une thématique")
+        @slot('slot')
+            @include('bko.components.forms._default', [
+                'model' => new \App\Thematic(),
+                'options' => [ 'method' => 'POST', 'url' => '#' ],
+                'modal' => 'modalNewThematic',
+            ])
+        @endslot
+        @slot('footer')
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            <button type="button" class="btn btn-primary" id="save__modalNewThematic">Ajouter</button>
+        @endslot
+    @endcomponent
+
+    @component('bko.components.modals._default')
+        @slot('id', 'modalNewSubthematic')
+        @slot('title', "Ajout d'une sous-thématique")
+        @slot('slot')
+            @include('bko.subthematic._form', [
+                'thematic' => new \App\Thematic,
+                'options' => [ 'method' => 'POST', 'url' => action('Bko\SubthematicController@store') ],
+                'modal' => 'modalNewSubthematic',
+            ])
+        @endslot
+        @slot('footer')
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            <button type="button" class="btn btn-primary" id="save__modalNewSubthematic">Ajouter</button>
         @endslot
     @endcomponent
 @endsection
