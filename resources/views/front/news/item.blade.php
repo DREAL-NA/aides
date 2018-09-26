@@ -6,6 +6,11 @@
     @if(!empty($callForProjects->closing_date))
         <div class="closing-date">Date de clôture&nbsp;: {{ $callForProjects->closing_date->format('d/m/Y') }}</div>
     @endif
+    @if(!is_null($callForProjects->subthematic))
+        <div class="perimeters">
+            Sous-thématique&nbsp;: {{ $callForProjects->subthematic->name }}
+        </div>
+    @endif
     @if(!$callForProjects->perimeters->isEmpty())
         <div class="perimeters">
             Périmètres&nbsp;: {!! $callForProjects->perimeters->unique()->sortBy('name')->pluck('name')->implode(', ') !!}

@@ -120,7 +120,8 @@ class CallsForProjects
             $this->instance->whereHas('perimeters', function ($query) {
                 $query->whereIn('perimeter_id', $this->parameters['perimeter']);
             });
-            $this->setPaginationAppend(Perimeter::URI_NAME, $request->get(Perimeter::URI_NAME));
+
+            $this->setPaginationAppend(Perimeter::URI_NAME, $this->parameters['perimeter']->all());
         }
 
         // According thematics parameter

@@ -26,6 +26,10 @@
                         <strong>Date de clôture&nbsp;</strong>: {{ $news->closing_date->format('d/m/Y') }}<br>
                         @endif
 
+                        @if(!is_null($callForProjects->subthematic))
+                            <strong>Sous-thématique</strong>&nbsp;: {{ $callForProjects->subthematic->name }}<br>
+                        @endif
+
                         @if(!$news->perimeters->isEmpty())
                             <strong>Périmètres</strong>&nbsp;: {!! $news->perimeters->unique()->sortBy('name')->pluck('name')->implode(', ') !!}<br>
                         @endif
