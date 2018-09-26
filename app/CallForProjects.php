@@ -321,10 +321,7 @@ class CallForProjects extends Model implements Feedable, HasMedia
             return null;
         }
 
-        // Init path: https://dreal.loc/storage/1/400.jpg
-        // Final path returned: /storage/1/400.jpg
-
-        return substr($file->getUrl(), strpos($file->getUrl(), config('app.domain')) + strlen(config('app.domain')));
+        return $file->getUrl();
     }
 
 
