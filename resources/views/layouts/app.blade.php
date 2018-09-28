@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
+@if(app()->environment() !== 'local' && config('app.google_analytics.enable') === true)
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('app.google.analytics_id') }}"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('app.google_analytics.id') }}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+            function gtag() {
+                dataLayer.push(arguments);
+            }
 
-        gtag('js', new Date());
+            gtag('js', new Date());
 
-        gtag('config', '{{ config('app.google.analytics_id') }}');
-    </script>
-
+            gtag('config', '{{ config('app.google_analytics.id') }}');
+        </script>
+    @endif
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
