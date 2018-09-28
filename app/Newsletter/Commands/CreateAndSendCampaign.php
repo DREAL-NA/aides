@@ -75,9 +75,8 @@ class CreateAndSendCampaign extends Command
         $this->line('Sending newly created campaign.');
 
         Newsletter::send($campaign['id']);
-//        $this->api->post("campaigns/{$campaign['id']}/actions/send");
 
-        if (Newsletter::lastActionSucceeded() === false) {
+        if (!Newsletter::errorIsTimeout() && Newsletter::lastActionSucceeded() === false) {
             $this->warn('Unable to send campaign. Aborting.');
 
             $this->warn(Newsletter::getLastError());

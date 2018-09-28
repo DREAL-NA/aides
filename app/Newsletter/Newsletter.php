@@ -14,4 +14,9 @@ class Newsletter extends \Spatie\Newsletter\Newsletter
 
         return $response;
     }
+
+    public function errorIsTimeout()
+    {
+        return strpos($this->getLastError(), 'Request timed out') !== false;
+    }
 }
