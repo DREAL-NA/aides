@@ -86,7 +86,7 @@ class ExportController extends Controller
             $rows_bck = [];
 
             foreach ($callsForProjects as $callsForProject) {
-                $subthematic = empty($callsForProject->subthematic_id) ? null : $callsForProject->subthematic;
+                $subthematic = is_null($callsForProject->subthematic) ? null : $callsForProject->subthematic;
                 $allocations = [];
                 if (!empty($callsForProject->allocation_global)) {
                     $allocations[] = 'Dotation globale';

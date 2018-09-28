@@ -168,6 +168,7 @@ class CallForProjectsController extends Controller
     {
         $validatedData = $request->validate($callForProjects->rules());
 
+        dd($validatedData);
         if (!empty($validatedData['file'])) {
             unset($validatedData['file']);
         }

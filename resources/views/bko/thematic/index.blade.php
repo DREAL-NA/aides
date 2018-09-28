@@ -60,7 +60,7 @@
 @section('after-content')
     @include('bko.components.modals.delete', [
         'title' => "Suppression d'une thématique",
-        'question' => "Êtes-vous sûr de vouloir supprimer cette thématique ?<br/>Cette suppression entrainera la suppression des dispositifs associés.",
+        'question' => "Êtes-vous sûr de vouloir supprimer cette thématique ?<br/>Cette suppression entrainera la suppression des sous-thématiques et dispositifs associés.",
         'action' => 'Bko\ThematicController@destroy',
     ])
 @endsection

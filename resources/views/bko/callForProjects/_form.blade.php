@@ -46,8 +46,8 @@
         <div class="input-group">
             <select name="thematic_id" id="thematic_id" class="form-control select2-input">
                 <option></option>
-                @if(!empty($callForProjects->thematic_id))
-                    <option value="{{ $callForProjects->thematic_id }}" selected>{{ $callForProjects->thematic->name }}</option>
+                @if(!is_null($callForProjects->thematic))
+                    <option value="{{ $callForProjects->thematic->id }}" selected>{{ $callForProjects->thematic->name }}</option>
                 @endif
             </select>
             <span class="input-group-btn">
@@ -60,8 +60,8 @@
         <div class="input-group">
             <select name="subthematic_id" id="subthematic_id" class="form-control select2-input select2-allow-clear">
                 <option></option>
-                @if(!empty($callForProjects->subthematic_id))
-                    <option value="{{ $callForProjects->subthematic_id }}" selected>{{ $callForProjects->subthematic->name }}</option>
+                @if(!is_null($callForProjects->subthematic))
+                    <option value="{{ $callForProjects->subthematic->id }}" selected>{{ $callForProjects->subthematic->name }}</option>
                 @endif
             </select>
             <span class="input-group-btn">
@@ -190,13 +190,14 @@
         function initSubthematicData(start) {
             var parent_id = $('#thematic_id').val();
 
-            $('#subthematic_id')
-                .empty()
-                .append($('<option>'))
-                .select2({
-                    ajax: window.utils.select2__ajaxOptions('{{ route('bko.subthematic.select2') }}?parent_id=' + parent_id),
-                    allowClear: true
-                });
+            if (start !== true) {
+                $('#subthematic_id').empty().append($('<option>'));
+            }
+
+            $('#subthematic_id').select2({
+                ajax: window.utils.select2__ajaxOptions('{{ route('bko.subthematic.select2') }}?parent_id=' + parent_id),
+                allowClear: true
+            });
         }
 
         (function ($) {

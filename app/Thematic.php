@@ -24,7 +24,11 @@ class Thematic extends Model
         parent::boot();
 
         static::deleting(function ($thematic) {
-            $thematic->callForProjects()->delete();
+            // Only delete for primary thematics
+            if (is_null($thematic->parent_id)) {
+                $thematic->children()->delete();
+                $thematic->callForProjects()->delete();
+            }
         });
     }
 
@@ -38,7 +42,7 @@ class Thematic extends Model
                 'max:255',
                 Rule::unique('thematics')->where(function ($query) {
                     $query->whereNull('parent_id')
-                        ->whereNull('deleted_at');
+                          ->whereNull('deleted_at');
                 })->ignore($this->id)
             ],
             'description' => 'present',
@@ -53,7 +57,7 @@ class Thematic extends Model
                 'min:2',
                 Rule::unique('thematics')->where(function ($query) {
                     return $query->where('parent_id', request()->get('parent_id'))
-                        ->whereNull('deleted_at');
+                                 ->whereNull('deleted_at');
                 })->ignore($this->id)
             ],
             'description' => 'present',
@@ -61,7 +65,7 @@ class Thematic extends Model
                 'required',
                 Rule::exists('thematics', 'id')->where(function ($query) {
                     $query->whereNull('parent_id')
-                        ->whereNull('deleted_at');
+                          ->whereNull('deleted_at');
                 }),
             ],
         ];

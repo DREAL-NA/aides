@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
@@ -73,9 +74,22 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function mapBkoRoutes()
     {
-        Route::middleware(['web', 'auth'])
-             ->namespace($this->namespace . '\Bko')
+        Route::middleware('web')
+             ->namespace($this->namespace)
              ->domain(config('app.bko_subdomain') . '.' . config('app.domain'))
-             ->group(base_path('routes/bko.php'));
+             ->group(function () {
+                 Auth::routes();
+             });
+
+        Route::group($this->bkoRouteConfiguration(), base_path('routes/bko.php'));
+    }
+
+    protected function bkoRouteConfiguration()
+    {
+        return [
+            'namespace' => $this->namespace . '\Bko',
+            'domain' => config('app.bko_subdomain') . '.' . config('app.domain'),
+            'middleware' => ['web', 'auth'],
+        ];
     }
 }

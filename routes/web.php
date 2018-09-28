@@ -11,10 +11,6 @@
 |
 */
 
-Route::group(['domain' => config('app.bko_subdomain') . '.' . config('app.domain')], function () {
-    Auth::routes();
-});
-
 Route::feeds();
 
 Route::get('/', 'HomeController')->name('front.home');

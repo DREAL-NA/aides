@@ -25,7 +25,7 @@
         <div class="form-group">
             <label class="col-lg-3 control-label">Sous-thématique</label>
             <div class="col-lg-9">
-                <p class="form-control-static">{{ empty($callForProjects->subthematic_id) ? '' : $callForProjects->subthematic->name }}</p>
+                <p class="form-control-static">{{ is_null($callForProjects->subthematic) ? '' : $callForProjects->subthematic->name }}</p>
             </div>
         </div>
         <div class="form-group">

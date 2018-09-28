@@ -19,15 +19,18 @@ class SubthematicsExport extends GlobalExport implements GlobalExportInterface
 
     public function collection()
     {
-        return Thematic::with('parent')->sub()->get()
-            ->sortBy(function ($item) {
-                return [$item->parent->name, $item->slug];
-            })
-            ->map(function ($item) {
-                $item->parent_name = $item->parent->name;
+        return Thematic::with('parent')
+                       ->has('parent')
+                       ->sub()
+                       ->get()
+                       ->sortBy(function ($item) {
+                           return [$item->parent->name, $item->slug];
+                       })
+                       ->map(function ($item) {
+                           $item->parent_name = $item->parent->name;
 
-                return $item->only(array_keys($this->columns));
-            });
+                           return $item->only(array_keys($this->columns));
+                       });
     }
 
 }
