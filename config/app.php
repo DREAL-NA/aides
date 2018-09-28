@@ -20,6 +20,10 @@ return [
 
     'contact_mail' => 'sylvie.frugier@developpement-durable.gouv.fr',
 
+    'google' => [
+        'analytics_id' => env('GOOGLE_ANALYTICS_ID', 'UA-60712391-2'),
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Admin user
