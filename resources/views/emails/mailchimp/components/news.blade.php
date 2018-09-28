@@ -26,8 +26,8 @@
                         <strong>Date de clôture&nbsp;</strong>: {{ $news->closing_date->format('d/m/Y') }}<br>
                         @endif
 
-                        @if(!is_null($callForProjects->subthematic))
-                            <strong>Sous-thématique</strong>&nbsp;: {{ $callForProjects->subthematic->name }}<br>
+                        @if(!is_null($news->subthematic))
+                            <strong>Sous-thématique</strong>&nbsp;: {{ $news->subthematic->name }}<br>
                         @endif
 
                         @if(!$news->perimeters->isEmpty())
