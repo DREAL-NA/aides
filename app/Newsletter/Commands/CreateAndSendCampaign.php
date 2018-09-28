@@ -94,7 +94,6 @@ class CreateAndSendCampaign extends Command
         if (is_null($admin)) {
             \Log::error('Command : CreateAndSendCampaign - Unable to find the admin user ' . config('newsletter.from.email'));
         } else {
-            \Log::info('passe');
             $admin->notify(new CampaignCreatedAndSent($news));
         }
 

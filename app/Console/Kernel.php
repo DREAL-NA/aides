@@ -29,8 +29,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('backup:run')->daily()->at('05:30');
 
         // Scheduling newsletter campaign
-        // Every Friday at 13h (French hour), 15h (UTC time => hour on server)
-        $schedule->command('newsletter:send')->weeklyOn(5, '15:28');
+        // Every Friday at 13h
+        $schedule->command('newsletter:send')->weeklyOn(5, '13:00');
     }
 
     /**
