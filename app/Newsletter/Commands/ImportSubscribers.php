@@ -5,6 +5,7 @@ namespace App\Newsletter\Commands;
 use App\NewsletterSubscriber;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Newsletter;
 
 class ImportSubscribers extends Command
@@ -93,5 +94,7 @@ class ImportSubscribers extends Command
         $this->line("\r\n{$total} subscribers have been imported!");
 
         $this->line('Import of subscribers finished!');
+
+        Log::channel('slack')->info('Import of the Mailchimp API finished!');
     }
 }

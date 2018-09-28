@@ -6,6 +6,7 @@ use App\CallForProjects;
 use App\Newsletter\Notifications\CampaignCreatedAndSent;
 use App\User;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 use Newsletter;
 
 class CreateAndSendCampaign extends Command
@@ -97,6 +98,8 @@ class CreateAndSendCampaign extends Command
         }
 
         $this->line('Campaign sent!');
+
+        Log::channel('slack')->info("Campaign for Mailchimp has been created and sent!\r\nSubject : {$subject}");
     }
 
     private function getNews()

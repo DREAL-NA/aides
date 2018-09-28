@@ -5,6 +5,7 @@ namespace App\Newsletter\Commands;
 use App\NewsletterSubscriber;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 use Newsletter;
 
 class SynchronizeSubscribers extends Command
@@ -88,10 +89,15 @@ class SynchronizeSubscribers extends Command
 
         $this->line("\r\n{$total} subscribers have been retrieved from the API!");
 
-        // Retrieve all actual members in the DB
+        // Get all actual members in the DB
         $dbMembers = NewsletterSubscriber::all(['email', 'firstname', 'lastname', 'subscribed_at']);
-        $membersForAPI = $this->formatForDiff($dbMembers)->diff($this->formatForDiff($mailchimpMembers));
-        $membersForDB = $mailchimpMembers->pluck('email')->diff($dbMembers->pluck('email'));
+
+        // Diff to compare the dbMembers and the mailchimpMembers
+        $membersForAPI = $dbMembers;
+
+        if (!$dbMembers->isEmpty() && !$mailchimpMembers->isEmpty()) {
+            $membersForAPI = $this->formatForDiff($dbMembers)->diff($this->formatForDiff($mailchimpMembers));
+        }
 
         // For each db member, update its infos on API
         $membersForAPI->each(function ($item) use ($dbMembers) {
@@ -102,15 +108,47 @@ class SynchronizeSubscribers extends Command
             }
         });
 
-        // For each API member, update its infos on DB
-        $membersForDB->each(function ($email) use ($mailchimpMembers) {
-            NewsletterSubscriber::firstOrCreate(['email' => $email], collect($mailchimpMembers->firstWhere('email', $email))->toArray());
+        // Check if we need to update the status of db members
+        // Check if we need to create a new account on db because new on
+        $incStatuses = 0;
+        $incNewOnDb = 0;
+
+        // Get the intersection between api members and db members
+        $mailchimpMembers->each(function ($member) use ($dbMembers, &$incStatuses, &$incNewOnDb) {
+            if (is_null($dbMember = $dbMembers->firstWhere('email', $member->email))) {
+                // The member does not exist in DB => create him
+                NewsletterSubscriber::create((array)$member);
+                $incNewOnDb++;
+
+                return true;
+            }
+
+            // Statuses between API and DB are the same => no need to update
+            if (
+                ($this->apiMemberIsSubscribe($member) && $dbMember->isSubscribed())
+                || (!$this->apiMemberIsSubscribe($member) && !$dbMember->isSubscribed())
+            ) {
+                return true;
+            }
+
+            // Update status
+
+            // With that, tests dont work ---> weiiiird
+//            $dbMember->subscribed_at = $member->subscribed_at;
+//            $dbMember->save();
+
+            NewsletterSubscriber::whereEmail($dbMember->email)->update(['subscribed_at' => $member->subscribed_at]);
+
+            $incStatuses++;
         });
 
         $this->line("{$membersForAPI->count()} added to API.");
-        $this->line("{$membersForDB->count()} added to DB.");
+        $this->line("{$incStatuses} statuses updated from the API.");
+        $this->line("{$incNewOnDb} added to the DB.");
 
+        $this->line("\r\n");
         $this->line('Sync of subscribers finished!');
+
         Log::channel('slack')->info('Synchronization of the Mailchimp API finished!');
     }
 
@@ -119,8 +157,8 @@ class SynchronizeSubscribers extends Command
         return $items->map(function ($item) {
             return collect([
                 'email' => $item->email,
-                'firstname' => $item->firstname,
-                'lastname' => $item->lastname,
+//                'firstname' => $item->firstname,
+//                'lastname' => $item->lastname,
             ]);
         });
     }
@@ -156,5 +194,10 @@ class SynchronizeSubscribers extends Command
 
             $this->warn(Newsletter::getLastError());
         }
+    }
+
+    private function apiMemberIsSubscribe($member)
+    {
+        return !is_null($member->subscribed_at);
     }
 }
