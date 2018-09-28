@@ -31,6 +31,10 @@ class Kernel extends ConsoleKernel
         // Scheduling newsletter campaign
         // Every Friday at 13h
         $schedule->command('newsletter:send')->weeklyOn(5, '13:00');
+
+        // Scheduling newsletter synchronization
+        // Every day at 02h
+        $schedule->command('newsletter:sync')->dailyAt('02:00');
     }
 
     /**

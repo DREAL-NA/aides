@@ -111,6 +111,7 @@ class SynchronizeSubscribers extends Command
         $this->line("{$membersForDB->count()} added to DB.");
 
         $this->line('Sync of subscribers finished!');
+        Log::channel('slack')->info('Synchronization of the Mailchimp API finished!');
     }
 
     private function formatForDiff($items)
