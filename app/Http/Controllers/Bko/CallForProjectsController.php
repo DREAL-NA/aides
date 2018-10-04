@@ -221,20 +221,20 @@ class CallForProjectsController extends Controller
         $new = $callForProjects->replicate();
 
         // Change the name
-        $inc = 0;
-        $isUnique = false;
-        while ($isUnique === false) {
-            $name = $new->name . ' - Dupliqué' . ($inc > 0 ? " - {$inc}" : '');
-
-            if (is_null($tmp = CallForProjects::whereName($name)->first())) {
-                $isUnique = true;
-                $new->name = $name;
-
-                break;
-            }
-
-            $inc++;
-        }
+//        $inc = 0;
+//        $isUnique = false;
+//        while ($isUnique === false) {
+//            $name = $new->name . ' - Dupliqué' . ($inc > 0 ? " - {$inc}" : '');
+//
+//            if (is_null($tmp = CallForProjects::whereName($name)->first())) {
+//                $isUnique = true;
+//                $new->name = $name;
+//
+//                break;
+//            }
+//
+//            $inc++;
+//        }
 
         $new->push();
 
