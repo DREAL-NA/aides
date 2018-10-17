@@ -5,7 +5,6 @@ namespace App\Newsletter\Commands;
 use App\NewsletterSubscriber;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Log;
 use Newsletter;
 
 class SynchronizeSubscribers extends Command
@@ -149,7 +148,7 @@ class SynchronizeSubscribers extends Command
         $this->line("\r\n");
         $this->line('Sync of subscribers finished!');
 
-        Log::channel('slack')->info('Synchronization of the Mailchimp API finished!');
+//        Log::channel('slack')->info('Synchronization of the Mailchimp API finished!');
     }
 
     private function formatForDiff($items)
