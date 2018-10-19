@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Notifications\NewBkoUser;
 use App\Notifications\ResetPasswordNotification;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
