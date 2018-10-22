@@ -6,7 +6,8 @@ La campagne correspondant aux actualités de la semaine {{ $week  }} a bien ét�
 Pour rappel, voici les titres des actualités de la semaine :
 
 @foreach($news as $item)
-{{ $item->name }}<br>
+Thématique : {{ $item->thematic->name }}<br>
+{{ $item->name }}<br><br>
 @endforeach
 
 @endcomponent
