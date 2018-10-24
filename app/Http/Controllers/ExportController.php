@@ -22,6 +22,8 @@ class ExportController extends Controller
 
     public function __construct(Request $request)
     {
+        ini_set('max_execution_time', 180); //3 minutes
+
         $callsForProjects = (new CallsForProjects())->get();
 
         $this->thematics = $callsForProjects->pluck('thematic', 'thematic_id')->sortBy('slug');
