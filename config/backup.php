@@ -63,7 +63,7 @@ return [
              */
             'disks' => [
 //                'local',
-                'dropbox',
+                's3',
             ],
         ],
     ],
