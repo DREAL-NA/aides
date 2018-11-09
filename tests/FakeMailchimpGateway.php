@@ -150,4 +150,9 @@ class FakeMailchimpGateway
 
         $this->mailChimp->post("campaigns/{$campaignId}/actions/send");
     }
+
+    public function errorIsTimeout()
+    {
+        return strpos($this->getLastError(), 'Request timed out') !== false;
+    }
 }
