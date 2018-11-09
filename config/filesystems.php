@@ -64,12 +64,12 @@ return [
             'url' => env('AWS_URL'),
         ],
 
-        'dropbox' => [
-            'driver' => 'dropbox',
-            'accessToken' => "ZP8TvJfIWGQAAAAAAAAQPeCqJLoXwAg7iOng2WWu97RKwHCbD2mW8_rnIGhjJAXx",
-            'authorizationToken' => "ZP8TvJfIWGQAAAAAAAAQPeCqJLoXwAg7iOng2WWu97RKwHCbD2mW8_rnIGhjJAXx",
-            'clientIdentifier' => "ngiraud/backups",
-        ]
+//        'dropbox' => [
+//            'driver' => 'dropbox',
+//            'accessToken' => env('DROPBOX_ACCESS_TOKEN'),
+//            'authorizationToken' => env('DROPBOX_AUTHORIZATION_TOKEN'),
+//            'clientIdentifier' => env('DROPBOX_CLIENT_IDENTIFIER'),
+//        ]
 
     ],
 
