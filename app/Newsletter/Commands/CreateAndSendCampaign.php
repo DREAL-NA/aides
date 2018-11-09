@@ -99,7 +99,9 @@ class CreateAndSendCampaign extends Command
 
         $this->line('Campaign sent!');
 
-        Log::channel('slack')->info("Campaign for Mailchimp has been created and sent!\r\nSubject : {$subject}");
+        if (!empty(config('logging.channels.slack.url'))) {
+            Log::channel('slack')->info("Campaign for Mailchimp has been created and sent!\r\nSubject : {$subject}");
+        }
     }
 
     private function getNews()

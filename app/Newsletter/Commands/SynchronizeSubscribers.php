@@ -148,7 +148,9 @@ class SynchronizeSubscribers extends Command
         $this->line("\r\n");
         $this->line('Sync of subscribers finished!');
 
-//        Log::channel('slack')->info('Synchronization of the Mailchimp API finished!');
+//        if (!empty(config('logging.channels.slack.url'))) {
+//            Log::channel('slack')->info('Synchronization of the Mailchimp API finished!');
+//        }
     }
 
     private function formatForDiff($items)

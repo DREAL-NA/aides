@@ -95,6 +95,8 @@ class ImportSubscribers extends Command
 
         $this->line('Import of subscribers finished!');
 
-        Log::channel('slack')->info('Import of the Mailchimp API finished!');
+        if (!empty(config('logging.channels.slack.url'))) {
+            Log::channel('slack')->info('Import of the Mailchimp API finished!');
+        }
     }
 }
