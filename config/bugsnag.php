@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'api_key' => env('BUGSNAG_API_KEY', '1c552abe97147621ca95ceeb4d30e60f'),
+    'api_key' => env('BUGSNAG_API_KEY'),
 
     /*
     |--------------------------------------------------------------------------

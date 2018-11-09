@@ -93,11 +93,11 @@ return [
         'notifiable' => \Spatie\Backup\Notifications\Notifiable::class,
 
         'mail' => [
-            'to' => 'contact@ngiraud.me',
+            'to' => env('BACKUP_NOTIFICATION_EMAIL', ''),
         ],
 
         'slack' => [
-            'webhook_url' => 'https://hooks.slack.com/services/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',
+            'webhook_url' => env('BACKUP_NOTIFICATION_SLACK_WEBHOOK', ''),
 
             /*
              * If this is set to null the default channel of the webhook will be used.
