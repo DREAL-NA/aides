@@ -22,7 +22,7 @@ return [
 
     'google_analytics' => [
         'enable' => false,
-        'id' => env('GOOGLE_ANALYTICS_ID', 'UA-60712391-2'),
+        'id' => env('GOOGLE_ANALYTICS_ID'),
     ],
 
     /*
