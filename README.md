@@ -70,6 +70,7 @@ Installer les dépendances, générer une clé d'application et migrer la base d
 composer install
 php artisan key:generate
 php artisan migrate
+php artisan scout:import
 ```
 
 Vous pouvez lancer les différents seeder, par example pour créer un utilisateur :
