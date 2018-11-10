@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddSlugCallForProjectsTable extends Migration
 {
@@ -26,7 +26,7 @@ class AddSlugCallForProjectsTable extends Migration
     public function down()
     {
         Schema::table('calls_for_projects', function (Blueprint $table) {
-            $table->string('slug');
+            $table->dropColumn('slug');
         });
     }
 }

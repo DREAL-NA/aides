@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,7 +28,7 @@ class AuthServiceProvider extends ServiceProvider
             Auth::logout();
         } elseif ($this->app->environment() === 'local') {
             // Automatically sign in admin on local development
-            Auth::login(User::whereEmail('contact@ngiraud.me')->first(), true);
+//            Auth::login(User::whereEmail('contact@ngiraud.me')->first(), true);
         }
 
         $this->registerPolicies();
