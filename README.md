@@ -104,6 +104,9 @@ Se référer à la documentation pour plus de détail.
   
 Le script utilisé actuellement lors du déploiement est le suivant :
 
+Pour effectuer les backups du site (avec un service configuré préalablement) ou envoyer la newsletter toutes les semaines, il vous faut le task scheduler lancé [https://laravel.com/docs/master/scheduling#introduction](https://laravel.com/docs/master/scheduling#introduction).
+Voir les tâches lancées dans App\Console\Kernel.php.
+
 ```sh
 cd /le/chemin/du/projet
 git pull origin master
