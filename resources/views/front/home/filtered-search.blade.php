@@ -2,7 +2,7 @@
     <div class="content">
         <article class="content-home">
             <div class="page-header no-bottom">
-                <h2>Recherche avancée</h2>
+                <h2>2. Quelles sont les aides par thématique ?</h2>
                 <p>Réalisez une recherche avancée en précisant vos besoins et votre localisation.</p>
             </div>
 

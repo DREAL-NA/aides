@@ -5,6 +5,14 @@
 @section('content')
     <div class="count-dispositifs-wrapper">{!! trans_choice('messages.home.count', $countCallsForProjects) !!}</div>
 
+    <div class="page-content page-home">
+        <div class="content">
+            <article class="content-home">
+                <h4 class="h3 text-center">Choisir entre 1 et 2</h4>
+            </article>
+        </div>
+    </div>
+
     <div class="page-container">
         @include('front.home.quick-search')
 

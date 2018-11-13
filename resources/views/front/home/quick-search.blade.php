@@ -2,7 +2,7 @@
     <div class="content">
         <article class="content-home">
             <div class="page-header">
-                <h2>Quelles sont les aides pour mon territoire ?</h2>
+                <h2>1. Quelles sont les aides pour mon territoire ?</h2>
                 <p>Effectuez une recherche rapide et découvrez quelles sont les aides pour votre territoire.</p>
             </div>
 
