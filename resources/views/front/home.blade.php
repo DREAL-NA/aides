@@ -8,7 +8,7 @@
     <div class="page-content page-home">
         <div class="content">
             <article class="content-home">
-                <h4 class="h3 text-center">Choisir entre 1 et 2</h4>
+                <h4 class="h3 text-center">Choisir entre 1 ou 2</h4>
             </article>
         </div>
     </div>
