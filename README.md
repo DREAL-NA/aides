@@ -55,9 +55,20 @@ Cloner le dépôt distant
 git clone URL_DU_DEPOT_DISTANT
 ```  
 
-Créer une base de données
+Créer une base de données de dev et de test
 
-Copier le fichier d'environnement `.env.example` et renseigner le fichier `.env`
+```
+echo "create database dreal" | mysql -u <USERNAME> -p
+echo "create database dreal_test" | mysql -u <USERNAME> -p
+```
+
+Copier le fichier d'environnement `.env.example` et renseigner au minium les vairables suivantes dans le fichier `.env` afin de pouvoir développer en local :
+
+- APP_URL
+- APP_DOMAIN
+- DB_DATABASE
+- DB_USERNAME
+- DB_PASSWORD
 
 ```
 cd /le/chemin/du/projet
@@ -82,11 +93,19 @@ Cela va créer un utilisateur `john@example.com` avec comme mot de passe `passwo
 
 Vous êtes maintenant prêt à travailler !
 
+### Lancer le server
+
+```
+php artisan serve
+```
+
 ### Backoffice
 
-Pour se connecter au backoffice, l'url par défaut est `bko.APP_DOMAIN`.
+Pour se connecter au backoffice, l'url par défaut est `bko.<APP_DOMAIN>`. Pensez donc à bien reseigner `APP_DOMAIN` dans le fichier `.env`.
 L'authentification est email/password.
 Si vous n'arrivez pas à vous connecter, utilisez la fonction de mot de passe oublié, il faut donc penser à paramétrer la partie mail dans le `.env`.
+Pour cela il faut créer un compte sur [https://mailtrap.io](https://mailtrap.io).
+Ensuite il faut se rendre sur Mailtrap et cliquer sur la boite de démo créee par défaut afin d'accéder à ses éléments de configuration.
 
 ### Compiler les assets
 Laravel Mix est utilisé pour compiler les assets.
