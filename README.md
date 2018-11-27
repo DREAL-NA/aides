@@ -1,12 +1,12 @@
 
 # DREAL - Des dispositifs pour les territoires de la Nouvelle-Aquitaine  
-  
+
 Une base de données sur les aides aux territoires ouverte à tous  
-  
+
 ## Commencer  
-  
+
 Ces instructions vous fourniront une copie du projet opérationnel sur votre ordinateur local à des fins de développement et de test. Voir la partie déploiement pour des notes sur la façon de déployer le projet sur un système actif.  
-  
+
 ### Pré-requis  
 
 - Composer
@@ -48,9 +48,9 @@ PHP extension php_gd2 enabled (if not compiled in)
 
 
 ### Installation
-  
+
 Cloner le dépôt distant
-  
+
 ```  
 git clone URL_DU_DEPOT_DISTANT
 ```  
@@ -65,7 +65,7 @@ cp .env.example .env
 ```
 
 Installer les dépendances, générer une clé d'application et migrer la base de données
-  
+
 ```
 composer install
 php artisan key:generate
@@ -96,13 +96,13 @@ Se référer à la documentation pour plus de détail.
 [https://laravel.com/docs/5.7/mix](https://laravel.com/docs/5.7/mix)
 
 ## Tests
-  
+
 ```sh
 ./vendor/bin/phpunit
 ```
-  
+
 ## Déploiement
-  
+
 Le script utilisé actuellement lors du déploiement est le suivant :
 
 Pour effectuer les backups du site (avec un service configuré préalablement) ou envoyer la newsletter toutes les semaines, il vous faut le task scheduler lancé [https://laravel.com/docs/master/scheduling#introduction](https://laravel.com/docs/master/scheduling#introduction).
@@ -119,8 +119,8 @@ then
     php artisan migrate --force
 fi
 ```
-  
+
 ## Built With  
-  
+
 * [Laravel](https://laravel.com/docs/5.7/) - The web framework used
 * [NPM](https://www.npmjs.com/) - Dependency Management
