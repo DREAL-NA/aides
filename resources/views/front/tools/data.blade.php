@@ -40,6 +40,27 @@
                     <li><a href="/files/export.csv" target="_blank">Export CSV</a></li>
                   </ul>
                 </div>
+                <div class="item-content">
+                    <table>
+                        <caption>Format de la base de données</caption>
+                        <thead>
+                            <tr>
+                                <th>Nom de colonne</th>
+                                <th>Valeur représentée</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php($feeds = config('feed.feeds'))
+
+                            @foreach(App\Exports\DispositifsExport->$columnsWithDescriptions as $column => $description)
+                            <tr>
+                                <td>{{ $column }}</td>
+                                <td>{{ $description }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
