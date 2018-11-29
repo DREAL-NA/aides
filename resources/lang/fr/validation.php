@@ -150,7 +150,7 @@ return [
         // Custom fields used in project
         'thematic_id' => 'thématique',
         'subthematic_id' => 'sous-thématique',
-        'closing_date' => 'dâte de clotûre',
+        'closing_date' => 'date de clôture',
         'project_holder_id' => 'porteur du dispositif',
         'perimeter_id' => 'périmètre',
         'objectives' => 'objectifs',
