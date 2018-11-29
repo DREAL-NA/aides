@@ -82,7 +82,7 @@
                                         <tr>
                                             <td align="center" valign="middle" class="mcnButtonContent"
                                                 style="font-family: Helvetica; font-size: 18px; padding: 18px;">
-                                                <a class="mcnButton " title="Aller sur le site" href="http://dreal.ngiraud.me/" target="_blank"
+                                                <a class="mcnButton " title="Aller sur le site" href="{{ env('APP_URL') }}" target="_blank"
                                                    style="font-weight: bold;letter-spacing: -0.5px;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Aller
                                                     sur le site</a>
                                             </td>
@@ -114,7 +114,7 @@
                                                 style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
 
                                                                     <span style="font-size:12px">Si le bouton ne fonctionne pas, copiez-collez l'url suivante dans votre navigateur : <a
-                                                                                href="http://dreal.ngiraud.me/" target="_blank">http://dreal.ngiraud.me</a></span>
+                                                                                href="{{ env('APP_URL') }}" target="_blank">{{ env('APP_URL') }}</a></span>
                                             </td>
                                         </tr>
                                         </tbody>
