@@ -39,7 +39,12 @@
                   <p>Cette base de données est mise à disposition sous une <a href="https://www.etalab.gouv.fr/wp-content/uploads/2017/04/ETALAB-Licence-Ouverte-v2.0.pdf">Licence Ouverte 2.0</a> : vous êtes libre de réutiliser les informations qu’elle contient comme bon vous semble, dans la mesure où vous indiquez qu’elles proviennent de la DREAL Nouvelle-Aquitaine et la date à laquelle vous y avez accédé pour la dernière fois.</p>
                   <img src="https://www.etalab.gouv.fr/wp-content/uploads/2011/10/licence-ouverte-open-licence.gif" alt="Licence ouverte"/>
                   <ul>
-                    <li><a href="/files/export.csv" target="_blank">Export CSV</a></li>
+                    <li>
+                      <a href="{{ route('export.csv', ['table' => 'dispositifs']) }}" target="_blank">
+                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                        Export CSV
+                      </a>
+                    </li>
                   </ul>
                 </div>
                 <div class="item-content">
