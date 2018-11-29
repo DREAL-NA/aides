@@ -16,19 +16,31 @@
     <div class="page-content">
         <h2>Mise à disposition des données</h2>
         <div class="content">
+            <div class="page-item">
+                <div class="page-header">
+                  <h3>Liste des flux mis à disposition</h3>
+                </div>
+                <div class="item-content">
+                  <ul>
+                      @php($feeds = config('feed.feeds'))
 
-            <div class="feeds">
-                <h3>Liste des flux mis à disposition</h3>
-
-                <ul>
-                    @php($feeds = config('feed.feeds'))
-
-                    @foreach(collect($feeds)->sortBy('title') as $feed)
-                        <li><a href="{{ $feed['url'] }}" target="_blank">{{ $feed['title'] }}</a></li>
-                    @endforeach
-                </ul>
+                      @foreach(collect($feeds)->sortBy('title') as $feed)
+                          <li><a href="{{ $feed['url'] }}" target="_blank">{{ $feed['title'] }}</a></li>
+                      @endforeach
+                  </ul>
+                </div>
             </div>
 
+            <div class="page-item">
+                <div class="page-header">
+                  <h3>Exports de la base de données</h3>
+                </div>
+                <div class="item-content">
+                  <ul>
+                    <li><a href="/files/export.csv" target="_blank">Export CSV</a></li>
+                  </ul>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
