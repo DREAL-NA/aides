@@ -18,9 +18,10 @@
         <div class="content">
             <div class="page-item">
                 <div class="page-header">
-                  <h3>Liste des flux mis à disposition</h3>
+                  <h3>Flux RSS mis à disposition</h3>
                 </div>
                 <div class="item-content">
+                  <p>Ces flux permettent d'obtenir les derniers ajouts de dispositifs.</p>
                   <ul>
                       @php($feeds = config('feed.feeds'))
 
@@ -33,13 +34,13 @@
 
             <div class="page-item">
                 <div class="page-header">
-                  <h3>Exports de la base de données</h3>
+                  <h3>Base de données</h3>
                 </div>
                 <div class="item-content">
                   <p class="text-center">
                     <a class="btn btn-primary btn-lg" href="{{ route('export.csv', ['table' => 'dispositifs']) }}" target="_blank">
                       <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                      Export CSV
+                      Télécharger au format CSV
                     </a>
                   </p>
                   <p>
