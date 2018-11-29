@@ -7,21 +7,23 @@ use App\Resources\CallsForProjects;
 class DispositifsExport extends GlobalExport implements GlobalExportInterface
 {
     protected $columns = [
-        'Thématique',
-        'Sous-thématique',
-        'Intitulé',
-        'Date de clôture',
-        'Porteurs du dispositif',
-        'Périmètres',
-        'Objectifs',
-        'Bénéficiaires',
-        'Bénéficiaires : commentaires',
-        'Dotation globale et / ou par projet',
-        'Dotation : montant',
-        'Dotation : commentaires',
-        'Relais technique DREAL / DDTMs',
-        'Contact(s) porteur de projet',
-        'Lien vers le site'
+        // These names are chosen to ease reuse and match existing similar datasets.
+        // See https://www.ademe.fr/sites/default/files/assets/documents/aides_financieres_-_description_du_jeu_de_donnees_.pdf and https://github.com/MTES-MCT/aides-territoires/blob/9dd1ba9dcd076a6406c6684bbd907a04ad8f22d7/src/aids/models.py
+        'thematique',
+        'sousThematique',
+        'titre',
+        'dateCloture',  // ISO format used for dates in ADEME dataset
+        'nomAttribuant',  // used in ADEME dataset
+        'perimetres',
+        'objet',  // used in ADEME dataset
+        'publicsBeneficiaires',
+        'publicsBeneficiairesDetails',
+        'dotationEtendue',
+        'dotationMontant',
+        'dotationDetails',
+        'contactDREALDDTMs',
+        'contactAttribuant',
+        'URL'
     ];
 
     protected function filename()
