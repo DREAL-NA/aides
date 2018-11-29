@@ -60,7 +60,7 @@
 
                           @foreach((new App\Exports\DispositifsExport())->columnsWithDescription() as $column => $description)
                           <tr>
-                              <th>{{ $column }}</th>
+                              <td><samp>{{ $column }}</samp></td>
                               <td>{{ $description }}</td>
                           </tr>
                           @endforeach
