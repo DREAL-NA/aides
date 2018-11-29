@@ -13,25 +13,9 @@
 @endsection
 
 @section('content')
-    <div class="page-content">
+    <div class="page-content page-simple">
         <h2>Mise à disposition des données</h2>
         <div class="content">
-            <div class="page-item">
-                <div class="page-header">
-                  <h3>Flux RSS mis à disposition</h3>
-                </div>
-                <div class="item-content">
-                  <p>Ces flux permettent d'obtenir les derniers ajouts de dispositifs.</p>
-                  <ul>
-                      @php($feeds = config('feed.feeds'))
-
-                      @foreach(collect($feeds)->sortBy('title') as $feed)
-                          <li><a href="{{ $feed['url'] }}" target="_blank">{{ $feed['title'] }}</a></li>
-                      @endforeach
-                  </ul>
-                </div>
-            </div>
-
             <div class="page-item">
                 <div class="page-header">
                   <h3>Base de données</h3>
@@ -67,6 +51,22 @@
                           @endforeach
                       </tbody>
                   </table>
+                </div>
+            </div>
+
+            <div class="page-item">
+                <div class="page-header">
+                  <h3>Flux RSS mis à disposition</h3>
+                </div>
+                <div class="item-content">
+                  <p>Ces flux permettent d'obtenir les derniers ajouts de dispositifs.</p>
+                  <ul>
+                      @php($feeds = config('feed.feeds'))
+
+                      @foreach(collect($feeds)->sortBy('title') as $feed)
+                          <li><a href="{{ $feed['url'] }}" target="_blank">{{ $feed['title'] }}</a></li>
+                      @endforeach
+                  </ul>
                 </div>
             </div>
         </div>
