@@ -32,7 +32,7 @@ class SendNewsletterCampaignTest extends IntegrationTestCase
     {
         Notification::fake();
 
-        $admin = factory(User::class)->create(['email' => 'contact@ngiraud.me']);
+        $admin = factory(User::class)->create(['email' => env('MAIL_TEST_ADDRESS')]);
 
         factory(NewsletterSubscriber::class, 2)->create();
         $news = factory(CallForProjects::class, 5)->states('news')->create();

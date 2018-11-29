@@ -56,8 +56,8 @@ class TestMailchimpEmail extends Command
 
 
         $campaign = Newsletter::createCampaign(
-            'Nico',
-            'contact@ngiraud.me',
+            'Test recipient',
+            env('MAIL_TEST_ADDRESS'),
             'This is a test (' . date('Y-m-d H:i:s') . ')',
             $html
         );

@@ -31,5 +31,6 @@
         <env name="QUEUE_DRIVER" value="sync"/>
         <env name="SCOUT_DRIVER" value="null"/>
         <env name="LOG_CHANNEL" value="single"/>
+        <env name="MAIL_TEST_ADDRESS" value="contact@ngiraud.me"/>
     </php>
 </phpunit>
