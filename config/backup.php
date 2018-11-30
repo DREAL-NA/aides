@@ -49,21 +49,21 @@ return [
         /*
          * The database dump can be gzipped to decrease diskspace usage.
          */
-        'gzip_database_dump' => false,
+        'gzip_database_dump' => true,
 
         'destination' => [
 
             /*
              * The filename prefix used for the backup zip file.
              */
-            'filename_prefix' => '',
+            'filename_prefix' => 'backup-',
 
             /*
              * The disk names on which the backups will be stored.
              */
             'disks' => [
-//                'local',
-                's3',
+                'local',
+                // 's3',
             ],
         ],
     ],
