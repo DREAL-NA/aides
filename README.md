@@ -57,9 +57,21 @@ Cloner le dépôt distant
 git clone git@github.com:DREAL-NA/aides.git
 ```
 
-Créer une base de données
+Créer une base de données de dev et de test
 
-Copier le fichier d'environnement `.env.example`, le dupliquer en un `.env` et définir toutes les variables.
+```
+echo "create database dreal" | mysql -u <USERNAME> -p
+echo "create database dreal_test" | mysql -u <USERNAME> -p
+```
+
+Copier le fichier d'environnement `.env.example`, le dupliquer en un `.env` et renseigner au minimum les vairables suivantes dans le fichier `.env` afin de pouvoir développer en local :
+
+- `APP_URL`
+- `APP_DOMAIN`
+- `DB_DATABASE`
+- `DB_USERNAME`
+- `DB_PASSWORD`
+- `MAILCHIMP_APIKEY`
 
 ```
 cd /le/chemin/du/projet
@@ -86,11 +98,19 @@ Cela va créer un utilisateur `john@example.com` avec comme mot de passe `passwo
 
 Vous êtes maintenant prêt·e à travailler !
 
+### Lancer le server
+
+```
+php artisan serve
+```
+
 ### Backoffice
 
-Pour se connecter au backoffice, l'url par défaut est `bko.APP_DOMAIN`.
+Pour se connecter au backoffice, l'url par défaut est `bko.<APP_DOMAIN>`. Pensez donc à bien reseigner `APP_DOMAIN` dans le fichier `.env`.
 L'authentification est email/password.
 Si vous n'arrivez pas à vous connecter, utilisez la fonction de mot de passe oublié, il faut donc penser à paramétrer la partie mail dans le `.env`.
+Pour cela il faut créer un compte sur [https://mailtrap.io](https://mailtrap.io).
+Ensuite il faut se rendre sur Mailtrap et cliquer sur la boite de démo créee par défaut afin d'accéder à ses éléments de configuration.
 
 ### Compiler les assets
 

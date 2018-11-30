@@ -164,6 +164,12 @@ mark,
     margin: 100px 0;
 }
 
+caption {
+  text-align: center;
+  font-style: italic;
+  font-size: 125%;
+}
+
 ::-webkit-input-placeholder {
     color: lighten($text-color, 30%);
 }

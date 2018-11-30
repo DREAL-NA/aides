@@ -47,11 +47,11 @@ class ExportController extends Controller
         $spreadsheet = new Spreadsheet();
 
         // Set document properties
-        $spreadsheet->getProperties()->setCreator('DREAL')
-                    ->setLastModifiedBy('DREAL')
+        $spreadsheet->getProperties()->setCreator('DREAL Nouvelle-Aquitaine')
+                    ->setLastModifiedBy('DREAL Nouvelle-Aquitaine')
                     ->setTitle('Liste des dispositifs')
-                    ->setSubject('Liste des dispositifs')
-                    ->setDescription('Liste des dispositifs');
+                    ->setSubject('Dispositifs de soutien aux porteurs de projet en Nouvelle-Aquitaine')
+                    ->setDescription('Liste des dispositifs de soutien aux porteurs de projet en Nouvelle-Aquitaine, fournie sous Licence Ouverte 2.0 par la DREAL Nouvelle-Aquitaine.');
 
         // Set the data
         $headerRow = [
