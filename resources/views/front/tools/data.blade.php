@@ -18,7 +18,7 @@
         <div class="content">
             <div class="page-item">
                 <div class="page-header">
-                  <h3>Base de données</h3>
+                  <h3>Jeu de données</h3>
                 </div>
                 <div class="item-content">
                   <p class="text-center">
@@ -29,11 +29,11 @@
                     <img src="https://www.etalab.gouv.fr/wp-content/uploads/2011/10/licence-ouverte-open-licence.gif" width="125" alt="Licence ouverte"/>
                   </p>
                   <p>
-                    Cette base de données est mise à disposition sous une <a href="https://www.etalab.gouv.fr/wp-content/uploads/2017/04/ETALAB-Licence-Ouverte-v2.0.pdf">Licence Ouverte 2.0</a> : vous êtes libre de réutiliser les informations qu’elle contient comme bon vous semble, dans la mesure où vous indiquez qu’elles proviennent de la DREAL Nouvelle-Aquitaine et la date à laquelle vous y avez accédé pour la dernière fois.
+                    Ce jeu de données est mise à disposition sous une <a href="https://www.etalab.gouv.fr/wp-content/uploads/2017/04/ETALAB-Licence-Ouverte-v2.0.pdf">Licence Ouverte 2.0</a> : vous êtes libre de réutiliser les informations qu’elle contient comme bon vous semble, dans la mesure où vous indiquez qu’elles proviennent de la DREAL Nouvelle-Aquitaine et la date à laquelle vous y avez accédé pour la dernière fois.
                   </p>
 
                   <table class="table table-striped">
-                      <caption>Format de la base de données</caption>
+                      <caption>Format du jeu de données</caption>
                       <thead>
                           <tr>
                               <th>Nom de colonne</th>
