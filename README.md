@@ -124,3 +124,6 @@ fi
   
 * [Laravel](https://laravel.com/docs/5.7/) - The web framework used
 * [NPM](https://www.npmjs.com/) - Dependency Management
+## Licence
+
+Ce code est fourni sous une licence libre [AGPL v3](https://choosealicense.com/licenses/agpl-3.0/), ce qui signifie que vous êtes libre de réutiliser, distribuer et modifier ce code source dans la mesure où vous attribuez son origine à la DREAL Nouvelle-Aquitaine et rendez vos propres modifications accessibles et réutilisables par d'autres. L'usage de _pull requests_ vers ce dépôt pour partager vos modifications est fortement encouragé.
