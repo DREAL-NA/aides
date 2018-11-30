@@ -8,46 +8,9 @@ Ces instructions vous fourniront une copie du projet opérationnel sur votre ord
 
 ### Pré-requis
 
+Il est nécessaire d'installer les outils suivants afin de pouvoir faire tourner l'application en local :
 - Composer
 - NPM / Yarn
-
-- Dépendances [Laravel](https://laravel.com/docs/5.7/installation)
-
-```
-PHP >= 7.1.3
-OpenSSL PHP Extension
-PDO PHP Extension
-Mbstring PHP Extension
-Tokenizer PHP Extension
-XML PHP Extension
-Ctype PHP Extension
-JSON PHP Extension
-```
-
-- Dépendances [DomPDF](https://github.com/dompdf/dompdf)
-
-```
-PHP version 5.4.0 or higher
-DOM extension
-GD extension
-MBString extension
-php-font-lib
-php-svg-lib
-```
-
-- Dépendances [PhpSpreadsheet](https://phpspreadsheet.readthedocs.io/en/develop/#software-requirements)
-
-```
-PHP version 5.6 or newer
-PHP extension php_zip enabled
-PHP extension php_xml enabled
-PHP extension php_gd2 enabled (if not compiled in)
-```
-
-- Dépendances [Laravel Backup](https://docs.spatie.be/laravel-backup/v5/requirements)
-
-- Dépendances [Laravel Medialibrary](https://docs.spatie.be/laravel-medialibrary/v7/requirements#requirements)
-
 
 ### Installation
 
@@ -115,6 +78,8 @@ Ensuite il faut se rendre sur Mailtrap et cliquer sur la boite de démo créee p
 ### Compiler les assets
 
 [Laravel Mix](https://laravel.com/docs/5.7/mix) est utilisé pour compiler les assets.
+Webpack est utilisé pour compiler les assets.
+Regarder les commandes disponibles dans le `package.json`.
 
 ## Tests
 
