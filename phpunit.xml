@@ -31,8 +31,6 @@
         <env name="QUEUE_DRIVER" value="sync"/>
         <env name="SCOUT_DRIVER" value="null"/>
         <env name="LOG_CHANNEL" value="single"/>
-
-        <env name="MAILCHIMP_APIKEY" value="4ac338419bd50c15c8f309bbc5f07f1f-us19"/>
-        <env name="MAILCHIMP_LIST_ID" value="6d5bb6daaa"/>
+        <env name="MAIL_TEST_ADDRESS" value="contact@ngiraud.me"/>
     </php>
 </phpunit>

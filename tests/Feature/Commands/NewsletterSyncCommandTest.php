@@ -29,17 +29,17 @@ class NewsletterSyncCommandTest extends IntegrationTestCase
     {
         // member in mailchimp api
         $memberA = factory(NewsletterSubscriber::class)->create([
-            'email' => 'nicolas.giraud01+test2@gmail.com',
-            'firstname' => 'Allo',
-            'lastname' => '',
+            'email' => env('MAIL_TEST_ADDRESS'),
+            'firstname' => 'TestFirstName',
+            'lastname' => 'TestLastName',
             'subscribed_at' => null,
         ]);
 
         // member in mailchimp api
         $memberB = factory(NewsletterSubscriber::class)->create([
-            'email' => 'contact@ngiraud.me',
-            'firstname' => 'Allo',
-            'lastname' => '',
+            'email' => 'second' . env('MAIL_TEST_ADDRESS'),
+            'firstname' => 'TestFirstName',
+            'lastname' => 'TestLastName',
             'subscribed_at' => null,
         ]);
 

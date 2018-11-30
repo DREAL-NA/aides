@@ -32,7 +32,7 @@ return [
              * how to get this value:
              * http://kb.mailchimp.com/lists/managing-subscribers/find-your-list-id.
              */
-            'id' => env('MAILCHIMP_LIST_ID', '5a619335d9'),
+            'id' => env('MAILCHIMP_LIST_ID'),
         ],
     ],
 
@@ -46,7 +46,7 @@ return [
      * The from name and email used when sending campaigns
      */
     'from' => [
-        'name' => env('NEWSLETTER_FROM_NAME', 'Sylvie Frugier'),
-        'email' => env('NEWSLETTER_FROM_EMAIL', 'Sylvie.Frugier@developpement-durable.gouv.fr'),
+        'name' => env('NEWSLETTER_FROM_NAME'),
+        'email' => env('NEWSLETTER_FROM_EMAIL'),
     ],
 ];

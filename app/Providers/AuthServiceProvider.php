@@ -28,7 +28,7 @@ class AuthServiceProvider extends ServiceProvider
             Auth::logout();
         } elseif ($this->app->environment() === 'local') {
             // Automatically sign in admin on local development
-//            Auth::login(User::whereEmail('contact@ngiraud.me')->first(), true);
+            //  Auth::login(User::whereEmail('admin@admin.example')->first(), true);
         }
 
         $this->registerPolicies();

@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'no-reply@ngiraud.me'),
-        'name' => env('MAIL_FROM_NAME', 'Site internet DREAL'),
+        'address' => env('MAIL_FROM_ADDRESS', 'no-reply@nouvelle-aquitaine.developpement-durable.gouv.fr'),
+        'name' => env('MAIL_FROM_NAME', 'DREAL Nouvelle-Aquitaine'),
     ],
 
     'contact' => [

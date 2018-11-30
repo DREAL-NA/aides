@@ -12,8 +12,8 @@ $factory->define(App\User::class, function (Faker $faker) {
 });
 
 $factory->state(App\User::class, 'custom', [
-    'name' => 'Nico',
-    'email' => 'contact@ngiraud.me',
+    'name' => 'Admin',
+    'email' => 'admin@admin.example',
 ]);
 
 //$factory->define(App\OrganizationType::class, function (Faker $faker) {
