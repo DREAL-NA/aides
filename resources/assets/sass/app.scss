@@ -6,7 +6,8 @@
 @import "front/bootstrap";
 @import "front/mixins";
 // Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/buttons";
+@import "~bootstrap-sass/assets/stylesheets/bootstrap/tables";
 @import "~vex-js/sass/vex";
 @import "~vex-js/sass/vex-theme-plain";
 @import "front/components/vex-custom";
