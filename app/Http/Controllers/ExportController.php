@@ -28,7 +28,7 @@ class ExportController extends Controller
 
         $this->thematics = $callsForProjects->pluck('thematic', 'thematic_id')->sortBy('slug');
 
-        $this->callsForProjects = $callsForProjects->groupBy('thematic_id');;
+        $this->callsForProjects = $callsForProjects->groupBy('thematic_id');
 
         $date = date('YmdHis');
         $this->filename = 'dispositifs_' . $date;

@@ -69,4 +69,9 @@ class Beneficiary extends Model
     {
         return self::types()[$this->attributes['type']] . (empty($this->attributes['name']) ? '' : ' | ' . $this->attributes['name']);
     }
+
+    public function callsForProjects()
+    {
+        return $this->belongsToMany(CallForProjects::class, 'beneficiaries_call_for_projects', 'beneficiary_id', 'call_for_project_id');
+    }
 }

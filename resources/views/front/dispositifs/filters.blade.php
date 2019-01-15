@@ -1,7 +1,17 @@
 <div class="filters-dispositifs">
-    <h4>{{ $has_title ?? "Affiner votre recherche" }}</h4>
+    @if(isset($has_title) && $has_title === true)
+        <h4>Affiner votre recherche</h4>
+    @endif
     <form action="{{ route('front.dispositifs', ['closed' => request('closed')]) }}" class="form-dispositifs form-filters" method="get">
         <div class="filter-items">
+            @if(request()->routeIs('front.dispositifs'))
+                <div class="row-filters">
+                    <div class="filter-item-search-input">
+                        <input type="text" placeholder="Rechercher une aide" name="query" value="{{ request()->get('query') ?: '' }}">
+                    </div>
+                </div>
+            @endif
+
             <div class="row-filters">
                 <div class="filter-item">
                     <select name="{{ \App\Beneficiary::URI_NAME }}[]" class="filters-select" multiple>
@@ -43,7 +53,7 @@
         </div>
         <div class="form-action">
             <button type="button" class="reset-filters">Réinitialiser les filtres</button>
-            <button type="button" class="submit-filters">Rechercher</button>
+            <button type="submit" class="submit-filters">Rechercher</button>
         </div>
 
         <div class="helps">

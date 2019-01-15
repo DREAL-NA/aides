@@ -10456,15 +10456,6 @@ module.exports = __webpack_require__(149);
 
 __webpack_require__(150);
 
-function filteredSearch($data) {
-    var url = $('.form-filters').attr('action');
-
-    if ($data.length > 0) {
-        url += '?' + $data;
-    }
-    document.location.href = url;
-}
-
 (function ($) {
     "use strict";
 
@@ -10519,18 +10510,15 @@ function filteredSearch($data) {
         $('#filter-subthematic').selectric('refresh');
     });
 
-    $('.form-dispositifs').on('click', '.submit-filters', function () {
-        var $data = $(this).parents('.form-filters').serialize();
-
-        filteredSearch($data);
-    });
-
     $('.form-dispositifs').on('click', '.reset-filters', function () {
+        $('.form-filters input[type="checkbox"]').prop('checked', false);
+
+        $('.form-filters input[type="text"]').val('');
+
         $('.form-filters select').each(function () {
             $(this).val('').data('selectric').refresh();
         });
-        $picker.data('datepicker').clear();
-        $('.form-filters input[type="checkbox"]').prop('checked', false);
+        // $picker.data('datepicker').clear();
     });
 
     $('.export-results').on('click', function (e) {
