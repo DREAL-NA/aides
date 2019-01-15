@@ -16,6 +16,7 @@ class Beneficiary extends Model
     const TYPE_COMPANY = 3;
     const TYPE_OTHER = 4;
     const TYPE_ASSOCIATION = 5;
+    const TYPE_CITIZEN = 6;
 
     protected $guarded = [];
     protected $appends = ['name_complete'];
@@ -28,10 +29,11 @@ class Beneficiary extends Model
     {
         return collect([
             self::TYPE_STATE => 'État',
-            self::TYPE_ASSOCIATION => 'Associations',
-            self::TYPE_COLLECTIVITY => 'Collectivités',
-            self::TYPE_COMPANY => 'Entreprises',
-            self::TYPE_OTHER => 'Autres',
+            self::TYPE_ASSOCIATION => 'Association',
+            self::TYPE_COLLECTIVITY => 'Collectivité',
+            self::TYPE_COMPANY => 'Entreprise',
+            self::TYPE_CITIZEN => 'Particulier / Citoyen',
+            self::TYPE_OTHER => 'Un autre acteur du territoire',
         ]);
     }
 

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', "Des dispositifs pour les territoires de la Nouvelle-Aquitaine (Site pilote)"),
+    'name' => env('APP_NAME', "Aides-Développement Durable-Nouvelle-Aquitaine (ADDNA)"),
     'subname' => "Une base de données sur les aides aux territoires ouverte à tous",
 
     'default_page_title' => 'Accueil',

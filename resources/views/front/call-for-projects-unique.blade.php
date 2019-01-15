@@ -121,6 +121,14 @@
                         <h3>Informations générales</h3>
                     </div>
                     <div class="item-content">
+                        <strong>Dernière modification de la fiche</strong>
+                        <p>{{ $callForProjects->updated_at->format('d/m/Y') }}</p>
+                    </div>
+                    <div class="item-content">
+                        <strong>Date de clotûre</strong>
+                        <p>{{ empty($callForProjects->closing_date) ? 'Non spécifié' : $callForProjects->closing_date->format('d/m/Y') }}</p>
+                    </div>
+                    <div class="item-content">
                         <strong>Thématique</strong>
                         <p>{{ $callForProjects->thematic->name }}</p>
                     </div>
@@ -130,10 +138,6 @@
                             <p>{{ $callForProjects->subthematic->name }}</p>
                         </div>
                     @endif
-                    <div class="item-content">
-                        <strong>Date de clotûre</strong>
-                        <p>{{ empty($callForProjects->closing_date) ? 'Non spécifié' : $callForProjects->closing_date->format('d/m/Y') }}</p>
-                    </div>
                     @if(!empty($callForProjects->website_url))
                         <div class="item-content">
                             <strong>Site internet</strong>

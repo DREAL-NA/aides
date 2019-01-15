@@ -66,7 +66,6 @@
                                 @endforeach
                             </div>
                             <div class="middle infos">
-                                <div class="last-modified visible-xs">Dernière modification &nbsp;: {{ $callForProjects->updated_at->format('d/m/Y') }}</div>
                                 <div class="thematic">
                                     {{ $callForProjects->thematic->name }}
                                     @if(!empty($callForProjects->subthematic))
@@ -143,8 +142,6 @@
                                 <a href="{{ $url }}" class="see-record">Voir la fiche complète</a>
                             </div>
                             <div class="last closing-date hidden-xs">
-                                <div class="last-modified">Dernière modification
-                                    :<br>{{ $callForProjects->updated_at->format('d/m/Y') }}</div>
                                 {{ empty($callForProjects->closing_date) ? '' : $callForProjects->closing_date->format('d/m/Y') }}
                             </div>
                         </article>
