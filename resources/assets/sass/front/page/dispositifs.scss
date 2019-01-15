@@ -90,7 +90,7 @@
 .filters-dispositifs {
     background-color: $color-3;
     color: $color-white;
-    padding: 30px;
+    padding: 30px 20px;
     margin: 30px -30px;
 
     h4 {
@@ -103,6 +103,19 @@
         align-items: flex-start;
         justify-content: flex-start;
         margin-bottom: 15px;
+    }
+
+    .filter-item-search-input {
+        width: 100%;
+        padding: 0 5px;
+
+        input {
+            width: 100%;
+            border: 1px solid $color-gray-1;
+            color: $text-color;
+            font-weight: 500;
+            padding: 7px 10px;
+        }
     }
 
     .filter-item {

@@ -10519,26 +10519,6 @@ function filteredSearch($data) {
         $('#filter-subthematic').selectric('refresh');
     });
 
-    $('.quick-search').on('click', '.submit-button', function () {
-        var $data = $(this).parents('.form-filters').serialize();
-
-        filteredSearch($data);
-    });
-
-    $('.form-home').on('click', '.submit-filters', function () {
-        if (!$('.thematics_hidden').get(0)) {
-            window.vex.dialog.alert("Vous devez sélectionner au moins un besoin de financement.");
-            return false;
-        } else if ($('.selectPerimeter').val().length == 0) {
-            window.vex.dialog.alert("Vous devez sélectionner au moins une localisation.");
-            return false;
-        }
-
-        var $data = $(this).parents('.form-filters').serialize();
-
-        filteredSearch($data);
-    });
-
     $('.form-dispositifs').on('click', '.submit-filters', function () {
         var $data = $(this).parents('.form-filters').serialize();
 
