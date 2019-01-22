@@ -111,66 +111,6 @@
         }
     }
 
-    .search-wrapper {
-        margin-right: -15px;
-        border-left: thin solid $color-white;
-        border-right: thin solid $color-white;
-
-        @include mobile {
-            margin: 0;
-            width: 100%;
-            border: none;
-            padding: 10px 0;
-        }
-
-        form,
-        .search-container__form {
-            height: 100%;
-        }
-
-        .search-container__form {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        input[type="text"] {
-            padding: 10px 15px;
-            border: none;
-            background: transparent;
-            color: $color-white;
-            width: 100%;
-
-            &::-moz-placeholder {
-                color: $color-white;
-                opacity: 1;
-            }
-
-            &:-ms-input-placeholder {
-                color: $color-white;
-            }
-
-            &::-webkit-input-placeholder {
-                color: $color-white;
-            }
-        }
-
-        button[type="submit"] {
-            background: transparent;
-            border: none;
-            color: $color-white;
-            fill: $color-white;
-            vertical-align: middle;
-            padding: 5px 15px 0;
-
-            svg {
-                width: 15px;
-                height: 15px;
-                color: inherit;
-            }
-        }
-    }
-
     @include mobile {
         .menu-list {
             align-items: stretch;

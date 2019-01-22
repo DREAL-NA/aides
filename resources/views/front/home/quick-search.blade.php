@@ -1,22 +1,26 @@
-<div class="page-content page-home">
+<div class="page-content page-home quick-search-container">
     <div class="content">
         <article class="content-home">
             <div class="page-header">
-                <h2>1. Quelles sont les aides pour mon territoire ?</h2>
-                <p>Effectuez une recherche rapide et découvrez quelles sont les aides pour votre territoire.</p>
+                <h2 class="h1 text-center">Trouver facilement les aides auxquelles vous avez droit</h2>
             </div>
 
             <section class="quick-search">
-                <form action="{{ route('front.dispositifs') }}" method="get" class="form-home form-filters">
-                    <select name="{{ \App\Perimeter::URI_NAME }}_ext" class="filters-select selectChildrenPerimeter">
-                        <option>Sélectionnez une localisation</option>
-                        @foreach($perimeters as $perimeter)
-                            <option value="{{ $perimeter->id }}">{{ $perimeter->name }}</option>
-                        @endforeach
-                    </select>
+                <form action="{{ route('front.dispositifs') }}" method="get">
+                    <div class="search-container__form">
+                        <input type="text" id="query" name="query" placeholder="Recherche une aide">
 
-                    <button type="button" class="submit-button">Rechercher</button>
+                        <button type="submit">
+                            {!! file_get_contents(public_path().'/svg/search.svg') !!}
+                        </button>
+                    </div>
                 </form>
+
+                <p>Des aides pour les associations, entreprises, collectivités et particuliers de Nouvelle-Aquitaine.</p>
+
+                <div class="home-calls">
+                    <a href="{{ route('front.dispositifs') }}">{!! trans_choice('messages.home.count_link', $countCallsForProjects) !!}</a>
+                </div>
             </section>
         </article>
     </div>

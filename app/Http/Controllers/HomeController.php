@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CallForProjects;
 use App\Perimeter;
+use App\ProjectHolder;
 use App\Thematic;
 
 class HomeController extends Controller
@@ -16,8 +17,6 @@ class HomeController extends Controller
     public function __invoke()
     {
         $countCallsForProjects = CallForProjects::opened()->count();
-        $thematics = Thematic::primary()->orderBy('name', 'asc')->get();
-        $perimeters = Perimeter::orderBy('name', 'asc')->get();
         $callsOfTheWeek = CallForProjects::with([
             'thematic',
             'subthematic',
@@ -26,6 +25,10 @@ class HomeController extends Controller
             'beneficiaries'
         ])->ofTheWeek()->orderBy('updated_at', 'desc')->get()->groupBy('thematic_id');
 
-        return view('front.home', compact('countCallsForProjects', 'thematics', 'perimeters', 'callsOfTheWeek'));
+        $primary_thematics = Thematic::primary()->orderBy('name', 'asc')->get();
+        $perimeters = Perimeter::orderBy('name', 'asc')->get();
+        $project_holders = ProjectHolder::orderBy('name', 'asc')->get();
+
+        return view('front.home', compact('countCallsForProjects', 'primary_thematics', 'perimeters', 'callsOfTheWeek', 'project_holders'));
     }
 }

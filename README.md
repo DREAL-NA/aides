@@ -48,8 +48,12 @@ Installer les dépendances, générer une clé d'application et migrer la base d
 composer install
 php artisan key:generate
 php artisan migrate
-php artisan scout:import
 ```
+
+Il est conseillé pour utiliser la fonctionnalité de recherche de créer et utiliser un compte [Alogolia](https://www.algolia.com/).
+Pour cela, dans le .env, il faut renseigner les 2 clés qui sont actuellement commentées, ALGOLIA_APP_ID et ALGOLIA_SECRET, disponibles après la création d'un projet sur Algolia.
+Il suffit ensuite de lancer la commande `php artisan scout:import` pour importer les données dans Algolia.
+À noter également : une tâche permettant de réimporter les données est lancée toute les nuits dans le scheduler.
 
 Vous pouvez lancer les différents seeder, par example pour créer un utilisateur :
 

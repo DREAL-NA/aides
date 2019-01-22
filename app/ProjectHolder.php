@@ -29,4 +29,9 @@ class ProjectHolder extends Model
             'description' => 'present',
         ];
     }
+
+    public function callsForProjects()
+    {
+        return $this->belongsToMany(CallForProjects::class, 'call_for_projects_project_holders', 'project_holder_id', 'call_for_project_id');
+    }
 }

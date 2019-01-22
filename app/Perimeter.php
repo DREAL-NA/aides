@@ -36,4 +36,9 @@ class Perimeter extends Model
     {
         return $this->belongsToMany(self::class, 'perimeters_parents', 'child_id', 'parent_id');
     }
+
+    public function callsForProjects()
+    {
+        return $this->belongsToMany(CallForProjects::class, 'call_for_projects_perimeters', 'perimeter_id', 'call_for_project_id');
+    }
 }

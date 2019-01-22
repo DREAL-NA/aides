@@ -26,10 +26,6 @@ class CallForProjectsController extends Controller
         $pagination_appends = $callsForProjectsResource->paginationAppends;
 
         $primary_thematics = Thematic::primary()->orderBy('name', 'asc')->get();
-        $subthematics = Thematic::sub()->orderBy('name', 'asc')->get();
-        if (!empty($subthematics)) {
-            $subthematics = $subthematics->groupBy('parent_id');
-        }
         $perimeters = Perimeter::orderBy('name', 'asc')->get();
         $project_holders = ProjectHolder::orderBy('name', 'asc')->get();
 
@@ -40,7 +36,6 @@ class CallForProjectsController extends Controller
             compact(
                 'callsForProjects',
                 'primary_thematics',
-                'subthematics',
                 'perimeters',
                 'project_holders',
                 'pagination_appends',

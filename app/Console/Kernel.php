@@ -35,6 +35,9 @@ class Kernel extends ConsoleKernel
         // Scheduling newsletter synchronization
         // Every day at 02h
         $schedule->command('newsletter:sync')->dailyAt('02:00');
+
+        // Re-import Scout data in Algolia
+        $schedule->command('scout:reimport')->dailyAt('03:00');
     }
 
     /**

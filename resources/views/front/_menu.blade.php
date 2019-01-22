@@ -12,18 +12,6 @@
                     <a href="#" menu-selector="tools">Outils</a>
                 </li>
             </ul>
-
-            <div class="search-wrapper">
-                <form action="{{ route('front.search') }}" method="get">
-                    <div class="search-container__form">
-                        <input type="text" id="query" name="query" placeholder="Rechercher sur le site">
-
-                        <button type="submit">
-                            {!! file_get_contents(public_path().'/svg/search.svg') !!}
-                        </button>
-                    </div>
-                </form>
-            </div>
         </div>
     </div>
     <div class="menu-children">

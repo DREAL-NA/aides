@@ -32,6 +32,8 @@ class CallForProjects extends Model implements Feedable, HasMedia
 
     protected $hidden = ['is_news', 'deleted_at', 'editor_id'];
 
+    protected $touches = ['perimeters', 'beneficiaries', 'projectHolders', 'thematic', 'subthematic'];
+
     const MEDIA_COLLECTION = 'calls_for_projects';
 
     protected static function boot()
@@ -51,10 +53,10 @@ class CallForProjects extends Model implements Feedable, HasMedia
             }
         });
 
-        static::saved(function ($item) {
-            $item->projectHolders()->sync(request()->get('project_holders'));
-            $item->perimeters()->sync(request()->get('perimeters'));
-            $item->beneficiaries()->sync(request()->get('beneficiaries'));
+        static::saved(function ($model) {
+            $model->projectHolders()->sync(request()->get('project_holders'));
+            $model->perimeters()->sync(request()->get('perimeters'));
+            $model->beneficiaries()->sync(request()->get('beneficiaries'));
         });
     }
 
@@ -371,19 +373,29 @@ class CallForProjects extends Model implements Feedable, HasMedia
 
         $array = $this->toArray();
 
-        if (!empty($this->thematic->name)) {
-            $array['thematic'] = $this->thematic->name;
+        $array = $this->transform($array);
+
+        $array['thematic'] = $this->thematic->only(['id', 'name', 'description']);
+
+        if (!empty($this->subthematic->id)) {
+            $array['subthematic'] = $this->subthematic->only(['id', 'name', 'description']);;
         }
 
-        if (!empty($this->subthematic->name)) {
-            $array['subthematic'] = $this->subthematic->name;
-        }
+        $array['project_holders'] = $this->projectHolders->map(function ($item) {
+            return $item->only(['id', 'name', 'description']);
+        });
 
-        $array['project_holders'] = $this->projectHolders->pluck('name')->implode(' , ');
+        $array['beneficiaries'] = $this->beneficiaries->map(function ($item) {
+            return $item->only(['id', 'name', 'description', 'type', 'type_label']);
+        });
 
-        $array['beneficiaries'] = $this->beneficiaries->pluck('name_complete')->implode(' , ');
+        $array['perimeters'] = $this->perimeters->map(function ($item) {
+            return $item->only(['id', 'name', 'description']);
+        });
 
-        $array['perimeters'] = $this->perimeters->pluck('name')->implode(' , ');
+        $array['perimeters'] = $this->perimeters->map(function ($item) {
+            return $item->only(['id', 'name', 'description']);
+        });
 
         return $array;
     }

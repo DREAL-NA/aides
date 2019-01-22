@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Beneficiary;
+use App\Observers\SynchronizeCallsForProjects;
+use App\Perimeter;
+use App\ProjectHolder;
 use App\Thematic;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
@@ -15,6 +19,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Observers
+        Beneficiary::observe(SynchronizeCallsForProjects::class);
+        ProjectHolder::observe(SynchronizeCallsForProjects::class);
+        Perimeter::observe(SynchronizeCallsForProjects::class);
+
         Blade::if ('admin', function () {
             return in_array(auth()->id(), config('app.admin_users'));
         });

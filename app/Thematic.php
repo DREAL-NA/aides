@@ -27,8 +27,18 @@ class Thematic extends Model
             // Only delete for primary thematics
             if (is_null($thematic->parent_id)) {
                 $thematic->children()->delete();
-                $thematic->callForProjects()->delete();
+                $thematic->callsForProjectsThematic()->delete();
             }
+        });
+
+        static::saved(function ($model) {
+            $model->callsForProjectsThematic->filter(function ($item) {
+                return $item->shouldBeSearchable();
+            })->searchable();
+
+            $model->callsForProjectsSubthematic->filter(function ($item) {
+                return $item->shouldBeSearchable();
+            })->searchable();
         });
     }
 
@@ -76,9 +86,14 @@ class Thematic extends Model
         return $this->hasMany(self::class, 'parent_id');
     }
 
-    public function callForProjects()
+    public function callsForProjectsThematic()
     {
-        return $this->hasMany(CallForProjects::class);
+        return $this->hasMany(CallForProjects::class, 'thematic_id');
+    }
+
+    public function callsForProjectsSubthematic()
+    {
+        return $this->hasMany(CallForProjects::class, 'subthematic_id');
     }
 
     public function parent()

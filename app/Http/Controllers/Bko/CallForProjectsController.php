@@ -240,7 +240,7 @@ class CallForProjectsController extends Controller
 
 //         Saving relations
         foreach ($callForProjects->getRelations() as $relation => $entries) {
-            $new->{$relation}()->saveMany($new->{$relation});
+            $new->{$relation}()->saveMany($entries);
         }
 
         // Saving file
