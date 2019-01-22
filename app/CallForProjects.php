@@ -249,6 +249,16 @@ class CallForProjects extends Model implements Feedable, HasMedia
         return $this->is_news && $this->created_at >= $start_date && $this->created_at <= $end_date;
     }
 
+    public function isOpened()
+    {
+        return is_null($this->closing_date) || $this->closing_date >= date('Y-m-d 00:00:00');
+    }
+
+    public function isClosed()
+    {
+        return !$this->isOpened();
+    }
+
     // Attributes casting
     public function setObjectivesAttribute($value)
     {
@@ -372,6 +382,9 @@ class CallForProjects extends Model implements Feedable, HasMedia
         ]);
 
         $array = $this->toArray();
+
+        // Call for project is opened or closed
+        $array['is_closed'] = (integer)$this->isClosed();
 
         $array = $this->transform($array);
 
