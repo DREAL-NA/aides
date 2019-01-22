@@ -178,11 +178,7 @@ class CallsForProjects
      */
     public function prepare()
     {
-//        if ($this->closed === false) {
-//            $this->instance->opened();
-//        } else {
-//            $this->instance->closed();
-//        }
+        $this->instance->where('is_closed', (integer)$this->closed);
 
         if (!empty(request()->all())) {
             $this->setParametersIntanceAndPagination();
