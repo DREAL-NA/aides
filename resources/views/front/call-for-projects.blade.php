@@ -11,45 +11,70 @@
 @section('content')
     <div class="page-content page-dispositifs">
         <h2>
-            <span>Aides{{ $callsAreClosedOnes ? ' clôturéss' : '' }}</span>
-            <a href="{{ route('front.dispositifs', ['closed' => $callsAreClosedOnes ? false : 'clotures']) }}">Voir les
+            <span>
+                @if(!empty(request()->get('query')))
+                    Votre recherche d'aides {{ $callsAreClosedOnes ? 'clôturées' : '' }} portant sur : {{ request()->get('query') }}
+                @else
+                    Découvrez les aides {{ $callsAreClosedOnes ? 'clôturées' : '' }}
+                @endif
+            </span>
+
+            @php
+                $route = route('front.dispositifs', ['closed' => $callsAreClosedOnes ? false : 'clotures']);
+                if(!empty(request()->all())) {
+                    $route .= '?'.http_build_query(request()->all());
+                }
+            @endphp
+
+            <a href="{{ $route }}">Voir les
                 aides {{ $callsAreClosedOnes ? 'ouvertes' : 'clôturées' }}</a>
         </h2>
-        @include('front.dispositifs.filters')
+
+        <div class="content-dispositifs">
+            <div class="page-header no-bottom">
+                <div class="page-meta">
+                    <div class="result-count">
+                        <strong>{{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }}</strong>
+                        correspondent à votre recherche
+                    </div>
+                    @if(!$callsAreClosedOnes)
+                        <div class="helper-links">
+                            <?php // Icones Excel, PDF, CSV ?>
+                            <span>Exporter les résultats :</span>
+                            <a href="{{ route('export.csv', ['table' => 'dispositifs']) }}"
+                               class="export-results export-results-ods"
+                               title="Exporter les résultats - CSV"
+                            >CSV <i class="fa fa-file-text-o" aria-hidden="true"></i></a>
+
+                            <a href="{{ route('export.xlsx') }}"
+                               class="export-results export-results-excel"
+                               title="Exporter les résultats - Excel"
+                            >Excel <i class="fa fa-file-excel-o" aria-hidden="true"></i></a>
+
+                            <a href="{{ route('export.pdf') }}" class="export-results export-results-pdf"
+                               title="Exporter les résultats - PDF"
+                            >PDF <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <a id="dispositifs-filters-button" href="#">
+                <span>Filtrer les résultats en affinant votre recherche</span>
+                <i class="fa fa-plus"></i>
+                <i class="fa fa-minus"></i>
+            </a>
+
+            <div id="dispositifs-filters-container">
+                @include('front.dispositifs.filters')
+            </div>
+        </div>
 
         <div class="content">
             <div class="content-dispositifs">
-                <div class="page-header no-bottom">
-                    <div class="page-title">
-                        <h2>Votre recherche</h2>
-                    </div>
-                    <div class="page-meta">
-                        <div class="result-count">
-                            <strong>{{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }}</strong>
-                            correspondent à votre recherche
-                        </div>
-                        @if(!$callsAreClosedOnes)
-                            <div class="helper-links">
-                                <?php // Icones Excel, PDF, CSV ?>
-                                <span>Exporter les résultats :</span>
-                                <a href="{{ route('export.csv', ['table' => 'dispositifs']) }}"
-                                   class="export-results export-results-ods"
-                                   title="Exporter les résultats - CSV"
-                                >CSV <i class="fa fa-file-text-o" aria-hidden="true"></i></a>
-
-                                <a href="{{ route('export.xlsx') }}"
-                                   class="export-results export-results-excel"
-                                   title="Exporter les résultats - Excel"
-                                >Excel <i class="fa fa-file-excel-o" aria-hidden="true"></i></a>
-
-                                <a href="{{ route('export.pdf') }}" class="export-results export-results-pdf"
-                                   title="Exporter les résultats - PDF"
-                                >PDF <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
-
-                            </div>
-                        @endif
-                    </div>
-                </div>
                 <section class="dispositif-items">
                     <div class="dispositifs-items-header">
                         <div class="first beneficiary hidden-xs">Vous êtes ?</div>

@@ -24,6 +24,7 @@
             align-items: center;
             justify-content: space-between;
             padding-bottom: 20px;
+            margin-top: 20px;
         }
 
         .page-title {
@@ -91,7 +92,10 @@
     background-color: $color-3;
     color: $color-white;
     padding: 30px 20px;
-    margin: 30px -30px;
+
+    .advanced-search & {
+        margin: 30px -30px;
+    }
 
     h4 {
         margin-top: 0;
@@ -461,4 +465,44 @@
     .middle.full {
         width: 100%;
     }
+}
+
+#dispositifs-filters-button {
+    margin-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    background-color: $color-3;
+    color: $color-white;
+    padding: 5px 15px;
+    text-decoration: none;
+    transition: all 250ms ease-in-out;
+
+    @include hoverButton($color-3, $color-white);
+
+    > span {
+        padding-right: 10px;
+    }
+
+    .fa-plus {
+        display: inline-block;
+    }
+
+    .fa-minus {
+        display: none;
+    }
+
+    &.opened {
+        .fa-plus {
+            display: none;
+        }
+
+        .fa-minus {
+            display: inline-block;
+        }
+    }
+}
+
+#dispositifs-filters-container {
+    display: none;
+    margin: 0 -30px 30px;
 }

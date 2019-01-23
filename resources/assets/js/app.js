@@ -73,4 +73,9 @@ require('./front/bootstrap');
         var closingDate = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]); // month is 0-based
         $picker.data('datepicker').selectDate(closingDate);
     }
+
+    $('#dispositifs-filters-button').on('click', function () {
+        $(this).toggleClass('opened');
+        $('#dispositifs-filters-container').slideToggle('fast');
+    });
 })(jQuery);
