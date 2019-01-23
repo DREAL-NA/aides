@@ -9,12 +9,11 @@
             <section class="websites-container">
                 <ul>
                     <li>
-                        <h4><a href="http://www.aides-entreprises.fr/"
+                        <h4><a href="https://aides-territoires.beta.gouv.fr/"
                                target="_blank"
                                rel="nofollow"
-                               title="Aller sur le site - Ouvrir dans une nouvelle fenêtre">Aides-entreprises.fr</a></h4>
-                        <p>La base de données de référence sur les aides aux entreprises ouverte à tous.<br>
-                            Base de données unique sur les aides publiques aux entreprises. Pilotage par la Direction générale des entreprises (DGE).</p>
+                               title="Aller sur le site - Ouvrir dans une nouvelle fenêtre">Aides-territoires</a></h4>
+                        <p>Collectivités, trouvez en quelques clics les aides pertinentes pour vos projets, sur vos territoires.</p>
                     </li>
                     <li>
                         <h4><a href="http://www.aides-publiques-entreprises.eco-circulaire.fr/"
@@ -27,6 +26,14 @@
                         <p>"Ces dispositifs de soutien vous permettront d’avancer dans votre démarche et de contribuer au changement de modèle : passer d’une économie linéaire
                             (extraire, fabriquer, consommer, jeter) à une économie circulaire dont l’objectif est de produire des biens et des services de manière durable, en
                             limitant la consommation et les gaspillages de ressources ainsi que la production de déchets."</p>
+                    </li>
+                    <li>
+                        <h4><a href="http://www.aides-entreprises.fr/"
+                               target="_blank"
+                               rel="nofollow"
+                               title="Aller sur le site - Ouvrir dans une nouvelle fenêtre">Aides-entreprises.fr</a></h4>
+                        <p>La base de données de référence sur les aides aux entreprises ouverte à tous.<br>
+                            Base de données unique sur les aides publiques aux entreprises. Pilotage par la Direction générale des entreprises (DGE).</p>
                     </li>
                 </ul>
             </section>

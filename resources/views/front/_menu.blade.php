@@ -6,7 +6,7 @@
                     <a href="#" menu-selector="who">Qui sommes-nous&nbsp;?</a>
                 </li>
                 <li class="menu-item">
-                    <a href="{{ route('front.dispositifs') }}">Dispositifs</a>
+                    <a href="{{ route('front.dispositifs') }}">Aides</a>
                 </li>
                 <li class="menu-item">
                     <a href="#" menu-selector="tools">Outils</a>

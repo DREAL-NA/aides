@@ -3,7 +3,12 @@
 @section('meta_title', "Accueil")
 
 @section('content')
-    <div class="count-dispositifs-wrapper">{!! trans_choice('messages.home.count', $countCallsForProjects) !!}</div>
+    <div class="count-dispositifs-wrapper">
+        <div class="count-dispositifs">
+            {!! trans_choice('messages.home.count', $countCallsForProjects) !!}
+        </div>
+        <a class="count-dispositifs-link" href="{{ route('front.dispositifs') }}">Voir les aides</a>
+    </div>
 
     <div class="page-container">
         @include('front.home.quick-search')

@@ -9,7 +9,7 @@
         </a>
         <a href="{{ route('front.home') }}" class="link-title">
             <h1>{{ ucfirst(config('app.name')) }}</h1>
-            <p class="description">{{ config('app.subname') }}</p>
+            {{--<p class="description">{{ config('app.subname') }}</p>--}}
         </a>
     </div>
 </header>

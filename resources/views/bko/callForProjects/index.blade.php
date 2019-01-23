@@ -24,7 +24,7 @@
         <div class="col-lg-12">
             <div class="row filters-table">
                 <div class="form-group">
-                    <label for="filter__thematic">Thématique</label>
+                    <label for="filter__thematic">Thématique des aides</label>
                     <select id="filter__thematic" class="form-control select2-filter" multiple="multiple">
                         <option></option>
                         @foreach($primary_thematics as $thematic)
@@ -33,7 +33,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="filter__subthematic">Sous-thématique</label>
+                    <label for="filter__subthematic">Sous-thématique des aides</label>
                     <select id="filter__subthematic" class="form-control select2-filter" multiple="multiple">
                         <option></option>
                         @foreach($primary_thematics as $primary)
@@ -49,7 +49,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="filter__projectHolder">Porteur du dispositif</label>
+                    <label for="filter__projectHolder">Financeurs des aides</label>
                     <select id="filter__projectHolder" class="form-control select2-filter" multiple="multiple">
                         <option></option>
                         @foreach($project_holders as $project_holder)
@@ -58,7 +58,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="filter__perimeter">Périmètre</label>
+                    <label for="filter__perimeter">Votre localisation</label>
                     <select id="filter__perimeter" class="form-control select2-filter" multiple="multiple">
                         <option></option>
                         @foreach($perimeters as $perimeter)
@@ -67,7 +67,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="filter__beneficiary">Bénéficiaire</label>
+                    <label for="filter__beneficiary">Vous êtes qui ?</label>
                     <select id="filter__beneficiary" class="form-control select2-filter" multiple="multiple">
                         <option></option>
                         @foreach(\App\Beneficiary::types() as $type)
