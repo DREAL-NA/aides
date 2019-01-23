@@ -37,7 +37,7 @@
                             @endif
                             @if(!$website->perimeters->isEmpty())
                                 <div class="common-data perimeters">
-                                    <span class="label">Périmètres :</span>
+                                    <span class="label">Localisations :</span>
                                     <div class="items">
                                         <p>{!! $website->perimeters->unique()->sortBy('name')->pluck('name')->implode('</p><p>') !!}</p>
                                     </div>

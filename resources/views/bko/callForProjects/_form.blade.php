@@ -30,7 +30,7 @@
     @endif
 
     <div class="form-group">
-        <label>Ce dispositif apparaît dans la liste des actualités</label>
+        <label>Cette aide apparaît dans la liste des actualités</label>
         <div class="checkboxes">
             <label class="radio-inline">
                 <input type="radio" name="is_news" id="is_news" value="1" {{ empty($is_news) ? '' : 'checked="checked"' }}> Oui
@@ -83,7 +83,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="project_holder_id">Porteur du dispositif</label>
+        <label for="project_holder_id">Financeur des aides</label>
         <div class="input-group">
             <select name="project_holders[]" id="project_holder_id" class="form-control select2-allow-clear" multiple>
                 @if(!$callForProjects->projectHolders->isEmpty())
@@ -98,7 +98,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="perimeter_id">Périmètre</label>
+        <label for="perimeter_id">Localisations</label>
         <div class="input-group">
             <select name="perimeters[]" id="perimeter_id" class="form-control select2-allow-clear" multiple>
                 @if(!$callForProjects->perimeters->isEmpty())
@@ -279,7 +279,7 @@
 @section('after-content')
     @component('bko.components.modals._default')
         @slot('id', 'modalNewProjectHolder')
-        @slot('title', "Ajout d'un porteur du dispositif")
+        @slot('title', "Ajout d'un financeurs des aides")
         @slot('slot')
             @include('bko.components.forms._default', [
                 'model' => new \App\ProjectHolder(),
@@ -295,7 +295,7 @@
 
     @component('bko.components.modals._default')
         @slot('id', 'modalNewPerimeter')
-        @slot('title', "Ajout d'un périmètre")
+        @slot('title', "Ajout d'une localisation")
         @slot('slot')
             @include('bko.perimeter._form', [
                 'model' => new \App\Perimeter(),

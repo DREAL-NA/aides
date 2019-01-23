@@ -2,7 +2,7 @@
 
 @section('heading')
     <div class="heading-with-actions">
-        <div class="title">Liste des porteurs des dispositifs</div>
+        <div class="title">Liste des financeurs des aides</div>
         <div class="actions">
             <a href="{{ route('export.csv', ['table' => 'project_holders']) }}" data-tooltip="tooltip" title="Exporter en CSV">
                 <i class="fa fa-file-text-o" aria-hidden="true"></i>
@@ -59,8 +59,8 @@
 
 @section('after-content')
     @include('bko.components.modals.delete', [
-        'title' => "Suppression d'un porteur du dispositif",
-        'question' => "Êtes-vous sûr de vouloir supprimer ce porteur du dispositif ?",
+        'title' => "Suppression d'un financeur des aides",
+        'question' => "Êtes-vous sûr de vouloir supprimer ce financeur des aides ?",
         'action' => 'Bko\ProjectHolderController@destroy',
     ])
 @endsection

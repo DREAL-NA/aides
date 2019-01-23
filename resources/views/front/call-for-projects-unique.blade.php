@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('meta_title', "Fiche complète | Dispositifs")
+@section('meta_title', "Fiche complète | Aides")
 
 @section('breadcrumb')
     <li>
-        <a href="{{ route('front.dispositifs') }}">Dispositifs</a>
+        <a href="{{ route('front.dispositifs') }}">Aides</a>
         <span class="chevron">></span>
     </li>
     <li>
@@ -29,7 +29,7 @@
                 @if(!$callForProjects->beneficiaries->isEmpty())
                     <div class="page-item">
                         <div class="page-header">
-                            <h3>Bénéficiaires</h3>
+                            <h3>Vous êtes ?</h3>
                         </div>
                         <div class="item-content">
                             <ul>
@@ -44,7 +44,7 @@
                 @if(!$callForProjects->perimeters->isEmpty())
                     <div class="page-item">
                         <div class="page-header">
-                            <h3>Périmètres</h3>
+                            <h3>Localisations</h3>
                         </div>
                         <div class="item-content">
                             <ul>
@@ -58,7 +58,7 @@
                 @if(!$callForProjects->projectHolders->isEmpty())
                     <div class="page-item">
                         <div class="page-header">
-                            <h3>Porteurs du dispositifs</h3>
+                            <h3>Financeurs des aides</h3>
                         </div>
                         <div class="item-content">
                             <ul>
@@ -101,7 +101,7 @@
                 @if(!empty($callForProjects->project_holder_contact))
                     <div class="page-item">
                         <div class="page-header">
-                            <h3>Contact(s) porteurs du dispositif</h3>
+                            <h3>Contact(s) porteurs de l'aide</h3>
                         </div>
                         <div class="item-content">{!! nl2br($callForProjects->project_holder_contact) !!}</div>
                     </div>
@@ -143,7 +143,7 @@
                             <strong>Site internet</strong>
                             <p>
                                 <a href="{{ $callForProjects->website_url }}" target="_blank" title="{{ $callForProjects->website_url }} - Ouvrir dans une nouvelle fenêtre">
-                                    Accéder au dispositif <i class="fa fa-external-link" aria-hidden="true"></i>
+                                    Accéder à l'aide&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i>
                                 </a>
                             </p>
                         </div>

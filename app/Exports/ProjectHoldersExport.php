@@ -6,7 +6,7 @@ use App\ProjectHolder;
 
 class ProjectHoldersExport extends GlobalExport implements GlobalExportInterface
 {
-    protected $filename = 'porteurs_projets';
+    protected $filename = 'financeurs_aides';
 
     public function collection()
     {

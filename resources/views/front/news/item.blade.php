@@ -13,12 +13,12 @@
     @endif
     @if(!$callForProjects->perimeters->isEmpty())
         <div class="perimeters">
-            Périmètres&nbsp;: {!! $callForProjects->perimeters->unique()->sortBy('name')->pluck('name')->implode(', ') !!}
+            Localisations&nbsp;: {!! $callForProjects->perimeters->unique()->sortBy('name')->pluck('name')->implode(', ') !!}
         </div>
     @endif
     @if(!$callForProjects->projectHolders->isEmpty())
         <div class="perimeters">
-            Porteurs du dispositif&nbsp;: {!! $callForProjects->projectHolders->unique()->sortBy('name')->pluck('name')->implode(', ') !!}
+            Financeurs des aides&nbsp;: {!! $callForProjects->projectHolders->unique()->sortBy('name')->pluck('name')->implode(', ') !!}
         </div>
     @endif
     <div class="objectives">{{ \Illuminate\Support\Str::words($callForProjects->objectives, 50) }}</div>

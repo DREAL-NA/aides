@@ -23,7 +23,7 @@
                         <strong>Thématique</strong> : {{ $news->thematic->name }}<br>
 
                         @if(!empty($news->closing_date))
-                        <strong>Date de clôture&nbsp;</strong>: {{ $news->closing_date->format('d/m/Y') }}<br>
+                            <strong>Date de clôture&nbsp;</strong>: {{ $news->closing_date->format('d/m/Y') }}<br>
                         @endif
 
                         @if(!is_null($news->subthematic))
@@ -31,11 +31,11 @@
                         @endif
 
                         @if(!$news->perimeters->isEmpty())
-                            <strong>Périmètres</strong>&nbsp;: {!! $news->perimeters->unique()->sortBy('name')->pluck('name')->implode(', ') !!}<br>
+                            <strong>Localisations</strong>&nbsp;: {!! $news->perimeters->unique()->sortBy('name')->pluck('name')->implode(', ') !!}<br>
                         @endif
 
                         @if(!$news->projectHolders->isEmpty())
-                            <strong>Porteurs du dispositif&nbsp;</strong>: {!! $news->projectHolders->unique()->sortBy('name')->pluck('name')->implode(', ') !!}<br>
+                            <strong>Financeurs des aides&nbsp;</strong>: {!! $news->projectHolders->unique()->sortBy('name')->pluck('name')->implode(', ') !!}<br>
                         @endif
 
                         <br>

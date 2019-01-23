@@ -25,7 +25,7 @@
     {{--</select>--}}
     {{--</div>--}}
     {{--<div class="form-group">--}}
-    {{--<label for="filter__perimeter">Périmètre</label>--}}
+    {{--<label for="filter__perimeter">Localisations</label>--}}
     {{--<select id="filter__perimeter" class="form-control select2-filter" multiple="multiple">--}}
     {{--<option></option>--}}
     {{--@foreach($perimeters as $perimeter)--}}
@@ -45,7 +45,7 @@
                     <th>Logo</th>
                     <th>Nom</th>
                     <th>Thèmes</th>
-                    <th>Périmètre</th>
+                    <th>Localisations</th>
                     <th>Adresse internet</th>
                     <th></th>
                 </tr>

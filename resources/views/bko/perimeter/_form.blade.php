@@ -12,7 +12,7 @@
     </div>
 
     <div class="form-group">
-        <label for="perimeter_parents{{ empty($modal) ? '' : '__'.$modal }}">Périmètres globaux associés au menu "Quels sont mes aides pour les territoires ?"</label>
+        <label for="perimeter_parents{{ empty($modal) ? '' : '__'.$modal }}">Localisations globales associées au menu "Quels sont mes aides pour les territoires ?"</label>
         <select name="parents[]" id="perimeter_parents{{ empty($modal) ? '' : '__'.$modal }}" class="form-control select2-allow-clear" multiple>
             <option></option>
             @foreach($parents as $parent)

@@ -6,7 +6,7 @@
     <div class="home-statistics">
 
         <div class="home-statistics__item">
-            <h4 class="title">Dispositifs ajoutés ou modifiés</h4>
+            <h4 class="title">Aides ajoutées ou modifiées</h4>
 
             <div class="cards-container">
                 @component('bko.components.cards.number')
@@ -37,7 +37,7 @@
                     @slot('number', $countBeneficiaries)
                 @endcomponent
                 @component('bko.components.cards.number')
-                    @slot('title', "Périmètres")
+                    @slot('title', "Localisations")
                     @slot('number', $countPerimeters)
                 @endcomponent
                 @component('bko.components.cards.number')
@@ -49,7 +49,7 @@
                     @slot('number', $countSubthematics)
                 @endcomponent
                 @component('bko.components.cards.number')
-                    @slot('title', "Porteurs des dispositifs")
+                    @slot('title', "Financeurs des aides")
                     @slot('number', $countProjectHolders)
                 @endcomponent
             </div>

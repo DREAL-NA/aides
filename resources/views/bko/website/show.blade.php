@@ -27,13 +27,13 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-3 control-label">Périmètres</label>
+            <label class="col-lg-3 control-label">Localisations</label>
             <div class="col-lg-9">
                 <p class="form-control-static">{!! $website->perimeters->implode('name', '<br>') !!}</p>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-3 control-label">Périmètre - Précisions</label>
+            <label class="col-lg-3 control-label">Localisations - Précisions</label>
             <div class="col-lg-9">
                 <p class="form-control-static">{{ $website->perimeter_comments }}</p>
             </div>

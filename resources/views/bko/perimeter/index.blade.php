@@ -2,7 +2,7 @@
 
 @section('heading')
     <div class="heading-with-actions">
-        <div class="title">Liste des périmètres</div>
+        <div class="title">Liste des localisations</div>
         <div class="actions">
             <a href="{{ route('export.csv', ['table' => 'perimeters']) }}" data-tooltip="tooltip" title="Exporter en CSV">
                 <i class="fa fa-file-text-o" aria-hidden="true"></i>
@@ -62,8 +62,8 @@
 
 @section('after-content')
     @include('bko.components.modals.delete', [
-        'title' => "Suppression d'un périmètre",
-        'question' => "Êtes-vous sûr de vouloir supprimer ce périmètre ?",
+        'title' => "Suppression d'une localisation",
+        'question' => "Êtes-vous sûr de vouloir supprimer cette localisation ?",
         'action' => 'Bko\PerimeterController@destroy',
     ])
 @endsection

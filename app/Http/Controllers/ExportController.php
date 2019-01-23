@@ -31,7 +31,7 @@ class ExportController extends Controller
         $this->callsForProjects = $callsForProjects->groupBy('thematic_id');
 
         $date = date('YmdHis');
-        $this->filename = 'dispositifs_' . $date;
+        $this->filename = 'aides_' . $date;
     }
 
     public function dispositifsXlsx()
@@ -49,19 +49,19 @@ class ExportController extends Controller
         // Set document properties
         $spreadsheet->getProperties()->setCreator('DREAL Nouvelle-Aquitaine')
                     ->setLastModifiedBy('DREAL Nouvelle-Aquitaine')
-                    ->setTitle('Liste des dispositifs')
-                    ->setSubject('Dispositifs de soutien aux porteurs de projet en Nouvelle-Aquitaine')
-                    ->setDescription('Liste des dispositifs de soutien aux porteurs de projet en Nouvelle-Aquitaine, fournie sous Licence Ouverte 2.0 par la DREAL Nouvelle-Aquitaine.');
+                    ->setTitle('Liste des aides')
+                    ->setSubject('Aides de soutien aux financeurs en Nouvelle-Aquitaine')
+                    ->setDescription('Liste des aides de soutien aux financeurs en Nouvelle-Aquitaine, fournie sous Licence Ouverte 2.0 par la DREAL Nouvelle-Aquitaine.');
 
         // Set the data
         $headerRow = [
             'Sous-thématique',
             'Intitulé',
             'Date de clôture',
-            'Porteur du dispositif',
-            'Périmètre',
+            'Financeur des aides',
+            'Localisations',
             'Objectifs',
-            'Bénéficiaires',
+            'Vous êtes ?',
             'Dotation',
             'Relais technique DREAL / DDTMs',
             'Contact(s) porteur de projet',

@@ -1,6 +1,6 @@
 @extends('layouts.bko')
 
-@section('heading', "Edition du périmètre : ".$perimeter->name)
+@section('heading', "Edition de la localisation : ".$perimeter->name)
 @section('menu-item-perimeter')
     <li class="menu-item active"><a href="{{ route('bko.perimetre.edit', $perimeter) }}">Edition de {{ $perimeter->name }}</a></li>
 @endsection

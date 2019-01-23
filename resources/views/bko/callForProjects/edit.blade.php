@@ -2,10 +2,10 @@
 
 @section('heading')
     <div class="heading-with-actions">
-        <div class="title">Edition du dispositif : {{ $callForProjects->name }}</div>
+        <div class="title">Edition de l'aide : {{ $callForProjects->name }}</div>
 
         <div class="actions">
-            <a href="{{ route('bko.call.duplicate', $callForProjects) }}" data-tooltip="tooltip" title="Dupliquer le dispositif">
+            <a href="{{ route('bko.call.duplicate', $callForProjects) }}" data-tooltip="tooltip" title="Dupliquer l'aide">
                 <i class="fa fa-copy" aria-hidden="true"></i>
             </a>
         </div>

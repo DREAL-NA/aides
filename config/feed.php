@@ -24,7 +24,7 @@ return [
              */
             'url' => '/feed',
 
-            'title' => 'Les 20 derniers dispositifs',
+            'title' => 'Les 20 dernières aides',
         ],
 //        'thematics' => [
 //            /*

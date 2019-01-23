@@ -16,7 +16,7 @@
     <div class="page-content">
         <h2>La base de données</h2>
         <div class="content">
-            <p><b>La fiche du dispositif a été rédigée à partir des informations diffusées par les organismes</b> (voir dans le site, les organismes recensés à Outils, Sitothèque).
+            <p><b>La fiche de l'aide a été rédigée à partir des informations diffusées par les organismes</b> (voir dans le site, les organismes recensés à Outils, Sitothèque).
             </p>
             <p>Ces informations sont données à titre indicatif et ne peuvent en aucun cas engager la responsabilité de la DREAL NA. L’obtention des aides est liée à des critères
                 relatif au porteur de projet, à son projet, ainsi qu’à un certain nombre de conditions fixées et précisées par l’organisme. Nous vous recommandons de vous adresser

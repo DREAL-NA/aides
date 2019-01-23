@@ -9,8 +9,8 @@
 @section('content')
     <div class="page-content page-simple">
         <div class="content">
-            <h2>Infos éditeurs et mentions légales (site pilote « Des dispositifs pour les territoires »)</h2>
-            <p><i>publié le 28 mars 2018</i></p>
+            <h2>Infos éditeurs et mentions légales {{ config('app.name') }}</h2>
+            <p><i>publié le 23 janvier 2019</i></p>
 
             <br>
 

@@ -7,11 +7,11 @@
         </div>
 
         <div class="menu-category">
-            <h5 class="category-title">Dispositifs</h5>
+            <h5 class="category-title">Aides</h5>
             <ul class="menu">
-                <li class="menu-item"><a href="{{ route('bko.call.index') }}">Liste des dispositifs ouverts</a></li>
-                <li class="menu-item"><a href="{{ route('bko.call.indexClosed') }}">Liste des dispositifs clôturés</a></li>
-                <li class="menu-item"><a href="{{ route('bko.call.create') }}">Ajouter un dispositif</a></li>
+                <li class="menu-item"><a href="{{ route('bko.call.index') }}">Liste des aides ouvertes</a></li>
+                <li class="menu-item"><a href="{{ route('bko.call.indexClosed') }}">Liste des aides clôturées</a></li>
+                <li class="menu-item"><a href="{{ route('bko.call.create') }}">Ajouter une aide</a></li>
                 @yield('menu-item-call')
             </ul>
         </div>
@@ -33,18 +33,18 @@
             </ul>
         </div>
         <div class="menu-category">
-            <h5 class="category-title">Porteurs des dispositifs</h5>
+            <h5 class="category-title">Financeurs des aides</h5>
             <ul class="menu">
-                <li class="menu-item"><a href="{{ route('bko.porteur-dispositif.index') }}">Liste des porteurs</a></li>
-                <li class="menu-item"><a href="{{ route('bko.porteur-dispositif.create') }}">Ajouter un porteur</a></li>
+                <li class="menu-item"><a href="{{ route('bko.porteur-dispositif.index') }}">Liste des financeurs</a></li>
+                <li class="menu-item"><a href="{{ route('bko.porteur-dispositif.create') }}">Ajouter un financeur</a></li>
                 @yield('menu-item-projectHolder')
             </ul>
         </div>
         <div class="menu-category">
-            <h5 class="category-title">Périmètres</h5>
+            <h5 class="category-title">Localisations</h5>
             <ul class="menu">
-                <li class="menu-item"><a href="{{ route('bko.perimetre.index') }}">Liste des périmètres</a></li>
-                <li class="menu-item"><a href="{{ route('bko.perimetre.create') }}">Ajouter un périmètre</a></li>
+                <li class="menu-item"><a href="{{ route('bko.perimetre.index') }}">Liste des localisations</a></li>
+                <li class="menu-item"><a href="{{ route('bko.perimetre.create') }}">Ajouter une localisation</a></li>
                 @yield('menu-item-perimeter')
             </ul>
         </div>

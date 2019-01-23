@@ -36,7 +36,7 @@
                   id="themes">{{ old('themes', $website->themes) }}</textarea>
     </div>
     <div class="form-group">
-        <label for="perimeter_id">Périmètres</label>
+        <label for="perimeter_id">Localisations</label>
         <div class="input-group">
             <select name="perimeters[]" id="perimeter_id" class="form-control" multiple="multiple">
                 @if(!empty($perimeters))
@@ -52,7 +52,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="perimeter_comments">Périmètre - Précisions</label>
+        <label for="perimeter_comments">Localisations - Précisions</label>
         <textarea class="form-control" rows="3" name="perimeter_comments"
                   id="perimeter_comments">{{ old('perimeter_comments', $website->perimeter_comments) }}</textarea>
     </div>
@@ -140,7 +140,7 @@
 
     @component('bko.components.modals._default')
         @slot('id', 'modalNewPerimeter')
-        @slot('title', "Ajout d'un périmètre")
+        @slot('title', "Ajout d'une localisation")
         @slot('slot')
             @include('bko.components.forms._default', [
                 'model' => new \App\Perimeter(),

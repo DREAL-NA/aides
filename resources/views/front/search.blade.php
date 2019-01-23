@@ -18,7 +18,7 @@
 
                 <section class="dispositif-items search-items">
                     <div class="dispositifs-items-header slim">
-                        <div class="middle full no-border-right">Dispositifs</div>
+                        <div class="middle full no-border-right">Aides</div>
                     </div>
                     @foreach($callsForProjects as $callForProjects)
                         {{--@php($url = empty($callForProjects->website_url) ? route('front.dispositifs.unique', [ 'slug' => $callForProjects->slug ]) : $callForProjects->website_url)--}}
@@ -36,7 +36,7 @@
                                     @endif
                                     @if(!$callForProjects->perimeters->isEmpty())
                                         <div class="perimeters">
-                                            Périmètres&nbsp;: {!! $callForProjects->perimeters->unique()->sortBy('name')->pluck('name')->implode(', ') !!}
+                                            Localisations&nbsp;: {!! $callForProjects->perimeters->unique()->sortBy('name')->pluck('name')->implode(', ') !!}
                                         </div>
                                     @endif
                                     <div class="objectives">{{ \Illuminate\Support\Str::words($callForProjects->objectives, 50) }}</div>

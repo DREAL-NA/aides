@@ -1,6 +1,6 @@
 @extends('layouts.bko')
 
-@section('heading', "Ajout d'un périmètre")
+@section('heading', "Ajout d'une localisation")
 
 @section('content')
     @include('bko.perimeter._form', [

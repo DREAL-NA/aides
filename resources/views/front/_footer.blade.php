@@ -20,8 +20,8 @@
                             <li><a href="{{ route('front.about-us.team') }}">L'équipe</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ route('front.dispositifs') }}">Dispositifs</a></li>
-                    <li><a href="{{ route('front.dispositifs', ['closed' => 'clotures']) }}">Dispositifs clôturés</a></li>
+                    <li><a href="{{ route('front.dispositifs') }}">Aides ouvertes</a></li>
+                    <li><a href="{{ route('front.dispositifs', ['closed' => 'clotures']) }}">Aides clôturées</a></li>
                     <li><a href="{{ route('front.news.before') }}">Actualités des semaines précédentes</a></li>
                     <li>
                         <a href="#">Outils</a>

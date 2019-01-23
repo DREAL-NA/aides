@@ -40,7 +40,7 @@ class CallForProjectsController extends Controller
             $subthematics = $subthematics->sortBy('slug')->groupBy('parent_id');
         }
 
-        $title = "Liste des dispositifs ouverts";
+        $title = "Liste des aides ouvertes";
 
         $closed = false;
 
@@ -79,7 +79,7 @@ class CallForProjectsController extends Controller
             $subthematics = $subthematics->groupBy('parent_id');
         }
 
-        $title = "Liste des dispositifs clôturés";
+        $title = "Liste des aides clôturées";
 
         $closed = true;
 
@@ -127,7 +127,7 @@ class CallForProjectsController extends Controller
         }
 
         return redirect(route('bko.call.edit', $callForProjects))
-            ->with('success', "Le dispositif a bien été ajouté.");
+            ->with('success', "L'aide a bien été ajoutée.");
     }
 
     /**
@@ -180,7 +180,7 @@ class CallForProjectsController extends Controller
         }
 
         return redirect(route('bko.call.edit', $callForProjects))
-            ->with('success', "Le dispositif a bien été modifié.");
+            ->with('success', "L'aide a bien été modifiée.");
     }
 
     /**
@@ -252,6 +252,6 @@ class CallForProjectsController extends Controller
         }
 
         return redirect(route('bko.call.edit', $new))
-            ->with('success', "Le dispositif a bien été dupliqué.");
+            ->with('success', "L'aide a bien été dupliquée.");
     }
 }

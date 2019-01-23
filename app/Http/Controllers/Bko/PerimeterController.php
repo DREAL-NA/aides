@@ -61,7 +61,7 @@ class PerimeterController extends Controller
             return response($perimeter, 201);
         } else {
             return redirect(route('bko.perimetre.edit', $perimeter))->with('success',
-                "Le périmètre a bien été ajouté.");
+                "La localisation a bien été ajouté.");
         }
     }
 
@@ -119,7 +119,7 @@ class PerimeterController extends Controller
             return response($perimeter, 201);
         } else {
             return redirect(route('bko.perimetre.edit', $perimeter))->with('success',
-                "Le périmètre a bien été modifié.");
+                "La localisation a bien été modifié.");
         }
     }
 

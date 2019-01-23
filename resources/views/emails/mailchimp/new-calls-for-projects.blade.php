@@ -31,7 +31,7 @@
                                             <td valign="top" class="mcnTextContent"
                                                 style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
 
-                                                Le site pilote de la DREAL Nouvelle-Aquitaine « Des dispositifs pour les territoires » recense les aides
+                                                Le site pilote de la DREAL Nouvelle-Aquitaine « Des aides pour les territoires » recense les aides
                                                 disponibles pour les territoires de la Nouvelle-Aquitaine afin de permettre l’accès et l’identification des
                                                 aides les plus pertinentes pour les projets des territoires.
                                             </td>

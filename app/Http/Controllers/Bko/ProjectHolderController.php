@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Bko;
 
+use App\Http\Controllers\Controller;
 use App\ProjectHolder;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class ProjectHolderController extends Controller
 {
@@ -51,7 +51,7 @@ class ProjectHolderController extends Controller
             return response()->json($projectHolder);
         } else {
             return redirect(route('bko.porteur-dispositif.edit', $projectHolder))->with('success',
-                "Le porteur du dispositif a bien été ajouté.");
+                "Le financeur des aides a bien été ajouté.");
         }
     }
 
@@ -98,7 +98,7 @@ class ProjectHolderController extends Controller
             return response()->json($projectHolder);
         } else {
             return redirect(route('bko.porteur-dispositif.edit', $projectHolder))->with('success',
-                "Le porteur du dispositif a bien été modifié.");
+                "Le financeur des aides a bien été modifié.");
         }
     }
 

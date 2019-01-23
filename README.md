@@ -1,4 +1,4 @@
-# DREAL - Des dispositifs pour les territoires de la Nouvelle-Aquitaine
+# DREAL - Des aides pour les territoires de la Nouvelle-Aquitaine
 
 Une base de données ouverte sur les aides aux territoires de la région Nouvelle-Aquitaine.
 

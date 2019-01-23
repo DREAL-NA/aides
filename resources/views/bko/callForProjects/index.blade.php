@@ -90,9 +90,9 @@
                     <th>Intitulé</th>
                     <th>Date de clôture</th>
                     <th></th>
-                    <th>Porteurs du dispositif</th>
+                    <th>Financeurs des aides</th>
                     <th></th>
-                    <th>Périmètres</th>
+                    <th>Localisations</th>
                     <th>Objectifs</th>
                     <th></th>
                     <th>Bénéficiaires</th>
@@ -224,8 +224,8 @@
 
 @section('after-content')
     @include('bko.components.modals.delete', [
-        'title' => "Suppression d'un dispositif",
-        'question' => "Êtes-vous sûr de vouloir supprimer ce dispositif ?",
+        'title' => "Suppression d'une aide",
+        'question' => "Êtes-vous sûr de vouloir supprimer cette aide ?",
         'action' => 'Bko\CallForProjectsController@destroy',
     ])
 @endsection

@@ -1,19 +1,19 @@
 @extends('layouts.app')
 
-@section('meta_title', "Dispositifs")
+@section('meta_title', "Aides")
 
 @section('breadcrumb')
     <li>
-        <span>Dispositifs</span>
+        <span>Aides</span>
     </li>
 @endsection
 
 @section('content')
     <div class="page-content page-dispositifs">
         <h2>
-            <span>Dispositifs{{ $callsAreClosedOnes ? ' clôturés' : '' }}</span>
+            <span>Aides{{ $callsAreClosedOnes ? ' clôturéss' : '' }}</span>
             <a href="{{ route('front.dispositifs', ['closed' => $callsAreClosedOnes ? false : 'clotures']) }}">Voir les
-                dispositifs {{ $callsAreClosedOnes ? 'ouverts' : 'clôturés' }}</a>
+                aides {{ $callsAreClosedOnes ? 'ouvertes' : 'clôturées' }}</a>
         </h2>
         @include('front.dispositifs.filters')
 
@@ -52,7 +52,7 @@
                 </div>
                 <section class="dispositif-items">
                     <div class="dispositifs-items-header">
-                        <div class="first beneficiary hidden-xs">Bénéficiaires</div>
+                        <div class="first beneficiary hidden-xs">Vous êtes ?</div>
                         <div class="middle infos">Informations</div>
                         <div class="last closing-date hidden-xs">Date de clôture</div>
                     </div>
@@ -87,7 +87,7 @@
                                     @endif
                                     @if(!$callForProjects->beneficiaries->isEmpty())
                                         <div class="common-data beneficiaries visible-xs">
-                                            <span class="label">Bénéficiaires :</span>
+                                            <span class="label">Vous êtes ? :</span>
                                             <div class="items">
                                                 @foreach($callForProjects->beneficiaries->unique()->sortBy('name_complete') as $beneficiary)
                                                     @php($selected = (!empty(request()->get(\App\Beneficiary::URI_NAME)) && in_array($beneficiary->type, request()->get(\App\Beneficiary::URI_NAME))) ?: false)
@@ -98,7 +98,7 @@
                                     @endif
                                     @if(!$callForProjects->perimeters->isEmpty())
                                         <div class="common-data perimeters">
-                                            <span class="label">Périmètres :</span>
+                                            <span class="label">Localisations :</span>
                                             <div class="items">
                                                 <p>{!! $callForProjects->perimeters->unique()->sortBy('name')->pluck('name')->implode('</p><p>') !!}</p>
                                             </div>
@@ -106,7 +106,7 @@
                                     @endif
                                     @if(!$callForProjects->projectHolders->isEmpty())
                                         <div class="common-data projectHolders">
-                                            <span class="label">Porteurs du dispositif :</span>
+                                            <span class="label">Financeurs des aides :</span>
                                             <div class="items">
                                                 <p>{!! $callForProjects->projectHolders->unique()->sortBy('name')->pluck('name')->implode('</p><p>') !!}</p>
                                             </div>
@@ -118,8 +118,8 @@
                                             <div class="items">
                                                 <a class="external-link" href="{{ $callForProjects->website_url }}"
                                                    target="_blank"
-                                                   title="Accéder au dispositif - Ouvrir dans une nouvelle fenêtre">
-                                                    Accéder au dispositif
+                                                   title="Accéder à l'aide - Ouvrir dans une nouvelle fenêtre">
+                                                    Accéder à l'aide
                                                     <i class="fa fa-external-link" aria-hidden="true"></i>
                                                 </a>
                                             </div>

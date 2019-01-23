@@ -11,11 +11,11 @@ class WebsitesExport extends GlobalExport implements GlobalExportInterface
 //        'organization_type_name' => 'Organisation',
         'name' => 'Nom de la structure',
         'themes' => 'Thèmes',
-        'perimeters' => 'Périmètres',
-        'perimeter_comments' => 'Périmètres - Précisions',
+        'perimeters' => 'Localisations',
+        'perimeter_comments' => 'Localisations - Précisions',
         'delay' => 'Délai',
         'allocated_budget' => 'Budget alloué',
-        'beneficiaries' => 'Bénéficiaires',
+        'beneficiaries' => 'Vous êtes ?',
         'website_url' => 'Adresse internet',
         'description' => 'Observations',
         'created_at' => 'Date de création',
@@ -27,16 +27,16 @@ class WebsitesExport extends GlobalExport implements GlobalExportInterface
     public function collection()
     {
         return Website::with(['perimeters'])->get()
-            ->sortBy(function ($item) {
+                      ->sortBy(function ($item) {
 //                return [$item->organization_type_name, $item->name];
-                return [$item->name];
-            })
-            ->map(function ($item) {
+                          return [$item->name];
+                      })
+                      ->map(function ($item) {
 //                $item->organization_type_name = $item->organizationType->name;
-                $item->perimeters = $item->perimeters->pluck('name')->implode(', ');
+                          $item->perimeters = $item->perimeters->pluck('name')->implode(', ');
 
-                return $item->only(array_keys($this->columns));
-            });
+                          return $item->only(array_keys($this->columns));
+                      });
     }
 
 }

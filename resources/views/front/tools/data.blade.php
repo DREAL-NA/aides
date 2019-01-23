@@ -59,7 +59,7 @@
                     <h3>Flux RSS mis à disposition</h3>
                 </div>
                 <div class="item-content">
-                    <p>Ces flux permettent d'obtenir les derniers ajouts de dispositifs.</p>
+                    <p>Ces flux permettent d'obtenir les derniers ajouts d'aides.</p>
                     <ul>
                         @php($feeds = config('feed.feeds'))
 

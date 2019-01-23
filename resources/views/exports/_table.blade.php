@@ -4,10 +4,10 @@
         <th>Sous-thématique</th>
         <th>Intitulé</th>
         <th>Date de clôture</th>
-        <th>Porteur du dispositif</th>
-        <th>Périmètre</th>
+        <th>Financeurs des aides</th>
+        <th>Localisations</th>
         <th>Objectifs</th>
-        <th>Bénéficiaires</th>
+        <th>Vous êtes ?</th>
         <th>Dotation</th>
         <th>Relais technique DREAL / DDTMs</th>
         <th>Contact(s) porteur de projet</th>

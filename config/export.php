@@ -1,7 +1,7 @@
 <?php
 return [
     'creator' => "DREAL Nouvelle-Aquitaine",
-    'title' => "Dispositifs",
-    'subject' => "Dispositifs",
-    'description' => "Mise à disposition des dispositifs",
+    'title' => "Aides",
+    'subject' => "Aides",
+    'description' => "Mise à disposition des aides",
 ];

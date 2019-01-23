@@ -37,7 +37,7 @@ class AppServiceProvider extends ServiceProvider
                 $feedsThematic = [
                     'items' => ['App\CallForProjects@getFeedItemsByThematic', $thematic->id],
                     'url' => '/feed/thematic/' . $thematic->id,
-                    'title' => 'Les ' . config('feed.itemsPerFeed') . ' derniers dispositifs sur la thématique : ' . $thematic->name,
+                    'title' => 'Les ' . config('feed.itemsPerFeed') . ' dernières aides sur la thématique : ' . $thematic->name,
                 ];
 
                 config(['feed.feeds.thematic_' . $thematic->id => $feedsThematic]);
