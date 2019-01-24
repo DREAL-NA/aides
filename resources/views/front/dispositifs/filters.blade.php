@@ -1,7 +1,6 @@
 <div class="filters-dispositifs">
-    @if(isset($has_title) && $has_title === true)
-        <h4>Affiner votre recherche</h4>
-    @endif
+    <h5>Sélectionner un ou plusieurs choix</h5>
+
     <form action="{{ route('front.dispositifs', ['closed' => request('closed')]) }}" class="form-dispositifs form-filters" method="get">
         <div class="filter-items">
             @if(request()->routeIs('front.dispositifs'))
@@ -18,7 +17,9 @@
                         <option disabled>Vous êtes ?</option>
                         @foreach(\App\Beneficiary::types() as $key => $type)
                             @php($selected = (!empty(request()->get(\App\Beneficiary::URI_NAME)) && in_array($key, request()->get(\App\Beneficiary::URI_NAME))) ?: false)
-                            <option value="{{ $key }}" {{ $selected ? 'selected="selected"' : '' }}>{{ $type }}</option>
+                            <option value="{{ $key }}" {{ $selected ? 'selected="selected"' : '' }}>
+                                {{ $type . ($key !== \App\Beneficiary::TYPE_OTHER ?: '*') }}
+                            </option>
                         @endforeach
                     </select>
                 </div>
@@ -57,7 +58,7 @@
         </div>
 
         <div class="helps">
-            <p>Un autre acteur du territoire peut correspondre à : agence, centre, chambre, comité, communauté, coopérative, établissement, fédération, foyer, gestionnaire,
+            <p>* Un autre acteur du territoire peut correspondre à : agence, centre, chambre, comité, communauté, coopérative, établissement, fédération, foyer, gestionnaire,
                 institut, laboratoire, maître d’ouvrage, organisation, organisme, parc, personne morale, plateforme, pôle, porteur de projet, recherche, regroupement, société,
                 structure, syndicat, ...</p>
         </div>

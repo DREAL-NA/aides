@@ -91,7 +91,8 @@
 .filters-dispositifs {
     background-color: $color-3;
     color: $color-white;
-    padding: 30px 20px;
+    //padding: 30px 20px;
+    padding: 20px;
 
     .advanced-search & {
         margin: 30px -30px;
@@ -192,12 +193,7 @@
     .helps {
         margin-top: 30px;
         font-size: .85em;
-
-        p {
-            &:last-child {
-                margin: 0;
-            }
-        }
+        font-style: italic;
     }
 
     @include mobile {
@@ -474,6 +470,7 @@
     background-color: $color-3;
     color: $color-white;
     padding: 5px 15px;
+    font-size: 16px;
     text-decoration: none;
     transition: all 250ms ease-in-out;
 
