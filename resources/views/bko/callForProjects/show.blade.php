@@ -59,7 +59,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-3 control-label">Bénéficiaires</label>
+            <label class="col-lg-3 control-label">Vous êtes</label>
             <div class="col-lg-9">
                 @if(!empty($callForProjects->beneficiaries))
                     @foreach($callForProjects->beneficiaries as $beneficiary)
@@ -73,7 +73,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-3 control-label">Bénéficiaires - Observations</label>
+            <label class="col-lg-3 control-label">Vous êtes - Observations</label>
             <p class="form-control-static">{!! nl2br($callForProjects->beneficiary_comments) !!}</p>
         </div>
         <div class="form-group">

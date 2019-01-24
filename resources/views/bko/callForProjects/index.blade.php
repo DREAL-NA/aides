@@ -67,7 +67,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="filter__beneficiary">Vous êtes qui ?</label>
+                    <label for="filter__beneficiary">Vous êtes ?</label>
                     <select id="filter__beneficiary" class="form-control select2-filter" multiple="multiple">
                         <option></option>
                         @foreach(\App\Beneficiary::types() as $type)
@@ -95,7 +95,7 @@
                     <th>Localisations</th>
                     <th>Objectifs</th>
                     <th></th>
-                    <th>Bénéficiaires</th>
+                    <th>Vous êtes</th>
                     <th></th>
                 </tr>
                 </thead>

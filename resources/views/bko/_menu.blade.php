@@ -41,7 +41,7 @@
             </ul>
         </div>
         <div class="menu-category">
-            <h5 class="category-title">Localisations</h5>
+            <h5 class="category-title">Votre localisation</h5>
             <ul class="menu">
                 <li class="menu-item"><a href="{{ route('bko.perimetre.index') }}">Liste des localisations</a></li>
                 <li class="menu-item"><a href="{{ route('bko.perimetre.create') }}">Ajouter une localisation</a></li>
@@ -49,7 +49,7 @@
             </ul>
         </div>
         <div class="menu-category">
-            <h5 class="category-title">Bénéficiaires</h5>
+            <h5 class="category-title">Vous êtes ?</h5>
             <ul class="menu">
                 <li class="menu-item"><a href="{{ route('bko.beneficiaire.index') }}">Liste des bénéficiaires</a></li>
                 <li class="menu-item"><a href="{{ route('bko.beneficiaire.create') }}">Ajouter un bénéficiaire</a></li>

@@ -154,7 +154,7 @@ return [
         'project_holder_id' => 'financeur des aides',
         'perimeter_id' => 'localisation',
         'objectives' => 'objectifs',
-        'beneficiary_id' => 'bénéficiaire',
+        'beneficiary_id' => 'vous êtes',
         'allocation_global' => 'dotation globale',
         'allocation_per_project' => 'dotation par projet',
         'website_url' => 'adresse internet',
