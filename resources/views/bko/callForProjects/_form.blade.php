@@ -117,7 +117,7 @@
         <textarea class="form-control" rows="3" name="objectives" id="objectives">{{ old('objectives', $callForProjects->objectives) }}</textarea>
     </div>
     <div class="form-group">
-        <label for="beneficiary_id">Vous êtes</label>
+        <label for="beneficiary_id">Vous êtes ?</label>
         <div class="input-group">
             <select name="beneficiaries[]" id="beneficiary_id" class="form-control select2-allow-clear" multiple>
                 @if(!$callForProjects->beneficiaries->isEmpty())
@@ -132,7 +132,7 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="beneficiary_comments">Vous êtes - Observations</label>
+        <label for="beneficiary_comments">Vous êtes ? - Observations</label>
         <textarea class="form-control" rows="3" name="beneficiary_comments"
                   id="beneficiary_comments">{{ old('beneficiary_comments', $callForProjects->beneficiary_comments) }}</textarea>
     </div>

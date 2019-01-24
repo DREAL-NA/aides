@@ -95,7 +95,7 @@
                     <th>Localisations</th>
                     <th>Objectifs</th>
                     <th></th>
-                    <th>Vous êtes</th>
+                    <th>Vous êtes ?</th>
                     <th></th>
                 </tr>
                 </thead>
