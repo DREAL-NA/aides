@@ -106,8 +106,10 @@ class CallsForProjects
         if (!empty($paramPerims = $request->get(Perimeter::URI_NAME))) {
 //            $this->parameters['perimeter'] = collect($paramPerims);
 
+            $this->parameters['perimeter_init'] = collect($paramPerims);
+
             // get perimeters with their parents
-            $perimeters = Perimeter::has('parents')->with('parents:id')->whereIn('id', $paramPerims)->get(['id']);
+            $perimeters = Perimeter::has('parents')->with('parents:id')->whereIn('id', $this->parameters['perimeter_init'])->get(['id']);
 
             // Perimeters will have the fitlered ones and their parents
             $this->parameters['perimeter'] = collect($paramPerims)

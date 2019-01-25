@@ -29,7 +29,7 @@ class CallForProjectsController extends Controller
         $perimeters = Perimeter::orderBy('name', 'asc')->get();
         $project_holders = ProjectHolder::orderBy('name', 'asc')->get();
 
-        $paramsPerimeters = $callsForProjectsResource->parameters['perimeter'] ?? null;
+        $paramsPerimeters = $callsForProjectsResource->parameters['perimeter_init'] ?? null;
 
         return view(
             'front.call-for-projects',
