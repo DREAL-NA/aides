@@ -104,34 +104,34 @@ class CallsForProjects
 
         // Check if we have perimeters
         if (!empty($paramPerims = $request->get(Perimeter::URI_NAME))) {
-            $this->parameters['perimeter'] = collect($paramPerims);
-        }
+//            $this->parameters['perimeter'] = collect($paramPerims);
 
-        // Check if we have a quick search on perimeters
-//        if (
-//            !empty($paramPerimExt = $request->get(Perimeter::URI_NAME . '_ext'))
-//            && !is_null($perimeterExtended = Perimeter::with('parents')->whereId($paramPerimExt)->first())
-//        ) {
-//            $this->parameters['perimeter'] = collect([$perimeterExtended->id])->push($perimeterExtended->parents->pluck('id'))->flatten();
-//        }
+            // get perimeters with their parents
+            $perimeters = Perimeter::has('parents')->with('parents:id')->whereIn('id', $paramPerims)->get(['id']);
+
+            // Perimeters will have the fitlered ones and their parents
+            $this->parameters['perimeter'] = collect($paramPerims)
+                ->push(
+                // The parents are pushed here
+                    $perimeters->map(function ($perimeter) {
+                        return $perimeter->parents->pluck('id')->flatten();
+                    })
+                )
+                ->flatten()->unique()->filter();
+
+            if (!empty($this->parameters['perimeter'])) {
+                $this->instance->whereIn('perimeters.id', $this->parameters['perimeter']->toArray());
+
+                $this->setPaginationAppend(Perimeter::URI_NAME, $this->parameters['perimeter']->all());
+            }
+
+        }
 
         // According perimeters parameter
-        if (!is_null($this->parameters['perimeter'])) {
-//            $this->instance->whereHas('perimeters', function ($query) {
-//                $query->whereIn('perimeter_id', array_filter($this->parameters['perimeter']));
-//            });
 
-            $this->instance->whereIn('perimeters.id', $this->parameters['perimeter']->filter()->toArray());
-
-            $this->setPaginationAppend(Perimeter::URI_NAME, $this->parameters['perimeter']->all());
-        }
 
         // According thematics parameter
         if (!empty($paramThema = $request->get(Thematic::URI_NAME_THEMATIC))) {
-//            $this->instance->whereHas('thematic', function ($query) use ($paramThema) {
-//                $query->whereIn('thematic_id', array_filter($paramThema));
-//            });
-
             $this->instance->whereIn('thematic_id', array_filter($paramThema));
 
             $this->setPaginationAppend(Thematic::URI_NAME_THEMATIC, $paramThema);
@@ -145,10 +145,6 @@ class CallsForProjects
 
         // According project holders parameter
         if (!empty($paramProjHold = $request->get(ProjectHolder::URI_NAME))) {
-//            $this->instance->whereHas('projectHolders', function ($query) use ($paramProjHold) {
-//                $query->whereIn('project_holder_id', array_filter($paramProjHold));
-//            });
-
             $this->instance->whereIn('project_holders.id', array_filter($paramProjHold));
 
             $this->setPaginationAppend(ProjectHolder::URI_NAME, $paramProjHold);
@@ -156,10 +152,6 @@ class CallsForProjects
 
         // According beneficiaries parameter
         if (!empty($paramBenef = $request->get(Beneficiary::URI_NAME))) {
-//            $this->instance->whereHas('beneficiaries', function ($query) use ($paramBenef) {
-//                $query->whereIn('type', array_filter($paramBenef));
-//            });
-
             $this->instance->whereIn('beneficiaries.type', array_filter($paramBenef));
 
             $this->setPaginationAppend(Beneficiary::URI_NAME, $paramBenef);

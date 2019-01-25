@@ -18,7 +18,7 @@
                         @foreach(\App\Beneficiary::types() as $key => $type)
                             @php($selected = (!empty(request()->get(\App\Beneficiary::URI_NAME)) && in_array($key, request()->get(\App\Beneficiary::URI_NAME))) ?: false)
                             <option value="{{ $key }}" {{ $selected ? 'selected="selected"' : '' }}>
-                                {{ $type . ($key !== \App\Beneficiary::TYPE_OTHER ?: '*') }}
+                                {{ $type . ($key === \App\Beneficiary::TYPE_OTHER ? '*' : '') }}
                             </option>
                         @endforeach
                     </select>
