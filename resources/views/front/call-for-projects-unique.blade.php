@@ -148,7 +148,7 @@
                             </p>
                         </div>
                     @endif
-                    @if(!empty($files = $callForProjects->getFiles()))
+                    @if(!empty($files = $callForProjects->getFiles()) && !$files->isEmpty())
                         <div class="item-content">
                             <strong>Fichiers associés</strong>
 
