@@ -148,14 +148,17 @@
                             </p>
                         </div>
                     @endif
-                    @if(!empty($file = $callForProjects->getFile()))
+                    @if(!empty($files = $callForProjects->getFiles()))
                         <div class="item-content">
-                            <strong>Fichier associé</strong>
-                            <p>
-                                <a href="{{ $file }}" target="_blank" title="Télécharger le fichier - Ouvrir dans une nouvelle fenêtre">
-                                    Télécharger le fichier <i class="fa fa-external-link" aria-hidden="true"></i>
-                                </a>
-                            </p>
+                            <strong>Fichiers associés</strong>
+
+                            @foreach($files as $file)
+                                <div>
+                                    <a href="{{ $file->getUrl() }}" target="_blank" title="Télécharger le fichier - Ouvrir dans une nouvelle fenêtre">
+                                        Télécharger le fichier <i class="fa fa-external-link" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                     @endif
                 </div>

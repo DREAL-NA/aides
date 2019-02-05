@@ -150,16 +150,20 @@
                                             </div>
                                         </div>
                                     @endif
-                                    @if(!empty($file = $callForProjects->getFile()))
+                                    @if(!empty($files = $callForProjects->getFiles()))
                                         <div class="common-data">
-                                            <span class="label">Fichier associé :</span>
+                                            <span class="label">Fichiers associés :</span>
                                             <div class="items">
-                                                <a class="external-link" href="{{ $file }}"
-                                                   target="_blank"
-                                                   title="Télécharger le fichier - Ouvrir dans une nouvelle fenêtre">
-                                                    Télécharger le fichier
-                                                    <i class="fa fa-external-link" aria-hidden="true"></i>
-                                                </a>
+                                                @foreach($files as $file)
+                                                    <div>
+                                                        <a class="external-link" href="{{ $file->getUrl() }}"
+                                                           target="_blank"
+                                                           title="Télécharger le fichier - Ouvrir dans une nouvelle fenêtre">
+                                                            Télécharger le fichier
+                                                            <i class="fa fa-external-link" aria-hidden="true"></i>
+                                                        </a>
+                                                    </div>
+                                                @endforeach
                                             </div>
                                         </div>
                                     @endif
