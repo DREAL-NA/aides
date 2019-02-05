@@ -155,7 +155,7 @@ class CallForProjects extends Model implements Feedable, HasMedia
 
     public function editor()
     {
-        return $this->belongsTo(User::class, 'editor_id');
+        return $this->belongsTo(User::class, 'editor_id')->withTrashed();
     }
 
     public function scopeClosed($query)
