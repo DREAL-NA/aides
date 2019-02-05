@@ -241,7 +241,6 @@
             });
 
             $('#save__modalNewBeneficiary').on('click', function () {
-                console.log('{{ action('Bko\BeneficiaryController@store') }}');
                 window.utils.saveNewItem('modalNewBeneficiary', '{{ action('Bko\BeneficiaryController@store') }}', 'beneficiary_id');
             });
 

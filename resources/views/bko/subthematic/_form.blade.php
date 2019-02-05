@@ -45,6 +45,7 @@
                 ajax: window.utils.select2__ajaxOptions('{{ route('bko.thematic.select2') }}')
             })
 
+            @if(empty($modal))
             $('#save__modalNewThematic').on('click', function () {
                 window.utils.saveNewItem('modalNewThematic', '{{ action('Bko\ThematicController@store') }}', 'parent_id');
             });
@@ -54,22 +55,25 @@
                 _this.find('input[type="text"], textarea').val('');
                 _this.find('input[type="radio"], input[type="checkbox"]').prop('checked', false);
             });
+            @endif
         })(jQuery);
     </script>
 @endpush
 
-@component('bko.components.modals._default')
-    @slot('id', 'modalNewThematic')
-    @slot('title', "Ajout d'une thématique")
-    @slot('slot')
-        @include('bko.components.forms._default', [
-            'model' => new \App\Thematic(),
-            'options' => [ 'method' => 'POST', 'url' => '#' ],
-            'modal' => 'modalNewThematic',
-        ])
-    @endslot
-    @slot('footer')
-        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-        <button type="button" class="btn btn-primary" id="save__modalNewThematic">Ajouter</button>
-    @endslot
-@endcomponent
+@if(empty($modal))
+    @component('bko.components.modals._default')
+        @slot('id', 'modalNewThematic')
+        @slot('title', "Ajout d'une thématique")
+        @slot('slot')
+            @include('bko.components.forms._default', [
+                'model' => new \App\Thematic(),
+                'options' => [ 'method' => 'POST', 'url' => '#' ],
+                'modal' => 'modalNewThematic',
+            ])
+        @endslot
+        @slot('footer')
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            <button type="button" class="btn btn-primary" id="save__modalNewThematic">Ajouter</button>
+        @endslot
+    @endcomponent
+@endif
