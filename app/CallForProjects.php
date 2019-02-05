@@ -122,9 +122,16 @@ class CallForProjects extends Model implements Feedable, HasMedia
             'technical_relay' => 'nullable',
             'website_url' => 'nullable|url',
             // Max file size : 5MB
-            'file' => 'file|max:5120',
+//            'file' => 'file|max:5120',
             'is_news' => 'required|in:0,1',
         ];
+
+        // File validation
+        // Max file size : 5MB
+        $files = count($this->input('file'));
+        foreach (range(0, $files) as $index) {
+            $rules['file.' . $index] = 'file|max:5120';
+        }
     }
 
     public function thematic()
@@ -310,30 +317,33 @@ class CallForProjects extends Model implements Feedable, HasMedia
         return preg_replace('#<br\s*/?>#i', "", $value);
     }
 
-    public function normalizeFilename()
+    public function normalizeFilename($file)
     {
         if (!request()->has('file')) {
             throw new FileNotFoundException('No input file.');
         }
 
-        return str_slug($this->name) . '.' . request()->file('file')->getClientOriginalExtension();
+        return str_slug(explode('.', $file->getClientOriginalName())[0]) . '.' . $file->getClientOriginalExtension();
     }
 
-    public function addFile()
+    public function addFiles()
     {
         $this->clearMediaCollection(static::MEDIA_COLLECTION);
-        $this->addMediaFromRequest('file')
-             ->usingFileName($this->normalizeFilename())
-             ->toMediaCollection(static::MEDIA_COLLECTION);
+
+        foreach (request()->file as $key => $file) {
+            $this->addMedia($file)
+                 ->usingFileName($this->normalizeFilename($file))
+                 ->toMediaCollection(static::MEDIA_COLLECTION);
+        }
     }
 
-    public function getFile()
+    public function getFiles()
     {
-        if (empty($file = $this->getFirstMedia(static::MEDIA_COLLECTION))) {
+        if (empty($files = $this->getMedia(static::MEDIA_COLLECTION))) {
             return null;
         }
 
-        return $file->getUrl();
+        return $files;
     }
 
 

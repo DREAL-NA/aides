@@ -173,13 +173,17 @@
 
     <div class="form-group">
         <label for="file">Fichier</label>
-        @if(!empty($file = $callForProjects->getFile()))
-            <div>
-                <a href="{{ $file }}" target="_blank">{{ $file }}</a>
-            </div>
+        @if(!empty($files = $callForProjects->getFiles()))
+            @foreach($files as $file)
+                <div>
+                    <a href="{{ $file->getUrl() }}" target="_blank">{{ $file->file_name }}</a>
+                </div>
+            @endforeach
+
             <br>
         @endif
-        <input type="file" name="file" id="file" value="{{ old('file') }}">
+
+        <input type="file" name="file[]" id="file" value="{{ old('file') }}" multiple>
     </div>
 
     <button type="submit" class="btn btn-primary">Enregistrer</button>
@@ -202,6 +206,25 @@
 
         (function ($) {
             "use strict";
+
+            {{--$('#fileupload').fileupload({--}}
+            {{--url: "{{ $options['url'] }}",--}}
+            {{--type: 'PUT',--}}
+            {{--dataType: 'json',--}}
+            {{--done: function (e, data) {--}}
+            {{--$.each(data.result.files, function (index, file) {--}}
+            {{--$('<p/>').text(file.name).appendTo('#files');--}}
+            {{--});--}}
+            {{--},--}}
+            {{--progressall: function (e, data) {--}}
+            {{--var progress = parseInt(data.loaded / data.total * 100, 10);--}}
+            {{--$('#progress .progress-bar').css(--}}
+            {{--'width',--}}
+            {{--progress + '%'--}}
+            {{--);--}}
+            {{--}--}}
+            {{--}).prop('disabled', !$.support.fileInput)--}}
+            {{--.parent().addClass($.support.fileInput ? undefined : 'disabled');--}}
 
             initSubthematicData(true);
 

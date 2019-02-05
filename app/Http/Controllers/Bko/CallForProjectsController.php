@@ -123,7 +123,7 @@ class CallForProjectsController extends Controller
         $callForProjects->save();
 
         if (!empty($request->file('file'))) {
-            $callForProjects->addFile();
+            $callForProjects->addFiles();
         }
 
         return redirect(route('bko.call.edit', $callForProjects))
@@ -176,7 +176,7 @@ class CallForProjectsController extends Controller
         $callForProjects->save();
 
         if (!empty($request->file('file'))) {
-            $callForProjects->addFile();
+            $callForProjects->addFiles();
         }
 
         return redirect(route('bko.call.edit', $callForProjects))

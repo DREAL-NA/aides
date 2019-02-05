@@ -7,28 +7,28 @@
  */
 
 try {
-	window.$ = window.jQuery = require('jquery');
+    window.$ = window.jQuery = require('jquery');
 
-	require('bootstrap-sass');
-	require('eonasdan-bootstrap-datetimepicker');
-	require('select2');
-	require('select2/dist/js/i18n/fr')
+    require('bootstrap-sass');
+    require('eonasdan-bootstrap-datetimepicker');
+    require('select2');
+    require('select2/dist/js/i18n/fr')
 
-	require('./utils');
+    require('./utils');
 
-	// Datatables plugin
-	require('datatables.net');
-	require('datatables.net-bs');
-	require('datatables.net-responsive');
-	require('datatables.net-responsive-bs');
-	require('mark.js')
+    // Datatables plugin
+    require('datatables.net');
+    require('datatables.net-bs');
+    require('datatables.net-responsive');
+    require('datatables.net-responsive-bs');
+    require('mark.js')
 
-	require('datatables.mark.js/dist/datatables.mark.es6')
+    require('datatables.mark.js/dist/datatables.mark.es6')
 
-	// Defaults for plugins
-	require('./bootstrap-default');
-	require('./select2-default');
-	require('./datatables-default');
+    // Defaults for plugins
+    require('./bootstrap-default');
+    require('./select2-default');
+    require('./datatables-default');
 
 } catch (e) {
 }
@@ -42,12 +42,12 @@ try {
 let token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
-	$.ajaxSetup({
-		beforeSend: function (xhr) {
-			xhr.setRequestHeader("X-CSRF-TOKEN", token.content);
-		}
-	});
-	// window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+    $.ajaxSetup({
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("X-CSRF-TOKEN", token.content);
+        }
+    });
+    // window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 } else {
-	console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
