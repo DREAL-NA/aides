@@ -173,7 +173,7 @@
 
     <div class="form-group">
         <label for="file">Fichier</label>
-        @if(!empty($files = $callForProjects->getFiles()))
+        @if(!empty($files = $callForProjects->getFiles()) && !$files->isEmpty())
             @foreach($files as $file)
                 <div>
                     <a href="{{ $file->getUrl() }}" target="_blank">{{ $file->file_name }}</a>

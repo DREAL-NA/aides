@@ -150,7 +150,7 @@
                                             </div>
                                         </div>
                                     @endif
-                                    @if(!empty($files = $callForProjects->getFiles()))
+                                    @if(!empty($files = $callForProjects->getFiles()) && !$files->isEmpty())
                                         <div class="common-data">
                                             <span class="label">Fichiers associés :</span>
                                             <div class="items">
