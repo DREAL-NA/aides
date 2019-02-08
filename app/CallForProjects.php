@@ -32,7 +32,7 @@ class CallForProjects extends Model implements Feedable, HasMedia
 
     protected $hidden = ['is_news', 'deleted_at', 'editor_id'];
 
-    protected $touches = ['perimeters', 'beneficiaries', 'projectHolders', 'thematic', 'subthematic'];
+//    protected $touches = ['perimeters', 'beneficiaries', 'projectHolders', 'thematic', 'subthematic'];
 
     const MEDIA_COLLECTION = 'calls_for_projects';
 
@@ -57,6 +57,8 @@ class CallForProjects extends Model implements Feedable, HasMedia
             $model->projectHolders()->sync(request()->get('project_holders'));
             $model->perimeters()->sync(request()->get('perimeters'));
             $model->beneficiaries()->sync(request()->get('beneficiaries'));
+
+            $model->searchable();
         });
     }
 

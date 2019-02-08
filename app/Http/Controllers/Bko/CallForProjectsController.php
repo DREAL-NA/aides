@@ -120,7 +120,10 @@ class CallForProjectsController extends Controller
         }
 
         $callForProjects->fill(array_except($validatedData, ['perimeters', 'project_holders', 'beneficiaries']));
-        $callForProjects->save();
+
+        CallForProjects::withoutSyncingToSearch(function () use ($callForProjects) {
+            $callForProjects->save();
+        });
 
         if (!empty($request->file('file'))) {
             $callForProjects->addFiles();
@@ -173,7 +176,10 @@ class CallForProjectsController extends Controller
         }
 
         $callForProjects->fill(array_except($validatedData, ['perimeters', 'project_holders', 'beneficiaries']));
-        $callForProjects->save();
+
+        CallForProjects::withoutSyncingToSearch(function () use ($callForProjects) {
+            $callForProjects->save();
+        });
 
         if (!empty($request->file('file'))) {
             $callForProjects->addFiles();
