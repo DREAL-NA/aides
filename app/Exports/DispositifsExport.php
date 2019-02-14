@@ -9,23 +9,23 @@ class DispositifsExport extends GlobalExport implements GlobalExportInterface
     protected $columns = [
         // These names are chosen to ease reuse and match existing similar datasets.
         // See https://www.ademe.fr/sites/default/files/assets/documents/aides_financieres_-_description_du_jeu_de_donnees_.pdf and https://github.com/MTES-MCT/aides-territoires/blob/9dd1ba9dcd076a6406c6684bbd907a04ad8f22d7/src/aids/models.py
-        'thematique' => 'Thématique de l\'aide.',
-        'sousThematique' => 'Sous-thématique de l\'aide.',
-        'titre' => 'Nom de l\'aide.',
-        'dateCloture' => 'Date maximale à laquelle la demande d’attribution doit être envoyée, au format ISO (AAAA-MM-JJ).',
+        'thematique' => "Thématique de l'aide.",
+        'sousThematique' => "Sous-thématique de l'aide.",
+        'titre' => "Nom de l'aide.",
+        'dateCloture' => "Date maximale à laquelle la demande d’attribution doit être envoyée, au format ISO (AAAA-MM-JJ).",
         // ISO format used for dates in ADEME dataset
-        'nomAttribuant' => 'Nom de l’organisme attribuant la subvention ou émettant l’appel à projets.',
+        'nomAttribuant' => "Nom de l’organisme attribuant la subvention ou émettant l’appel à projets.",
         // used in ADEME dataset
-        'perimetres' => 'Localisation géographique ou administratif de l\'aide.',
-        'objet' => 'Description des objectifs de l\'aide.',
+        'perimetres' => "Localisation géographique ou administratif de l'aide.",
+        'objet' => "Description des objectifs de l'aide.",
         // used in ADEME dataset
-        'publicsBeneficiaires' => 'Types d’acteurs éligibles à l\'aide.',
-        'publicsBeneficiairesDetails' => 'Conditions supplémentaires d’éligibilité à l\'aide.',
-        'dotationMontant' => 'Montant de l’éventuelle dotation financière de l\'aide, dans un format textuel non normalisé.',
-        'dotationDetails' => 'Modalités d’attribution de la dotation.',
-        'contactDREALDDTMs' => 'Contact technique au sein de la DREAL.',
-        'contactAttribuant' => 'Contact au sein de l’organisme attribuant la subvention ou émettant l’appel à projets.',
-        'URL' => 'Adresse web à laquelle des détails supplémentaires peuvent être obtenus sur l\'aide.'
+        'publicsBeneficiaires' => "Types d’acteurs éligibles à l'aide.",
+        'publicsBeneficiairesDetails' => "Conditions supplémentaires d’éligibilité à l'aide.",
+        'dotationMontant' => "Montant de l’éventuelle dotation financière de l'aide, dans un format textuel non normalisé.",
+        'dotationDetails' => "Modalités d’attribution de la dotation.",
+        'contactDREALDDTMs' => "Contact technique au sein de la DREAL.",
+        'contactAttribuant' => "Contact au sein de l’organisme attribuant la subvention ou émettant l’appel à projets.",
+        'URL' => "Adresse web à laquelle des détails supplémentaires peuvent être obtenus sur l'aide."
     ];
 
     protected function filename()

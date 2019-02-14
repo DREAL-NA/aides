@@ -210,9 +210,24 @@ class CallsForProjects
     {
         $this->prepare();
 
-        $result = $this->instance->get();
+        $countCalls = $this->instance->count();
 
-        $result->load($this->relations);
+        $offset = 0;
+
+        $result = collect();
+        while ($offset < $countCalls) {
+            $result = $result->merge(
+                $this->instance
+                    ->with([
+                        'length' => 100,
+                        'offset' => $offset
+                    ])
+                    ->get()
+                    ->load($this->relations)
+            );
+            
+            $offset += 50;
+        }
 
         return $result;
     }
