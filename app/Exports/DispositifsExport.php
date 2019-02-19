@@ -28,6 +28,14 @@ class DispositifsExport extends GlobalExport implements GlobalExportInterface
         'URL' => "Adresse web à laquelle des détails supplémentaires peuvent être obtenus sur l'aide."
     ];
 
+    protected $withDates = false;
+
+    public function __construct()
+    {
+        $this->setWithDates();
+        $this->setColumns();
+    }
+
     protected function filename()
     {
         return 'aides_' . date('YmdHis');
@@ -74,7 +82,34 @@ class DispositifsExport extends GlobalExport implements GlobalExportInterface
                 $item->technical_relay,
                 $item->project_holder_contact,
                 $item->website_url,
+                $this->withDates ? $item->created_at : null,
+                $this->withDates ? $item->updated_at : null,
             ];
         });
+    }
+
+    protected function setColumns()
+    {
+        if (empty($columns = request()->get('columns'))) {
+            return false;
+        }
+
+        if ($columns === 'key') {
+            $this->columns = array_keys($this->columns);
+        }
+    }
+
+    protected function setWithDates()
+    {
+        if (empty($withDates = request()->get('withDates'))) {
+            return false;
+        }
+
+        $this->withDates = (boolean)$withDates;
+
+        if ($this->withDates) {
+            $this->columns['createdAt'] = "Date de création de l'aide";
+            $this->columns['updatedAt'] = "Date de dernière modification de l'aide";
+        }
     }
 }
