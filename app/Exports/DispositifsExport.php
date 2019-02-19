@@ -30,8 +30,12 @@ class DispositifsExport extends GlobalExport implements GlobalExportInterface
 
     protected $withDates = false;
 
-    public function __construct()
+    public function __construct($params = null)
     {
+        if (isset($params['withDates'])) {
+            $this->withDates = $params['withDates'];
+        }
+
         $this->setWithDates();
         $this->setColumns();
     }
@@ -101,11 +105,9 @@ class DispositifsExport extends GlobalExport implements GlobalExportInterface
 
     protected function setWithDates()
     {
-        if (empty($withDates = request()->get('withDates'))) {
-            return false;
+        if (!is_null($withDates = request()->get('withDates'))) {
+            $this->withDates = (boolean)$withDates;
         }
-
-        $this->withDates = (boolean)$withDates;
 
         if ($this->withDates) {
             $this->columns['createdAt'] = "Date de création de l'aide";

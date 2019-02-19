@@ -43,7 +43,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach((new App\Exports\DispositifsExport())->columnsWithDescription() as $column => $description)
+                        @foreach((new App\Exports\DispositifsExport(['withDates' => true]))->columnsWithDescription() as $column => $description)
                             <tr>
                                 <td><samp>{{ $column }}</samp></td>
                                 <td>{{ $description }}</td>
