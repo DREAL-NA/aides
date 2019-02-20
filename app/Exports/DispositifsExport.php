@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\CallForProjects;
 use App\Resources\CallsForProjects;
 
 class DispositifsExport extends GlobalExport implements GlobalExportInterface
@@ -52,7 +53,19 @@ class DispositifsExport extends GlobalExport implements GlobalExportInterface
 
     public function collection()
     {
-        return (new CallsForProjects())->get()->map(function ($item) {
+        if (!request()->has('query')) {
+            $result = CallForProjects::with([
+                'thematic',
+                'subthematic',
+                'projectHolders',
+                'perimeters',
+                'beneficiaries'
+            ])->get();
+        } else {
+            $result = (new CallsForProjects())->get();
+        }
+
+        return $result->map(function ($item) {
             $allocations = [];
             if (!empty($item->allocation_global)) {
                 $allocations[] = 'Globale';
