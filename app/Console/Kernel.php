@@ -37,7 +37,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('newsletter:sync')->dailyAt('02:00');
 
         // Re-import Scout data in Algolia
-        $schedule->command('scout:reimport')->runInBackground()->cron('12 10,13,18 * * *');
+        $schedule->command('scout:reimport')->runInBackground()->cron('12 9,12,15,18 * * *');
     }
 
     /**
