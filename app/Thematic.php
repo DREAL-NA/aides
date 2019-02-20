@@ -31,15 +31,15 @@ class Thematic extends Model
             }
         });
 
-        static::saved(function ($model) {
-            $model->callsForProjectsThematic->filter(function ($item) {
-                return $item->shouldBeSearchable();
-            })->searchable();
-
-            $model->callsForProjectsSubthematic->filter(function ($item) {
-                return $item->shouldBeSearchable();
-            })->searchable();
-        });
+//        static::saved(function ($model) {
+//            $model->callsForProjectsThematic->filter(function ($item) {
+//                return $item->shouldBeSearchable();
+//            })->searchable();
+//
+//            $model->callsForProjectsSubthematic->filter(function ($item) {
+//                return $item->shouldBeSearchable();
+//            })->searchable();
+//        });
     }
 
 

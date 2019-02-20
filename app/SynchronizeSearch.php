@@ -4,7 +4,7 @@ namespace App;
 
 trait SynchronizeSearch
 {
-    protected static function boot()
+    protected static function bootSynchronizeSearch()
     {
         parent::boot();
 
