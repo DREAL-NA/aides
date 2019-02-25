@@ -63,7 +63,7 @@
             <h4>Comment ?</h4>
             <ul>
                 <li style="font-size: 1.2em;">Pour accéder au site : <a
-                            href="http://aides-developpement-nouvelle-aquitaine.fr/">http://aides-developpement-nouvelle-aquitaine.fr/</a></li>
+                            href="{{ config('app.url') }}">{{ config('app.url') }}</a></li>
                 <li><strong>Le site internet recense quotidiennement les aides</strong> et chaque vendredi à 13h00, une actualité des aides de la semaine vous est envoyée.
                     Inscrivez-vous à notre newsletter (directement sur le site)!
                 </li>
