@@ -24,7 +24,7 @@
             <br>
             <br>
 
-            <h4>Cette démarche a pour objectif la mobilisation des aides disponibles* pour les projets en Nouvelle-Aquitaine.</h4>
+            <h4>Cette démarche a pour objectif la mobilisation des aides disponibles pour les projets en Nouvelle-Aquitaine.</h4>
 
             <br>
 
