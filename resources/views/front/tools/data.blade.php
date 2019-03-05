@@ -22,7 +22,8 @@
                 </div>
                 <div class="item-content">
                     <p class="text-center">
-                        <a class="btn btn-primary btn-lg" href="{{ route('export.csv', ['table' => 'dispositifs', 'columns' => 'key', 'withDates' => true]) }}" target="_blank">
+                        <a class="btn btn-primary btn-lg" href="{{ route('export.csv', ['table' => 'dispositifs', 'columns' => 'key', 'withDates' => true, 'sep' => 'pipe']) }}"
+                           target="_blank">
                             <i class="fa fa-file-text-o" aria-hidden="true"></i>
                             Télécharger au format CSV
                         </a>
