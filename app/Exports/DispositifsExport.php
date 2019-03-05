@@ -65,7 +65,9 @@ class DispositifsExport extends GlobalExport implements GlobalExportInterface
             $result = (new CallsForProjects())->get();
         }
 
-        return $result->map(function ($item) {
+        $separator = $this->getSeparator();
+
+        return $result->map(function ($item) use ($separator) {
             $allocations = [];
             if (!empty($item->allocation_global)) {
                 $allocations[] = 'Globale';
@@ -89,10 +91,10 @@ class DispositifsExport extends GlobalExport implements GlobalExportInterface
                 empty($item->subthematic) ? '' : $item->subthematic->name,
                 $item->name,
                 empty($item->closing_date) ? '' : $item->closing_date->format('Y-m-d'),
-                empty($item->projectHolders) ? '' : implode(', ', $item->projectHolders->pluck('name')->all()),
-                empty($item->perimeters) ? '' : implode(', ', $item->perimeters->pluck('name')->all()),
+                empty($item->projectHolders) ? '' : implode($separator, $item->projectHolders->pluck('name')->all()),
+                empty($item->perimeters) ? '' : implode($separator, $item->perimeters->pluck('name')->all()),
                 $item->objectives,
-                empty($item->beneficiaries) ? '' : implode(', ', $item->beneficiaries->pluck('name_complete')->all()),
+                empty($item->beneficiaries) ? '' : implode($separator, $item->beneficiaries->pluck('name_complete')->all()),
                 $item->beneficiary_comments,
                 $item->allocation_amount,
                 $alloc_text,
@@ -126,5 +128,14 @@ class DispositifsExport extends GlobalExport implements GlobalExportInterface
             $this->columns['createdAt'] = "Date de création de l'aide";
             $this->columns['updatedAt'] = "Date de dernière modification de l'aide";
         }
+    }
+
+    protected function getSeparator()
+    {
+        if (request()->get('sep') === 'pipe') {
+            return '<|>';
+        }
+
+        return ', ';
     }
 }
