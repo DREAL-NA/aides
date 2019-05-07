@@ -2911,7 +2911,7 @@ body.vex-open {
 }
 
 .vex.vex-theme-plain .vex-dialog-button.vex-dialog-button-primary {
-  background: #96c5a4;
+  background: #379683;
 }
 
 .vex.vex-theme-plain .vex-dialog-form .vex-dialog-message {
@@ -7865,7 +7865,7 @@ Basic style
 }
 
 .pagination li.active a, .pagination li.active span {
-  background-color: #96c5a4;
+  background-color: #379683;
   color: #FFFFFF;
 }
 
@@ -7904,8 +7904,8 @@ Basic style
 
 .pagination .current {
   /* selected number */
-  background-color: #96c5a4;
-  border-color: #96c5a4;
+  background-color: #379683;
+  border-color: #379683;
   color: #FFFFFF;
   pointer-events: none;
 }
@@ -8115,7 +8115,7 @@ No space - remove distance between list items
 .submit-button {
   display: block;
   margin: 30px auto;
-  background-color: #96c5a4;
+  background-color: #379683;
   color: #FFFFFF;
   font-size: 1.2em;
   padding: 10px 50px;
@@ -8554,7 +8554,7 @@ text-align:left;
 }
 
 .filters-dispositifs .filter-item.filter-item-checkbox .tgl-light:checked + .tgl-btn {
-  background: #96c5a4;
+  background: #379683;
 }
 
 .filters-dispositifs .filter-item.filter-item-checkbox > label {
@@ -8613,7 +8613,7 @@ text-align:left;
 }
 
 .filters-dispositifs .form-action .submit-filters {
-  background-color: #96c5a4;
+  background-color: #379683;
   color: #FFFFFF;
   font-weight: 500;
 }
@@ -8797,7 +8797,7 @@ text-align:left;
 .dispositif-item .middle .thematic {
   font-size: 1.15em;
   font-family: "Roboto Condensed", sans-serif;
-  color: #96c5a4;
+  color: #379683;
   font-weight: 700;
   text-align: right;
   margin-bottom: 15px;
@@ -8837,7 +8837,7 @@ text-align:left;
   margin-bottom: -1px;
   color: inherit;
   text-decoration: none;
-  background-color: #96c5a4;
+  background-color: #379683;
   color: #FFFFFF;
   -webkit-transition: all 250ms ease-in-out;
   transition: all 250ms ease-in-out;
