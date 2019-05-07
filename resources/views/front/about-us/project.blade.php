@@ -71,11 +71,6 @@
 
             <br>
 
-            <h3 class="text-center"><span style="text-decoration: underline">Vous pouvez être contributeur.</span></h3>
-            <p><strong>Si vous avez connaissance d’une aide non répertoriée, vous pouvez faire parvenir cette information à : Sylvie FRUGIER</strong> (<a
-                        href="mailto:{{ config('app.contact_mail') }}">{{ config('app.contact_mail') }}</a> <strong>- Tél. :</strong> 05 55 12 95 76 et 06 99 03 39 58) <strong>ou
-                    renseigner
-                    directement le site</strong> <i style="font-size: .85em">(demander une demande d’ouverture de droits)</i></p>
         </div>
     </div>
 @endsection

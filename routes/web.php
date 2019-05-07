@@ -24,6 +24,9 @@ Route::post('contact', 'ContactController@store')->name('front.contact.store');
 Route::view('mentions-legales', 'front.legal-notice')->name('front.legal-notice');
 Route::view('accessibilite', 'front.accessibility')->name('front.accessibility');
 
+Route::view('publier', 'front.publish')->name('front.publish');
+
+
 Route::view('qui-sommes-nous/projet', 'front.about-us.project')->name('front.about-us.project');
 Route::view('qui-sommes-nous/base-de-donnees', 'front.about-us.database')->name('front.about-us.database');
 Route::view('qui-sommes-nous/equipe', 'front.about-us.team')->name('front.about-us.team');

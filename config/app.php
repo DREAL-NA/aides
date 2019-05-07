@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', "Aides-Développement Durable-Nouvelle-Aquitaine (ADDNA)"),
+    'name' => env('APP_NAME', "Aides pour le développement Durable en Nouvelle-Aquitaine (ADDNA)"),
     'subname' => "Une base de données sur les aides aux territoires ouverte à tous",
 
     'default_page_title' => 'Accueil',

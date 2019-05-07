@@ -17,7 +17,7 @@
         display: flex;
         align-items: flex-start;
         justify-content: flex-start;
-        color: $color-white;
+        color: red;// $color-white;
 
         @include mobile {
             border-top: thin solid $body-bg;
@@ -76,13 +76,13 @@
     }
 
     .menu-children {
-        background-color: $color-white;
-        border-bottom: 1px solid $color-1;
+        background-color: red;//$color-white;
+        border-bottom: red;//$color-1;
     }
 
     .menu-list-children {
         height: 0;
-        color: $text-color;
+        color: red;//$text-color;
         display: flex;
         align-items: center;
         justify-content: flex-start;

@@ -1,3 +1,4 @@
+$active ="
 @extends('layouts.app')
 
 @section('breadcrumb')

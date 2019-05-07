@@ -10,10 +10,38 @@
 
 @section('content')
     <div class="page-content page-dispositifs">
+
+
+        {{-- barre de recherche--}}
+        <section class="quick-search">
+            <form action="{{ route('front.dispositifs') }}" method="get">
+                <div class="search-container__form">
+                    <input type="text" id="query" name="query" placeholder="Quels sont vos mot-clés? ">
+
+                    <button type="submit"> Rechercher <span>
+                            {!! file_get_contents(public_path().'/svg/search.svg') !!}</span>
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        {{-- filtres--}}
+        <div>
+            <a id="dispositifs-filters-button" href="#">
+                <span>Filtrer</span>
+                <i class="fa fa-plus"></i>
+                <i class="fa fa-minus"></i>
+            </a>
+
+            <div id="dispositifs-filters-container">
+                @include('front.dispositifs.filters')
+            </div>
+        </div>
+
         <h2>
             <span>
                 @if(!empty(request()->get('query')))
-                    Votre recherche d'aides {{ $callsAreClosedOnes ? 'clôturées' : '' }} portant sur : {{ request()->get('query') }}
+                    Votre recherche {{ $callsAreClosedOnes ? '(aides clôturées) ' : '' }}: {{ request()->get('query') }}
                 @else
                     Découvrez les aides {{ $callsAreClosedOnes ? 'clôturées' : '' }}
                 @endif
@@ -26,16 +54,21 @@
                 }
             @endphp
 
-            <a href="{{ $route }}">Voir les
-                aides {{ $callsAreClosedOnes ? 'ouvertes' : 'clôturées' }}</a>
+            <a href="{{ $route }}">Voir les aides {{ $callsAreClosedOnes ? 'ouvertes' : 'clôturées' }}</a>
         </h2>
 
+{{-- affichage résultats --}}
         <div class="content-dispositifs">
             <div class="page-header no-bottom">
                 <div class="page-meta">
+
                     <div class="result-count">
                         <strong>{{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }}</strong>
+                        @if(!empty(request()->get('query')))
                         correspondent à votre recherche
+                            @else recensées
+                        @endif
+
                     </div>
                     @if(!$callsAreClosedOnes)
                         <div class="helper-links">
@@ -58,18 +91,6 @@
                         </div>
                     @endif
                 </div>
-            </div>
-        </div>
-
-        <div>
-            <a id="dispositifs-filters-button" href="#">
-                <span>Filtrer les résultats en affinant votre recherche</span>
-                <i class="fa fa-plus"></i>
-                <i class="fa fa-minus"></i>
-            </a>
-
-            <div id="dispositifs-filters-container">
-                @include('front.dispositifs.filters')
             </div>
         </div>
 
@@ -176,8 +197,8 @@
                         </article>
                     @endforeach
                     @if($callsForProjects->isEmpty())
-                        <p class="dispositifs-empty">Aucune aide ne correspond à votre recherche. Veuillez modifier vos
-                            filtres.</p>
+                        <p class="dispositifs-empty">Désolée, nous n'avons pas trouvé d'aide correspondante à votre recherche.</p>
+                        <p class="text-center">Essayez des mot-clés synonymes, modifiez les filtres, ou <strong><a class="{{ Route::is('front.home') ? 'current' : '' }}" href="{{ route('front.home') }}#newsletter">inscrivez-vous à notre newsletter</a></strong> pour être au courant des nouvelles aides ajoutées.<p/>
                     @endif
                 </section>
                 {{ $callsForProjects->appends($pagination_appends)->links() }}

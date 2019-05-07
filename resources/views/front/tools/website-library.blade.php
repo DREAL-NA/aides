@@ -65,7 +65,7 @@
                     </article>
                 @endforeach
                 @if($websites->isEmpty())
-                    <p class="website-empty">Aucune site renseigné actuellement.</p>
+                    <p class="dispositifs-empty">Aucun site renseigné actuellement.</p>
                 @endif
             </section>
 

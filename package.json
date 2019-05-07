@@ -19,7 +19,7 @@
         "datatables.net-responsive": "^2.2.1",
         "datatables.net-responsive-bs": "^2.2.1",
         "eonasdan-bootstrap-datetimepicker": "^4.17.47",
-        "jquery": "^3.3.1",
+        "jquery": "^3.4.0",
         "laravel-mix": "^1.0",
         "lodash": "^4.17.4",
         "mark.js": "github:julmot/mark.js"
@@ -33,6 +33,7 @@
         "select2": "^4.0.6-rc.1",
         "select2-bootstrap-theme": "0.1.0-beta.10",
         "selectric": "github:ngiraud/jQuery-Selectric",
+        "slim-select": "^1.20.0",
         "vex-js": "^4.0.1"
     }
 }

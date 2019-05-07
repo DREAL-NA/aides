@@ -49,6 +49,7 @@
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
+
     @include('feed::links')
 </head>
 <body>

@@ -3,14 +3,25 @@
         <div class="menu-nav-container">
             <ul class="menu-list">
                 <li class="menu-item">
-                    <a href="#" menu-selector="who">Qui sommes-nous&nbsp;?</a>
+                <a class="{{ Route::is('front.home') ? 'current' : '' }}" href="{{ route('front.home') }}">Accueil</a>
                 </li>
+
+                <li class="menu-item" >
+                    <a class="{{ Route::is('front.dispositifs') ? 'current' : '' }}" href="{{ route('front.dispositifs') }}">Les aides</a>
+                </li>
+
+                <li class="menu-item" id="{{ Route::is('publish') ? 'active' : '' }}">
+                    <a class="{{ Route::is('front.publish') ? 'current' : '' }}" href="{{ route('front.publish') }}">Publier une aide</a>
+                </li>
+
                 <li class="menu-item">
-                    <a href="{{ route('front.dispositifs') }}">Aides</a>
+                    <a class="{{ Route::is('front.about-us.project','front.about-us.database','front.about-us.team') ? 'current' : '' }}" href="#" menu-selector="who">Qui sommes-nous&nbsp;?</a>
                 </li>
+
                 <li class="menu-item">
-                    <a href="#" menu-selector="tools">Outils</a>
+                    <a class="{{ Route::is('front.tools.data','front.tools.website-library') ? 'current' : '' }}" href="#" menu-selector="tools">Outils</a>
                 </li>
+
             </ul>
         </div>
     </div>

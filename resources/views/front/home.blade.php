@@ -2,91 +2,106 @@
 
 @section('meta_title', "Accueil")
 
+@section('breadcrumb')
+
+
 @section('content')
-    <div class="count-dispositifs-wrapper">
-        <div class="count-dispositifs">
-            {!! trans_choice('messages.home.count', $countCallsForProjects) !!}
-        </div>
+    {{-- <div class="count-dispositifs-wrapper">
+         <div class="count-dispositifs">
+             {!! trans_choice('messages.home.count', $countCallsForProjects) !!}
+         </div>
         <a class="count-dispositifs-link" href="{{ route('front.dispositifs') }}">Voir les aides</a>
-    </div>
+     </div>--}}
 
-    <div class="page-container">
-        @include('front.home.quick-search')
+     <div class="page-container">
+         @include('front.home.quick-search')
 
-        @include('front.home.advanced-search')
+         <div>
+             <a id="dispositifs-filters-button" href="#">
+                 <span>Filtrer</span>
+                 <i class="fa fa-plus"></i>
+                 <i class="fa fa-minus"></i>
+             </a>
 
-        @include('front.home.news')
+             <div id="dispositifs-filters-container">
+                 @include('front.dispositifs.filters')
+             </div>
+         </div>
 
-        @include('front.home.websites-to-consult')
-    </div>
+         {{--@include('front.home.advanced-search')--}}
 
-@endsection
+         @include('front.home.news')
 
-@push('inline-script')
-    <script>
-        (function ($) {
-            "use strict";
+         @include('front.home.websites-to-consult')
+     </div>
 
-            function manageThematics() {
-                $('input.thematics_hidden').remove();
-                var _form = $('.form-home');
+ @endsection
 
-                $('.step-thematic .filters-items a.active').each(function () {
-                    _form.prepend($('<input type="hidden" name="{{ \App\Thematic::URI_NAME_THEMATIC }}[]">').addClass('thematics_hidden').val($(this).data('id')))
-                });
-            }
+ @push('inline-script')
+     <script>
+         (function ($) {
+             "use strict";
 
-            $('.selectThematic').on('click', function (e) {
-                e.preventDefault();
+             function manageThematics() {
+                 $('input.thematics_hidden').remove();
+                 var _form = $('.form-home');
 
-                $(this).toggleClass('active').promise().done(function () {
-                    manageThematics();
-                });
-            });
+                 $('.step-thematic .filters-items a.active').each(function () {
+                     _form.prepend($('<input type="hidden" name="{{ \App\Thematic::URI_NAME_THEMATIC }}[]">').addClass('thematics_hidden').val($(this).data('id')))
+                 });
+             }
 
-            $('.step-thematic .select-all').on('click', function () {
-                $('.selectThematic').each(function () {
-                    $(this).trigger('click');
-                });
-            });
+             $('.selectThematic').on('click', function (e) {
+                 e.preventDefault();
 
-            $('.step-perimeter .select-all').on('click', function () {
-                $('.selectPerimeter option').not(':disabled').prop('selected', true);
-                $('.selectPerimeter').data('selectric').refresh();
-            });
+                 $(this).toggleClass('active').promise().done(function () {
+                     manageThematics();
+                 });
+             });
 
-            $('.step-perimeter .select-none').on('click', function () {
-                $('.selectPerimeter option').not(':disabled').prop('selected', false);
-                $('.selectPerimeter').data('selectric').refresh();
-            });
+             $('.step-thematic .select-all').on('click', function () {
+                 $('.selectThematic').each(function () {
+                     $(this).trigger('click');
+                 });
+             });
 
-            $('#form-newsletter').submit(function (e) {
-                e.preventDefault();
+             $('.step-perimeter .select-all').on('click', function () {
+                 $('.selectPerimeter option').not(':disabled').prop('selected', true);
+                 $('.selectPerimeter').data('selectric').refresh();
+             });
 
-                let form = $(this);
+             $('.step-perimeter .select-none').on('click', function () {
+                 $('.selectPerimeter option').not(':disabled').prop('selected', false);
+                 $('.selectPerimeter').data('selectric').refresh();
+             });
 
-                form.find('.alert').remove();
+             $('#form-newsletter').submit(function (e) {
+                 e.preventDefault();
 
-                $.ajax({
-                    url: $(this).attr('action'),
-                    method: 'post',
-                    data: form.serialize(),
-                    success: function (data) {
-                        form.prepend($('<div class="alert alert-success">').append($('<p>').html(data)));
-                    },
-                    error: function (data, json) {
-                        let alert = $('<div class="alert alert-danger">');
+                 let form = $(this);
 
-                        $.each(data.responseJSON.errors, function (k, item) {
-                            $.each(item, function (k2, item2) {
-                                alert.append($('<p>').html(item2));
-                            });
-                        });
+                 form.find('.alert').remove();
 
-                        form.prepend(alert);
-                    }
-                });
-            });
-        })(jQuery);
-    </script>
-@endpush
+                 $.ajax({
+                     url: $(this).attr('action'),
+                     method: 'post',
+                     data: form.serialize(),
+                     success: function (data) {
+                         form.prepend($('<div class="alert alert-success">').append($('<p>').html(data)));
+                     },
+                     error: function (data, json) {
+                         let alert = $('<div class="alert alert-danger">');
+
+                         $.each(data.responseJSON.errors, function (k, item) {
+                             $.each(item, function (k2, item2) {
+                                 alert.append($('<p>').html(item2));
+                             });
+                         });
+
+                         form.prepend(alert);
+                     }
+                 });
+             });
+         })(jQuery);
+     </script>
+ @endpush
