@@ -77,10 +77,10 @@
 
                         </div> {{-- fin class row-filters--}}
 
-
+{{-- reinitialiser filtres marche pas
                         <div class="form-action">
                             <button type="button" class="reset-filters">Réinitialiser les filtres</button>
-                        </div>
+                        </div> --}}
 
                     </div> {{-- fin class filter-items --}}
 
