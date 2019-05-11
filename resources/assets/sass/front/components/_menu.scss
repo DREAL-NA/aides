@@ -47,7 +47,7 @@
             &:before {
                 content: "";
                 width: 0;
-                height: 2px;
+                height: 3px;
                 background-color: $text-color;
                 position: absolute;
                 top: 0;
@@ -55,7 +55,7 @@
             }
 
             &:hover {
-                color: $text-color;
+                color: white;
 
                 &:before {
                     animation-duration: 500ms;
