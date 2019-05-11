@@ -14,6 +14,16 @@
      </div>--}}
 
      <div class="page-container">
+
+         <div class="page-header">
+             <h2 class="text-center principal">Vous avez un projet de développement durable en Nouvelle-Aquitaine ? <br/><span class="count-dispositifs">{!! trans_choice('messages.home.count', $countCallsForProjects) !!}</span></h2>
+
+             <p class="text-center sous-titre">Pour tous : associations, collectivités, entreprises, citoyens... </p>
+
+         </div>
+
+         @include('front.research')
+         {{--
          @include('front.home.quick-search')
 
          <div>
@@ -26,7 +36,7 @@
              <div id="dispositifs-filters-container">
                  @include('front.dispositifs.filters')
              </div>
-         </div>
+         </div> --}}
 
          {{--@include('front.home.advanced-search')--}}
 

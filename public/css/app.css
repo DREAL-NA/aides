@@ -8198,11 +8198,6 @@ No space - remove distance between list items
     margin-top: 10px;
 }
 
-.quick-search {
-    margin : 0 auto;
-    text-align: center;
-
-}
 .button-search {
     text-align: left;
     margin : 0 auto;
@@ -8405,6 +8400,7 @@ No space - remove distance between list items
 .filters-dispositifs {
     background-color: lightgrey;
     padding: 20px;
+    text-align: left;
 }
 
 .advanced-search .filters-dispositifs {

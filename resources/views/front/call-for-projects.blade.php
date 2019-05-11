@@ -11,33 +11,9 @@
 @section('content')
     <div class="page-content page-dispositifs">
 
+@include('front.research')
 
-        {{-- barre de recherche--}}
-        <section class="quick-search">
-            <form action="{{ route('front.dispositifs') }}" method="get">
-                <div class="search-container__form">
-                    <input type="text" id="query" name="query" placeholder="Quels sont vos mot-clés? ">
-
-                    <button type="submit"> Rechercher <span>
-                            {!! file_get_contents(public_path().'/svg/search.svg') !!}</span>
-                    </button>
-                </div>
-            </form>
-        </section>
-
-        {{-- filtres--}}
-        <div>
-            <a id="dispositifs-filters-button" href="#">
-                <span>Filtrer</span>
-                <i class="fa fa-plus"></i>
-                <i class="fa fa-minus"></i>
-            </a>
-
-            <div id="dispositifs-filters-container">
-                @include('front.dispositifs.filters')
-            </div>
-        </div>
-
+        {{-- 1ère ligne de titre : rappel de la recherche, bouton pour passer aux aides cloturées / aides ouvertes --}}
         <h2>
             <span>
                 @if(!empty(request()->get('query')))
@@ -57,7 +33,7 @@
             <a href="{{ $route }}">Voir les aides {{ $callsAreClosedOnes ? 'ouvertes' : 'clôturées' }}</a>
         </h2>
 
-{{-- affichage résultats --}}
+        {{-- 2ème ligne de titre : nombre aides trouvées et export --}}
         <div class="content-dispositifs">
             <div class="page-header no-bottom">
                 <div class="page-meta">
@@ -94,6 +70,7 @@
             </div>
         </div>
 
+        {{-- Résultats --}}
         <div class="content">
             <div class="content-dispositifs">
                 <section class="dispositif-items">
@@ -196,13 +173,17 @@
                             </div>
                         </article>
                     @endforeach
+
+                    {{-- message si pas d'aide trouvées --}}
                     @if($callsForProjects->isEmpty())
-                        <p class="dispositifs-empty">Désolée, nous n'avons pas trouvé d'aide correspondante à votre recherche.</p>
+                        <p class="dispositifs-empty">Désolé, nous n'avons pas trouvé d'aide correspondante à votre recherche.</p>
                         <p class="text-center">Essayez des mot-clés synonymes, modifiez les filtres, ou <strong><a class="{{ Route::is('front.home') ? 'current' : '' }}" href="{{ route('front.home') }}#newsletter">inscrivez-vous à notre newsletter</a></strong> pour être au courant des nouvelles aides ajoutées.<p/>
                     @endif
+
                 </section>
                 {{ $callsForProjects->appends($pagination_appends)->links() }}
             </div>
         </div>
+
     </div>
 @endsection
