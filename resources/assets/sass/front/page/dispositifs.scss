@@ -88,15 +88,18 @@
     }
 }
 
+.titre-filtre {
+    font-weight: bold;
+}
+
+
 .filters-dispositifs {
-    background-color: $color-3;
-    color: $color-white;
-    //padding: 30px 20px;
+    background-color: $gris-clair;
+    color: $text-color;
+    padding: 20px;
+    text-align: left;
     padding: 20px;
 
-    .advanced-search & {
-        margin: 30px -30px;
-    }
 
     h4 {
         margin-top: 0;
@@ -104,10 +107,33 @@
     }
 
     .row-filters {
-        display: flex;
+        display: block;
         align-items: flex-start;
         justify-content: flex-start;
         margin-bottom: 15px;
+
+        .filter-item .selectric-items {
+            li.selected{
+                background-color: $color-1;
+                color: white;
+            }
+        }
+
+        .filter-item .selectric-wrapper .selectric
+        {
+            border: none;
+        }
+
+        .filter-item .selectric-wrapper .selectric .label .selected {
+            background-color: #379683;
+            color: white;
+            padding: 4px;
+            -moz-border-radius:10px 10px;
+            -webkit-border-radius:10px 10px;
+            border-radius:10px 10px;
+            border: none;
+
+        }
     }
 
     .filter-item-search-input {
@@ -124,8 +150,9 @@
     }
 
     .filter-item {
-        width: 25%;
+        width: 100%;
         padding: 0 5px;
+        margin-top: 10px;
 
         input {
             width: 100%;
@@ -161,14 +188,14 @@
         margin-top: 30px;
         display: flex;
         align-items: stretch;
-        justify-content: center;
+        justify-content: left;
 
         .reset-filters,
         .submit-filters {
             display: block;
             margin: 0 15px;
             //font-size: 1.2em;
-            padding: 10px 50px;
+            padding: 5px 10px;
             border: none;
             outline: none;
             border-radius: 2px;
@@ -176,10 +203,10 @@
         }
 
         .reset-filters {
-            background-color: $color-3;
-            border: 1px solid $color-white;
-            color: $color-white;
-            @include hoverButton($color-3);
+            background-color: $gris-clair;
+            border: 1px solid $text-color;
+            color: $text-color;
+            @include hoverButton($gris-clair);
         }
 
         .submit-filters {
@@ -196,8 +223,11 @@
         font-style: italic;
     }
 
+
+
+
     @include mobile {
-        margin: 30px -15px;
+        margin: 30px 0px;
         padding: 15px;
 
         .row-filters {
@@ -236,7 +266,7 @@
     display: flex;
     align-items: stretch;
     flex-wrap: wrap;
-    border-bottom: 1px solid $page-header-border-color;
+    border-bottom: 1px solid $tab-border-color;
 
     .first {
         width: 20%;
@@ -244,8 +274,8 @@
     }
     .middle {
         width: 65%;
-        border-left: 1px solid $page-header-border-color;
-        border-right: 1px solid $page-header-border-color;
+        border-left: 1px solid $tab-border-color;
+        border-right: 1px solid $tab-border-color;
 
         &.full {
             width: 80%;
@@ -298,7 +328,7 @@
 .dispositifs-empty {
     padding: 15px 30px;
     background-color: $color-6;
-    color: $color-white;
+    color: $text-color;
     text-align: center;
 
     &.no-bck {
@@ -464,17 +494,18 @@
 }
 
 #dispositifs-filters-button {
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-left: 20%;
     display: inline-flex;
     align-items: center;
-    background-color: $color-3;
-    color: $color-white;
+    background-color: $gris-clair;
+    color: $text-color;
     padding: 5px 15px;
     font-size: 16px;
     text-decoration: none;
     transition: all 250ms ease-in-out;
 
-    @include hoverButton($color-3, $color-white);
+    @include hoverButton($gris-clair, $text-color);
 
     > span {
         padding-right: 10px;
@@ -501,5 +532,4 @@
 
 #dispositifs-filters-container {
     display: none;
-    margin: 0 -30px 30px;
 }

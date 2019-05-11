@@ -1,7 +1,6 @@
 <section class="quick-search">
 
     <form action="{{ route('front.dispositifs', ['closed' => request('closed')]) }}"  method="get">
-
         {{-- Barre de recherche --}}
         <div class="search-container__form">
             <input type="text" id="query" name="query" value="{{ request()->get('query') ?: '' }}" placeholder="Quels sont vos mot-clés? ">

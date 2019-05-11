@@ -17,7 +17,7 @@
         display: flex;
         align-items: flex-start;
         justify-content: flex-start;
-        color: red;// $color-white;
+        color: $color-white;
 
         @include mobile {
             border-top: thin solid $body-bg;
@@ -29,10 +29,16 @@
     .menu-item {
         position: relative;
 
+        .current {
+            color: white;
+            font-weight: bold;
+            font-style: italic;
+        }
+
         a {
-            //padding: 20px 15px;
             padding: 15px;
-            font-weight: 400;
+            font-weight: 500;
+            font-size: 1.1em;
             display: block;
             transition: all 250ms ease-in-out;
             position: relative;
@@ -59,30 +65,16 @@
             }
         }
 
-        //&.active {
-        //	&:after {
-        //		content: '';
-        //		position: absolute;
-        //		bottom: -15px;
-        //		left: 50%;
-        //		margin-left: -15px;
-        //		width: 0;
-        //		height: 0;
-        //		border-style: solid;
-        //		border-width: 15px 15px 0 15px;
-        //		border-color: $color-1 transparent transparent transparent;
-        //	}
-        //}
     }
 
     .menu-children {
-        background-color: red;//$color-white;
-        border-bottom: red;//$color-1;
+        background-color: whitesmoke;
+        border-bottom: 1px solid $color-1;
     }
 
     .menu-list-children {
         height: 0;
-        color: red;//$text-color;
+        color: $text-color;
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -100,7 +92,6 @@
 
     .menu-item-children {
         a {
-            //padding: 20px 15px;
             padding: 15px;
             font-weight: 400;
             display: block;

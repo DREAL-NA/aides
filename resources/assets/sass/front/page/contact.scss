@@ -1,8 +1,7 @@
 .form-contact {
 	max-width: 500px;
-	border: thin solid $page-header-border-color;
-	background: lighten($page-header-border-color, 5%);
-	margin: 50px auto;
+	background: white;
+	margin: auto;
 	padding: 30px;
 
 	input[type="text"],
@@ -20,7 +19,7 @@
 		&:hover,
 		&:focus {
 			outline: 0;
-			border: 1px solid $color-4;
+			border: 1px solid $color-case;
 		}
 	}
 

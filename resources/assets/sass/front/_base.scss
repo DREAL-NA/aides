@@ -1,51 +1,17 @@
 body {
-    font-weight: 300;
+    font-weight: normal;
+    background-color: white;
 }
+
 
 .main-wrapper {
     background-color: $color-white;
     min-height: 100vh;
 }
 
-.count-dispositifs-wrapper {
-    margin: 0 -15px;
-    display: flex;
-    align-items: stretch;
-
-    .count-dispositifs {
-        background-color: $color-3;
-        padding: 20px 15px;
-        color: $color-white;
-        font-size: 1.2em;
-        margin-bottom: 0;
-        flex: 1;
-        text-align: center;
-
-        strong {
-            font-weight: 700;
-            font-size: 1.5em;
-            color: $color-4;
-        }
+    .count-dispositifs strong {
+            color: $color-1;
     }
-
-    .count-dispositifs-link {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 20px 15px;
-        font-size: 1.2em;
-        color: $color-3;
-        font-weight: bold;
-        border: 2px solid $color-3;
-        text-decoration: none;
-        transition: all 250ms ease-in-out;
-
-        &:hover {
-            background-color: $color-3;
-            color: $color-white;
-        }
-    }
-}
 
 .page-content {
     padding: 0 15px;
@@ -91,6 +57,8 @@ body {
 }
 
 .page-header {
+    border-bottom: none;
+
     &.no-bottom {
         margin-bottom: 0;
     }

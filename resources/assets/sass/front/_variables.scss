@@ -12,14 +12,14 @@
 //$color-4: #5A4766;
 //$color-5: #AB9DB3;
 
-//$color-1: #5CDB95;
-$color-1: #96c5a4;
+$color-1: #277F6D;
+$color-case: #379683;
+$gris-clair: lightgrey;
 $color-2: #05386B;
-$color-3: #379683;
+$color-3: #303030;
 $color-4: #8EE4AF;
-//$color-5: #EDF5E1;
 $color-5: #f5f4ef;
-$color-6: #ffb347;
+$color-6: #ffd372;
 $color-7: #ff392f;
 $color-8: #2EE9FF;
 $color-9: #5873b3;
@@ -40,10 +40,11 @@ $list-group-border: $front-border-color;
 $navbar-default-border: $front-border-color;
 $panel-default-border: $front-border-color;
 $panel-inner-border: $front-border-color;
-$page-header-border-color: lighten($color-3, 50%);
+$page-header-border-color: $color-1; //utile filtres
+$tab-border-color: dimgrey;
 
 // Headings
-$headings-font-family: "Roboto Condensed", sans-serif;
+$headings-font-family: "Roboto", sans-serif;
 $headings-font-weight: 600;
 
 // Typography
@@ -68,7 +69,6 @@ $input-color-placeholder: lighten($text-color, 30%);
 $panel-default-heading-bg: #fff;
 
 // Menu
-//$height-submenu: 60px;
 $height-submenu: 50px;
 
 // Selector
