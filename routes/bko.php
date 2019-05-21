@@ -49,6 +49,7 @@ Route::post('beneficiaire/select2', ['as' => 'bko.beneficiaire.select2', 'uses' 
 //        ['as' => 'bko', 'parameters' => ['structure' => 'organizationType'], 'except' => ['show']]);
 //    Route::post('structure/select2', ['as' => 'bko.structure.select2', 'uses' => 'OrganizationTypeController@select2']);
 
+
 Route::resource('site', 'WebsiteController', ['as' => 'bko', 'parameters' => ['site' => 'website']]);
 
 Route::get('appel-a-projet/clotures', ['as' => 'bko.call.indexClosed', 'uses' => 'CallForProjectsController@indexClosed']);

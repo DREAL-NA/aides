@@ -22,12 +22,10 @@ $active ="
                 Immeuble Pastel - CS 53218 - 22, rue des Pénitents Blancs - 87032 Limoges cedex 1</p>
 
             <br>
-            <h4>Directeur de la publication</h4>
-            <h5>Sylvie FRUGIER - Chargée de mission Développement économique.</h5>
-            <p>Chargée de mission Développement économique. :</p>
-            <p>E-mail : <a href="mailto:{{ config('app.contact_mail') }}">{{ config('app.contact_mail') }}</a></p>
-            <p>Tél. : <b>05 55 12 95 76</b> et <b>06 99 03 39 58</b></p>
-
+            <h4>Directrice de la publication</h4>
+            <h5>Alice-Anne MEDARD</h5>
+            <p>Directrice Régionale de l’Environnement, de l’Aménagement et du Logement Nouvelle-Aquitaine</p>
+           
             {{--Centre hébergeur--}}
 
             {{--SPIP--}}

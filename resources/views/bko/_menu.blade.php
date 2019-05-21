@@ -56,6 +56,7 @@
                 @yield('menu-item-beneficiary')
             </ul>
         </div>
+
         <div class="menu-category">
             <h5 class="category-title">Sites de recensement</h5>
             <ul class="menu">
