@@ -32,14 +32,21 @@
             </div>
 
             <div class="flex-item">
-                <h3>Le développeur web freelance</h3>
-
+                <h3>L'équipe de développement</h3>
                 <div class="team-items">
                     <div class="team-item">
-                        <h4>Nicolas GIRAUD</h4>
+                        <h4>Nicolas GIRAUD, développeur web freelance</h4>
                         <p>Site internet : <a href="https://www.nicolasgiraud.fr" target="_blank">https://www.nicolasgiraud.fr</a></p>
                         <p>Téléphone : <b>06 74 31 72 31</b></p>
                         <p>E-mail : <a href="mailto:contact@ngiraud.me">contact@ngiraud.me</a></p>
+                    </div>
+                </div>
+                <div class="team-items">
+                    <div class="team-item">
+                        <h4>Fanny BREUNEVAL, ingénieure en cognitique freelance</h4>
+                        <p> Pour une interface web ergonomique et accessible.</p>
+                        <p>Téléphone : <b>06 68 40 50 40</b></p>
+                        <p>E-mail : <a href="mailto:fbreuneval@ensc.fr">Fanny.Breuneval@ensc.fr</a></p>
                     </div>
                 </div>
             </div>
