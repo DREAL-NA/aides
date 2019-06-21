@@ -14,16 +14,16 @@ try {
     require('select2');
     require('select2/dist/js/i18n/fr')
 
-    require('./utils');
-
     // Datatables plugin
-    require('datatables.net');
+    require('datatables.net')
     require('datatables.net-bs');
     require('datatables.net-responsive');
     require('datatables.net-responsive-bs');
     require('mark.js')
 
     require('datatables.mark.js/dist/datatables.mark.es6')
+
+    require('./utils');
 
     // Defaults for plugins
     require('./bootstrap-default');
