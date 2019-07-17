@@ -120,6 +120,7 @@
         }
     }
 }
+
 .home-news {
     text-align: center;
 }
@@ -240,7 +241,6 @@
             font-weight: 500;
         }
 
-
     }
 
     button[type="submit"] {
@@ -259,16 +259,15 @@
         align-items: center;
         justify-content: center;
 
-
-
         svg {
             width: 20px;
             height: 20px;
             color: inherit;
         }
 
-    > span {
-        padding-left: 10px;
-    }
+        > span {
+            padding-left: 10px;
+            display: flex;
+        }
     }
 }
