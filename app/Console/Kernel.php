@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Log;
 
 class Kernel extends ConsoleKernel
 {
@@ -38,6 +39,10 @@ class Kernel extends ConsoleKernel
 
         // Re-import Scout data in Algolia
         $schedule->command('scout:reimport')->runInBackground()->cron('12 9,12,15,18 * * *');
+
+        $schedule->call(function () {
+            Log::info('Cron is working!');
+        })->everyMinute();
     }
 
     /**
