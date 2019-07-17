@@ -57,3 +57,4 @@
         </div>
     </div>
 </footer>
+<div style="display: none; position: absolute;">Bascule de l'hébergement</div>
