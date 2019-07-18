@@ -8,7 +8,7 @@ return [
          * The name of this application. You can use this name to monitor
          * the backups.
          */
-        'name' => 'Aides DREAL N-A',
+        'name' => str_replace(['http://', 'https://'], '', env('APP_URL', '')),
 
         'source' => [
 
@@ -56,13 +56,13 @@ return [
             /*
              * The filename prefix used for the backup zip file.
              */
-            'filename_prefix' => 'backup-',
+            'filename_prefix' => 'ADDNA',
 
             /*
              * The disk names on which the backups will be stored.
              */
             'disks' => [
-                'local',
+//                'local',
                 's3',
             ],
         ],
@@ -152,22 +152,22 @@ return [
             /*
              * The number of days for which daily backups must be kept.
              */
-            'keepDailyBackupsForDays' => 1,
+            'keepDailyBackupsForDays' => 16,
 
             /*
              * The number of weeks for which one weekly backup must be kept.
              */
-            'keepWeeklyBackupsForWeeks' => 1,
+            'keepWeeklyBackupsForWeeks' => 8,
 
             /*
              * The number of months for which one monthly backup must be kept.
              */
-            'keepMonthlyBackupsForMonths' => 1,
+            'keepMonthlyBackupsForMonths' => 4,
 
             /*
              * The number of years for which one yearly backup must be kept.
              */
-            'keepYearlyBackupsForYears' => 1,
+            'keepYearlyBackupsForYears' => 2,
 
             /*
              * After cleaning up the backups remove the oldest backup until
