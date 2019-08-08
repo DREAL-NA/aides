@@ -1,4 +1,3 @@
-$active ="
 @extends('layouts.app')
 
 @section('breadcrumb')
@@ -25,7 +24,7 @@ $active ="
             <h4>Directrice de la publication</h4>
             <h5>Alice-Anne MEDARD</h5>
             <p>Directrice Régionale de l’Environnement, de l’Aménagement et du Logement Nouvelle-Aquitaine</p>
-           
+
             {{--Centre hébergeur--}}
 
             {{--SPIP--}}
