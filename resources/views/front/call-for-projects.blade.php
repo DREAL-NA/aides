@@ -13,11 +13,13 @@
 
 @include('front.research')
 
+
+
         {{-- 1ère ligne de titre : rappel de la recherche, bouton pour passer aux aides cloturées / aides ouvertes --}}
         <h2>
             <span>
                 @if(!empty(request()->get('query')))
-                    Votre recherche {{ $callsAreClosedOnes ? '(aides clôturées) ' : '' }}: {{ request()->get('query') }}
+                    <strong>{{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }}</strong> pour "{{ $callsAreClosedOnes ? '(aides clôturées) ' : '' }}{{ request()->get('query') }}"
                 @else
                     Les aides {{ $callsAreClosedOnes ? 'clôturées' : '' }}
                 @endif
@@ -38,12 +40,13 @@
             <div class="page-header no-bottom">
                 <div class="page-meta">
 
+                    <!--
                     <div class="result-count">
                         <strong>{{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }}</strong>
                         @if(!empty(request()->get('query')))
                         correspondent à votre recherche
                             @else recensées
-                        @endif
+                        @endif-->
 
                     </div>
                     @if(!$callsAreClosedOnes)
