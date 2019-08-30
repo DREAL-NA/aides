@@ -16,9 +16,10 @@
      <div class="page-container">
 
          <div class="page-header">
-             <h2 class="text-center principal">Vous avez un projet de développement durable en Nouvelle-Aquitaine ? <br/><span class="count-dispositifs">{!! trans_choice('messages.home.count', $countCallsForProjects) !!}</span></h2>
+             <h2 class="text-center principal">Un projet de développement durable?
+             <br/><span style="padding-top: 10px;" class="count-dispositifs">{!! trans_choice('messages.home.count', $countCallsForProjects) !!}</span> pour vous</h2>
 
-             <p class="text-center sous-titre">Pour tous : associations, collectivités, entreprises, citoyens... </p>
+             <p class="text-center sous-titre">Associations, citoyens, collectivités, entreprises,... </p>
 
          </div>
 

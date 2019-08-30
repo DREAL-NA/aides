@@ -2,10 +2,13 @@
 
     <form action="{{ route('front.dispositifs', ['closed' => request('closed')]) }}"  method="get">
         {{-- Barre de recherche --}}
-        <div class="search-container__form">
-            <input type="text" id="query" name="query" value="{{ request()->get('query') ?: '' }}" placeholder="Quels sont vos mot-clés? ">
+        <p class="title__form"><strong>Quels sont vos mot-clés?</strong></p>
 
-            <button type="submit"> Rechercher <span>
+        <div class="search-container__form">
+
+            <input type="text" id="query" name="query" value="{{ request()->get('query') ?: '' }}" placeholder="Entrez un ou plusieurs mot-clés">
+
+            <button type="submit"> Découvrir les aides <span>
                             {!! file_get_contents(public_path().'/svg/search.svg') !!}</span>
             </button>
         </div>

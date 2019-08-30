@@ -2,8 +2,8 @@
     <div class="content">
         <article class="content-home">
             <div class="page-header">
-                <h2>Sites à consulter</h2>
-                <p>Trouvez ici d'autres ressources pour vous aider dans votre recherche.</p>
+                <h2>Poursuivre vos recherches</h2>
+                <p>Voici d'autres sites web plus ciblés pour vous aider dans votre recherche.</p>
             </div>
 
             <section class="websites-container">

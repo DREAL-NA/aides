@@ -19,7 +19,7 @@
                 @if(!empty(request()->get('query')))
                     Votre recherche {{ $callsAreClosedOnes ? '(aides clôturées) ' : '' }}: {{ request()->get('query') }}
                 @else
-                    Découvrez les aides {{ $callsAreClosedOnes ? 'clôturées' : '' }}
+                    Les aides {{ $callsAreClosedOnes ? 'clôturées' : '' }}
                 @endif
             </span>
 

@@ -2,9 +2,8 @@
     <div class="content">
         <article class="content-home">
             <div class="page-header no-bottom">
-                <p class="home-news" id="newsletter"><strong>Tenez-vous au courant des nouvelles aides</strong> </br> tous les vendredis par notre newsletter (désinscription possible à tout moment) :  </p>
+                <p class="home-news" id="newsletter"><strong>Pour connaître les nouvelles aides</strong>, recevez notre newsletter hebdomadaire</p>
             </div>
-
             <section class="newsletter-container">
                 <form action="{{ route('front.newsletter.subscribe') }}" method="post" class="form-contact" id="form-newsletter">
                     {{ csrf_field() }}
