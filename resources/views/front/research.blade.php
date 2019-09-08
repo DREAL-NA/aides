@@ -17,7 +17,7 @@
         {{-- filtres--}}
         <div>
             <a id="dispositifs-filters-button" href="#">
-                <span>Filtrer</span>
+                <span>Filtrer selon vos critères</span>
                 <i class="fa fa-plus"></i>
                 <i class="fa fa-minus"></i>
             </a>

@@ -16,8 +16,8 @@
      <div class="page-container">
 
          <div class="page-header">
-             <h2 class="text-center principal">Un projet de développement durable?
-             <br/><span style="padding-top: 10px;" class="count-dispositifs">{!! trans_choice('messages.home.count', $countCallsForProjects) !!}</span> pour vous</h2>
+             <h2 class="text-center principal">Un projet pour les générations actuelles et futures?
+             <br/><span style="padding-top: 10px;" class="count-dispositifs">{!! trans_choice('messages.home.count', $countCallsForProjects) !!}</span> financières pour vous</h2>
 
              <p class="text-center sous-titre">Associations, citoyens, collectivités, entreprises,... </p>
 
