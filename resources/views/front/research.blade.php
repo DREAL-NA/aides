@@ -76,6 +76,8 @@
                                 </select>
                             </div>
 
+
+
                         </div> {{-- fin class row-filters--}}
 
 {{-- reinitialiser filtres marche pas
@@ -84,6 +86,7 @@
                         </div> --}}
 
                     </div> {{-- fin class filter-items --}}
+
 
                 </div> {{--fin class filters-dispositifs--}}
 

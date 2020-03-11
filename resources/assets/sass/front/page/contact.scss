@@ -31,7 +31,7 @@
 	button {
 		width: 100%;
 		border: none;
-		background: $color-1;
+		background: $color-case;
 		color: $color-white;
 		padding: 10px;
 		font-weight: 500;
@@ -58,7 +58,7 @@
 		}
 
 		&.alert-success {
-			background-color: $color-1;
+			background-color: $color-case;
 		}
 	}
 }

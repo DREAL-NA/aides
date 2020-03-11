@@ -3,7 +3,7 @@
         <article class="content-home">
             <div class="page-header no-bottom">
                 <p class="home-description">Nous recensons les aides pour la protection de l'environnement, l'aménagement des villes et des campagnes, le développement économique local,... </p>
-                <p class="home-news" id="newsletter"><strong>Pour connaître les nouvelles aides</strong>, recevez notre newsletter hebdomadaire</p>
+                <p class="home-news" id="newsletter"><strong>Pour connaître les nouvelles aides</strong>, recevez notre newsletter hebdomadaire : </p>
             </div>
             <section class="newsletter-container">
                 <form action="{{ route('front.newsletter.subscribe') }}" method="post" class="form-contact" id="form-newsletter">

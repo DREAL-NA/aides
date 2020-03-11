@@ -104,6 +104,7 @@
 
         a.mcnButton {
             display: block;
+            background-color: #0C6438;
         }
 
         .mcnImage, .mcnRetinaImage {

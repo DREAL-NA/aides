@@ -1,7 +1,7 @@
 header {
-    background-color: $color-case;
+    background-color: $color-1;
     color: #FFFFFF;
-    text-align: center;
+    text-align: left;
     padding: 15px;
     border-bottom: thin solid white;
 
@@ -15,21 +15,20 @@ header {
         &:before {
             content: '';
             display: block;
-            width: 100px;
-            height: 3px;
-            background: url('/images/drapeau-liseret.png') no-repeat left center;
+            width: 20px;
+            height: 10px;
             background-size: 100px 3px;
-            margin: auto auto 15px;
+            margin: auto auto 10px;
         }
     }
 
     h1 {
         font-size: 1.9em;
-        font-weight: 400;
-        padding-bottom: 10px;
+        font-weight: 600;
+        padding-bottom: 20px;
         max-width: 600px;
         margin: 0 auto;
-        font-family: Roboto, sans-serif;
+        font-family: Helvetica, sans-serif;
     }
 
     .description {
