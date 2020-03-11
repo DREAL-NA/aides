@@ -662,7 +662,7 @@ a.bg-danger:focus {
 .page-header {
   padding-bottom: 10px;
   margin: 44px 0 22px;
-  border-bottom: 1px solid #11884D;
+  border-bottom: 1px solid #129252;
 }
 
 ul,
@@ -2880,7 +2880,7 @@ body.vex-open {
 }
 
 .vex.vex-theme-plain .vex-dialog-button.vex-dialog-button-primary {
-  background: #11884D;
+  background: #129252;
 }
 
 .vex.vex-theme-plain .vex-dialog-form .vex-dialog-message {
@@ -3140,11 +3140,11 @@ body.vex-open {
 }
 
 .selectric {
-  border-color: #11884D;
+  border-color: #129252;
 }
 
 .selectric-items li:hover {
-  background: #05386B;
+  background: cornflowerblue;
   color: #FFFFFF;
 }
 
@@ -7062,7 +7062,7 @@ body {
 }
 
 .count-dispositifs strong {
-  color: #11884D;
+  color: #129252;
 }
 
 .page-content {
@@ -7183,7 +7183,7 @@ input:hover, input:focus {
 }
 
 a {
-  color: #05386B;
+  color: cornflowerblue;
 }
 
 a:hover, a:focus {
@@ -7192,7 +7192,7 @@ a:hover, a:focus {
 
 mark,
 .mark {
-  background-color: #05386B;
+  background-color: cornflowerblue;
   color: #FFFFFF;
 }
 
@@ -7240,9 +7240,9 @@ caption {
 }
 
 header {
-  background-color: #11884D;
+  background-color: #02734A;
   color: #FFFFFF;
-  text-align: left;
+  text-align: center;
   padding: 15px;
   border-bottom: thin solid white;
 }
@@ -7264,19 +7264,20 @@ header .link-title:hover, header .link-title:focus {
 header .link-title:before {
   content: '';
   display: block;
-  width: 20px;
-  height: 10px;
+  width: 100px;
+  height: 3px;
+  background: url("/images/drapeau-liseret.png") no-repeat left center;
   background-size: 100px 3px;
-  margin: auto auto 10px;
+  margin: auto auto 15px;
 }
 
 header h1 {
   font-size: 1.9em;
-  font-weight: 600;
-  padding-bottom: 20px;
+  font-weight: 400;
+  padding-bottom: 10px;
   max-width: 600px;
   margin: 0 auto;
-  font-family: Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
 header .description {
@@ -7371,7 +7372,7 @@ header .link-marianne .title {
 }
 
 .menu-nav {
-  background-color: #11884D;
+  background-color: #02734A;
 }
 
 .menu-nav .menu-nav-container {
@@ -7429,7 +7430,7 @@ header .link-marianne .title {
 .menu-nav .menu-item a {
   padding: 15px;
   font-weight: 500;
-  font-size: 1.2em;
+  font-size: 1.1em;
   display: block;
   -webkit-transition: all 250ms ease-in-out;
   transition: all 250ms ease-in-out;
@@ -7467,7 +7468,7 @@ header .link-marianne .title {
 
 .menu-nav .menu-children {
   background-color: whitesmoke;
-  border-bottom: 1px solid #1A6640;
+  border-bottom: 1px solid #129252;
 }
 
 .menu-nav .menu-list-children {
@@ -7504,7 +7505,7 @@ header .link-marianne .title {
   position: relative;
   color: inherit;
   text-decoration: none;
-  color: black;
+  color: #129252;
 }
 
 .menu-nav .menu-item-children a:hover, .menu-nav .menu-item-children a:focus {
@@ -7807,12 +7808,12 @@ Basic style
 
 .pagination li.disabled {
   /* button disabled */
-  color: #11884D;
+  color: #129252;
   pointer-events: none;
 }
 
 .pagination li.active a, .pagination li.active span {
-  background-color: #11884D;
+  background-color: #129252;
   color: #FFFFFF;
 }
 
@@ -7844,15 +7845,15 @@ Basic style
 }
 
 .pagination a:hover {
-  background-color: #11884D;
+  background-color: #129252;
   -webkit-transition: all 250ms;
   transition: all 250ms;
 }
 
 .pagination .current {
   /* selected number */
-  background-color: #11884D;
-  border-color: #11884D;
+  background-color: #129252;
+  border-color: #129252;
   color: #FFFFFF;
   pointer-events: none;
 }
@@ -7879,7 +7880,7 @@ No space - remove distance between list items
   max-width: none;
   display: inline-block;
   border-radius: 0.25em;
-  border: 1px solid #11884D;
+  border: 1px solid #129252;
 }
 
 .pagination.no-space:before, .pagination.no-space:after {
@@ -7894,7 +7895,7 @@ No space - remove distance between list items
 .pagination.no-space li {
   margin: 0;
   float: left;
-  border-right: 1px solid #11884D;
+  border-right: 1px solid #129252;
 }
 
 .pagination.no-space li:last-of-type {
@@ -7919,18 +7920,13 @@ No space - remove distance between list items
 .principal {
   font-weight: Bold;
   font-size: 1.8em;
-  font-family: Helvetica, sans-serif;
+  font-family: Roboto, sans-serif;
   line-Height: 2;
-  padding-left: 10%;
-  padding-top: 20px;
 }
 
 .sous-titre {
   font-weight: normal;
-  font-size: 1.8em;
-  font-family: Helvetica, sans-serif;
-  color: #303030;
-  padding-left: 10%;
+  font-size: 1.6em;
 }
 
 .autocomplete {
@@ -8025,7 +8021,7 @@ No space - remove distance between list items
 }
 
 .filters-wrapper .filters-step .filters-items .filter-item a:hover, .filters-wrapper .filters-step .filters-items .filter-item a.active {
-  background-color: #05386B;
+  background-color: cornflowerblue;
   color: #FFFFFF;
 }
 
@@ -8074,12 +8070,12 @@ No space - remove distance between list items
   margin-left: -1px;
   font-weight: normal;
   background-color: transparent;
-  border: 1px solid #11884D;
+  border: 1px solid #129252;
 }
 
 .filters-wrapper .select-all:hover,
 .filters-wrapper .select-none:hover {
-  background-color: #11884D;
+  background-color: #129252;
 }
 
 @media (max-width: 991px) {
@@ -8091,14 +8087,12 @@ No space - remove distance between list items
 }
 
 .home-news {
-  text-align: left;
+  text-align: center;
   font-size: large;
-  padding-left: 10%;
-  padding-right: 20%;
 }
 
 .home-description {
-  padding-left: 10%;
+  padding-left: 20%;
   padding-right: 20%;
   padding-bottom: 30px;
   font-size: medium;
@@ -8107,7 +8101,7 @@ No space - remove distance between list items
 .submit-button {
   display: block;
   margin: 30px auto;
-  background-color: #1A6640;
+  background-color: #129252;
   color: #FFFFFF;
   font-size: 1.2em;
   padding: 10px 50px;
@@ -8120,7 +8114,7 @@ No space - remove distance between list items
 }
 
 .submit-button:hover {
-  background-color: #103d27;
+  background-color: #0c6539;
   color: inherit;
 }
 
@@ -8129,11 +8123,11 @@ No space - remove distance between list items
 }
 
 .page-container .page-home {
-  margin-top: 50px;
+  margin-top: 75px;
 }
 
 .page-container .page-home:first-child {
-  margin-top: 30px;
+  margin-top: 50px;
 }
 
 .page-container .page-home.quick-search-container {
@@ -8179,18 +8173,18 @@ No space - remove distance between list items
 }
 
 .quick-search {
-  margin-top: 10px;
+  margin-top: 40px;
 }
 
 .quick-search .title__form {
-  font-size: 1.5em;
+  font-size: large;
   position: relative;
-  padding-left: 10%;
+  padding-left: 20%;
 }
 
 .quick-search .search-container__form {
   position: relative;
-  padding-left: 10%;
+  padding-left: 20%;
 }
 
 .quick-search p {
@@ -8199,9 +8193,9 @@ No space - remove distance between list items
 
 .quick-search input[type="text"] {
   padding: 15px 75px 15px 15px;
-  border: thin solid #1A6640;
+  border: thin solid #02734A;
   background: transparent;
-  width: 75%;
+  width: 70%;
   font-size: 14px;
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
@@ -8224,7 +8218,7 @@ No space - remove distance between list items
 }
 
 .quick-search button[type="submit"] {
-  background: #1A6640;
+  background: #129252;
   font-size: 18px;
   border: none;
   color: white;
@@ -8374,7 +8368,7 @@ No space - remove distance between list items
 }
 
 .page-dispositifs .content-dispositifs .page-meta .result-count strong {
-  color: #11884D;
+  color: #129252;
 }
 
 .page-dispositifs .content-dispositifs .page-meta .helper-links {
@@ -8444,7 +8438,7 @@ No space - remove distance between list items
 }
 
 .filters-dispositifs .row-filters .filter-item .selectric-items li.selected {
-  background-color: #11884D;
+  background-color: #129252;
   color: white;
 }
 
@@ -8453,7 +8447,7 @@ No space - remove distance between list items
 }
 
 .filters-dispositifs .row-filters .filter-item .selectric-wrapper .selectric .label .selected {
-  background-color: #11884D;
+  background-color: #129252;
   color: white;
   padding: 4px;
   border-radius: 10px 10px;
@@ -8571,7 +8565,7 @@ No space - remove distance between list items
 }
 
 .filters-dispositifs .filter-item.filter-item-checkbox .tgl-light:checked + .tgl-btn {
-  background: #11884D;
+  background: #129252;
 }
 
 .filters-dispositifs .filter-item.filter-item-checkbox > label {
@@ -8630,13 +8624,13 @@ No space - remove distance between list items
 }
 
 .filters-dispositifs .form-action .submit-filters {
-  background-color: #11884D;
+  background-color: #129252;
   color: #FFFFFF;
   font-weight: 500;
 }
 
 .filters-dispositifs .form-action .submit-filters:hover {
-  background-color: #0b5b33;
+  background-color: #0c6539;
   color: inherit;
 }
 
@@ -8814,7 +8808,7 @@ No space - remove distance between list items
 .dispositif-item .middle .thematic {
   font-size: 1.15em;
   font-family: "Roboto", sans-serif;
-  color: #11884D;
+  color: #129252;
   font-weight: 700;
   text-align: right;
   margin-bottom: 15px;
@@ -8854,7 +8848,7 @@ No space - remove distance between list items
   margin-bottom: -1px;
   color: inherit;
   text-decoration: none;
-  background-color: #11884D;
+  background-color: #129252;
   color: #FFFFFF;
   -webkit-transition: all 250ms ease-in-out;
   transition: all 250ms ease-in-out;
@@ -8869,7 +8863,7 @@ No space - remove distance between list items
 }
 
 .dispositif-item .middle .see-record:hover {
-  background-color: #0b5b33;
+  background-color: #0c6539;
   color: inherit;
 }
 
@@ -8948,7 +8942,7 @@ No space - remove distance between list items
 
 #dispositifs-filters-button {
   margin-top: 10px;
-  margin-left: 10%;
+  margin-left: 20%;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -9006,7 +9000,7 @@ No space - remove distance between list items
 .page-dispositif-unique .first {
   width: 70%;
   padding-right: 30px;
-  border-right: 1px solid #11884D;
+  border-right: 1px solid #129252;
 }
 
 .page-dispositif-unique .last {
@@ -9072,7 +9066,7 @@ No space - remove distance between list items
           align-items: stretch;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  border-bottom: 1px solid #11884D;
+  border-bottom: 1px solid #129252;
 }
 
 .website-item .first,
@@ -9084,8 +9078,8 @@ No space - remove distance between list items
 .website-item .middle,
 .website-items-header .middle {
   width: 65%;
-  border-left: 1px solid #11884D;
-  border-right: 1px solid #11884D;
+  border-left: 1px solid #129252;
+  border-right: 1px solid #129252;
 }
 
 .website-item .middle.full,
@@ -9330,7 +9324,7 @@ No space - remove distance between list items
 .form-contact input[type="url"],
 .form-contact textarea {
   width: 100%;
-  border: 1px solid #11884D;
+  border: 1px solid #129252;
   background: #FFF;
   margin: 0 0 10px;
   padding: 10px;
@@ -9348,7 +9342,7 @@ No space - remove distance between list items
 .form-contact textarea:hover,
 .form-contact textarea:focus {
   outline: 0;
-  border: 1px solid #1A6640;
+  border: 1px solid #02734A;
 }
 
 .form-contact textarea {
@@ -9360,7 +9354,7 @@ No space - remove distance between list items
 .form-contact button {
   width: 100%;
   border: none;
-  background: #1A6640;
+  background: #129252;
   color: #FFFFFF;
   padding: 10px;
   font-weight: 500;
@@ -9370,7 +9364,7 @@ No space - remove distance between list items
 }
 
 .form-contact button:hover {
-  background-color: #0b5b33;
+  background-color: #0c6539;
   color: inherit;
 }
 
@@ -9393,5 +9387,5 @@ No space - remove distance between list items
 }
 
 .form-contact .alert.alert-success {
-  background-color: #1A6640;
+  background-color: #129252;
 }
