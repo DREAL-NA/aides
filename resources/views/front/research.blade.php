@@ -8,8 +8,8 @@
 
             <input type="text" id="query" name="query" value="{{ request()->get('query') ?: '' }}" placeholder="Entrez un ou plusieurs mot-clés">
 
-            <button type="submit"> Découvrir les aides <span>
-                            {!! file_get_contents(public_path().'/svg/search.svg') !!}</span>
+            <button type="submit"> <b>Rechercher</b>
+                <span>{!! file_get_contents(public_path().'/svg/search.svg') !!}</span>
             </button>
         </div>
 
@@ -17,7 +17,7 @@
         {{-- filtres--}}
         <div>
             <a id="dispositifs-filters-button" href="#">
-                <span>Filtrer selon vos critères</span>
+                <span>et/ou filtrez selon vos critères</span>
                 <i class="fa fa-plus"></i>
                 <i class="fa fa-minus"></i>
             </a>
