@@ -16,8 +16,7 @@
      <div class="page-container">
 
          <div class="page-header">
-             <h2 class="principal">Découvrez <span style="padding-top: 10px;" class="count-dispositifs">{!! trans_choice('messages.home.count', $countCallsForProjects) !!}</span> financières pour les projets des <span style="color: #11884d">collectivités, entreprises, associations et citoyens</span> en Nouvelle-Aquitaine</h2>
-             <p class="sous-titre">Pour le développement durable : développement économique, aménagement rural et urbain, protection de l'environnement, éducation...</p>
+             <h2 class="principal">Découvrez <span style="padding-top: 10px;" class="count-dispositifs">{!! trans_choice('messages.home.count', $countCallsForProjects) !!}</span> financières pour les projets de développement durable des <span style="color: #11884d">collectivités, entreprises, associations et citoyens</span> en Nouvelle-Aquitaine</h2>
 
          </div>
 
