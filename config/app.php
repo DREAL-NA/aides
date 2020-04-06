@@ -21,7 +21,7 @@ return [
     'contact_mail' => 'sylvie.frugier@developpement-durable.gouv.fr',
 
     'google_analytics' => [
-        'enable' => false,
+        'enable' => true,
         'id' => env('GOOGLE_ANALYTICS_ID'),
     ],
 
