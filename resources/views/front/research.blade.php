@@ -1,14 +1,14 @@
 <section class="quick-search">
 
-    <form action="{{ route('front.dispositifs', ['closed' => request('closed')]) }}"  method="get">
+    <form action="{{ route('front.dispositifs', ['closed' => request('closed')]) }}"  class="form-dispositifs form-filters"  method="get">
         {{-- Barre de recherche --}}
-        <p class="title__form"><strong>Quel mot-clé ou thématique pour votre projet ?</strong></p>
+        <p class="title__form"><strong>Quels sont les mot-clés de votre projet ?</strong></p>
 
         <div class="search-container__form">
 
             <input type="text" id="query" name="query" value="{{ request()->get('query') ?: '' }}" placeholder="Entrez un mot-clé">
 
-            <button type="submit"> <b>Rechercher</b>
+            <button type="submit" id="rechercher"> <b>Rechercher</b>
                 <span>{!! file_get_contents(public_path().'/svg/search.svg') !!}</span>
             </button>
         </div>
@@ -80,10 +80,12 @@
 
                         </div> {{-- fin class row-filters--}}
 
-{{-- reinitialiser filtres marche pas
+
                         <div class="form-action">
+                          <button type="submit" class="submit-filters">Valider les filtres</button>
                             <button type="button" class="reset-filters">Réinitialiser les filtres</button>
-                        </div> --}}
+
+                        </div>
 
                     </div> {{-- fin class filter-items --}}
 

@@ -1,6 +1,5 @@
 <div class="filters-dispositifs">
 
-
         <div class="filter-items">
             {{--}}
            @if(request()->routeIs('front.dispositifs'))
@@ -110,7 +109,7 @@
     {{--
     <div class="form-action">
         <button type="button" class="reset-filters">Réinitialiser les filtres</button>
-        <button type="submit" class="submit-filters">Rechercher</button>
+        <button type="submit" class="submit-filters submit-button">Rechercher</button>
     </div> --}}
 
 </div>

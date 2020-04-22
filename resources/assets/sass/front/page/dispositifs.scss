@@ -214,6 +214,9 @@
             color: $color-white;
             font-weight: 500;
             @include hoverButton($color-1);
+            &:hover {
+                color: $color-white;
+            }
         }
     }
 
