@@ -18,11 +18,28 @@
         {{-- 1ère ligne de titre : rappel de la recherche, bouton pour passer aux aides cloturées / aides ouvertes --}}
         <h2>
             <span>
-                @if(!empty(request()->get('query')))
-                    <strong>{{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }}</strong> pour "{{ $callsAreClosedOnes ? '(aides clôturées) ' : '' }}{{ request()->get('query') }}"
+                {{-- S'il y a une requête écrite et des filtres  --}}
+                @if(    ( !empty(request()->get('query'))) && (  ( !empty(request()->input('benef.0')))  || ( !empty(request()->input('thema.0'))) || ( !empty(request()->input('perim.0')))  || ( !empty(request()->input('proje.0')))  ) )
+
+                    <strong>{{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }} {{ $callsAreClosedOnes ? 'clôturées' : 'en cours' }}</strong> pour : "{{ $callsAreClosedOnes ? '(aides clôturées) ' : '' }}{{ request()->get('query') }}" et pour vos filtres
+
+
+                {{-- S'il y seulement des filtres  --}}
+                @elseif (    ( empty(request()->get('query'))) && (  ( !empty(request()->input('benef.0')))  || ( !empty(request()->input('thema.0'))) || ( !empty(request()->input('perim.0')))  || ( !empty(request()->input('proje.0')))  ) )
+
+                    <strong>{{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }}</strong> pour vos filtres
+
+                {{-- S'il y seulement une requête écrite --}}
+                @elseif (    ( !empty(request()->get('query'))) && (  ( empty(request()->input('benef.0')))  && ( empty(request()->input('thema.0'))) && ( empty(request()->input('perim.0')))  && ( empty(request()->input('proje.0')))  ) )
+
+                    <strong>{{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }}{{ $callsAreClosedOnes ? 'clôturées' : 'en cours' }}</strong> pour : "{{ request()->get('query') }}"
+
+                {{-- S'il n'y a rien --}}
                 @else
-                    Les aides {{ $callsAreClosedOnes ? 'clôturées' : '' }}
+                    {{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }} {{ $callsAreClosedOnes ? 'clôturées' : 'en cours' }}
+
                 @endif
+
             </span>
 
             @php
@@ -35,7 +52,7 @@
             <a href="{{ $route }}">Voir les aides {{ $callsAreClosedOnes ? 'ouvertes' : 'clôturées' }}</a>
         </h2>
 
-        {{-- 2ème ligne de titre : nombre aides trouvées et export --}}
+
         <div class="content-dispositifs">
             <div class="page-header no-bottom">
                 <div class="page-meta">
@@ -48,7 +65,10 @@
                             @else recensées
                         @endif-->
 
-                    </div>
+                </div>
+
+
+                {{-- Export --}}
                     @if(!$callsAreClosedOnes)
                         <div class="helper-links">
                             <?php // Icones Excel, PDF, CSV ?>
@@ -192,6 +212,7 @@
 
     </div>
 @endsection
+<<<<<<< HEAD
 
 @push('inline-script')
      <script>
@@ -289,3 +310,5 @@
          })(jQuery);
      </script>
  @endpush
+=======
+>>>>>>> Dispositifs : rectificatif affichage du nombre d'aide

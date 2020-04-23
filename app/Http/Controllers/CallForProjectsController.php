@@ -8,6 +8,7 @@ use App\ProjectHolder;
 use App\Resources\CallsForProjects;
 use App\Thematic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class CallForProjectsController extends Controller
 {
@@ -63,4 +64,6 @@ class CallForProjectsController extends Controller
 
         return view('front.call-for-projects-unique', compact('callForProjects'));
     }
+
+
 }

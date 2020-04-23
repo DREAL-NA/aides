@@ -21,7 +21,8 @@
          </div>
 
          @include('front.research')
-         {{--
+
+         {{-- Le code suivant, en commentaire, est l'archive de la séparation en deux fichiers de la barre de recherche et les filtres. Conservé "au cas où" .
          @include('front.home.quick-search')
 
          <div>
@@ -34,9 +35,8 @@
              <div id="dispositifs-filters-container">
                  @include('front.dispositifs.filters')
              </div>
-         </div> --}}
-
-         {{--@include('front.home.advanced-search')--}}
+         </div>
+         @include('front.home.advanced-search')--}}
 
          @include('front.home.news')
 
