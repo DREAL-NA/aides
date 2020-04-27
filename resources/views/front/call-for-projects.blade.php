@@ -15,13 +15,13 @@
 
 
 
-        {{-- 1ère ligne de titre : rappel de la recherche, bouton pour passer aux aides cloturées / aides ouvertes --}}
+        {{-- 1ère ligne : rappel de la recherche, bouton pour passer aux aides cloturées / aides ouvertes --}}
         <h2>
             <span>
                 {{-- S'il y a une requête écrite et des filtres  --}}
                 @if(    ( !empty(request()->get('query'))) && (  ( !empty(request()->input('benef.0')))  || ( !empty(request()->input('thema.0'))) || ( !empty(request()->input('perim.0')))  || ( !empty(request()->input('proje.0')))  ) )
 
-                    <strong>{{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }} {{ $callsAreClosedOnes ? 'clôturées' : 'en cours' }}</strong> avec "{{ $callsAreClosedOnes ? '(aides clôturées) ' : '' }}{{ request()->get('query') }}" et votre sélection de filtres
+                    <strong>{{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }} {{ $callsAreClosedOnes ? 'clôturées' : 'en cours' }}</strong> avec "{{ request()->get('query') }}" et votre sélection de filtres
 
 
                 {{-- S'il y seulement des filtres  --}}
@@ -201,10 +201,9 @@
 
                     {{-- message si pas d'aide trouvées --}}
                     @if($callsForProjects->isEmpty())
-                        <p class="dispositifs-empty">Désolé, nous n'avons pas trouvé d'aide correspondante à votre recherche.</p>
-                        <p class="text-center">Essayez des mot-clés synonymes, modifiez les filtres, ou <strong><a class="{{ Route::is('front.home') ? 'current' : '' }}" href="{{ route('front.home') }}#newsletter">inscrivez-vous à notre newsletter</a></strong> pour être au courant des nouvelles aides ajoutées.<p/>
+                        <p class="dispositifs-empty">Vous pouvez essayer d'autres mot-clés ou modifier les filtres.</p>
+                        <p class="text-center">Soyez les premiers à connaître les nouvelles aides, <strong><a class="{{ Route::is('front.home') ? 'current' : '' }}" href="{{ route('front.home') }}#newsletter">inscrivez-vous à la newsletter</a></strong>.<p/>
                     @endif
-
                 </section>
                 {{ $callsForProjects->appends($pagination_appends)->links() }}
             </div>

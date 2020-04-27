@@ -2,12 +2,13 @@
     <div class="content">
         <article class="content-home">
             <div class="page-header no-bottom">
-                <p class="home-news" id="newsletter"><b>Restez informés des nouvelles aides</b> avec la newsletter hebdomadaire : </p>
             </div>
+            <p id="newsletter"><b>Restez informés,</b> recevez les nouvelles aides tous les vendredi.</p>
+            {{--l'id sert pour le css et également d'ancre pour rediriger l'utilisateur vers l'inscription à la newsletter--}}
             <section class="newsletter-container">
                 <form action="{{ route('front.newsletter.subscribe') }}" method="post" class="form-contact" id="form-newsletter">
                     {{ csrf_field() }}
-
+                    <p id="newsletter-champ-title">Votre adresse e-mail :</p>
                     <input name="email" placeholder="@ Entrez votre adresse e-mail" type="email" tabindex="1" required value="{{ old('email') }}">
                    {{-- <input name="lastname" placeholder="Votre nom" type="text" tabindex="2" value="{{ old('lastname') }}">
                     <input name="firstname" placeholder="Votre prénom" type="text" tabindex="3" value="{{ old('firstname') }}">--}}
@@ -19,8 +20,8 @@
         <article class="content-home">
             <div class="page-header no-bottom with-actions">
                 <h2>
-                    <span>Aides recensées cette semaine</span>
-                    <a href="{{ route('front.news.before') }}">Voir les semaines précédentes</a>
+                    <span>Aides enregistrées cette semaine</span>
+                    <a href="{{ route('front.news.before') }}">Voir les aides des semaines précédentes</a>
                 </h2>
             </div>
 

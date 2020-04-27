@@ -59,3 +59,22 @@
 		}
 	}
 }
+
+#retour {
+		background-color: $gris-clair;
+		color: $text-color;
+		font-weight: 500;
+
+		display: inline-block;
+		font-size: 1.2em;
+		padding: 10px 10px;
+		border: none;
+		outline: none;
+		border-radius: 2px;
+		transition: all 250ms ease-in-out;
+
+		@include hoverButton($gris-clair);
+		&:hover {
+				color: $text-color;
+		}
+}

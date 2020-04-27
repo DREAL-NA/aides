@@ -6,23 +6,16 @@
 
 
 @section('content')
-    {{-- <div class="count-dispositifs-wrapper">
-         <div class="count-dispositifs">
-             {!! trans_choice('messages.home.count', $countCallsForProjects) !!}
-         </div>
-        <a class="count-dispositifs-link" href="{{ route('front.dispositifs') }}">Voir les aides</a>
-     </div>--}}
-
      <div class="page-container">
 
          <div class="page-header">
-             <h2 class="principal">Découvrez <span style="padding-top: 10px;" class="count-dispositifs">{!! trans_choice('messages.home.count', $countCallsForProjects) !!}</span> financières pour les projets de développement durable des <span style="color: #11884d">collectivités, entreprises, associations et citoyens</span> en Nouvelle-Aquitaine</h2>
+             <h2 id="principal">Vous souhaitez financer un projet de développement durable ?</br>Trouvez des fonds parmis <span style="padding-top: 10px;" class="count-dispositifs">{!! trans_choice('messages.home.count', $countCallsForProjects) !!}</span> pour les <strong><span style="color: #11884d">collectivités, entreprises, associations, citoyens,...</span></strong> de Nouvelle-Aquitaine</h2>
 
          </div>
 
          @include('front.research')
 
-         {{-- Le code suivant, en commentaire, est l'archive de la séparation en deux fichiers de la barre de recherche et les filtres. Conservé "au cas où" .
+         {{-- Le code suivant est une archive : séparation en deux fichiers de la barre de recherche et les filtres.
          @include('front.home.quick-search')
 
          <div>

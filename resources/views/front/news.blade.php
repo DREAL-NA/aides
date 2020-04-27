@@ -4,7 +4,7 @@
 
 @section('breadcrumb')
     <li>
-        <span>Actualités des semaines précédentes</span>
+        <span>Aides des semaines précédentes</span>
     </li>
 @endsection
 
@@ -13,7 +13,7 @@
         <div class="content">
             <section class="content-search">
                 <div class="page-header no-bottom">
-                    <h2>Actualités des semaines précédentes</h2>
+                    <h2>Aides des semaines précédentes</h2>
                 </div>
 
                 @include('front.news.weeks')
