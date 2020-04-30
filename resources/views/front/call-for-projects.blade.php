@@ -21,22 +21,22 @@
                 {{-- S'il y a une requête écrite et des filtres  --}}
                 @if(    ( !empty(request()->get('query'))) && (  ( !empty(request()->input('benef.0')))  || ( !empty(request()->input('thema.0'))) || ( !empty(request()->input('perim.0')))  || ( !empty(request()->input('proje.0')))  ) )
 
-                    <strong>{{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }} {{ $callsAreClosedOnes ? 'clôturées' : 'en cours' }}</strong> avec "{{ request()->get('query') }}" et votre sélection de filtres
+                    <strong>{{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }} {{ $callsAreClosedOnes ? 'clôturées' : 'disponibles' }}</strong> avec "{{ request()->get('query') }}" et votre sélection de filtres
 
 
                 {{-- S'il y seulement des filtres  --}}
                 @elseif (    ( empty(request()->get('query'))) && (  ( !empty(request()->input('benef.0')))  || ( !empty(request()->input('thema.0'))) || ( !empty(request()->input('perim.0')))  || ( !empty(request()->input('proje.0')))  ) )
 
-                    <strong>{{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }} {{ $callsAreClosedOnes ? 'clôturées' : 'en cours' }} </strong> avec votre sélection de filtres
+                    <strong>{{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }} {{ $callsAreClosedOnes ? 'clôturées' : 'disponibles' }} </strong> avec votre sélection de filtres
 
                 {{-- S'il y seulement une requête écrite --}}
                 @elseif (    ( !empty(request()->get('query'))) && (  ( empty(request()->input('benef.0')))  && ( empty(request()->input('thema.0'))) && ( empty(request()->input('perim.0')))  && ( empty(request()->input('proje.0')))  ) )
 
-                    <strong>{{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }} {{ $callsAreClosedOnes ? 'clôturées' : 'en cours' }}</strong> avec "{{ request()->get('query') }}"
+                    <strong>{{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }} {{ $callsAreClosedOnes ? 'clôturées' : 'disponibles' }}</strong> avec "{{ request()->get('query') }}"
 
                 {{-- S'il n'y a rien --}}
                 @else
-                    {{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }} {{ $callsAreClosedOnes ? 'clôturées' : 'en cours' }}
+                    {{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }} {{ $callsAreClosedOnes ? 'clôturées' : 'disponibles' }}
 
                 @endif
 
