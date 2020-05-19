@@ -33,7 +33,7 @@
 
                                                 Découvrez les nouvelles aides pour le développement durable en Nouvelle -
                                                 Aquitaine. Elles sont destinées aux collectivités, associations, entreprises, citoyens, …
-                                                Vous avez connaissances d’autres aides ? Communiquez-les-nous en répondant à cet e-mail.
+                                                Vous avez connaissance d’autres aides ? Communiquez-les-nous en répondant à cet e-mail.
                                             </td>
                                         </tr>
                                         </tbody>
@@ -114,7 +114,7 @@
                                                 style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
 
                                                                     <span style="font-size:12px">Si le bouton ne fonctionne pas, copiez-collez l'url suivante dans votre navigateur : <a
-                                                                                href="{{ env('APP_URL') }}" target="_blank">{{ env('APP_URL') }}</a></span>
+                                                                                href="{{ env('APP_URL') }}/?utm_source=newsletter&utm_medium=email&utm_campaign=aides_de_la_semaine" target="_blank">{{ env('APP_URL') }}/?utm_source=newsletter&utm_medium=email&utm_campaign=aides_de_la_semaine</a></span>
                                             </td>
                                         </tr>
                                         </tbody>

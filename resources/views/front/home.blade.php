@@ -9,7 +9,7 @@
      <div class="page-container">
 
          <div class="page-header">
-             <h2 id="principal">Vous avez un projet de développement durable ?</br>Vous êtes une collectivité, une entreprise, une association, un citoyen,...</br><strong><span style="padding-top: 10px; color: #11884d; font-weight:bold;" class="count-dispositifs">{!! trans_choice('messages.home.count', $countCallsForProjects) !!} disponibles.</span></strong></h2>
+             <h2 id="principal">Vous avez un projet de développement durable ?</br>Vous êtes une collectivité, une entreprise, une association, un citoyen,...</br><strong><span style="padding-top: 10px; color: #11884d; font-weight:bold;" class="count-dispositifs">{!! trans_choice('messages.home.count', $countCallsForProjects) !!} disponibles</span></strong></h2>
 
          </div>
 
