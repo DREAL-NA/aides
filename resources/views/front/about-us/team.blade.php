@@ -22,8 +22,8 @@
                 <div class="team-items">
                     <div class="team-item">
                         <h4>Sylvie FRUGIER</h4>
-                        <p>Chargée de mission développement économique</p>
-                        <p>Service Mission Développement Durable (MDD)</p>
+                         <p>Chef de projet "Accompagner les territoires en transition Innovation"</p>
+                         <p>Mission Transition Ecologique (MTE)</p>
                         <p>DREAL Nouvelle-Aquitaine (Site Limoges)</p>
                         <p><b>05 55 12 95 76</b> ou <b>06 99 03 39 58</b></p>
                         <p><a href="mailto:{{ config('app.contact_mail') }}">{{ config('app.contact_mail') }}</a></p>
@@ -32,7 +32,7 @@
             </div>
 
             <div class="flex-item">
-                <h3>Développement</h3>
+                <h3>Equipe de développement</h3>
                 <div class="team-items">
                     <div class="team-item">
                         <h4>Items Media Concept</h4>
@@ -65,13 +65,22 @@
                         <p><a href="mailto:npg.dupont@gmail.com">npg.dupont@gmail.com</a></p>
                     </div>
                 </div>
+                <div class="team-items">
+                    <div class="team-item">
+                        <h4>Items Medias Concept</h4>
+                        <img src="{{ asset('images/IMC.jpg') }}" alt="Agence Item Medias Concept" class="logo-image">
+                        <p>4, Allée Pierre-Gilles de Gennes, 33700 MERIGNAC</p>
+                        <p><a href="https://www.imc-fr.com/accueil.html" target="_blank">https://www.imc-fr.com/accueil.html</a></p>
+                        <p><b>05 57 35 73 79</b> et <b>06 52 83 88 22</b></p>
+                    </div>
+                </div>
             </div>
             <div class="flex-item">
-                <h3>Confort d'usage et accessibilité</h3>
+                <h3>Conseil en ergonomie des interfaces</h3>
             <div class="team-items">
                 <div class="team-item">
                     <h4>Fanny BREUNEVAL</h4>
-                    <p><a href="https://www.uxmethode.fr" target="_blank">UX Methode</a></p>
+                    <p><a href="https://cutt.ly/fannybreuneval" target="_blank">https://cutt.ly/fannybreuneval</a></p>
                     <p><b>06 68 40 50 40</b></p>
                     <p><a href="mailto:fbreuneval@ensc.fr">Fanny.Breuneval@ensc.fr</a></p>
                 </div>
