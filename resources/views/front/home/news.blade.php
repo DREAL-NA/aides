@@ -1,7 +1,7 @@
 <div class="page-content page-home">
     <div class="content">
         <article class="content-home" id="rectangle_newsletter">
-            <p id="newsletter">Envie d'être régulièrement informé ? </br><b>Chaque semaine, recevez les nouvelles aides</b></p>
+            <p id="newsletter">Envie d'être informé régulièrement ? </br><b>Chaque semaine, recevez les nouvelles aides</b></p>
             {{--l'id sert pour le css et également d'ancre pour rediriger l'utilisateur vers l'inscription à la newsletter--}}
             <section class="newsletter-container">
                 <form action="{{ route('front.newsletter.subscribe') }}" method="post" class="form-contact" id="form-newsletter">
