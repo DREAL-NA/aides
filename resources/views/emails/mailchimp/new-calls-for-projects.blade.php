@@ -32,7 +32,7 @@
                                                 style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
 
                                                 Découvrez les nouvelles aides pour le développement durable en Nouvelle -
-                                                Aquitaine. Elles sont destinées aux collectivités, associations, entreprises, citoyens, …
+                                                Aquitaine, destinées à tous : collectivités, associations, entreprises, citoyens, …
                                                 Vous avez connaissance d’autres aides ? Communiquez-les-nous en répondant à cet e-mail.
                                             </td>
                                         </tr>

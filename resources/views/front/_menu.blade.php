@@ -34,7 +34,7 @@
             </ul>
             <ul id="submenu-tools" class="menu-list-children">
                 <li class="menu-item-children"><a href="{{ route('front.tools.data') }}">Mise à disposition des données</a></li>
-                <li class="menu-item-children"><a href="{{ route('front.tools.website-library') }}">Sitothèque</a></li>
+                <li class="menu-item-children"><a href="{{ route('front.tools.website-library') }}">Poursuivre les recherches</a></li>
             </ul>
         </div>
     </div>

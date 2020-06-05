@@ -32,7 +32,7 @@ Route::view('qui-sommes-nous/base-de-donnees', 'front.about-us.database')->name(
 Route::view('qui-sommes-nous/equipe', 'front.about-us.team')->name('front.about-us.team');
 
 Route::view('outils/mise-a-disposition-des-donnees', 'front.tools.data')->name('front.tools.data');
-Route::get('outils/sitotheque', 'WebsitesController')->name('front.tools.website-library');
+Route::get('outils/poursuivre-recherches', 'WebsitesController')->name('front.tools.website-library');
 
 Route::get('dispositifs/{closed?}', 'CallForProjectsController@index')->name('front.dispositifs');
 Route::get('dispositifs/detail/{slug}', 'CallForProjectsController@unique')->name('front.dispositifs.unique');

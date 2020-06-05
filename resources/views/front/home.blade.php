@@ -32,8 +32,6 @@
          @include('front.home.advanced-search')--}}
 
          @include('front.home.news')
-
-         @include('front.home.websites-to-consult')
      </div>
 
  @endsection
