@@ -13,9 +13,12 @@ class AddResponsiveImagesColToMedias extends Migration
      */
     public function up()
     {
-        Schema::table('media', function (Blueprint $table) {
-            $table->json('responsive_images')->after('disk');
-        });
+        if (!Schema::hasTable('media')) {
+            Schema::table('media', function (Blueprint $table) {
+                $table->json('responsive_images')->after('disk');
+            });
+        }
+        
     }
 
     /**

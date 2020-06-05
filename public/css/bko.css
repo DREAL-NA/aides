@@ -13633,6 +13633,30 @@ mark,
   padding-left: 30px;
 }
 
+.danger {
+  color: #bf5329;
+}
+
+.success {
+  color: #2ab27b;
+}
+
+.col-actions .fa {
+  font-size: 2em;
+}
+
+.strong {
+  font-weight: bold;
+}
+
+.green {
+  color: #2ab27b;
+}
+
+.red {
+  color: #bf5329;
+}
+
 .panel-menu .menu {
   margin: 0;
   padding: 0;

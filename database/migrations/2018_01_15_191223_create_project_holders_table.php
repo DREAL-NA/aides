@@ -13,13 +13,16 @@ class CreateProjectHoldersTable extends Migration
      */
     public function up()
     {
-        Schema::create('project_holders', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->timestamps();
-            $table->softDeletes();
-        });
+        if (!Schema::hasTable('project_holders')) {
+            Schema::create('project_holders', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('name');
+                $table->text('description')->nullable();
+                $table->timestamps();
+                $table->softDeletes();
+            });
+        }
+        
     }
 
     /**

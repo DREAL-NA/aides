@@ -13,11 +13,14 @@ class CreateCallForProjectsPerimetersTable extends Migration
      */
     public function up()
     {
-        Schema::create('call_for_projects_perimeters', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('perimeter_id')->unsigned()->index();
-            $table->integer('call_for_project_id')->unsigned()->index();
-        });
+        if (!Schema::hasTable('call_for_projects_perimeters')) {
+            Schema::create('call_for_projects_perimeters', function (Blueprint $table)
+            {
+                $table->increments('id');
+                $table->integer('perimeter_id')->unsigned()->index();
+                $table->integer('call_for_project_id')->unsigned()->index();
+            });
+        }
     }
 
     /**

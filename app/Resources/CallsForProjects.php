@@ -17,6 +17,8 @@ class CallsForProjects
     /** @var string Return the closed calls for projects or not. */
     protected $closed = false;
 
+    protected $published = true;
+
     /** @var string The number of results per page for the pagination. */
     protected $perPage;
 
@@ -43,7 +45,6 @@ class CallsForProjects
     {
         $this->setPerPage(config('app.pagination.perPage'));
 
-//        $this->instance = CallForProjects::with($this->with);
         $this->instance = CallForProjects::search(request()->get('query'));
 
         $this->parameters = new Collection();
@@ -59,6 +60,11 @@ class CallsForProjects
     public function setClosed($closed)
     {
         return $this->closed = $closed === 'clotures' ?? true;
+    }
+
+    public function setPublished($published)
+    {
+        return $this->published = $published;
     }
 
     /**
@@ -174,6 +180,10 @@ class CallsForProjects
     {
         $this->instance->where('is_closed', (integer)$this->closed);
 
+        if ($this->published) {
+            $this->instance->query( function ($query) { return $query->whereNotNull('published_at'); });
+        }
+
         if (!empty(request()->all())) {
             $this->setParametersIntanceAndPagination();
         }
@@ -232,4 +242,5 @@ class CallsForProjects
 
         return $result;
     }
+
 }

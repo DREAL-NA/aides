@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Database\Seeder;
 
 class UserTableSeeder extends Seeder
@@ -12,11 +13,14 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->delete();
-        \App\User::create([
+        User::create([
             'id' => 1,
             'name' => 'John Doe',
             'email' => 'john@example.com',
             'password' => Hash::make('password'),
+        ]);
+        User::create([
+            'name' => 'Batch Nouvelle-Aquitaine'
         ]);
     }
 }

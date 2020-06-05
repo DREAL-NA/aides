@@ -13,15 +13,18 @@ class CreateNewsletterSubscribersTable extends Migration
      */
     public function up()
     {
-        Schema::create('newsletter_subscribers', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('email')->unique();
-            $table->string('firstname')->nullable();
-            $table->string('lastname')->nullable();
-            $table->timestamp('subscribed_at')->nullable();
-
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('newsletter_subscribers')) {
+            Schema::create('newsletter_subscribers', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('email')->unique();
+                $table->string('firstname')->nullable();
+                $table->string('lastname')->nullable();
+                $table->timestamp('subscribed_at')->nullable();
+    
+                $table->timestamps();
+            });
+        }
+        
     }
 
     /**

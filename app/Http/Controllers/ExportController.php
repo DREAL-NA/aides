@@ -12,6 +12,7 @@ use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Style\Color;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+use Exception;
 
 class ExportController extends Controller
 {
@@ -178,6 +179,8 @@ class ExportController extends Controller
 
     public function dispositifsPdf()
     {
+        ini_set('memory_limit','256M'); // On monte la mémoire pour éviter la memory limit
+
         $pdf = PDF::loadView(
             'exports.pdf',
             ['thematics' => $this->thematics, 'callsForProjects' => $this->callsForProjects, 'type' => 'pdf']
@@ -193,10 +196,16 @@ class ExportController extends Controller
             abort(404);
         }
 
-        if (app()->environment() != 'production' && debugbar()->isEnabled()) {
-            debugbar()->disable();
+        try {
+            if (app()->environment() != 'production' && debugbar()->isEnabled()) {
+                debugbar()->disable();
+            }
+        } catch(\Error $e) {
+            report($e);
+        } catch(\Throwable $e) {
+            report($e);
         }
-
+        
         $namespace = "App\\Exports\\";
 
         $class = $namespace . studly_case($table) . 'Export';

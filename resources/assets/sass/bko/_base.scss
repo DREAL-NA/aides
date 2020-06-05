@@ -93,3 +93,26 @@ mark,
         }
     }
 }
+
+.danger {
+    color: $brand-danger;
+}
+
+.success {
+    color: $brand-success;
+}
+
+.col-actions .fa {
+    font-size: 2em;
+}
+
+.strong {
+    font-weight: bold;
+}
+
+.green {
+    color: $brand-success;
+}
+.red {
+    color: $brand-danger;
+}

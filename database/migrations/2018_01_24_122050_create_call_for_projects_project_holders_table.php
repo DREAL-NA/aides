@@ -13,11 +13,14 @@ class CreateCallForProjectsProjectHoldersTable extends Migration
      */
     public function up()
     {
-        Schema::create('call_for_projects_project_holders', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('project_holder_id')->unsigned()->index();
-            $table->integer('call_for_project_id')->unsigned()->index();
-        });
+        if (!Schema::hasTable('call_for_projects_project_holders')) {
+            Schema::create('call_for_projects_project_holders', function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('project_holder_id')->unsigned()->index();
+                $table->integer('call_for_project_id')->unsigned()->index();
+            });
+        }
+        
     }
 
     /**

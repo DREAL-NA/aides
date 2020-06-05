@@ -13,16 +13,18 @@ class CreateThematicsTable extends Migration
      */
     public function up()
     {
-        Schema::create('thematics', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->integer('parent_id')->unsigned()->nullable();
-            $table->timestamps();
-            $table->softDeletes();
-
-            $table->index('parent_id');
-        });
+        if (!Schema::hasTable('thematics')) {
+            Schema::create('thematics', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('name');
+                $table->text('description')->nullable();
+                $table->integer('parent_id')->unsigned()->nullable();
+                $table->timestamps();
+                $table->softDeletes();
+    
+                $table->index('parent_id');
+            });
+        }
     }
 
     /**

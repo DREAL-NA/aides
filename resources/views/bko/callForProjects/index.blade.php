@@ -96,6 +96,7 @@
                     <th>Objectifs</th>
                     <th></th>
                     <th>Vous êtes ?</th>
+                    <th>État</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -107,7 +108,7 @@
                     <tr class="{{ in_array($callForProjects->id, $callsOfTheWeek->toArray()) ? 'item-of-the-week' : '' }}">
                         <td>{{ $callForProjects->thematic->id }}</td>
                         <td>{{ $callForProjects->thematic->name }}</td>
-                        <td>{{ empty($subthematic) ? '' : $subthematic->id }}</td>
+                        <td></td>
                         <td>{{ empty($subthematic) ? '' : $subthematic->name }}</td>
                         <td>{{ $callForProjects->name }}</td>
                         <td>{{ empty($callForProjects->closing_date) ? '' : $callForProjects->closing_date->format('d/m/Y') }}</td>
@@ -118,16 +119,30 @@
                         <td>{{ \Illuminate\Support\Str::words($callForProjects->objectives, 50) }}</td>
                         <td>,{{ $callForProjects->beneficiaries->pluck('type_label')->unique()->implode(',') }},</td>
                         <td>{{ $callForProjects->beneficiaries->pluck('type_label')->unique()->implode(', ') }}</td>
+                        <td class="{{ $callForProjects->published_at ? 'strong success' : 'danger' }}">{{ $callForProjects->published_at ? 'Publiée' : 'Non publiée' }}</td>
                         <td class="text-right col-actions">
                             <a href="{{ route('bko.call.show', $callForProjects) }}" data-tooltip="tooltip"
                                title="Voir la fiche"><i class="fa fa-eye" aria-hidden="true"></i></a>
                             <a href="{{ route('bko.call.edit', $callForProjects) }}" data-tooltip="tooltip"
                                title="Modifier"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                            <a href="#" class="deleteItemBtn" title="Supprimer" data-toggle="modal"
+                            <a href="#" class="deleteItemBtn danger" title="Supprimer" data-toggle="modal"
                                data-target="#modalDeleteItem" data-tooltip="tooltip"
                                data-id="{{ $callForProjects->id }}">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
                             </a>
+                            @if ($callForProjects->published_at == null)
+                            <a href="#" class="publishItemBtn success" title="Publier" data-toggle="modal"
+                                data-target="#modalPublishItem" data-tooltip="tooltip"
+                                data-id="{{ $callForProjects->id }}"  data-refresh="false">
+                                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                            </a>
+                            @else
+                            <a href="#" class="unpublishItemBtn danger" title="Dépublier" data-toggle="modal"
+                                data-target="#modalUnpublishItem" data-tooltip="tooltip"
+                                data-id="{{ $callForProjects->id }}"  data-refresh="false">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            </a>
+                            @endif
                         </td>
                     </tr>
                 @endforeach
@@ -189,6 +204,7 @@
                         "searchable": true
                     },
                     null,
+                    null,
                     {"orderable": false}
                 ],
             });
@@ -227,5 +243,15 @@
         'title' => "Suppression d'une aide",
         'question' => "Êtes-vous sûr de vouloir supprimer cette aide ?",
         'action' => 'Bko\CallForProjectsController@destroy',
+    ])
+    @include('bko.components.modals.publish', [
+        'title' => "Publication d'une aide",
+        'question' => "Êtes-vous sûr de vouloir publier cette aide ?",
+        'action' => 'Bko\CallForProjectsController@publish'
+    ])
+    @include('bko.components.modals.unpublish', [
+        'title' => "Dépublication d'une aide",
+        'question' => "Êtes-vous sûr de vouloir dépublier cette aide ?",
+        'action' => 'Bko\CallForProjectsController@unpublish'
     ])
 @endsection

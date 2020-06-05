@@ -10,7 +10,21 @@
     font-size: 1.6em;
 }
 
+.autocomplete {
+    list-style: none;
+    text-indent: 0;
+    background-color: white;
+    padding-inline-start: 0;
+
+    li.selectable {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 0.5em;
+        cursor: pointer;
+    }
+}
+
 .filters-wrapper {
+    
     margin: 30px auto;
     max-width: 900px;
 
@@ -290,4 +304,32 @@
             display: flex;
         }
     }
+}
+
+#perimeter {
+    padding: 7px 0;
+}
+
+.perimeter-tag {
+    border-radius: 40px;
+    background-color: #379683;
+    color: white;
+    padding: 0.2em;
+    padding-left: 0.5em;
+
+    .closable {
+        color: white;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 40px;
+        cursor: pointer;
+        padding: 0.2em;
+        text-decoration: none;
+        width: 16px;
+        height: 16px;
+        margin-left: 0.5em;
+    }
+}
+
+#dispositifs-filters-container > div > div > div > div:nth-child(3) > div.selectric-wrapper.selectric-responsive {
+    display: none;
 }

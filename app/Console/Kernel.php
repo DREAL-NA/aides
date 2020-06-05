@@ -38,6 +38,9 @@ class Kernel extends ConsoleKernel
 
         // Re-import Scout data in Algolia
         $schedule->command('scout:reimport')->runInBackground()->cron('12 9,12,15,18 * * *');
+
+        // Scheduling batch region import everyday at 00:00
+        $schedule->command('region:import')->dailyAt('00:00');
     }
 
     /**

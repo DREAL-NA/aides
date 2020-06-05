@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AutocompletePerimeters;
 use Illuminate\Http\Request;
 
 /*
@@ -64,3 +65,5 @@ Route::get('/dispositifs/{type?}', function (Request $request) {
 Route::get('/sites', function (Request $request) {
     return \App\Website::with(['perimeters'])->get();
 });
+
+Route::get('autocomplete/perimeters', 'AutocompletePerimeters@autocomplete')->middleware('throttle:200,1');

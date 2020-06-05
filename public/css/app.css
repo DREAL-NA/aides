@@ -7223,6 +7223,22 @@ caption {
   color: #6e717f;
 }
 
+.hidden {
+  display: none;
+}
+
+.voirfichecomplete {
+  background-color: #129252;
+  color: #FFFFFF;
+  padding: 5px 10px;
+  text-decoration: none !important;
+}
+
+.voirfichecomplete:hover {
+  background-color: #0c6539;
+  color: #fff;
+}
+
 header {
   background-color: #02734A;
   color: #FFFFFF;
@@ -7913,6 +7929,20 @@ No space - remove distance between list items
   font-size: 1.6em;
 }
 
+.autocomplete {
+  list-style: none;
+  text-indent: 0;
+  background-color: white;
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
+}
+
+.autocomplete li.selectable {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0.5em;
+  cursor: pointer;
+}
+
 .filters-wrapper {
   margin: 30px auto;
   max-width: 900px;
@@ -8228,6 +8258,35 @@ No space - remove distance between list items
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+#perimeter {
+  padding: 7px 0;
+  text-indent: 10px;
+}
+
+.perimeter-tag {
+  border-radius: 40px;
+  background-color: #379683;
+  color: white;
+  padding: 0.2em;
+  padding-left: 0.5em;
+}
+
+.perimeter-tag .closable {
+  color: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 40px;
+  cursor: pointer;
+  padding: 0.2em;
+  text-decoration: none;
+  width: 16px;
+  height: 16px;
+  margin-left: 0.5em;
+}
+
+#dispositifs-filters-container > div > div > div > div:nth-child(3) > div.selectric-wrapper.selectric-responsive {
+  display: none;
 }
 
 .newsWeeks__loadMoreResultsContainer {

@@ -22,4 +22,16 @@
         </div>
     @endif
     <div class="objectives">{{ \Illuminate\Support\Str::words($callForProjects->objectives, 50) }}</div>
+    <br>
+    <p style="text-align: left">
+        <span>Site internet: </span>
+        <a href="{{ $callForProjects->website_url}}" target="_blank"' style="margin-left: 10%;">
+            Accéder à l'aide <i class="fa fa-external-link" aria-hidden="true"></i>
+        </a>
+    </p>
+    <p style="text-align: right">
+        <a href="{{ route('front.dispositifs.unique', [ 'slug' => $callForProjects->slug ]) }}" {{ empty($callForProjects->website_url) ? '' : 'target="_blank"' }} class="voirfichecomplete">
+            Voir la fiche complète
+        </a>
+    </p>
 </div>

@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', ['as' => 'bko.home', 'uses' => 'IndexController@index']);
 
 Route::resource('thematic', 'ThematicController', ['as' => 'bko', 'except' => ['show']]);
@@ -51,7 +53,8 @@ Route::post('beneficiaire/select2', ['as' => 'bko.beneficiaire.select2', 'uses' 
 
 
 Route::resource('site', 'WebsiteController', ['as' => 'bko', 'parameters' => ['site' => 'website']]);
-
+Route::get('appel-a-projet/en-attente', ['as' => 'bko.call.indexWaiting', 'uses' => 'CallForProjectsController@indexWaiting']);
+Route::get('appel-a-projet/non-publiees', ['as' => 'bko.call.indexUnpublished', 'uses' => 'CallForProjectsController@indexUnpublished']);
 Route::get('appel-a-projet/clotures', ['as' => 'bko.call.indexClosed', 'uses' => 'CallForProjectsController@indexClosed']);
 Route::resource('appel-a-projet', 'CallForProjectsController', [
     'names' => [
@@ -62,10 +65,14 @@ Route::resource('appel-a-projet', 'CallForProjectsController', [
         'edit' => 'bko.call.edit',
         'update' => 'bko.call.update',
         'destroy' => 'bko.call.destroy',
+        'publish' => 'bko.call.publish',
     ],
     'parameters' => ['appel-a-projet' => 'callForProjects']
 ]);
 Route::get('appel-a-projet/{callForProjects}/dupliquer', ['as' => 'bko.call.duplicate', 'uses' => 'CallForProjectsController@duplicate']);
+
+Route::post('appel-a-projet/{callForProjects}/publish', ['as' => 'bko.call.publish', 'uses' => 'CallForProjectsController@publish']);
+Route::post('appel-a-projet/{callForProjects}/unpublish', ['as' => 'bko.call.unpublish', 'uses' => 'CallForProjectsController@unpublish']);
 
 Route::resource('utilisateur', 'UserController', ['as' => 'bko', 'parameters' => ['utilisateur' => 'user'], 'except' => ['show']])->middleware('admin');
 
@@ -84,3 +91,5 @@ Route::post('newsletter/subscriber/{subscriber}/unsubscribe', [
     'as' => 'bko.subscriber.unsubscribe',
     'uses' => 'NewsletterSubscriberController@unsubscribe'
 ]);
+
+?>

@@ -10,6 +10,8 @@
             <h5 class="category-title">Aides</h5>
             <ul class="menu">
                 <li class="menu-item"><a href="{{ route('bko.call.index') }}">Liste des aides ouvertes</a></li>
+                <li class="menu-item"><a href="{{ route('bko.call.indexWaiting') }}">Liste des aides en attente</a></li>
+                <li class="menu-item"><a href="{{ route('bko.call.indexUnpublished') }}">Liste des aides non publiées</a></li>
                 <li class="menu-item"><a href="{{ route('bko.call.indexClosed') }}">Liste des aides clôturées</a></li>
                 <li class="menu-item"><a href="{{ route('bko.call.create') }}">Ajouter une aide</a></li>
                 @yield('menu-item-call')

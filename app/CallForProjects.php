@@ -21,11 +21,12 @@ class CallForProjects extends Model implements Feedable, HasMedia
     use SoftDeletes, HasSlug, Searchable, HasMediaTrait;
 
     protected $guarded = [];
-    protected $dates = ['deleted_at', 'closing_date'];
+    protected $dates = ['deleted_at', 'closing_date', 'published_at'];
     protected $casts = [
         'is_news' => 'boolean',
         'allocation_global' => 'boolean',
         'allocation_per_project' => 'boolean',
+        'draft' => 'boolean'
     ];
 
     protected $table = 'calls_for_projects';
@@ -58,7 +59,11 @@ class CallForProjects extends Model implements Feedable, HasMedia
             $model->perimeters()->sync(request()->get('perimeters'));
             $model->beneficiaries()->sync(request()->get('beneficiaries'));
 
-            $model->searchable();
+            if ($model->published_at == null) {
+                $model->unsearchable();
+            } else {
+                $model->searchable();
+            }
         });
     }
 
@@ -126,6 +131,8 @@ class CallForProjects extends Model implements Feedable, HasMedia
             // Max file size : 5MB
 //            'file' => 'file|max:5120',
             'is_news' => 'required|in:0,1',
+            'draft' => 'boolean',
+            'published_at' => 'nullable|date'
         ];
 
         // File validation
@@ -176,6 +183,31 @@ class CallForProjects extends Model implements Feedable, HasMedia
     {
         //		return $query->whereDate('closing_date', '>=', date('Y-m-d 00:00:00'))->orWhereRaw('closing_date is null', []);
         return $query->whereDate('closing_date', '>=', date('Y-m-d 00:00:00'))->orWhereNull('closing_date');
+    }
+
+    public function scopePublished($query)
+    {
+        return $query->whereNotNull('published_at');
+    }
+
+    public function scopeUnpublished($query)
+    {
+        return $query->whereNull('published_at');
+    }
+
+    public function scopeWaiting($query)
+    {
+        return $query->where('draft', true);
+    }
+
+    public function scopeReady($query)
+    {
+        return $query->where('draft', false);
+    }
+
+    public function scopeDraft($query)
+    {
+        return $query->where('draft', true);
     }
 
     public function scopeOfTheWeek($query, $start_date = null, $end_date = null)
@@ -268,6 +300,42 @@ class CallForProjects extends Model implements Feedable, HasMedia
         return !$this->isOpened();
     }
 
+    public function isWaiting()
+    {
+        return $this->draft;
+    }
+
+    public function isUnpublished()
+    {
+        return $this->published_at == null;
+    }
+    
+    public static function filterIsWaiting($cfps)
+    {
+        return $cfps->filter( function ($cfp) {
+            return $cfp->isWaiting();
+        });
+    }
+
+    public static function filterIsUnpublished($cfps)
+    {
+        return $cfps->filter( function ($cfp) {
+            return $cfp->isUnpublished();
+        });
+    }
+
+    public function publish() {
+        $this->draft = false;
+        $this->published_at = now();
+        $this->searchable();
+    }
+
+    public function unpublish() {
+        $this->draft = false;
+        $this->published_at = null;
+        $this->unsearchable();
+    }
+
     // Attributes casting
     public function setObjectivesAttribute($value)
     {
@@ -317,6 +385,14 @@ class CallForProjects extends Model implements Feedable, HasMedia
     public function getTechnicalRelayAttribute($value)
     {
         return preg_replace('#<br\s*/?>#i', "", $value);
+    }
+
+    public function setPublishedAtAttributes($value)
+    {
+        if ($value == null)
+        {
+            $this->attributes['published_at'] = null;
+        }
     }
 
     public function normalizeFilename($file)
@@ -418,10 +494,35 @@ class CallForProjects extends Model implements Feedable, HasMedia
             return $item->only(['id', 'name', 'description']);
         });
 
+        //FIXME
         $array['perimeters'] = $this->perimeters->map(function ($item) {
             return $item->only(['id', 'name', 'description']);
         });
 
         return $array;
+    }
+
+    public function shouldBeSearchable()
+    {
+        return $this->published_at != null;
+    }
+
+    public static function fromBatch($item, $thematic) {
+        $cfp = new CallForProjects();
+        $thematic_id = Thematic::where('name', $thematic)->first()->id;
+        $cfp->thematic_id = $thematic_id;
+        $cfp->name = $item->title;
+        $cfp->objectives = $item->description;
+        $cfp->website_url = $item->guid;
+        $cfp->created_at = Carbon::parse($item->pubDate);
+        $cfp->editor_id = User::where('name', 'Batch Nouvelle-Aquitaine')->first()->id;
+        $cfp->is_news = 1;
+        $cfp->draft = true;
+        $cfp->published_at = null;   
+        return $cfp;
+    }
+
+    public static function publishedOnly($cfp) {
+        return CallForProjects::whereNotNull('published_at');
     }
 }

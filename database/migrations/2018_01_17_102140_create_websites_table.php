@@ -13,22 +13,25 @@ class CreateWebsitesTable extends Migration
      */
     public function up()
     {
-        Schema::create('websites', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('organization_type_id')->unsigned()->nullable();
-            $table->text('themes')->nullable();
-            $table->string('name');
-            $table->text('perimeter_comments')->nullable();
-            $table->text('delay')->nullable();
-            $table->text('allocated_budget')->nullable();
-            $table->text('beneficiaries')->nullable();
-            $table->text('website_url')->nullable();
-            $table->text('description')->nullable();
-            $table->timestamps();
-            $table->softDeletes();
-
-            $table->index('organization_type_id');
-        });
+        if (!Schema::hasTable('websites')) {
+            Schema::create('websites', function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('organization_type_id')->unsigned()->nullable();
+                $table->text('themes')->nullable();
+                $table->string('name');
+                $table->text('perimeter_comments')->nullable();
+                $table->text('delay')->nullable();
+                $table->text('allocated_budget')->nullable();
+                $table->text('beneficiaries')->nullable();
+                $table->text('website_url')->nullable();
+                $table->text('description')->nullable();
+                $table->timestamps();
+                $table->softDeletes();
+    
+                $table->index('organization_type_id');
+            });
+        }
+        
     }
 
     /**

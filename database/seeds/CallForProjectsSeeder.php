@@ -11,10 +11,10 @@ class CallForProjectsSeeder extends Seeder
      */
     public function run()
     {
-        create(App\CallForProjects::class)->each(function ($call) {
-            $call->perimeters()->sync(create(App\Perimeter::class, [], 2));
-            $call->beneficiaries()->sync(create(App\Beneficiary::class, [], 2));
-            $call->projectHolders()->sync(create(App\ProjectHolder::class, [], 2));
+        create(\App\CallForProjects::class)->each(function ($call) {
+            $call->perimeters()->sync(create(\App\Perimeter::class, [], 2));
+            $call->beneficiaries()->sync(create(\App\Beneficiary::class, [], 2));
+            $call->projectHolders()->sync(create(\App\ProjectHolder::class, [], 2));
         });
     }
 }

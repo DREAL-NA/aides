@@ -56,14 +56,12 @@
 
 
                             <div class="filter-item">
-                                <div class="titre-filtre">Votre localisation :</div>
-                                <select name="{{ \App\Perimeter::URI_NAME }}[]" class="filters-select" multiple>
-                                    <option disabled>Gironde, Dorgogne...</option>
-                                    @foreach($perimeters as $perimeter)
-                                    @php($selected = (!empty($paramsPerimeters) && $paramsPerimeters->contains($perimeter->id)) ?: false)
-                                    <option value="{{ $perimeter->id }}" {{ $selected ? 'selected="selected"' : '' }}>{{ $perimeter->name }}</option>
-                                    @endforeach
-                                </select>
+                                <div class="titre-filtre">Votre localisation : <span id="perimeters"></span></div>
+                                <select name="{{ \App\Perimeter::URI_NAME }}[]" id="perimeter-select" multiple></select>
+                                <input type="search" id="perimeter" list="autocomplete_perimeters" placeholder="Gironde, Nouvelle-Aquitaine, ..." class="filters-select">
+                                <ul id="autocomplete_perimeters" class="autocomplete">
+                                    <!-- Options -->
+                                </ul>
                             </div>
 
                             <div class="filter-item">

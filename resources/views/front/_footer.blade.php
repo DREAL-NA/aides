@@ -12,7 +12,7 @@
             <nav class="sitemap" role="navigation">
                 <ul class="sitemap-menu">
                     <li>
-                        <a href="#">Qui sommes-nous ?</a>
+                        Qui sommes-nous ?
                         <ul class="submenu">
                             <li><a href="{{ route('front.about-us.project') }}">Le projet</a></li>
                             <li><a href="{{ route('front.about-us.database') }}">La base de données</a></li>
@@ -23,7 +23,7 @@
                     <li><a href="{{ route('front.dispositifs', ['closed' => 'clotures']) }}">Aides clôturées</a></li>
                     <li><a href="{{ route('front.news.before') }}">Actualités des semaines précédentes</a></li>
                     <li>
-                        <a href="#">Outils</a>
+                        Outils
                         <ul class="submenu">
                             <li><a href="{{ route('front.tools.data') }}">Mise à disposition des données</a></li>
                             <li><a href="{{ route('front.tools.website-library') }}">Sitothèque</a></li>

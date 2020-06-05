@@ -128,10 +128,12 @@
                         <strong>Date de clotûre</strong>
                         <p>{{ empty($callForProjects->closing_date) ? 'Non spécifié' : $callForProjects->closing_date->format('d/m/Y') }}</p>
                     </div>
+                    @if($callForProjects->thematic->name != 'Autre')
                     <div class="item-content">
                         <strong>Thématique</strong>
                         <p>{{ $callForProjects->thematic->name }}</p>
                     </div>
+                    @endif
                     @if(!empty($callForProjects->subthematic->id))
                         <div class="item-content">
                             <strong>Sous-thématique</strong>

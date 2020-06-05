@@ -13,9 +13,11 @@ class AddSlugCallForProjectsTable extends Migration
      */
     public function up()
     {
-        Schema::table('calls_for_projects', function (Blueprint $table) {
-            $table->string('slug');
-        });
+        if (!Schema::hasTable('calls_for_projects')) {
+            Schema::table('calls_for_projects', function (Blueprint $table) {
+                $table->string('slug');
+            });
+        }
     }
 
     /**

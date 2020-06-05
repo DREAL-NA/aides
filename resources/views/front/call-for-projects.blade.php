@@ -93,7 +93,9 @@
                             </div>
                             <div class="middle infos">
                                 <div class="thematic">
-                                    {{ $callForProjects->thematic->name }}
+                                    @if($callForProjects->thematic->name != "Autre")
+                                        {{ $callForProjects->thematic->name }}
+                                    @endif
                                     @if(!empty($callForProjects->subthematic))
                                         / {{ $callForProjects->subthematic->name }}
                                     @endif
@@ -190,3 +192,100 @@
 
     </div>
 @endsection
+
+@push('inline-script')
+     <script>
+         (function ($) {
+             "use strict";
+
+            // Autocomplete for perimeters
+            let search = ''
+
+             $('#perimeter').keyup( event => {
+                const value = event.target.value
+
+                if (value === '') {
+                    $('.autocomplete').empty()
+                }
+                // if search has changed
+                if (value !== search) {
+                    search = value
+                } else {
+                    return
+                }
+                $.getJSON(`/api/autocomplete/perimeters?query=${value}`, perimeters => {
+                    $('#autocomplete_perimeters').empty()
+                    const options = perimeters.slice(0, 5).map( suggestion => {
+                        const option = genererOption(suggestion)
+                        return option
+                    })
+                    options.forEach( opt => document.getElementById('autocomplete_perimeters').appendChild(opt))
+                })
+             })
+
+             const buildOptionsFromList = () => {
+                $('#perimeter-select').empty()
+                perimetersSelected.forEach( perimeter => {
+                    $('#perimeter-select').append(`<option selected value="${perimeter.id}">${perimeter.nom}</option>`)
+                })
+             }
+
+             const genererOption = suggestion => {
+                 let option = document.createElement('li')
+                 let text = document.createTextNode(`${suggestion.name} - ${suggestion.type}`)
+                 option.dataset['id'] = suggestion.id
+                 option.dataset['nom'] = suggestion.name
+                 option.appendChild(text)
+                 option.classList.add('selectable')
+                 return option
+             }
+
+             const perimetersSelected = []
+
+             const resetAutocomplete = () => {
+                 $('.autocomplete').empty()
+                 $('#perimeter').val('')
+                 $('#perimeter').focus()
+             }
+
+             const addPerimeter = perimeter => {
+                perimetersSelected.push(perimeter);
+                // Generate span element
+                const spanPerimeter = document.createElement('span')
+                spanPerimeter.classList.add('perimeter-tag')
+                spanPerimeter.appendChild(document.createTextNode(perimeter.nom))
+                const closeButton = document.createElement('a')
+                closeButton.classList.add('closable')
+                closeButton.innerText = '❌'
+                closeButton.dataset.id = perimeter.id
+                spanPerimeter.appendChild(closeButton)
+
+                $("#perimeters").append(spanPerimeter)
+                $('#perimeter-select').empty()
+                
+                buildOptionsFromList()
+             }
+
+             const onSelectableClick = event => {
+                 const perimeter = {
+                     id: event.target.dataset.id,
+                     nom: event.target.dataset.nom
+                 }
+                resetAutocomplete()
+                addPerimeter(perimeter)
+             }
+
+             $(document).on('click', '.selectable', onSelectableClick)
+
+             const onCloseButtonClick = event => {
+                const perimeterID = $(event.target).data('id')
+                $(event.target).parent().remove()
+                perimetersSelected.splice(perimetersSelected.indexOf(perimeterID), 1)
+                buildOptionsFromList()
+             }
+
+             $(document).on('click', '.closable', onCloseButtonClick)
+
+         })(jQuery);
+     </script>
+ @endpush

@@ -35,6 +35,15 @@
                 <h3>Développement</h3>
                 <div class="team-items">
                     <div class="team-item">
+                        <h4>Items Media Concept</h4>
+                        <p><a href="https://www.imc-fr.com" target="_blank">www.imc-fr.com</a></p>
+                        <p><b>05 57 35 73 73</b></p>
+                        <p><a href="mailto:contac@imc-fr.com">contac@imc-fr.com</a></p>
+                    </div>
+                </div>
+
+                <div class="team-items">
+                    <div class="team-item">
                         <h4>Nicolas GIRAUD</h4>
                         <p><a href="https://www.nicolasgiraud.fr" target="_blank">https://www.nicolasgiraud.fr</a></p>
                         <p><b>06 74 31 72 31</b></p>

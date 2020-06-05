@@ -13,9 +13,12 @@ class DropUnusedColsCallsForProjects extends Migration
      */
     public function up()
     {
-        Schema::table('calls_for_projects', function (Blueprint $table) {
-            $table->dropColumn(['project_holder_id', 'beneficiary_id', 'perimeter_id']);
-        });
+        if (!Schema::hasTable('calls_for_projects')) {
+            Schema::table('calls_for_projects', function (Blueprint $table) {
+                $table->dropColumn(['project_holder_id', 'beneficiary_id', 'perimeter_id']);
+            });
+        }
+       
     }
 
     /**

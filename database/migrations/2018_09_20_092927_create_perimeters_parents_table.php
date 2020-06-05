@@ -13,10 +13,13 @@ class CreatePerimetersParentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('perimeters_parents', function (Blueprint $table) {
-            $table->unsignedInteger('parent_id');
-            $table->unsignedInteger('child_id');
-        });
+        if (!Schema::hasTable('perimeters_parents')) {
+            Schema::create('perimeters_parents', function (Blueprint $table) {
+                $table->unsignedInteger('parent_id');
+                $table->unsignedInteger('child_id');
+            });
+        }
+        
     }
 
     /**

@@ -5,8 +5,12 @@ namespace App\Http\Controllers\Bko;
 use App\CallForProjects;
 use App\Http\Controllers\Controller;
 use App\Perimeter;
+use App\Resources\CallsForProjects;
 use App\Thematic;
+use Bugsnag\Request\RequestInterface;
+use Exception;
 use Illuminate\Http\Request;
+use Nexmo\Call\Call;
 
 class CallForProjectsController extends Controller
 {
@@ -22,7 +26,7 @@ class CallForProjectsController extends Controller
             'projectHolders',
             'perimeters',
             'beneficiaries'
-        ])->opened()->get();
+        ])->opened()->ready()->get();
         $callsOfTheWeek = CallForProjects::filterCallsOfTheWeek($callsForProjects)->pluck('id');
 
 //		$primary_thematics = Thematic::primary()->orderBy('name', 'asc')->get();
@@ -89,6 +93,68 @@ class CallForProjectsController extends Controller
         );
     }
 
+    public function indexWaiting()
+    {
+        $callsForProjects = CallForProjects::with([
+            'thematic',
+            'projectHolders',
+            'perimeters',
+            'beneficiaries'
+        ])->draft()->get();
+        
+        $primary_thematics = $callsForProjects->map(function ($item) {
+            return $item->thematic;
+        })->unique()->values()->sortBy('slug');
+
+        $perimeters = $callsForProjects->pluck('perimeters')->flatten()->unique('name')->sortBy('name');
+        $project_holders = $callsForProjects->pluck('projectHolders')->flatten()->unique('name')->sortBy('name');
+
+        $subthematics = CallForProjects::getRelationshipData(Thematic::class, $callsForProjects, 'subthematic_id');
+        if (!empty($subthematics)) {
+            $subthematics = $subthematics->sortBy('slug')->groupBy('parent_id');
+        }
+
+        $title = "Liste des aides en attente";
+
+        $closed = false;
+
+        return view(
+            'bko.callForProjects.indexWaiting',
+            compact('callsForProjects', 'primary_thematics', 'subthematics', 'project_holders', 'perimeters', 'title', 'closed')
+        );
+    }
+
+    public function indexUnpublished()
+    {
+        $callsForProjects = CallForProjects::with([
+            'thematic',
+            'projectHolders',
+            'perimeters',
+            'beneficiaries'
+        ])->unpublished()->ready()->opened()->get();
+        
+        $primary_thematics = $callsForProjects->map(function ($item) {
+            return $item->thematic;
+        })->unique()->values()->sortBy('slug');
+
+        $perimeters = $callsForProjects->pluck('perimeters')->flatten()->unique('name')->sortBy('name');
+        $project_holders = $callsForProjects->pluck('projectHolders')->flatten()->unique('name')->sortBy('name');
+
+        $subthematics = CallForProjects::getRelationshipData(Thematic::class, $callsForProjects, 'subthematic_id');
+        if (!empty($subthematics)) {
+            $subthematics = $subthematics->sortBy('slug')->groupBy('parent_id');
+        }
+
+        $title = "Liste des aides non publiées";
+
+        $closed = false;
+
+        return view(
+            'bko.callForProjects.indexWaiting',
+            compact('callsForProjects', 'primary_thematics', 'subthematics', 'project_holders', 'perimeters', 'title', 'closed')
+        );
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -152,7 +218,7 @@ class CallForProjectsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit(CallForProjects $callForProjects)
+    public function edit(Request $req, CallForProjects $callForProjects)
     {
         $perimeters = Perimeter::all();
 
@@ -169,6 +235,20 @@ class CallForProjectsController extends Controller
      */
     public function update(Request $request, CallForProjects $callForProjects)
     {
+
+        $action = $request->input('action');
+
+        switch ($action) {
+            case 'save':
+                break;
+            case 'save_and_publish':
+                $callForProjects->publish();
+                break;
+            case 'unpublish':
+                $callForProjects->unpublish();
+                break;
+        }
+
         $validatedData = $request->validate($callForProjects->rules());
 
         if (!empty($validatedData['file'])) {
@@ -184,9 +264,15 @@ class CallForProjectsController extends Controller
         if (!empty($request->file('file'))) {
             $callForProjects->addFiles();
         }
-
+        $msg = "L'aide a bien été modifiée.";
+        if ($action == "save_and_publish") {
+            $msg = "L'aide a bien été modifiée et publiée.";
+        } else if ($action == 'unpublish') {
+            $msg = "L'aide a bien été dépubliée.";
+        }
+        
         return redirect(route('bko.call.edit', $callForProjects))
-            ->with('success', "L'aide a bien été modifiée.");
+            ->with('success', $msg);
     }
 
     /**
@@ -226,25 +312,9 @@ class CallForProjectsController extends Controller
 
         $new = $callForProjects->replicate();
 
-        // Change the name
-//        $inc = 0;
-//        $isUnique = false;
-//        while ($isUnique === false) {
-//            $name = $new->name . ' - Dupliqué' . ($inc > 0 ? " - {$inc}" : '');
-//
-//            if (is_null($tmp = CallForProjects::whereName($name)->first())) {
-//                $isUnique = true;
-//                $new->name = $name;
-//
-//                break;
-//            }
-//
-//            $inc++;
-//        }
-
         $new->push();
 
-//         Saving relations
+        // Saving relations
         foreach ($callForProjects->getRelations() as $relation => $entries) {
             $new->{$relation}()->saveMany($entries);
         }
@@ -260,4 +330,21 @@ class CallForProjectsController extends Controller
         return redirect(route('bko.call.edit', $new))
             ->with('success', "L'aide a bien été dupliquée.");
     }
+
+    public function publish($cfpId)
+    {
+        $cfp = CallForProjects::find($cfpId);
+        $cfp->publish();
+        $cfp->save();
+        return response()->json('published');
+    }
+
+    public function unpublish($cfpId)
+    {
+        $cfp = CallForProjects::find($cfpId);
+        $cfp->unpublish();
+        $cfp->save();
+        return response()->json('unpublished');
+    }
+    
 }

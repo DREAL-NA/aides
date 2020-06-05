@@ -13,11 +13,14 @@ class CreatePerimetersWebsites extends Migration
      */
     public function up()
     {
-        Schema::create('perimeters_websites', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('perimeter_id')->unsigned()->index();
-            $table->integer('website_id')->unsigned()->index();
-        });
+        if (!Schema::hasTable('perimeters_websites')) {
+            Schema::create('perimeters_websites', function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('perimeter_id')->unsigned()->index();
+                $table->integer('website_id')->unsigned()->index();
+            });
+        }
+       
     }
 
     /**

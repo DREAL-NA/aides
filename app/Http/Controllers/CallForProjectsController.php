@@ -21,6 +21,8 @@ class CallForProjectsController extends Controller
 
         $callsAreClosedOnes = $callsForProjectsResource->setClosed($closed);
 
+        $callsForProjectsResource->setPublished(true);
+
         $callsForProjects = $callsForProjectsResource->paginate();
 
         $pagination_appends = $callsForProjectsResource->paginationAppends;

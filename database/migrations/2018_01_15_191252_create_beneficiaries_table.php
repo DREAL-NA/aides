@@ -13,16 +13,18 @@ class CreateBeneficiariesTable extends Migration
      */
     public function up()
     {
-        Schema::create('beneficiaries', function (Blueprint $table) {
-            $table->increments('id');
-            $table->tinyInteger('type')->unsigned();
-            $table->string('name')->nullable();
-            $table->text('description')->nullable();
-            $table->timestamps();
-            $table->softDeletes();
+        if (!Schema::hasTable('beneficiaries')) {
+            Schema::create('beneficiaries', function (Blueprint $table) {
+                $table->increments('id');
+                $table->tinyInteger('type')->unsigned();
+                $table->string('name')->nullable();
+                $table->text('description')->nullable();
+                $table->timestamps();
+                $table->softDeletes();
 
-            $table->index('type');
-        });
+                $table->index('type');
+            });
+        }
     }
 
     /**

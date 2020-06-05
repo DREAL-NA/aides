@@ -25,6 +25,11 @@
             <p class="form-control-static">
                 <a href="mailto:{{ $callForProjects->editor->email }}">{{ $callForProjects->editor->name }}</a>
                 le {{ $callForProjects->updated_at->format('d/m/Y') }}
+                (@if ($callForProjects->published_at)
+                <span class="success">Publiée le {{ $callForProjects->published_at->format('d/m/Y à H:i') }}</span>
+                @else
+                <span class="danger">Non publiée</span> 
+                @endif)
             </p>
         </div>
     @endif
@@ -186,7 +191,12 @@
         <input type="file" name="file[]" id="file" value="{{ old('file') }}" multiple>
     </div>
 
-    <button type="submit" class="btn btn-primary">Enregistrer</button>
+    <button type="submit" class="btn btn-primary" name="action" value="save">Enregistrer</button>
+    @if ($callForProjects->published_at == null)
+    <button type="submit" class="btn btn-success" name="action" value="save_and_publish">Enregistrer et publier</button>
+    @else
+    <button type="submit" class="btn btn-danger" name="action" value="unpublish">Dépublier</button>
+    @endif
 </form>
 
 @push('inline-script')

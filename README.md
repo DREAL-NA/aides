@@ -63,6 +63,12 @@ php artisan db:seed
 
 Cela va créer un utilisateur `john@example.com` avec comme mot de passe `password`.
 
+
+Pour peupler la base de données avec les lieux:
+```bash
+mysql -u {USERNAME} -p {DATABASE} < ./resources/data/import-nouvelleaquitaine.sql
+```
+
 Vous êtes maintenant prêt·e à travailler !
 
 ### Lancer le server
