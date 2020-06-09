@@ -1,7 +1,7 @@
 <div class="page-content page-home">
     <div class="content">
         <article class="content-home" id="rectangle_newsletter">
-            <p id="newsletter">Envie d'être informé régulièrement ? </br><b>Chaque semaine, recevez les nouvelles aides</b></p>
+            <p id="newsletter"><b>Restez informés des nouvelles aides,</b> inscrivez-vous à la newsletter !</p>
             {{--l'id sert pour le css et également d'ancre pour rediriger l'utilisateur vers l'inscription à la newsletter--}}
             <section class="newsletter-container">
                 <form action="{{ route('front.newsletter.subscribe') }}" method="post" class="form-contact" id="form-newsletter">
@@ -10,7 +10,7 @@
                     <input name="email" placeholder="@ Entrez votre adresse e-mail" type="email" tabindex="1" required value="{{ old('email') }}">
                    {{-- <input name="lastname" placeholder="Votre nom" type="text" tabindex="2" value="{{ old('lastname') }}">
                     <input name="firstname" placeholder="Votre prénom" type="text" tabindex="3" value="{{ old('firstname') }}">--}}
-                    <button class="inscr-newsletter" name="submit" type="submit" id="newsletter-submit">Inscription à la newsletter</button>
+                    <button class="inscr-newsletter" name="submit" type="submit" id="newsletter-submit">S'inscrire à la newsletter</button>
                 </form>
             </section>
         </article>

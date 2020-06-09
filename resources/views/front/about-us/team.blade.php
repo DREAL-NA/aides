@@ -71,11 +71,10 @@
                 <div class="team-items">
                     <div class="team-item">
                         <h4>Items Medias Concept (IMC)</h4>
-                        <p>Intégration des aides de la région Nouvelle-Aquitaine avec une grande flexibilité de gestion.</p>
                         <img src="{{ asset('images/IMC.jpg') }}" alt="Agence Item Medias Concept" class="logo-image">
-                        <p>4, Allée Pierre-Gilles de Gennes, 33700 MERIGNAC</p>
-                        <p><a href="https://www.imc-fr.com/accueil.html" target="_blank">https://www.imc-fr.com/accueil.html</a></p>
-                        <p><b>05 57 35 73 79</b> et <b>06 52 83 88 22</b></p>
+                        <p><a href="https://www.imc-fr.com" target="_blank">www.imc-fr.com</a></p>
+                        <p><b>05 57 35 73 73</b></p>
+                        <p>contact@imc-fr.com</p>
                     </div>
                 </div>
                 <div class="team-items">
