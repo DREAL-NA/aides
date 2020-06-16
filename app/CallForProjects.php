@@ -516,7 +516,7 @@ class CallForProjects extends Model implements Feedable, HasMedia
         $cfp->website_url = $item->guid;
         $cfp->created_at = Carbon::parse($item->pubDate);
         $cfp->editor_id = User::where('name', 'Batch Nouvelle-Aquitaine')->first()->id;
-        $cfp->is_news = 1;
+        $cfp->is_news = 0;
         $cfp->draft = true;
         $cfp->published_at = null;   
         return $cfp;
