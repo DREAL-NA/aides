@@ -15,22 +15,6 @@
 
          @include('front.research')
 
-         {{-- Le code suivant est une archive : séparation en deux fichiers de la barre de recherche et les filtres.
-         @include('front.home.quick-search')
-
-         <div>
-             <a id="dispositifs-filters-button" href="#">
-                 <span>Filtrer</span>
-                 <i class="fa fa-plus"></i>
-                 <i class="fa fa-minus"></i>
-             </a>
-
-             <div id="dispositifs-filters-container">
-                 @include('front.dispositifs.filters')
-             </div>
-         </div>
-         @include('front.home.advanced-search')--}}
-
          @include('front.home.news')
      </div>
 
@@ -167,7 +151,7 @@
 
                     $("#perimeters").append(spanPerimeter)
                     $('#perimeter-select').empty()
-                    
+
                     buildOptionsFromList()
                 }
              }

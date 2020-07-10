@@ -1,14 +1,11 @@
-.principal {
-    font-weight: Bold;
+#principal {
+    font-weight: normal;
     font-size: 1.8em;
-    font-family: Roboto, sans-serif;
-    line-Height: 2;
+    font-family: Arial, sans-serif;
+    line-Height: 1.6;
+    padding-top: 10px;
 }
 
-.sous-titre {
-    font-weight: normal;
-    font-size: 1.6em;
-}
 
 .autocomplete {
     list-style: none;
@@ -24,7 +21,7 @@
 }
 
 .filters-wrapper {
-    
+
     margin: 30px auto;
     max-width: 900px;
 
@@ -136,21 +133,22 @@
     }
 }
 
-.home-news {
-    text-align: center;
-    font-size : large;
-}
+#newsletter {
+    text-align: left;
+    font-size : 1.3em;
+     padding-top: 30px;
+   }
 
 .home-description {
-    padding-left: 20%;
-    padding-right: 20%;
-    padding-bottom: 30px;
-    font-size: medium;
+  b {
+        color : $color-1;
+      }
 }
 
 .submit-button {
+    text-align : left;
     display: block;
-    margin: 30px auto;
+    margin: 30px;
     background-color: $color-1;
     color: $color-white;
     font-size: 1.2em;
@@ -230,13 +228,12 @@
     margin-top: 40px;
 
     .title__form {
-        font-size: large;
+        font-size: 1.5em;
         position: relative;
-        padding-left: 20%;
+        font-weight: 600;
     }
     .search-container__form {
         position: relative;
-        padding-left: 20%;
     }
 
     p {
@@ -248,7 +245,7 @@
         border: thin solid $color-case;
         background: transparent;
         width: 70%;
-        font-size: 14px;
+        font-size: 16px;
         -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
 
@@ -267,6 +264,13 @@
         &::-webkit-input-placeholder {
             color: $color-3;
             font-weight: 500;
+        }
+
+        @media screen and (max-width: 1024px) {
+            position: relative;
+            width : 100%;
+            right: 0%;
+
         }
 
     }
@@ -289,6 +293,7 @@
 
         @media screen and (max-width: 1024px) {
             position: relative;
+            width : 100%;
             right: 0%;
 
         }

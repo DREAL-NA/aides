@@ -1,12 +1,12 @@
 <div class="page-content page-home">
     <div class="content">
         <article class="content-home" id="rectangle_newsletter">
-            <p id="newsletter"><b>Restez informés des nouvelles aides,</b> inscrivez-vous à la newsletter !</p>
+            <p id="newsletter">Restez informés des nouvelles aides en vous inscrivant à la newsletter.</p>
             {{--l'id sert pour le css et également d'ancre pour rediriger l'utilisateur vers l'inscription à la newsletter--}}
             <section class="newsletter-container">
                 <form action="{{ route('front.newsletter.subscribe') }}" method="post" class="form-contact" id="form-newsletter">
                     {{ csrf_field() }}
-                    <p id="newsletter-champ-title">Votre adresse e-mail :</p>
+                    <p id="newsletter-champ-title">Quelle est votre adresse e-mail ?</p>
                     <input name="email" placeholder="@ Entrez votre adresse e-mail" type="email" tabindex="1" required value="{{ old('email') }}">
                    {{-- <input name="lastname" placeholder="Votre nom" type="text" tabindex="2" value="{{ old('lastname') }}">
                     <input name="firstname" placeholder="Votre prénom" type="text" tabindex="3" value="{{ old('firstname') }}">--}}

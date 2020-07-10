@@ -282,7 +282,7 @@
 
                 $("#perimeters").append(spanPerimeter)
                 $('#perimeter-select').empty()
-                
+
                 buildOptionsFromList()
              }
 
