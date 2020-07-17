@@ -109,7 +109,7 @@
     {{--
     <div class="form-action">
         <button type="button" class="reset-filters">Réinitialiser les filtres</button>
-        <button type="submit" class="submit-filters submit-button">Rechercher</button>
+        <button type="submit" class="submit-filters">Rechercher</button>
     </div> --}}
 
 </div>

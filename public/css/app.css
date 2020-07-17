@@ -8627,6 +8627,7 @@ No space - remove distance between list items
 }
 
 .filters-dispositifs .form-action .submit-filters {
+  position: inherit;
   background-color: #11884D;
   color: #FFFFFF;
   font-weight: 500;
