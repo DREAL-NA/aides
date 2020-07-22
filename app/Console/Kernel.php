@@ -40,7 +40,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('scout:reimport')->runInBackground()->cron('12 9,12,15,18 * * *');
 
         // Scheduling batch region import everyday at 00:00
-        $schedule->command('region:import')->dailyAt('00:00');
+        $schedule->command('import:region')->dailyAt('00:00');
     }
 
     /**

@@ -17,7 +17,7 @@ class ImportRegion extends Command
      *
      * @var string
      */
-    protected $signature = 'region:import';
+    protected $signature = 'import:region';
 
     /**
      * The console command description.
@@ -120,11 +120,14 @@ class ImportRegion extends Command
         );
 
         $nbImport = 0;
-
+		$nbExistDeja = 0;
+		$nouvellesAides = [];
+		$aidesExisteDeja = [];
         
         $this->info('Starting...');
 
         $i = 0;
+        $iAides = 0;
         $total = sizeof($thematics_region);
         
         foreach ($thematics_region as $slug => $thematic)
@@ -139,6 +142,7 @@ class ImportRegion extends Command
                 if ($this->callForProjectDoesntExist($callForProject->website_url))
                 {
                     $callForProject->save();
+                    array_push($nouvellesAides, $callForProject->name);
                     
                     $perimetre = Perimeter::where('name', 'Nouvelle - Aquitaine')->first();
                     $perimetre->callsForProjects()->attach($callForProject->id);
@@ -150,12 +154,15 @@ class ImportRegion extends Command
 
                     $nbImport++;
                     $this->info('Imports: '.$nbImport);
+                } else {
+                	$nbExistDeja++; 
                 }
             }
             $i++;
         }
         
         $this->info($nbImport.' calls for projects imported from batch');
+        $this->laravelLog($nbImport, $nbExistDeja, $nouvellesAides, $aidesExisteDeja);
     }
 
     private function callForProjectDoesntExist($website_url) {
@@ -170,4 +177,24 @@ class ImportRegion extends Command
         $xml = \simplexml_load_string($content->read($content->getSize()));
         return $xml;
     }
+    
+     // compte rendu de l'import 
+	private function laravelLog($nbImport, $nbExistDeja, $nouvellesAides, $aidesExisteDeja) {
+		\Log::info('------------------------------------------------------');
+		\Log::info('Compte rendu de l\'import des aides de la région DREAL');
+		\Log::info('- date de l\'import: le '. date("d/m/Y") . ' à ' .date("h:i:sa"));
+		\Log::info('- nouvelle(s) aide(s) importée(s): '.$nbImport . ' | ');
+		
+        \Log::info('- liste nouvelle(s) aide(s)   : ');
+		foreach ($nouvellesAides as $nouvelleAide) {  
+			\Log::info('----' . $nouvelleAide);  
+		}
+		\Log::info('- aide(s) mise(s) à jour : '.$nbExistDeja );
+		\Log::info('- liste aide(s) mise(s) à jour : ');
+		foreach ($aidesExisteDeja as $aideExisteDeja) {  
+			\Log::info('----' . $aideExisteDeja);  
+		}
+		\Log::info('- total aides reçues: '. ($nbImport + $nbExistDeja));
+		\Log::info('Fin du compte rendu de l\'import des aides');
+	}
 }
