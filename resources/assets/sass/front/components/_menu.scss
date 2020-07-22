@@ -38,7 +38,7 @@
         a {
             padding: 15px;
             font-weight: 500;
-            font-size: 1.1em;
+            font-size: 1.2em;
             display: block;
             transition: all 250ms ease-in-out;
             position: relative;
@@ -69,7 +69,7 @@
 
     .menu-children {
         background-color: whitesmoke;
-        border-bottom: 1px solid $color-1;
+        border-bottom: 1px solid $color-case;
     }
 
     .menu-list-children {
@@ -98,7 +98,7 @@
             transition: all 250ms;
             position: relative;
             @include linkInherit;
-            color: $color-1;
+            color: black;
         }
     }
 

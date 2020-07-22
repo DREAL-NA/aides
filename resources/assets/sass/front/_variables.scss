@@ -12,8 +12,8 @@
 //$color-4: #5A4766;
 //$color-5: #AB9DB3;
 
-$color-1: #129252;
-$color-case: #02734A;
+$color-1: #11884D;
+$color-case: #0F7743;
 $gris-clair: lightgrey;
 $color-2: #05386B;
 $color-3: #303030;
@@ -22,7 +22,8 @@ $color-5: #f5f4ef;
 $color-6: #ffd372;
 $color-7: #ff392f;
 $color-8: #2EE9FF;
-$color-9: cornflowerblue;
+$color-9: #05386B;;
+$color-10: #444444;
 
 $color-gray-1: #F5F5F5;
 
@@ -44,13 +45,13 @@ $page-header-border-color: $color-1; //utile filtres
 $tab-border-color: dimgrey;
 
 // Headings
-$headings-font-family: "Roboto", sans-serif;
+$headings-font-family: "Arial", sans-serif;
 $headings-font-weight: 600;
 
 // Typography
 $icon-font-path: "../fonts/vendor/bootstrap-sass/bootstrap/";
 $fa-font-path: "../fonts/vendor/font-awesome/";
-$font-family-sans-serif: "Roboto", sans-serif;
+$font-family-sans-serif: "Arial", sans-serif;
 $font-size-base: 14px;
 $line-height-base: 1.6;
 

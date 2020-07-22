@@ -3,7 +3,7 @@ Bonjour,
 
 La campagne correspondant aux actualités de la semaine {{ $week  }} a bien été envoyée.
 
-Pour rappel, voici les titres des actualités de la semaine :
+Pour rappel, voici les titres des nouvelles aides de la semaine :
 
 @foreach($news as $item)
 Thématique : {{ $item->thematic->name }}<br>

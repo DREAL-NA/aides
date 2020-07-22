@@ -16,16 +16,27 @@
 
             <h4>Service gestionnaire</h4>
             <p>Direction régionale de l’Environnement, de l’Aménagement et du Logement Nouvelle-Aquitaine (DREAL Nouvelle-Aquitaine)<br>
-                Mission Développement Durable (MDD)<br>
-                Pôle Innovation, Économie Durable <br>
+                Mission Transition Ecologique (MTE)<br>
+                Projet "Accompagner les territoires en transition Innovation"<br>
                 Immeuble Pastel - CS 53218 - 22, rue des Pénitents Blancs - 87032 Limoges cedex 1</p>
 
             <br>
             <h4>Directrice de la publication</h4>
             <h5>Alice-Anne MEDARD</h5>
             <p>Directrice Régionale de l’Environnement, de l’Aménagement et du Logement Nouvelle-Aquitaine</p>
-
+            <br>
             {{--Centre hébergeur--}}
+            <h4>Hébergeur du site</h4>
+            <h5>ALKANTE SAS</h5>
+            <p>4 rue Alain Colas<br>
+            Parc d'Activités Vents d'ouest<br>
+            35530 NOYAL SUR VILAINE<br>
+            Siret : 44461366500058<br>
+            APE : 6201Z<br>
+            Téléphone : +33 (0)2 99 22 25 70<br>
+            RC : RCS RENNES<br>
+            N° Intracom : FR21444613665</p>
+
 
             {{--SPIP--}}
             {{--Site réalisé sous SPIP, un programme Open Source sous licence GNU/GPL.--}}
@@ -74,9 +85,9 @@
                     <p>par voie postale :</p>
                     <address>
                         Direction régionale de l’Environnement, de l’Aménagement et du Logement Nouvelle-Aquitaine (DREAL Nouvelle-Aquitaine) <br>
-                        Mission Développement Durable (MDD) <br>
-                        Pôle Innovation, Économie Durable <br>
-                        Immeuble Pastel - CS 53218 - 22, rue des Pénitents Blancs - 87032 Limoges cedex 1 <br>
+                        Mission Transition Ecologique (MTE)<br>
+                        Projet "Accompagner les territoires en transition Innovation"<br>
+                        Immeuble Pastel - CS 53218 - 22, rue des Pénitents Blancs - 87032 Limoges cedex 1</p>
                     </address>
                 </li>
                 <li>par voie électronique : <a href="mailto:{{ config('app.contact_mail') }}">{{ config('app.contact_mail') }}</a></li>
@@ -111,9 +122,9 @@
                 recherche d’une solution amiable, les tribunaux français seront seuls compétents pour connaître de ce litige.</p>
             <p>Pour toute question relative aux présentes conditions d’utilisation du site, vous pouvez nous écrire à l’adresse suivante :</p>
             <p>Direction régionale de l’Environnement, de l’Aménagement et du Logement Nouvelle-Aquitaine (DREAL Nouvelle-Aquitaine)<br>
-                Mission Développement Durable (MDD) <br>
-                Pôle Innovation, Économie Durable <br>
-                Immeuble Pastel - CS 53218 - 22, rue des Pénitents Blancs - 87032 Limoges cedex 1</p>
+              Mission Transition Ecologique (MTE)<br>
+              Projet "Accompagner les territoires en transition Innovation"<br>
+              Immeuble Pastel - CS 53218 - 22, rue des Pénitents Blancs - 87032 Limoges cedex 1</p>
 
             <br>
             <h4>Acceptation des conditions d’utilisation</h4>

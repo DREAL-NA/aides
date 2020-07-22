@@ -6,44 +6,16 @@
 
 
 @section('content')
-    {{-- <div class="count-dispositifs-wrapper">
-         <div class="count-dispositifs">
-             {!! trans_choice('messages.home.count', $countCallsForProjects) !!}
-         </div>
-        <a class="count-dispositifs-link" href="{{ route('front.dispositifs') }}">Voir les aides</a>
-     </div>--}}
-
      <div class="page-container">
 
          <div class="page-header">
-             <h2 class="text-center principal">Un projet de développement durable ?
-             <br/><span style="padding-top: 10px;" class="count-dispositifs">{!! trans_choice('messages.home.count', $countCallsForProjects) !!}</span> financières pour vous</h2>
-
-             <p class="text-center sous-titre">Associations, citoyens, collectivités, entreprises,... </p>
+             <h2 id="principal">Vous avez un projet de développement durable ?</br>Vous êtes une collectivité, une entreprise, une association, un citoyen,...</br><strong><span style="padding-top: 10px; color: #11884d; font-weight:bold;" class="count-dispositifs">{!! trans_choice('messages.home.count', $countCallsForProjects) !!} disponibles</span></strong></h2>
 
          </div>
 
          @include('front.research')
-         {{--
-         @include('front.home.quick-search')
-
-         <div>
-             <a id="dispositifs-filters-button" href="#">
-                 <span>Filtrer</span>
-                 <i class="fa fa-plus"></i>
-                 <i class="fa fa-minus"></i>
-             </a>
-
-             <div id="dispositifs-filters-container">
-                 @include('front.dispositifs.filters')
-             </div>
-         </div> --}}
-
-         {{--@include('front.home.advanced-search')--}}
 
          @include('front.home.news')
-
-         @include('front.home.websites-to-consult')
      </div>
 
  @endsection
@@ -179,7 +151,7 @@
 
                     $("#perimeters").append(spanPerimeter)
                     $('#perimeter-select').empty()
-                    
+
                     buildOptionsFromList()
                 }
              }

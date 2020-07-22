@@ -26,7 +26,7 @@
                         Outils
                         <ul class="submenu">
                             <li><a href="{{ route('front.tools.data') }}">Mise à disposition des données</a></li>
-                            <li><a href="{{ route('front.tools.website-library') }}">Sitothèque</a></li>
+                            <li><a href="{{ route('front.tools.website-library') }}">Poursuivre les recherches</a></li>
                         </ul>
                     </li>
                     <li><a href="{{ route('front.accessibility') }}">Accessibilité</a></li>

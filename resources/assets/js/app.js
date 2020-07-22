@@ -79,4 +79,16 @@ require('./front/bootstrap');
         $(this).toggleClass('opened');
         $('#dispositifs-filters-container').slideToggle('fast');
     });
+
+
+  $('#retour').click(function(){
+          var Expression = new RegExp("dispositifs");
+          if(Expression.test(document.referrer))
+          {
+          window.history.back();
+          } else
+          {
+          document.location.href=url;// Variable définie dans la balise script de app.blade.php
+        }
+  });
 })(jQuery);

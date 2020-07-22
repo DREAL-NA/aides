@@ -50,7 +50,7 @@ class CreateAndSendCampaign extends Command
 
         $from = config('newsletter.from.email');
         $fromName = config('newsletter.from.name');
-        $subject = config('app.name') . ' - Actualités de la semaine ' . date('W');
+        $subject = config('app.name') . ' - semaine ' . date('W');
 
         $news = $this->getNews();
 

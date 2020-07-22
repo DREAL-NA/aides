@@ -17,13 +17,13 @@
         <h2>L'équipe</h2>
         <div class="content flex">
             <div class="flex-item">
-                <h3>DREAL Nouvelle-Aquitaine</h3>
-
+                <h3>Direction : DREAL Nouvelle-Aquitaine</h3>
                 <div class="team-items">
                     <div class="team-item">
                         <h4>Sylvie FRUGIER</h4>
-                        <p>Chargée de mission développement économique</p>
-                        <p>Service Mission Développement Durable (MDD)</p>
+                        <p>Initiatrice du site et responsable de son évolution.</p>
+                         <p>Chef de projet "Accompagner les territoires en transition Innovation"</p>
+                         <p>Mission Transition Ecologique (MTE)</p>
                         <p>DREAL Nouvelle-Aquitaine (Site Limoges)</p>
                         <p><b>05 55 12 95 76</b> ou <b>06 99 03 39 58</b></p>
                         <p><a href="mailto:{{ config('app.contact_mail') }}">{{ config('app.contact_mail') }}</a></p>
@@ -65,29 +65,38 @@
                         <p><a href="mailto:npg.dupont@gmail.com">npg.dupont@gmail.com</a></p>
                     </div>
                 </div>
-            </div>
-            <div class="flex-item">
-                <h3>Confort d'usage et accessibilité</h3>
-            <div class="team-items">
-                <div class="team-item">
-                    <h4>Fanny BREUNEVAL</h4>
-                    <p><a href="https://www.uxmethode.fr" target="_blank">UX Methode</a></p>
-                    <p><b>06 68 40 50 40</b></p>
-                    <p><a href="mailto:fbreuneval@ensc.fr">Fanny.Breuneval@ensc.fr</a></p>
-                </div>
-            </div>
-            </div>
-            <div class="flex-item">
-                <h3>Accompagnement à la méthode agile</h3>
                 <div class="team-items">
                     <div class="team-item">
-                        <h4>Les Vigies</h4>
-                        <p><a href="https://lesvigies.fr" target="_blank">http://lesvigies.fr/</a></p>
-                        <p><b>06 74 31 72 31</b></p>
-                        <p><a href="mailto:thomas@lesvigies.fr">thomas@lesvigies.fr</a></p>
+                        <h4>Marie DIALLO</h4>
+                        <p><a href="https://madiloweb.com/#home" target="_blank">https://www.madiloweb.com</a></p>
+                        <p><b>06 79 61 14 12</b></p>
+                        <p><a href="mariediallo@madiloweb.com">mariediallo@madiloweb.com</a></p>
                     </div>
                 </div>
             </div>
+            <div class="flex-item">
+                <h3>Ergonomie de l'interface</h3>
+            <div class="team-items">
+                <div class="team-item">
+                    <h4>Fanny BREUNEVAL</h4>
+                    <p><b>06 68 40 50 40</b></p>
+                    <p><a href="mailto:fbreuneval@ensc.fr">fbreuneval@ensc.fr</a></p>
+                </div>
+            </div>
+          </div>
+          <div class="flex-item">
+              <h3>Accompagnement à la méthode agile</h3>
+          <div class="team-items">
+            <div class="team-items">
+                <div class="team-item">
+                    <h4>Les Vigies</h4>
+                    <p><a href="https://lesvigies.fr" target="_blank">http://lesvigies.fr/</a></p>
+                    <p><b>06 74 31 72 31</b></p>
+                    <p><a href="mailto:thomas@lesvigies.fr">thomas@lesvigies.fr</a></p>
+                </div>
+            </div>
+            </div>
+
 
         </div>
     </div>

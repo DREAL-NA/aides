@@ -15,14 +15,31 @@
 
 
 
-        {{-- 1ère ligne de titre : rappel de la recherche, bouton pour passer aux aides cloturées / aides ouvertes --}}
+        {{-- 1ère ligne : rappel de la recherche, bouton pour passer aux aides cloturées / aides ouvertes --}}
         <h2>
             <span>
-                @if(!empty(request()->get('query')))
-                    <strong>{{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }}</strong> pour "{{ $callsAreClosedOnes ? '(aides clôturées) ' : '' }}{{ request()->get('query') }}"
+                {{-- S'il y a une requête écrite et des filtres  --}}
+                @if(    ( !empty(request()->get('query'))) && (  ( !empty(request()->input('benef.0')))  || ( !empty(request()->input('thema.0'))) || ( !empty(request()->input('perim.0')))  || ( !empty(request()->input('proje.0')))  ) )
+
+                    <strong>{{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }} {{ $callsAreClosedOnes ? 'clôturées' : 'disponibles' }}</strong> avec "{{ request()->get('query') }}" et votre sélection de filtres
+
+
+                {{-- S'il y seulement des filtres  --}}
+                @elseif (    ( empty(request()->get('query'))) && (  ( !empty(request()->input('benef.0')))  || ( !empty(request()->input('thema.0'))) || ( !empty(request()->input('perim.0')))  || ( !empty(request()->input('proje.0')))  ) )
+
+                    <strong>{{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }} {{ $callsAreClosedOnes ? 'clôturées' : 'disponibles' }} </strong> avec votre sélection de filtres
+
+                {{-- S'il y seulement une requête écrite --}}
+                @elseif (    ( !empty(request()->get('query'))) && (  ( empty(request()->input('benef.0')))  && ( empty(request()->input('thema.0'))) && ( empty(request()->input('perim.0')))  && ( empty(request()->input('proje.0')))  ) )
+
+                    <strong>{{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }} {{ $callsAreClosedOnes ? 'clôturées' : 'disponibles' }}</strong> avec "{{ request()->get('query') }}"
+
+                {{-- S'il n'y a rien --}}
                 @else
-                    Les aides {{ $callsAreClosedOnes ? 'clôturées' : '' }}
+                    {{ trans_choice('messages.dispositifs.count', $callsForProjects->total()) }} {{ $callsAreClosedOnes ? 'clôturées' : 'disponibles' }}
+
                 @endif
+
             </span>
 
             @php
@@ -35,7 +52,7 @@
             <a href="{{ $route }}">Voir les aides {{ $callsAreClosedOnes ? 'ouvertes' : 'clôturées' }}</a>
         </h2>
 
-        {{-- 2ème ligne de titre : nombre aides trouvées et export --}}
+
         <div class="content-dispositifs">
             <div class="page-header no-bottom">
                 <div class="page-meta">
@@ -48,7 +65,10 @@
                             @else recensées
                         @endif-->
 
-                    </div>
+                </div>
+
+
+                {{-- Export --}}
                     @if(!$callsAreClosedOnes)
                         <div class="helper-links">
                             <?php // Icones Excel, PDF, CSV ?>
@@ -181,10 +201,9 @@
 
                     {{-- message si pas d'aide trouvées --}}
                     @if($callsForProjects->isEmpty())
-                        <p class="dispositifs-empty">Désolé, nous n'avons pas trouvé d'aide correspondante à votre recherche.</p>
-                        <p class="text-center">Essayez des mot-clés synonymes, modifiez les filtres, ou <strong><a class="{{ Route::is('front.home') ? 'current' : '' }}" href="{{ route('front.home') }}#newsletter">inscrivez-vous à notre newsletter</a></strong> pour être au courant des nouvelles aides ajoutées.<p/>
+                        <p class="dispositifs-empty">Vous pouvez essayer d'autres mot-clés ou modifier les filtres.</p>
+                        <p class="text-center">Soyez les premiers à connaître les nouvelles aides, <strong><a class="{{ Route::is('front.home') ? 'current' : '' }}" href="{{ route('front.home') }}#newsletter">inscrivez-vous à la newsletter</a></strong>.<p/>
                     @endif
-
                 </section>
                 {{ $callsForProjects->appends($pagination_appends)->links() }}
             </div>
@@ -192,6 +211,7 @@
 
     </div>
 @endsection
+<<<<<<< HEAD
 
 @push('inline-script')
      <script>
@@ -262,7 +282,7 @@
 
                 $("#perimeters").append(spanPerimeter)
                 $('#perimeter-select').empty()
-                
+
                 buildOptionsFromList()
              }
 
@@ -289,3 +309,5 @@
          })(jQuery);
      </script>
  @endpush
+=======
+>>>>>>> Dispositifs : rectificatif affichage du nombre d'aide

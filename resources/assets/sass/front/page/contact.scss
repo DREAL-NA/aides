@@ -1,14 +1,18 @@
 .form-contact {
-	max-width: 500px;
+	max-width: 600px;
 	background: white;
-	margin: auto;
+
+#newsletter-champ-title{
+	font-size : 1.5em;
+	font-weight: bold;
+}
 
 	input[type="text"],
 	input[type="email"],
 	input[type="tel"],
 	input[type="url"],
 	textarea {
-		width: 100%;
+		width: 70%;
 		border: 1px solid $page-header-border-color;
 		background: #FFF;
 		margin: 0 0 10px;
@@ -29,13 +33,14 @@
 	}
 
 	button {
-		width: 100%;
+		/* width: 70%;*/
 		border: none;
-		background: $color-1;
+		background: $color-case;
 		color: $color-white;
 		padding: 10px;
-		font-weight: 500;
-		display: block;
+		font-weight: 600;
+		font-size: 1.1em;
+		/*display: inline-block;*/
 		@include hoverButton($color-1);
 		transition: all 250ms;
 
@@ -58,7 +63,7 @@
 		}
 
 		&.alert-success {
-			background-color: $color-1;
+			background-color: $color-case;
 		}
 	}
 }

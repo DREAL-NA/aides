@@ -210,10 +210,14 @@
         }
 
         .submit-filters {
+          position: inherit;
             background-color: $color-1;
             color: $color-white;
             font-weight: 500;
             @include hoverButton($color-1);
+            &:hover {
+                color: $color-white;
+            }
         }
     }
 
@@ -409,7 +413,7 @@
             transition: all 250ms ease-in-out;
             font-weight: 500;
             padding: 5px 10px;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
 
             @include hoverButton($color-1);
 
@@ -495,7 +499,6 @@
 
 #dispositifs-filters-button {
     margin-top: 10px;
-    margin-left: 20%;
     display: inline-flex;
     align-items: center;
     background-color: $gris-clair;

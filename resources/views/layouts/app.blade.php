@@ -73,7 +73,10 @@
 
 @include('front._footer')
 
-<script src="{{ mix('js/app.js') }}"></script>
+<script src="{{ mix('js/app.js') }}">
+var url = 'APP_URL';
+var scriptDispositifs = {{ route('front.dispositifs') }}; //"{{ route('front.dispositifs', ['closed' => request('closed')]) }}";
+</script>
 @stack('inline-script')
 </body>
 </html>

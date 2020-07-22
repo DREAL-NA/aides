@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', "Aides pour le développement Durable en Nouvelle-Aquitaine (ADDNA)"),
+    'name' => env('APP_NAME', "Aides pour le Développement Durable en Nouvelle-Aquitaine (ADDNA)"),
     'subname' => "Une base de données sur les aides aux territoires ouverte à tous",
 
     'default_page_title' => 'Accueil',
@@ -21,7 +21,7 @@ return [
     'contact_mail' => 'sylvie.frugier@developpement-durable.gouv.fr',
 
     'google_analytics' => [
-        'enable' => false,
+        'enable' => true,
         'id' => env('GOOGLE_ANALYTICS_ID'),
     ],
 

@@ -13,7 +13,11 @@
 @endsection
 
 @section('content')
-    <div class="page-content page-dispositif-unique">
+        <div>
+          <form>
+            <input class="submit-button" type="button" id="retour" value="Retour aux résultats - trouvez d'autres aides" >
+          </form>
+        </div>
         <h2>{{ $callForProjects->name }}</h2>
 
         <div class="content">

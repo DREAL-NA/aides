@@ -1,12 +1,11 @@
 <div class="filters-dispositifs">
 
-
         <div class="filter-items">
             {{--}}
            @if(request()->routeIs('front.dispositifs'))
                 <div class="row-filters">
                     <div class="filter-item-search-input">
-                        <input type="text" placeholder="Rechercher une aide" name="query" value="{{ request()->get('query') ?: '' }}">
+                        <input type="text" placeholder="Rechercher les aides" name="query" value="{{ request()->get('query') ?: '' }}">
                     </div>
                 </div>
             @endif--}}

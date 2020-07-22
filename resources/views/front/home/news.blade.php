@@ -1,27 +1,26 @@
 <div class="page-content page-home">
     <div class="content">
-        <article class="content-home">
-            <div class="page-header no-bottom">
-                <p class="home-description">Nous recensons les aides pour la protection de l'environnement, l'aménagement des villes et des campagnes, le développement économique local,... </p>
-                <p class="home-news" id="newsletter"><strong>Pour connaître les nouvelles aides</strong>, recevez notre newsletter hebdomadaire</p>
-            </div>
+        <article class="content-home" id="rectangle_newsletter">
+            <p id="newsletter">Restez informés des nouvelles aides en vous inscrivant à la newsletter.</p>
+            {{--l'id sert pour le css et également d'ancre pour rediriger l'utilisateur vers l'inscription à la newsletter--}}
             <section class="newsletter-container">
                 <form action="{{ route('front.newsletter.subscribe') }}" method="post" class="form-contact" id="form-newsletter">
                     {{ csrf_field() }}
-
-                    <input name="email" placeholder="Votre adresse e-mail*" type="email" tabindex="1" required value="{{ old('email') }}">
+                    <p id="newsletter-champ-title">Quelle est votre adresse e-mail ?</p>
+                    <input name="email" placeholder="@ Entrez votre adresse e-mail" type="email" tabindex="1" required value="{{ old('email') }}">
                    {{-- <input name="lastname" placeholder="Votre nom" type="text" tabindex="2" value="{{ old('lastname') }}">
                     <input name="firstname" placeholder="Votre prénom" type="text" tabindex="3" value="{{ old('firstname') }}">--}}
-                    <button class="inscr-newsletter" name="submit" type="submit" id="newsletter-submit">Recevoir la newsletter</button>
+                    <button class="inscr-newsletter" name="submit" type="submit" id="newsletter-submit">S'inscrire à la newsletter</button>
                 </form>
             </section>
         </article>
 
+
         <article class="content-home">
             <div class="page-header no-bottom with-actions">
                 <h2>
-                    <span>Aides recensées cette semaine</span>
-                    <a href="{{ route('front.news.before') }}">Voir les semaines précédentes</a>
+                    <span>Aides enregistrées cette semaine</span>
+                    <a href="{{ route('front.news.before') }}">Voir les aides des semaines précédentes</a>
                 </h2>
             </div>
 
