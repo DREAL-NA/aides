@@ -211,7 +211,6 @@
 
     </div>
 @endsection
-<<<<<<< HEAD
 
 @push('inline-script')
      <script>
@@ -309,5 +308,3 @@
          })(jQuery);
      </script>
  @endpush
-=======
->>>>>>> Dispositifs : rectificatif affichage du nombre d'aide
