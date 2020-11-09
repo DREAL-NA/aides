@@ -15,7 +15,6 @@
                 <div class="page-header no-bottom">
                     <h2>Aides des semaines précédentes</h2>
                 </div>
-
                 @include('front.news.weeks')
             </section>
         </div>

@@ -1,6 +1,6 @@
 #principal {
     font-weight: normal;
-    font-size: 1.8em;
+    font-size: 1.6em;
     font-family: Arial, sans-serif;
     line-Height: 1.6;
     padding-top: 10px;
@@ -136,8 +136,14 @@
 #newsletter {
     text-align: left;
     font-size : 1.3em;
-     padding-top: 30px;
+     padding-top: 20px;
    }
+
+#aides-semaine {
+    text-align: left;
+    font-size : 1.3em;
+    padding-top: 20px;
+}
 
 .home-description {
   b {
@@ -338,4 +344,67 @@
 
 #dispositifs-filters-container > div > div > div > div:nth-child(3) > div.selectric-wrapper.selectric-responsive {
     display: none;
+}
+
+a.nostyle{
+    text-decoration: none;
+}
+
+div.block-container {
+    text-align : center;
+    display: block;
+    margin: 30px auto;
+    background-color: $color-1;
+    color: $color-white;
+    font-size: 1.6em;
+    padding: 20px 50px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    transition: all 250ms ease-in-out;
+    font-weight: 500;
+    width: 500px;
+    text-decoration: none !important;
+
+    @include hoverButton($color-1);
+
+    &:hover {
+        color: $color-white;
+    }
+}
+
+div.block-home-container {
+    text-align : center;
+    display: block;
+    margin: 30px 30px 70px 30px;
+    background-color: $color-12;
+    color: $color-white;
+    font-size: 2.4em;
+    padding: 70px 70px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    transition: all 250ms ease-in-out;
+    font-weight: 500;
+    width: 40%;
+    height: 300px;
+    float:left;
+    text-decoration: none !important;
+
+    @include hoverButton($color-12);
+
+    &:hover {
+        color: $color-white;
+    }
+}
+
+.mecenat{
+    background-color: $color-11 !important;
+    padding-top: 45px !important;
+
+    @include hoverButton($color-11);
+
+    &:hover {
+        color: $color-white;
+    }
 }

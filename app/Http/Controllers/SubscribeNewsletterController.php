@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\NewsletterSubscriber;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
-use Newsletter;
+
 
 class SubscribeNewsletterController extends Controller
 {
@@ -29,14 +30,19 @@ class SubscribeNewsletterController extends Controller
         ]);
 
         // Save the new subscriber
-        $subscriber = (new NewsletterSubscriber)->fill($validatedData);
+     //   $subscriber = (new NewsletterSubscriber)->fill($validatedData);
 
         // Subscribe him to the newsletter
-        $subscriber->subscribe();
+      //  $subscriber->subscribe();
 
         // If we get a Mailchimp error => subscription is cancelled
-        if (!empty($subscriber->mailchimp_error)) {
+     /*   if (!empty($subscriber->mailchimp_error)) {
             return response(['errors' => ['mc' => ["Une erreur est survenue. Merci de contacter l'administrateur."]]], 422);
+        }*/
+
+        if (!app()->runningInConsole()) {
+            // Send mail notification to user
+            Mail::send(new \App\Mail\NewsletterAT($request['email']));
         }
 
         return response("Merci pour votre inscription !", 201);
