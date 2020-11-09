@@ -11,6 +11,7 @@
             <h1>{{ ucfirst(config('app.name')) }}</h1>
             {{--<p class="description">{{ config('app.subname') }}</p>--}}
         </a>
+
     </div>
 
 </header>

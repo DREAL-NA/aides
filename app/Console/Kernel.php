@@ -30,14 +30,14 @@ class Kernel extends ConsoleKernel
 
         // Scheduling newsletter campaign
         // Every Friday at 13h
-        $schedule->command('newsletter:send')->weeklyOn(5, '13:00');
+        //$schedule->command('newsletter:send')->weeklyOn(5, '13:00');
 
         // Scheduling newsletter synchronization
         // Every day at 02h
-        $schedule->command('newsletter:sync')->dailyAt('02:00');
+        //$schedule->command('newsletter:sync')->dailyAt('02:00');
 
         // Re-import Scout data in Algolia
-        $schedule->command('scout:reimport')->runInBackground()->cron('12 9,12,15,18 * * *');
+        //$schedule->command('scout:reimport')->runInBackground()->cron('12 9,12,15,18 * * *');
 
         // Scheduling batch region import everyday at 00:00
         $schedule->command('import:region')->dailyAt('00:00');

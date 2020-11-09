@@ -67,6 +67,13 @@ return [
         ],
     ],
 
+    'newsletter' => [
+        'to' => [
+            'address' => env('NEWSLETTER_SUBSCRIPTION_MAIL_TO_ADDRESS', 'alexia.gazel@beta.gouv.fr'),
+            'name' => env('NEWSLETTER_SUBSCRIPTION_MAIL_TO_NAME', 'Aides territoire'),
+        ],
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol

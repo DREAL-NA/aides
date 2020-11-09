@@ -3,36 +3,32 @@
 @section('meta_title', "Accueil")
 
 @section('breadcrumb')
+    <li>
+        <span>Les aides en Nouvelle-Aquitaine</span>
+        <span class="chevron">></span>
+    </li>
+    <li>
+        <span>Consulter les aides</span>
+    </li>
+@endsection
 
 
 @section('content')
      <div class="page-container">
 
          <div class="page-header">
-             <h2 id="principal">Le site ADDNA  favorise la réalisation sur le territoire néo-aquitain de projets contribuant au développement durable.
-
-                     <p>Vous avez accès :</p>
-                     <ul>
-                         <li>aux différentes aides (aides classiques, appels à projets, AMI, fonds, aides, prix, concours, etc) en cours ou à venir et à différentes échelles, locales, régionales, nationales, européennes.</li>
-                         <li>à une  mise en relation des mécènes et des porteurs de projets dans le cadre convention cadre du 5 juillet 2018 relative au pôle régional mécénat Nouvelle-Aquitaine.
-                         </li>
-                     </ul>
-
-             </h2>
+             <h2 id="principal">Vous avez un projet de développement durable ?</br>Vous êtes une collectivité, une entreprise, une association, un citoyen,...</br>
+             <!--strong><span style="padding-top: 10px; color: #11884d; font-weight:bold;" class="count-dispositifs">{!! trans_choice('messages.home.count', $countCallsForProjects) !!} disponibles</span></-->
+             <strong><span style="padding-top: 10px; font-weight:bold;" class="count-dispositifs">Des centaines d'aides sont disponibles</span></h2>
          </div>
 
-         <a href="{{ route('front.aides.consulter') }}" class="nostyle">
-             <div class="block-home-container" title="Consulter les aides">
-             Les aides en Nouvelle-Aquitaine <span class="fa fa-external-link"></span>
+         <a href="https://addna.aides-territoires.beta.gouv.fr/" target="_blank" class="nostyle">
+             <div class="block-container" title="Vous allez être redirigé sur la plateforme aide territoire">
+             Voir toutes les aides disponibles en Nouvelle-Aquitaine <span class="fa fa-external-link"></span>
              </div>
          </a>
 
-         <a href="#" title="Cette rubrique sera bientôt disponible" class="nostyle">
-             <div class="block-home-container mecenat" title="Vous allez être redirigé sur la plateforme aide territoire">
-                 Les mécénat en Nouvelle-Aquitaine <span class="fa fa-external-link"></span><br>
-                 <span class="small"><em>(Bientôt disponible)</em></span>
-             </div>
-         </a>
+         @include('front.home.news')
      </div>
 
  @endsection

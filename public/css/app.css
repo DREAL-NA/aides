@@ -7920,7 +7920,7 @@ No space - remove distance between list items
 
 #principal {
   font-weight: normal;
-  font-size: 1.8em;
+  font-size: 1.6em;
   font-family: Arial, sans-serif;
   line-Height: 1.6;
   padding-top: 10px;
@@ -8086,7 +8086,13 @@ No space - remove distance between list items
 #newsletter {
   text-align: left;
   font-size: 1.3em;
-  padding-top: 30px;
+  padding-top: 20px;
+}
+
+#aides-semaine {
+  text-align: left;
+  font-size: 1.3em;
+  padding-top: 20px;
 }
 
 .home-description b {
@@ -8266,6 +8272,7 @@ No space - remove distance between list items
 
 #perimeter {
   padding: 7px 0;
+  text-indent: 10px;
 }
 
 .perimeter-tag {
@@ -8290,6 +8297,80 @@ No space - remove distance between list items
 
 #dispositifs-filters-container > div > div > div > div:nth-child(3) > div.selectric-wrapper.selectric-responsive {
   display: none;
+}
+
+a.nostyle {
+  text-decoration: none;
+}
+
+div.block-container {
+  text-align: center;
+  display: block;
+  margin: 30px auto;
+  background-color: #11884D;
+  color: #FFFFFF;
+  font-size: 1.6em;
+  padding: 20px 50px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  -webkit-transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
+  font-weight: 500;
+  width: 500px;
+  text-decoration: none !important;
+}
+
+div.block-container:hover {
+  background-color: #0b5b33;
+  color: inherit;
+}
+
+div.block-container:hover {
+  color: #FFFFFF;
+}
+
+div.block-home-container {
+  text-align: center;
+  display: block;
+  margin: 30px 30px 70px 30px;
+  background-color: #03924d;
+  color: #FFFFFF;
+  font-size: 2.4em;
+  padding: 70px 70px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  -webkit-transition: all 250ms ease-in-out;
+  transition: all 250ms ease-in-out;
+  font-weight: 500;
+  width: 40%;
+  height: 300px;
+  float: left;
+  text-decoration: none !important;
+}
+
+div.block-home-container:hover {
+  background-color: #026033;
+  color: inherit;
+}
+
+div.block-home-container:hover {
+  color: #FFFFFF;
+}
+
+.mecenat {
+  background-color: #1a9373 !important;
+  padding-top: 45px !important;
+}
+
+.mecenat:hover {
+  background-color: #126851;
+  color: inherit;
+}
+
+.mecenat:hover {
+  color: #FFFFFF;
 }
 
 .newsWeeks__loadMoreResultsContainer {
@@ -9348,7 +9429,7 @@ No space - remove distance between list items
 }
 
 .form-contact #newsletter-champ-title {
-  font-size: 1.5em;
+  font-size: 1.2em;
   font-weight: bold;
 }
 

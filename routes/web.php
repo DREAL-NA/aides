@@ -14,6 +14,11 @@
 Route::feeds();
 
 Route::get('/', 'HomeController')->name('front.home');
+
+Route::get('aides', 'AidesController')->name('front.aides');
+
+Route::get('mecenat', 'MecenatController')->name('front.mecenat');
+
 Route::get('actualites/precedentes', 'NewsController')->name('front.news.before');
 
 Route::post('newsletter/subscribe', 'SubscribeNewsletterController')->name('front.newsletter.subscribe');
@@ -26,13 +31,8 @@ Route::view('accessibilite', 'front.accessibility')->name('front.accessibility')
 
 Route::view('publier', 'front.publish')->name('front.publish');
 
-
-Route::view('qui-sommes-nous/projet', 'front.about-us.project')->name('front.about-us.project');
-Route::view('qui-sommes-nous/base-de-donnees', 'front.about-us.database')->name('front.about-us.database');
-Route::view('qui-sommes-nous/equipe', 'front.about-us.team')->name('front.about-us.team');
-
-Route::view('outils/mise-a-disposition-des-donnees', 'front.tools.data')->name('front.tools.data');
-Route::get('outils/poursuivre-recherches', 'WebsitesController')->name('front.tools.website-library');
+Route::get('aides/consulter', 'AidesController')->name('front.aides.consulter');
+Route::view('aides/qui-sommes-nous', 'front.aides.about-us')->name('front.aides.about-us');
 
 Route::get('dispositifs/{closed?}', 'CallForProjectsController@index')->name('front.dispositifs');
 Route::get('dispositifs/detail/{slug}', 'CallForProjectsController@unique')->name('front.dispositifs.unique');

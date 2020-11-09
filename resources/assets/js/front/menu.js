@@ -26,12 +26,12 @@
 			$(this).parents('.menu-item').toggleClass('active');
 		});
 
-		document.addEventListener('click', (event) => {
+		/*document.addEventListener('click', (event) => {
 			if ($(event.target).closest(this.find('[menu-selector]')).length > 0 || $(event.target).closest('.menu-children').length > 0) return;
 
 			$('.menu-list-children').removeClass('active');
 			$('.menu-list .menu-item').removeClass('active');
-		});
+		});*/
 
 		return this;
 	};

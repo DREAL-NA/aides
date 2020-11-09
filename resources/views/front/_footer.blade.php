@@ -12,21 +12,16 @@
             <nav class="sitemap" role="navigation">
                 <ul class="sitemap-menu">
                     <li>
-                        Qui sommes-nous ?
+                        Les aides en Nouvelle-Aquitaine
                         <ul class="submenu">
-                            <li><a href="{{ route('front.about-us.project') }}">Le projet</a></li>
-                            <li><a href="{{ route('front.about-us.database') }}">La base de données</a></li>
-                            <li><a href="{{ route('front.about-us.team') }}">L'équipe</a></li>
+                            <li><a href="{{ route('front.aides.consulter') }}">Consulter les aides</a></li>
+                            <li><a href="{{ route('front.aides.about-us') }}">Qui sommes-nous ?</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ route('front.dispositifs') }}">Aides ouvertes</a></li>
-                    <li><a href="{{ route('front.dispositifs', ['closed' => 'clotures']) }}">Aides clôturées</a></li>
-                    <li><a href="{{ route('front.news.before') }}">Actualités des semaines précédentes</a></li>
                     <li>
-                        Outils
+                        Le mécénat en Nouvelle-Aquitaine
                         <ul class="submenu">
-                            <li><a href="{{ route('front.tools.data') }}">Mise à disposition des données</a></li>
-                            <li><a href="{{ route('front.tools.website-library') }}">Poursuivre les recherches</a></li>
+                            <li><i> - Contenu bientôt disponible - </i></li>
                         </ul>
                     </li>
                     <li><a href="{{ route('front.accessibility') }}">Accessibilité</a></li>
