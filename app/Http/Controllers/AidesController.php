@@ -7,7 +7,7 @@ use App\Perimeter;
 use App\ProjectHolder;
 use App\Thematic;
 
-class HomeController extends Controller
+class AidesController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -29,7 +29,7 @@ class HomeController extends Controller
         $perimeters = Perimeter::orderBy('name', 'asc')->get();
         $project_holders = ProjectHolder::orderBy('name', 'asc')->get();
 
-        return view('front.home', compact('countCallsForProjects', 'primary_thematics', 'perimeters', 'callsOfTheWeek', 'project_holders'));
+        return view('front.aides.consulter', compact('countCallsForProjects', 'primary_thematics', 'perimeters', 'callsOfTheWeek', 'project_holders'));
 
         return view('front.home');
     }

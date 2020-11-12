@@ -18,20 +18,19 @@
 
         <article class="content-home">
             <div class="page-header no-bottom with-actions">
-                <h2>
-                    <span>Aides enregistrées cette semaine</span>
-                    <a href="{{ route('front.news.before') }}">Voir les aides des semaines précédentes</a>
-                </h2>
+                <p id="aides-semaine" >
+                    Accédez directement aux aides enregistrées cette semaine
+                </p>
             </div>
 
-            <section class="dispositif-items">
-                <div class="dispositifs-items-header slim">
-                    <div class="first thematic hidden-xs">Thématique</div>
-                    <div class="middle full infos no-border-right hidden-xs">Informations</div>
+            <a href="https://aides-territoires.beta.gouv.fr/aides/?integration=&apply_before=&perimeter=70971&text=&order_by=publication_date&action=search" target="_blank" class="nostyle" >
+                <div class="block-container" title="Vous allez être redirigé sur la plateforme aide territoire">
+                    Voir les dernières aides <span class="fa fa-external-link"></span>
                 </div>
+            </a>
+            <br/>
 
-                @each('front.news.thematic', $callsOfTheWeek, 'callsForProjects_thematic', 'front.news.empty')
-            </section>
+
         </article>
     </div>
 </div>
