@@ -32,7 +32,7 @@
                <div class="col-md-6">
                    <a href="#" title="Cette rubrique sera bientôt disponible" class="nostyle">
                        <div class="block-home-container mecenat" title="Vous allez être redirigé sur la plateforme aide territoire">
-                           Les mécénat en Nouvelle-Aquitaine <span class="fa fa-external-link"></span><br>
+                           Le mécénat en Nouvelle-Aquitaine <span class="fa fa-external-link"></span><br>
                            <span class="small"><em>(Bientôt disponible)</em></span>
                        </div>
                    </a>
