@@ -388,6 +388,7 @@ div.block-home-container {
     font-weight: 500;
    // width: 100%;
    // height: 300px;
+
     float:left;
     text-decoration: none !important;
 
@@ -402,6 +403,7 @@ div.block-home-container {
     background-color: $color-11 !important;
     padding-top: 45px !important;
     padding-bottom: 43px !important;
+
 
     @include hoverButton($color-11);
 
