@@ -20,19 +20,26 @@
 
              </h2>
          </div>
-
-         <a href="{{ route('front.aides.consulter') }}" class="nostyle">
-             <div class="block-home-container" title="Consulter les aides">
-             Les aides en Nouvelle-Aquitaine <span class="fa fa-external-link"></span>
+<div class="container">
+         <div class="row">
+             <div class="col-md-6">
+                 <a href="{{ route('front.aides.consulter') }}" class="nostyle">
+                     <div class="block-home-container" title="Consulter les aides">
+                         Les aides en Nouvelle-Aquitaine <span class="fa fa-external-link"></span>
+                     </div>
+                 </a>
              </div>
-         </a>
-
-         <a href="#" title="Cette rubrique sera bientôt disponible" class="nostyle">
-             <div class="block-home-container mecenat" title="Vous allez être redirigé sur la plateforme aide territoire">
-                 Les mécénat en Nouvelle-Aquitaine <span class="fa fa-external-link"></span><br>
-                 <span class="small"><em>(Bientôt disponible)</em></span>
+             <div class="col-md-6">
+                 <a href="#" title="Cette rubrique sera bientôt disponible" class="nostyle">
+                     <div class="block-home-container mecenat" title="Vous allez être redirigé sur la plateforme aide territoire">
+                         Les mécénat en Nouvelle-Aquitaine <span class="fa fa-external-link"></span><br>
+                         <span class="small"><em>(Bientôt disponible)</em></span>
+                     </div>
+                 </a>
              </div>
-         </a>
+         </div>
+</div>
+
      </div>
 
  @endsection
