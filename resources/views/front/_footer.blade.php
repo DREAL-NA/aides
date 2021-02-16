@@ -14,7 +14,7 @@
                     <li>
                         Les aides en Nouvelle-Aquitaine
                         <ul class="submenu">
-                            <li><a href="{{ route('front.aides.consulter') }}">Consulter les aides</a></li>
+                            <li><a href="https://addna.aides-territoires.beta.gouv.fr/" target="_blank">Consulter les aides</a></li>
                             <li><a href="{{ route('front.aides.about-us') }}">Qui sommes-nous ?</a></li>
                         </ul>
                     </li>

@@ -13,7 +13,7 @@
                      <p>Vous avez accès :</p>
                      <ul>
                          <li>aux différentes aides (aides classiques, appels à projets, AMI, fonds, aides, prix, concours, etc) en cours ou à venir et à différentes échelles, locales, régionales, nationales, européennes.</li>
-                         <li>à une  mise en relation des mécènes et des porteurs de projets dans le cadre convention cadre du 5 juillet 2018 relative au pôle régional mécénat Nouvelle-Aquitaine.
+                         <li>à une  mise en relation des mécènes et des porteurs de projets en quête de mécénat dans le du pôle régional mécénat Nouvelle-Aquitaine.
                          </li>
                      </ul>
 
@@ -23,19 +23,21 @@
         <div class="container">
            <div class="row">
                <div class="col-md-6">
-                   <a href="{{ route('front.aides.consulter') }}" class="nostyle">
-                       <div class="block-home-container" title="Consulter les aides">
-                           Les aides en Nouvelle-Aquitaine <span class="fa fa-external-link"></span>
+                   <a href="https://addna.aides-territoires.beta.gouv.fr/" class="nostyle" target="_blank" >
+                       <div class="block-home-container" title="Vous allez être redirigé sur la plateforme aides territoire">
+                           Les aides en Nouvelle-Aquitaine <span class="fa fa-external-link"></span><br/>
                        </div>
                    </a>
+                   <p class="block-home-text" >Pensez à vous créer <br/>une alerte <img src="/images/btn-alerte-at.png" width="180px" title="Fonctionnalité disponible sur le site aides territoire"><br/>pour recevoir les aides qui vous concernent !</p>
                </div>
                <div class="col-md-6">
                    <a href="#" title="Cette rubrique sera bientôt disponible" class="nostyle">
-                       <div class="block-home-container mecenat" title="Vous allez être redirigé sur la plateforme aide territoire">
+                       <div class="block-home-container mecenat" >
                            Le mécénat en Nouvelle-Aquitaine <span class="fa fa-external-link"></span><br>
-                           <span class="small"><em>(Bientôt disponible)</em></span>
+                           <span class="small"></span>
                        </div>
                    </a>
+                   <p class="block-home-text text-mecenat" ><em>Disponible au 2<sup>ème</sup> trimestre 2021</em></p>
                </div>
            </div>
         </div>
